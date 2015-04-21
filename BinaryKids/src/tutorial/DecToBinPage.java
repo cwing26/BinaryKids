@@ -65,18 +65,6 @@ public class DecToBinPage extends JPanel
 		});      
 
 
-//		String obstImgFileName = "C:\\Users\\Christopher\\Documents\\Senior\\Adv_Prog\\proj2\\fire.png";
-//		//try to load the image file
-//		try {
-//			boxIcon = new ImageIcon(ImageIO.read(new File(obstImgFileName)));
-//		} catch (IOException e) {
-//			System.out.println("Please check obstacle image file path.");
-//			e.printStackTrace();
-//		};
-//		img = boxIcon.getImage();
-//		img = img.getScaledInstance(30, 30, Image.SCALE_SMOOTH);
-
-
 		add(titlePanel);
 		add(DecToBinNumSquaresText);
 		add(DecToBinNumSquaresField);
@@ -101,14 +89,6 @@ public class DecToBinPage extends JPanel
 		}
 	}
 
-//	private void drawBoxes(int numBoxes, Graphics g){
-//		int startx = 60;
-//		int starty = 100;
-//		for (int i = 0; i < numBoxes; i++){
-//			g.drawImage(img, startx, starty, this);
-//			startx+=40;
-//		}	  
-//	}
 
 
 } //end class
