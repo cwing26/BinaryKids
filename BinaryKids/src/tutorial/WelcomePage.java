@@ -209,6 +209,7 @@ public class WelcomePage extends JApplet
 	public void loadDecBin2()
 	{
 		contentPane.remove(decToBinPage);
+		decToBinPage2 = new DecToBinPage2(welcome);
 		contentPane.add(decToBinPage2, BorderLayout.CENTER);
 		validate();
         setVisible(true);
@@ -218,6 +219,7 @@ public class WelcomePage extends JApplet
 	public void loadDecBin3()
 	{
 		contentPane.remove(decToBinPage2);
+		decToBinPage3 = new DecToBinPage3(welcome);
 		contentPane.add(decToBinPage3, BorderLayout.CENTER);
 		validate();
         setVisible(true);
@@ -227,6 +229,7 @@ public class WelcomePage extends JApplet
 	public void decToBinTutorial()
 	{
 		contentPane.remove(fourthPage);
+		decToBinPage = new DecToBinPage(welcome);
 		contentPane.add(decToBinPage, BorderLayout.CENTER);
 		validate();
         setVisible(true);
