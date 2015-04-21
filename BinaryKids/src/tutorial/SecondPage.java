@@ -1,5 +1,6 @@
 package tutorial;
 
+
 import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
@@ -46,19 +47,23 @@ public class SecondPage extends JPanel
     String answer = "";
     JPanel titlePanel;
     JLabel titleLabel;
+    JPanel answerPanel;
     
-    String explanation = "Well, you’d be surprised to know nothing would be possible without binary numbers! "
-			+ "Explanation of binary and its importance to computers: what are binary numbers? "
-			+ "What are their practical uses?";
+    String explanation1 = "None of these would be possible without binary numbers! ";
+
     
     private WelcomePage welcomePage;
     
     public SecondPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
+    	userName = welcomePage.getUserName();
+    	answer = welcomePage.getUserAnswer();
 
     	//setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
-    	setLayout(new GridLayout(4,1));
+    	//setLayout(new GridLayout(4,1));
+    	
+    	setBackground(Color.pink);
     	
     	titlePanel = new JPanel();
     	titleLabel = new JLabel("Welcome to binarykids!");
@@ -70,9 +75,16 @@ public class SecondPage extends JPanel
     	
     	JLabel answerLabel = new JLabel("How do you use computers?");
     	answerLabel.setFont(new Font("Verdana", 1, 15));
-    	add(answerLabel, BorderLayout.CENTER);
+    	add(answerLabel);
     	
-
+    	JPanel answerPanel = new JPanel();
+    	JLabel answerLab = new JLabel(answer);
+    	answerLab.setFont(new Font("Verdana", 1, 13));
+    	answerPanel.setBorder(new LineBorder(Color.green)); 
+    	answerPanel.add(answerLab);
+    	
+    	add(answerPanel);
+    	
     	setVisible(true);
 
     }
@@ -80,9 +92,9 @@ public class SecondPage extends JPanel
     public void paint(Graphics g)
     {
     	super.paint(g);
-    	g.drawString(answer, 20, 300);
-    	
-    	g.drawString(explanation, 20, 400);
+    	//g.drawString(answer, 20, 300);
+    	g.setFont(new Font("Verdana", 1, 20));
+    	g.drawString(explanation1, 20, 400);
     }
 
 }
