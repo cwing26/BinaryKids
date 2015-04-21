@@ -55,11 +55,9 @@ public class WelcomePage extends JApplet
 	BinaryDecimalOne bdOne;
 	private DecToBinPage decToBinPage;
 	private DecToBinPage2 decToBinPage2;
-<<<<<<< HEAD
 	private DecToBinPage3 decToBinPage3;
-=======
 	private BinaryAddOne baOne;
->>>>>>> origin/master
+
 	JPanel buttonPanel;
 	JButton nextButton;
 	JButton closeButton;
@@ -71,13 +69,9 @@ public class WelcomePage extends JApplet
 	
 	private String userName = "";
 	private String userAnswer = "";
-<<<<<<< HEAD
 	
 	public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
-=======
 
-public static String obstImgFileName = "C:\\Users\\Christopher\\workspace\\BinaryKids\\resources\\titleImage.jpg";
->>>>>>> origin/master
 	
     //Called when this applet is loaded into the browser.
     public void init() 
@@ -114,12 +108,8 @@ public static String obstImgFileName = "C:\\Users\\Christopher\\workspace\\Binar
     	bdOne = new BinaryDecimalOne(this);
     	decToBinPage = new DecToBinPage(this);
     	decToBinPage2 = new DecToBinPage2(this);
-<<<<<<< HEAD
     	decToBinPage3 = new DecToBinPage3(this);
-    	
-=======
     	baOne = new BinaryAddOne(this);
->>>>>>> origin/master
     	
     	//dialog box welcomes user to game and gives them brief instructions
     	String welcomeMessage = "Welcome to BinaryKids: Type in your name and click next to get started!";
@@ -153,12 +143,7 @@ public static String obstImgFileName = "C:\\Users\\Christopher\\workspace\\Binar
   		 // Setup the applet
   		 setBackground(Color.pink);
   		 setName("BinaryKids");
-<<<<<<< HEAD
   		 setSize(frameWidth, frameHeight);
-=======
-  		 setSize(frameSize, frameSize);
-
->>>>>>> origin/master
   		 setVisible(true);
   		    
     }  
@@ -300,11 +285,8 @@ public static String obstImgFileName = "C:\\Users\\Christopher\\workspace\\Binar
 			contentPane.remove(bdOne.bdTwo.bdThree);
 			contentPane.remove(decToBinPage);
 			contentPane.remove(decToBinPage2);
-<<<<<<< HEAD
 			contentPane.remove(decToBinPage3);
-=======
 			contentPane.remove(baOne);
->>>>>>> origin/master
 			contentPane.add(fourthPage);
 			validate();
 	        setVisible(true);
