@@ -60,8 +60,7 @@ public class WelcomePage extends JApplet
 	private String userName = "";
 	private String userAnswer = "";
 	
-	public static String obstImgFileName = "C:\\Users\\Christopher\\workspace\\BinaryKids\\resources\\titleImage.jpg";
-	
+	public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
 	
     //Called when this applet is loaded into the browser.
     public void init() 
