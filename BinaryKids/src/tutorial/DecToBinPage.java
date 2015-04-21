@@ -58,7 +58,11 @@ public class DecToBinPage extends JPanel
 					welcomePage.loadDecBin2();
 				}
 				else{
-					System.out.println("not done yet.");
+					String errorMessage = "Wrong answer, try again!";
+			    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+			    	
+			    	DecToBinNumSquaresField.setText("");
+			    	
 				}
 
 			}      

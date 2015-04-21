@@ -12,7 +12,7 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-public class DecToBinPage2 extends JPanel implements MouseListener
+public class DecToBinPage3 extends JPanel implements MouseListener
 {
 
 	WelcomePage welcomePage;
@@ -20,27 +20,20 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 	JLabel DecToBinNumSquaresText;
 	JLabel TextTens;
 	JLabel TextOnes;
-	JLabel TextHowManyTens;
-	JLabel TextHowManyOnes;
-	JTextField NumberTensField;
-	JTextField NumberOnesField;
+	
 
 	final int DecToBinNumSquaresActual = 11;
 	int DecToBinNumSquaresInput;
 	private ImageIcon boxIcon;
 	private Image img;
 	private Rectangle rec;
-	String numTensInput;
-	String numOnesInput;
-	final String numTensActual = "1";
-	final String numOnesActual = "1";
 
 	// The X-coordinate and Y-coordinate of the last click. 
 	int xpos; 
 	int ypos;
 
-	// The coordinates of the 10's rectangle and 1s rectangle 
-	int box10x, box10y, box10width, box10height;
+	// The coordinates of the 2s box and 1s box
+	int box2x, box2y, box2width, box2height;
 	int box1x, box1y, box1width, box1height;
 
 	boolean rect1Clicked;
@@ -57,7 +50,7 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 	ArrayList<Image> imgList = new ArrayList<>();
 	ArrayList<Rectangle> recList = new ArrayList<>();
 
-	public DecToBinPage2(WelcomePage welcome)
+	public DecToBinPage3(WelcomePage welcome)
 	{
 		welcomePage = welcome;
 
@@ -79,61 +72,37 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 		}
 
 		DecToBinSubmit = new JButton("Next Page"); 
-		DecToBinNumSquaresText = new JLabel("How do we get the number 11? Click on a square and then click "
-				+ "inside one of the boxes to assign the square to the box. You should assign squares to the "
+		DecToBinNumSquaresText = new JLabel("Now let's see visually how to represent 11 in binary (base 2)!"
+				+ "Click on a square and then click "
+				+ "inside one of the boxes to assign the square to the box. "
+				+ "You should assign squares to the "
 				+ "largest box possible, starting from the left.");
 
 
-		//Add action listeners for the button 
+		//Add action listeners for the buttons. 
 		DecToBinSubmit.addActionListener(new ActionListener() {      
 			public void actionPerformed(ActionEvent le) {  
-				numTensInput = NumberTensField.getText();
-				numOnesInput = NumberOnesField.getText();
-				
-				if (numTensInput.equals(numTensActual) && numOnesInput.equals(numOnesActual)){
-					welcomePage.loadDecBin3();
-				}
-				else{
-					String errorMessage = "Wrong answer, try again!";
-			    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
-			    	
-			    	NumberTensField.setText("");
-			    	NumberOnesField.setText("");
-				}
-				
+
 
 			}      
 		});      
 
 
 
-		TextTens = new JLabel("Tens");
-		TextOnes = new JLabel("Ones");
-		TextHowManyTens = new JLabel("How many TENS are there in 11?");
-		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
-		NumberTensField = new JTextField();
-		NumberOnesField = new JTextField();
-		NumberTensField.setColumns(5);
-		NumberOnesField.setColumns(5);
-		
+		TextTens = new JLabel("10s");
+		TextOnes = new JLabel("1s");
+
 		add(titlePanel);
 		add(DecToBinNumSquaresText);
-		
-		add(TextHowManyTens);
-		add(NumberTensField);
-		add(TextHowManyOnes);
-		add(NumberOnesField);
 		add(DecToBinSubmit);
-		
 		add(TextTens);
 		add(TextOnes);
-		
-		
+
 		// Assign values to the rectanagle coordinates. 
-		box10x = 60; 
-		box10y = 160; 
-		box10width = 200; 
-		box10height = 400;
+		box2x = 60; 
+		box2y = 160; 
+		box2width = 200; 
+		box2height = 400;
 
 		// Assign values to the rectanagle coordinates. 
 		box1x = 300; 
@@ -156,7 +125,7 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 		g.setColor(Color.BLACK);
 		if (boxSelected10)
 			g.setColor(Color.RED);
-		g.drawRect(box10x,box10y,box10width,box10height);
+		g.drawRect(box2x,box2y,box2width,box2height);
 		//Graphics2D g2d = (Graphics2D) g.create();
 		g.setColor(Color.BLACK);
 		for (int i = 0;i < recList.size(); i++){
@@ -188,7 +157,7 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 		
 		if(rectSelected)
 		{
-			if((xpos >= box10x) && (xpos <= (box10x + box10width)) && (ypos >= box10y) && (ypos <= (box10y + box10height)))
+			if((xpos >= box2x) && (xpos <= (box2x + box2width)) && (ypos >= box2y) && (ypos <= (box2y + box2height)))
 			{
 				boxSelected10 = true;
 				boxSelected1 = false;

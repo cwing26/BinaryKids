@@ -40,7 +40,9 @@ public class WelcomePage extends JApplet
 	int pageFlag = 0;
 	int tutorialFlag = 0;
 	
-	private int frameSize = 900;
+	private int frameWidth = 800;
+	private int frameHeight = 600;
+	
 	
 	private StartPage startPage;
 	private FirstPage firstPage;
@@ -50,6 +52,7 @@ public class WelcomePage extends JApplet
 	BinaryDecimalOne bdOne;
 	private DecToBinPage decToBinPage;
 	private DecToBinPage2 decToBinPage2;
+	private DecToBinPage3 decToBinPage3;
 	JPanel buttonPanel;
 	JButton nextButton;
 	JButton tutorialButton;
@@ -97,6 +100,8 @@ public class WelcomePage extends JApplet
     	bdOne = new BinaryDecimalOne(this);
     	decToBinPage = new DecToBinPage(this);
     	decToBinPage2 = new DecToBinPage2(this);
+    	decToBinPage3 = new DecToBinPage3(this);
+    	
     	
     	//dialog box welcomes user to game and gives them brief instructions
     	String welcomeMessage = "Welcome to BinaryKids: Type in your name and click next to get started!";
@@ -126,7 +131,7 @@ public class WelcomePage extends JApplet
   		 // Setup the applet
   		 setBackground(Color.pink);
   		 setName("BinaryKids");
-  		 setSize(frameSize, frameSize);
+  		 setSize(frameWidth, frameHeight);
   		 setVisible(true);
   		    
     }  
@@ -197,6 +202,15 @@ public class WelcomePage extends JApplet
         setVisible(true);
         repaint();
 	}
+
+	public void loadDecBin3()
+	{
+		contentPane.remove(decToBinPage2);
+		contentPane.add(decToBinPage3, BorderLayout.CENTER);
+		validate();
+        setVisible(true);
+        repaint();
+	}
 	
 	public void decToBinTutorial()
 	{
@@ -247,6 +261,7 @@ public class WelcomePage extends JApplet
 			contentPane.remove(bdOne);
 			contentPane.remove(decToBinPage);
 			contentPane.remove(decToBinPage2);
+			contentPane.remove(decToBinPage3);
 			contentPane.add(fourthPage);
 			validate();
 	        setVisible(true);
