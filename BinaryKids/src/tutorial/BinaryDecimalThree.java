@@ -1,5 +1,6 @@
 package tutorial;
 
+
 import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
@@ -44,6 +45,12 @@ import java.awt.TextField;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
+//TRACK WHICH BOX THEY ENTER TO SEE IF ITS RIGHT IN THE END
+//SIZE OF FIRST RECT ARRAY SHOULD BE 10
+//SIZE OF SECOND RECT ARRAY SHOULD BE 3
+
+//when submit button is hit, check how many are within bounds of 10s box and how many are within ones box
+//if not, then reset their positions back to starting
 
 public class BinaryDecimalThree extends JPanel implements MouseListener
 {	
@@ -201,10 +208,40 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			userAnswer1 = Integer.parseInt(input1);
 			userAnswer2 = Integer.parseInt(input2);
 			userAnswer3 = Integer.parseInt(input3);
+			
+			
+			//second part of correct answer: determine 
+			//whether correct number of rects are in each box
+			int countTens = 0;
+			int countOnes = 0;
+			
+			for(int i = 0; i < recList.size(); i++)
+			{
+				int x = (int) recList.get(i).getX();
+				int y = (int) recList.get(i).getY();
+				
 
+				if((x >= box10x) && (x <= (box10x + box10width)) && (y >= box10y) && (y <= (box10y + box10height)))
+				{
+					countTens++; //if the rect is in the tens box, add 1
+				}
+				else if((x >= box1x) && (x <= (box1x + box1width)) && (y >= box1y) && (y <= (box1y + box1height)))
+				{
+					//if the rect is in the ones box
+					countOnes++;
+				}
+				else
+				{
+					
+				}
+				
+			}
+			
+
+			 
 			if(userAnswer1 == answer1 
 					&& userAnswer2 == answer2
-					&& userAnswer3 == answer3)
+					&& userAnswer3 == answer3 && countTens == 10 && countOnes == 3)
 			{
 				String congratsMessage = "Good job!";
 		    	JOptionPane.showMessageDialog(welcomePage, congratsMessage, "good job", JOptionPane.YES_NO_OPTION);
@@ -226,6 +263,16 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 		    	answerField1.setText("");
 		    	answerField2.setText("");
 		    	answerField3.setText("");
+		    	
+				int startx = 60;
+				int starty = 600;
+				
+				for (int i = 0; i < recList.size(); i++)
+				{
+					recList.get(i).setLocation(startx, starty);
+					startx+=40;
+				}
+				repaint();
 
 			}
 
