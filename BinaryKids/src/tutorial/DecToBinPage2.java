@@ -71,7 +71,9 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 		}
 
 		DecToBinSubmit = new JButton("Next Page"); 
-		DecToBinNumSquaresText = new JLabel("How do we get the number 11?");
+		DecToBinNumSquaresText = new JLabel("How do we get the number 11? Click on a square and then click "
+				+ "inside one of the boxes to assign the square to the box. You should assign squares to the "
+				+ "largest box possible, starting from the left.");
 
 
 		//Add action listeners for the buttons. 
@@ -83,20 +85,6 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 		});      
 
 
-//		String obstImgFileName = "C:\\Users\\Christopher\\Documents\\Senior\\Adv_Prog\\proj2\\fire.png";
-//		//try to load the image file
-//		try {
-//			boxIcon = new ImageIcon(ImageIO.read(new File(obstImgFileName)));
-//		} catch (IOException e) {
-//			System.out.println("Please check obstacle image file path.");
-//			e.printStackTrace();
-//		};
-//
-//		img = boxIcon.getImage();
-//		img = img.getScaledInstance(rectUnit, rectUnit, Image.SCALE_SMOOTH);
-//		for (int i = 0; i < 11; i++){
-//			imgList.add(img);
-//		}
 
 		TextTens = new JLabel("10s");
 		TextOnes = new JLabel("1s");
@@ -141,17 +129,6 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 		}
 	}
-
-//	private void drawBoxes(int numBoxes, Graphics g){
-//		
-//		for (int i = 0; i < numBoxes; i++){
-//			//g.drawImage(img, startx, starty, this);
-//
-//			rec = new Rectangle(startx, starty, rectUnit,rectUnit);
-//			recList.add(rec);
-//			startx+=40;
-//		}	  
-//	}
 
 	// This method will be called when the mouse has been clicked. 
 	public void mouseClicked (MouseEvent me) 
