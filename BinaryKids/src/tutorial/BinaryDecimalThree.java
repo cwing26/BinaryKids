@@ -179,9 +179,14 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
     {
     	super.paint(g);
     	
+    	if (boxSelected1)
+			g.setColor(Color.RED);
 		g.drawRect(box1x,box1y,box1width,box1height);
+		g.setColor(Color.BLACK);
+		if (boxSelected10)
+			g.setColor(Color.RED);
 		g.drawRect(box10x,box10y,box10width,box10height);
-		
+    	
     	g.setColor(Color.blue);
     	
 
@@ -320,6 +325,7 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 				if((xpos >= box10x) && (xpos <= (box10x + box10width)) && (ypos >= box10y) && (ypos <= (box10y + box10height)))
 				{
 					boxSelected10 = true;
+					boxSelected1 = false;
 					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 					//imgList.get(rectSelectedNum).
 					
@@ -327,6 +333,7 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 				else if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
 				{
 					boxSelected1 = true;
+					boxSelected10 = false;
 					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 					
 				}
