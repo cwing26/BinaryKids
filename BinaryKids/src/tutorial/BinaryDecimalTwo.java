@@ -75,6 +75,11 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 	final int answer4 = 0;
 	final int answer5 = 1;
 	
+	final String answerTwo = "1";
+	final String answerThree = "0";
+	final String answerFour = "1";
+	final String answerFive = "1";
+	
 	int userAnswer1;
 	int userAnswer2;
 	int userAnswer3;
@@ -87,6 +92,7 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 	int box2x, box2y, box2width, box2height;
 	int box1x, box1y, box1width, box1height;
 	
+
 	
 	
 	// The X-coordinate and Y-coordinate of the last click. 
@@ -212,15 +218,31 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
     public void paint(Graphics g)
     {
     	super.paint(g);
-    	g.drawRect(box8x,box8y,box8width,box8height);
-    	g.drawRect(box4x,box4y,box4width,box4height);
-    	g.drawRect(box2x,box2y,box2width,box2height);
-    	g.drawRect(box1x,box1y,box1width,box1height);
     	
+    	if (boxSelected1)
+			g.setColor(Color.RED);
+		g.drawRect(box1x,box1y,box1width,box1height);
+		g.setColor(Color.BLACK);
+		
+		if (boxSelected2)
+			g.setColor(Color.RED);
+		g.drawRect(box2x,box2y,box2width,box2height);
+		g.setColor(Color.BLACK);
+		
+		if (boxSelected4)
+			g.setColor(Color.RED);
+		g.drawRect(box4x,box4y,box4width,box4height);
+		g.setColor(Color.BLACK);
+		
+		if (boxSelected8)
+			g.setColor(Color.RED);
+		g.drawRect(box8x,box8y,box8width,box8height);
+		g.setColor(Color.BLACK);
+    	
+
     	
     	g.setColor(Color.blue);
-    	
-    	
+
 		//Graphics2D g2d = (Graphics2D) g.create();
 		for (int i = 0;i < recList.size(); i++){
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
@@ -370,24 +392,36 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 				if((xpos >= box8x) && (xpos <= (box8x + box8width)) && (ypos >= box8y) && (ypos <= (box8y + box8height)))
 				{
 					boxSelected8 = true;
+					boxSelected4 = false;
+					boxSelected2 = false;
+					boxSelected1 = false;
 					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 					
 				}
 				else if((xpos >= box4x) && (xpos <= (box4x + box4width)) && (ypos >= box4y) && (ypos <= (box4y + box4height)))
 				{
 					boxSelected4 = true;
+					boxSelected8 = false;
+					boxSelected2 = false;
+					boxSelected1 = false;
 					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 					
 				}
 				else if((xpos >= box2x) && (xpos <= (box2x + box2width)) && (ypos >= box2y) && (ypos <= (box2y + box2height)))
 				{
 					boxSelected2 = true;
+					boxSelected4 = false;
+					boxSelected8 = false;
+					boxSelected1 = false;
 					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 					
 				}
 				else if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
 				{
 					boxSelected1 = true;
+					boxSelected4 = false;
+					boxSelected2 = false;
+					boxSelected8 = false;
 					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 					
 				}
@@ -402,163 +436,7 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 
 			//show the results of the click 
 			repaint();
-		 
-		 /*
-		 if(clickOrMove) //click is to select rectangle
-		 {
-			// Save the coordinates of the click lke this.
-			  xpos = me.getX(); 
-			  ypos = me.getY();
-			  
-			  if((xpos >= rect1xco) && (xpos <= (rect1xco + rectWidth)) && (ypos >= rect1yco) && (ypos <= (rect1yco + rectHeight)))
-			  {
-				  rectSelected = 1;
-			  }
-			  else if((xpos >= rect2xco) && (xpos <= (rect2xco + rectWidth)) && (ypos >= rect2yco) && (ypos <= (rect2yco + rectHeight)))
-			  {
-				  rectSelected = 2;
-			  }
-			  else if((xpos >= rect3xco) && (xpos <= (rect3xco + rectWidth)) && (ypos >= rect3yco) && (ypos <= (rect3yco + rectHeight)))
-			  {
-				  rectSelected = 3;
-			  }
-			  else if((xpos >= rect4xco) && (xpos <= (rect4xco + rectWidth)) && (ypos >= rect4yco) && (ypos <= (rect4yco + rectHeight)))
-			  {
-				  rectSelected = 4;
-			  }
-			  else if((xpos >= rect5xco) && (xpos <= (rect5xco + rectWidth)) && (ypos >= rect5yco) && (ypos <= (rect5yco + rectHeight)))
-			  {
-				  rectSelected = 5;
-			  }
-			  else if((xpos >= rect6xco) && (xpos <= (rect6xco + rectWidth)) && (ypos >= rect6yco) && (ypos <= (rect6yco + rectHeight)))
-			  {
-				  rectSelected = 6;
-			  }
-			  else if((xpos >= rect7xco) && (xpos <= (rect7xco + rectWidth)) && (ypos >= rect7yco) && (ypos <= (rect7yco + rectHeight)))
-			  {
-				  rectSelected = 7;
-			  }
-			  else if((xpos >= rect8xco) && (xpos <= (rect8xco + rectWidth)) && (ypos >= rect8yco) && (ypos <= (rect8yco + rectHeight)))
-			  {
-				  rectSelected = 8;
-			  }
-			  else if((xpos >= rect9xco) && (xpos <= (rect9xco + rectWidth)) && (ypos >= rect9yco) && (ypos <= (rect9yco + rectHeight)))
-			  {
-				  rectSelected = 9;
-			  }
-			  else if((xpos >= rect10xco) && (xpos <= (rect10xco + rectWidth)) && (ypos >= rect10yco) && (ypos <= (rect10yco + rectHeight)))
-			  {
-				  rectSelected = 10;
-			  }
-			  else if((xpos >= rect11xco) && (xpos <= (rect11xco + rectWidth)) && (ypos >= rect11yco) && (ypos <= (rect11yco + rectHeight)))
-			  {
-				  rectSelected = 11;
-			  }
-			  else if((xpos >= rect12xco) && (xpos <= (rect12xco + rectWidth)) && (ypos >= rect12yco) && (ypos <= (rect12yco + rectHeight)))
-			  {
-				  rectSelected = 12;
-			  }
-			  else if((xpos >= rect13xco) && (xpos <= (rect13xco + rectWidth)) && (ypos >= rect13yco) && (ypos <= (rect13yco + rectHeight)))
-			  {
-				  rectSelected = 13;
-			  }
-			  else
-				  rectSelected = 0;
-			  
-			  clickOrMove = false;
-			  
-		 }
-		 else //click is where to move it
-		 {
-			// Save the coordinates of the click lke this.
-			  xpos = me.getX(); 
-			  ypos = me.getY();
-			  
-			  if(rectSelected == 1)
-			  {
-				  rect1xco = me.getX();
-				  rect1yco = me.getY();
-			  }
-			  else if(rectSelected ==2)
-			  {
-				  rect2xco = me.getX();
-				  rect2yco = me.getY();
-			  }
-			  else if(rectSelected == 3)
-			  {
-				  rect3xco = me.getX();
-				  rect3yco = me.getY();
-			  }
-			  else if(rectSelected == 4)
-			  {
-				  rect4xco = me.getX();
-				  rect4yco = me.getY();
-			  }
-			  else if(rectSelected == 5)
-			  {
-				  rect5xco = me.getX();
-				  rect5yco = me.getY();
-			  }
-			  else if(rectSelected == 6)
-			  {
-				  rect6xco = me.getX();
-				  rect6yco = me.getY();
-			  }
-			  else if(rectSelected == 7)
-			  {
-				  rect7xco = me.getX();
-				  rect7yco = me.getY();
-			  }
-			  else if(rectSelected == 8)
-			  {
-				  rect8xco = me.getX();
-				  rect8yco = me.getY();
-			  }
-			  else if(rectSelected == 9)
-			  {
-				  rect9xco = me.getX();
-				  rect9yco = me.getY();
-			  }
-			  else if(rectSelected == 10)
-			  {
-				  rect10xco = me.getX();
-				  rect10yco = me.getY();
-			  }
-			  else if(rectSelected == 11)
-			  {
-				  rect11xco = me.getX();
-				  rect11yco = me.getY();
-			  }
-			  else if(rectSelected == 12)
-			  {
-				  rect12xco = me.getX();
-				  rect12yco = me.getY();
-			  }
-			  else if(rectSelected == 13)
-			  {
-				  rect13xco = me.getX();
-				  rect13yco = me.getY();
-			  }
-			  
-			  clickOrMove = true;
-				  
-		 }
-	   
-
-	  
-	  //check if click was inside any of the rectangles
-	  //if yes, then select it
-	  //then wait for the next click, and if its not inside any rectangles, 
-	  //then drop the previous rectangle there
-	  
-	  //like have a tag that is either null (meaning a drag drop cycle has been completed)
-	  //or the tag equals one of the rectangles, then we just have to set its new x and y
-	  //coordinates for the repaint
-
-	  
-	  //show the results of the click 
-	  repaint();
-	*/
+		
 	 } //end mouse click listener
 	
 	
