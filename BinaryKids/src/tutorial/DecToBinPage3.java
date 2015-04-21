@@ -12,36 +12,56 @@ import java.util.ArrayList;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+@SuppressWarnings("serial")
 public class DecToBinPage3 extends JPanel implements MouseListener
 {
 
 	WelcomePage welcomePage;
 	JButton DecToBinSubmit; 
 	JLabel DecToBinNumSquaresText;
-	JLabel TextTens;
-	JLabel TextOnes;
+	JLabel DecToBinNumSquaresText2;
+	JLabel DecToBinNumSquaresText3;
 	
+	JLabel TextEights;
+	JLabel TextFours;
+	JLabel TextTwos;
+	JLabel TextOnes;
+	JLabel TextHowManyEights;
+	JLabel TextHowManyFours;
+	JLabel TextHowManyTwos;
+	JLabel TextHowManyOnes;
+	JTextField NumberEightsField;
+	JTextField NumberFoursField;
+	JTextField NumberTwosField;
+	JTextField NumberOnesField;
+
+	String numEightsInput;
+	String numFoursInput;
+	String numTwosInput;
+	String numOnesInput;
+	final String numEightsActual = "1";
+	final String numFoursActual = "0";
+	final String numTwosActual = "1";
+	final String numOnesActual = "1";
 
 	final int DecToBinNumSquaresActual = 11;
 	int DecToBinNumSquaresInput;
-	private ImageIcon boxIcon;
-	private Image img;
 	private Rectangle rec;
 
 	// The X-coordinate and Y-coordinate of the last click. 
 	int xpos; 
 	int ypos;
 
-	// The coordinates of the 2s box and 1s box
+	// The coordinates of the boxes
+	int box8x, box8y, box8width, box8height;
+	int box4x, box4y, box4width, box4height;
 	int box2x, box2y, box2width, box2height;
 	int box1x, box1y, box1width, box1height;
 
-	boolean rect1Clicked;
-	boolean rect2Clicked;
 	int rectSelectedNum = 0;
-
-	boolean clickOrMove = true;
-	boolean boxSelected10 = false;
+	boolean boxSelected8 = false;
+	boolean boxSelected4 = false;
+	boolean boxSelected2 = false;
 	boolean boxSelected1 = false;
 	boolean rectSelected = false;
 
@@ -56,13 +76,48 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 		int startx = 60;
 		int starty = 100;
-		
-		JPanel titlePanel = new JPanel();
-		JLabel titleLabel = new JLabel("Let's do an example!");
-		titleLabel.setFont(new Font("Verdana",1,20));
-		titlePanel.add(titleLabel);
-		titlePanel.setBorder(new LineBorder(Color.BLACK)); 
 
+		JPanel titlePanel = new JPanel();
+		titlePanel.setLayout(new BorderLayout());
+		JLabel titleLabel = new JLabel("Converting Decimal to Binary");
+		titleLabel.setFont(new Font("Verdana",1,20));
+		titlePanel.add(titleLabel, BorderLayout.CENTER);
+		titlePanel.setBorder(new LineBorder(Color.BLACK)); 
+		
+		
+		
+		TextEights = new JLabel("Eights");
+		TextFours = new JLabel("Fours");
+		TextTwos = new JLabel("Twos");
+		TextOnes = new JLabel("Ones");
+		TextHowManyEights = new JLabel("How many EIGHTS are there in 11?");
+		TextHowManyFours = new JLabel("How many FOURS are there in 11?");
+		TextHowManyTwos = new JLabel("How many TWOS are there in 11?");
+		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
+		NumberEightsField = new JTextField();
+		NumberFoursField = new JTextField();
+		NumberTwosField = new JTextField();
+		NumberOnesField = new JTextField();
+		NumberEightsField.setColumns(5);
+		NumberFoursField.setColumns(5);
+		NumberTwosField.setColumns(5);
+		NumberOnesField.setColumns(5);
+		
+		DecToBinSubmit = new JButton("Next Page"); 
+		DecToBinNumSquaresText = new JLabel("Now let's see visually how to represent 11 in binary (base 2)!");
+		DecToBinNumSquaresText2 = new JLabel("Click on a square and then click "
+				+ "inside one of the boxes to assign the square to the box.");
+
+		DecToBinNumSquaresText3 = new JLabel("You should assign squares to the largest box possible, starting from the left.");
+
+		
+		JPanel textPanel = new JPanel();
+		textPanel.setLayout(new GridLayout(0,1));
+		textPanel.add(DecToBinNumSquaresText);
+		textPanel.add(DecToBinNumSquaresText2);
+		textPanel.add(DecToBinNumSquaresText3);
+		
+		
 		for (int i = 0; i < DecToBinNumSquaresActual; i++){
 			//g.drawImage(img, startx, starty, this);
 
@@ -71,43 +126,82 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 			startx+=40;
 		}
 
-		DecToBinSubmit = new JButton("Next Page"); 
-		DecToBinNumSquaresText = new JLabel("Now let's see visually how to represent 11 in binary (base 2)!"
-				+ "Click on a square and then click "
-				+ "inside one of the boxes to assign the square to the box. "
-				+ "You should assign squares to the "
-				+ "largest box possible, starting from the left.");
-
+		
 
 		//Add action listeners for the buttons. 
 		DecToBinSubmit.addActionListener(new ActionListener() {      
 			public void actionPerformed(ActionEvent le) {  
+				numEightsInput = NumberEightsField.getText();
+				numFoursInput = NumberFoursField.getText();
+				numTwosInput = NumberTwosField.getText();
+				numOnesInput = NumberOnesField.getText();
 
+				if (numEightsInput.equals(numEightsActual)
+						&& numFoursInput.equals(numFoursActual)
+						&& numTwosInput.equals(numTwosActual)
+						&& numOnesInput.equals(numOnesActual)   ){
+					//welcomePage.loadDecBin4();  //fix here
+				}
+				else{
+					String errorMessage = "Wrong answer, try again!";
+					JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+
+					NumberEightsField.setText("");
+					NumberOnesField.setText("");
+				}
 
 			}      
 		});      
 
 
-
-		TextTens = new JLabel("10s");
-		TextOnes = new JLabel("1s");
+		
 
 		add(titlePanel);
-		add(DecToBinNumSquaresText);
+		add(textPanel);
+//		add(DecToBinNumSquaresText);
+//		add(DecToBinNumSquaresText2);
+//		add(DecToBinNumSquaresText3);
+		
+
+		add(TextHowManyEights);
+		add(NumberEightsField);
+		add(TextHowManyFours);
+		add(NumberFoursField);
+		add(TextHowManyTwos);
+		add(NumberTwosField);
+		add(TextHowManyOnes);
+		add(NumberOnesField);
 		add(DecToBinSubmit);
-		add(TextTens);
+
+		add(TextEights);
+		add(TextFours);
+		add(TextTwos);
 		add(TextOnes);
 
+
 		// Assign values to the rectanagle coordinates. 
-		box2x = 60; 
+		box8x = 60; 
+		box8y = 160; 
+		box8width = 100; 
+		box8height = 400;
+		
+		// Assign values to the rectanagle coordinates. 
+		box4x = 200; 
+		box4y = 160; 
+		box4width = 100; 
+		box4height = 400;
+
+
+		// Assign values to the rectanagle coordinates. 
+		box2x = 340; 
 		box2y = 160; 
-		box2width = 200; 
+		box2width = 100; 
 		box2height = 400;
 
 		// Assign values to the rectanagle coordinates. 
-		box1x = 300; 
+		box1x = 480; 
 		box1y = 160; 
-		box1width= 200; 
+		box1width= 100; 
 		box1height = 400;
 
 		// Add the MouseListener to your applet 
@@ -122,11 +216,23 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		if (boxSelected1)
 			g.setColor(Color.RED);
 		g.drawRect(box1x,box1y,box1width,box1height);
+		
 		g.setColor(Color.BLACK);
-		if (boxSelected10)
+		if (boxSelected2)
 			g.setColor(Color.RED);
 		g.drawRect(box2x,box2y,box2width,box2height);
-		//Graphics2D g2d = (Graphics2D) g.create();
+
+		g.setColor(Color.BLACK);
+		if (boxSelected4)
+			g.setColor(Color.RED);
+		g.drawRect(box4x,box4y,box4width,box4height);
+		
+		g.setColor(Color.BLACK);
+		if (boxSelected8)
+			g.setColor(Color.RED);
+		g.drawRect(box8x,box8y,box8width,box8height);
+
+		
 		g.setColor(Color.BLACK);
 		for (int i = 0;i < recList.size(); i++){
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
@@ -151,30 +257,54 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 				rectSelectedNum = i;
 				break;
 			} 
-			
+
 
 		}
-		
+
 		if(rectSelected)
 		{
 			if((xpos >= box2x) && (xpos <= (box2x + box2width)) && (ypos >= box2y) && (ypos <= (box2y + box2height)))
 			{
-				boxSelected10 = true;
+				boxSelected4 = false;
+				boxSelected8 = false;
+				boxSelected2 = true;
 				boxSelected1 = false;
 				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 				//imgList.get(rectSelectedNum).
-				
+
 			}
 			else if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
 			{
 				boxSelected1 = true;
-				boxSelected10 = false;
+				boxSelected2 = false;
+				boxSelected4 = false;
+				boxSelected8 = false;
 				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-				
+
+			}
+			else if((xpos >= box4x) && (xpos <= (box4x + box1width)) && (ypos >= box4y) && (ypos <= (box4y + box4height)))
+			{
+				boxSelected1 = false;
+				boxSelected2 = false;
+				boxSelected4 = true;
+				boxSelected8 = false;
+				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+
+			}
+			else if((xpos >= box8x) && (xpos <= (box8x + box8width)) && (ypos >= box8y) && (ypos <= (box8y + box8height)))
+			{
+				boxSelected1 = false;
+				boxSelected2 = false;
+				boxSelected4 = false;
+				boxSelected8 = true;
+				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+
 			}
 			else {
-				boxSelected10 = false;
+				boxSelected2 = false;
 				boxSelected1 = false;
+				boxSelected4 = false;
+				boxSelected8 = false;
 			}
 
 		}

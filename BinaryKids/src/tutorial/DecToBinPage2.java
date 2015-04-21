@@ -43,8 +43,7 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 	int box10x, box10y, box10width, box10height;
 	int box1x, box1y, box1width, box1height;
 
-	boolean rect1Clicked;
-	boolean rect2Clicked;
+
 	int rectSelectedNum = 0;
 
 	boolean clickOrMove = true;
@@ -65,7 +64,7 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 		int starty = 100;
 		
 		JPanel titlePanel = new JPanel();
-		JLabel titleLabel = new JLabel("Let's do an example!");
+		JLabel titleLabel = new JLabel("Converting Decimal to Binary");
 		titleLabel.setFont(new Font("Verdana",1,20));
 		titlePanel.add(titleLabel);
 		titlePanel.setBorder(new LineBorder(Color.BLACK)); 
