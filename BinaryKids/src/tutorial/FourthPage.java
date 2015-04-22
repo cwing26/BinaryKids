@@ -1,5 +1,6 @@
 package tutorial;
 
+
 import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
@@ -35,6 +36,8 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridLayout;
 import java.awt.RenderingHints;
 import java.awt.Image;
 import java.awt.TextField;
@@ -53,14 +56,16 @@ public class FourthPage extends JPanel
     public FourthPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
-
+    	setLayout(new BorderLayout());
+    	setBackground(Color.pink);
     	JPanel titlePanel = new JPanel();
     	JLabel titleLabel = new JLabel("What would you like to learn first??");
     	titleLabel.setFont(new Font("Verdana",1,20));
     	titlePanel.add(titleLabel);
     	titlePanel.setBorder(new LineBorder(Color.BLACK));     	
-    	add(titlePanel);
+    	add(titlePanel, BorderLayout.NORTH);
 
+    	
     	decBinButton = new JButton("Decimal to Binary");
     	binDecButton = new JButton("Binary to Decimal");
     	binAddButton = new JButton("Binary Addition");
@@ -71,11 +76,23 @@ public class FourthPage extends JPanel
     	binAddButton.addActionListener(new tutorialButtonListener());
     	binSubButton.addActionListener(new tutorialButtonListener());
     	
-    	add(decBinButton);
-    	add(binDecButton);
-    	add(binAddButton);
-    	add(binSubButton);
+    	JPanel buttonPanel = new JPanel(new GridBagLayout());
+    	buttonPanel.setBackground(Color.pink);
+    	GridBagConstraints c = new GridBagConstraints();
+    	c.anchor = GridBagConstraints.LINE_START;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipadx = 20;
+		c.gridx = 0;
+		c.gridy = 0;
+    	buttonPanel.add(decBinButton);
+		c.gridy = 1;
+    	buttonPanel.add(binDecButton);
+    	c.gridy = 2;
+    	buttonPanel.add(binAddButton);
+    	c.gridy = 3;
+    	buttonPanel.add(binSubButton);
     	
+    	add(buttonPanel, BorderLayout.CENTER);
     	setVisible(true);
 
     }
@@ -97,15 +114,14 @@ public class FourthPage extends JPanel
 			}
 			else if(e.getSource() == binAddButton)
 			{
-				welcomePage.tutorialFlag = 3;
+				welcomePage.binAddTutorial();
 			}
 			else if(e.getSource() == binSubButton)
 			{
-				welcomePage.tutorialFlag = 4;
 			}
 			else
 			{
-				welcomePage.tutorialFlag = 0;
+				welcomePage.gameOver();
 			}
 			
 				
