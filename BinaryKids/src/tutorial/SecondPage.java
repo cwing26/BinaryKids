@@ -132,20 +132,23 @@ public class SecondPage extends JPanel implements ActionListener
     		g.drawString(explanation1, 20, 400);
     	}
     	
+    	g.setFont(new Font("Verdana", 1, 15));
     		if(countAnimation == 1)
     		{
-    			g.drawString(explanation2, 20, 400);
+    			g.drawString(explanation2, 10, 400);
     		}
     		else if(countAnimation == 2)
     		{
-    			g.drawString(explanation2, 20, 400);
-    			g.drawString(explanation3, 40, 450);
+    			g.drawString(explanation2, 10, 400);
+    			g.drawString(explanation3, 20, 450);
+    			//also images!
     		}
     		else if(countAnimation == 3)
     		{
-    			g.drawString(explanation2, 20, 400);
-    			g.drawString(explanation2, 40, 450);
-    			g.drawString(explanation4, 60, 500);
+    			g.drawString(explanation2, 10, 400);
+    			g.drawString(explanation3, 20, 450);
+    			g.drawString(explanation4, 30, 500);
+    			//also images!
     		}
     		
 
