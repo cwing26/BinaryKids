@@ -451,11 +451,11 @@ public class ThirdPage extends JPanel
     	answerField4 = new JTextField();
     	answerField5 = new JTextField();
     	
-    	answerField1.setSize(200, 200);
-    	answerField2.setSize(200, 200);
-    	answerField3.setSize(200, 200);
-    	answerField4.setSize(200, 200);
-    	answerField5.setSize(200, 200);
+    	answerField1.setColumns(5);
+    	answerField2.setColumns(5);
+    	answerField3.setColumns(5);
+    	answerField4.setColumns(5);
+    	answerField5.setColumns(5);
     	
     	answerPanel.add(answerField1);
     	answerPanel.add(answerField2);
