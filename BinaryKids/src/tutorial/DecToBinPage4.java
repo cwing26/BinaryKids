@@ -87,7 +87,7 @@ public class DecToBinPage4 extends JPanel implements MouseListener
 	public void initTitlePanel(){
 		titlePanel = new JPanel();
 		titlePanel.setLayout(new BorderLayout());
-		JLabel titleLabel = new JLabel("Converting Decimal to Binary");
+		JLabel titleLabel = new JLabel("Last page isnt done yet");
 		titleLabel.setFont(new Font("Verdana",1,20));
 		titlePanel.add(titleLabel, BorderLayout.CENTER);
 		titlePanel.setBorder(new LineBorder(Color.BLACK));
@@ -275,9 +275,9 @@ public class DecToBinPage4 extends JPanel implements MouseListener
 
 		//add panels
 		add(titlePanel);
-		add(textPanel);
-		add(questionPanel);
-		add(boxLabelPanel);
+//		add(textPanel);
+//		add(questionPanel);
+//		add(boxLabelPanel);
 
 		// Add the MouseListener to the applet 
 		addMouseListener(this); 

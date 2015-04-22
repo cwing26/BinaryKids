@@ -214,7 +214,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 						&& numFoursInput.equals(numFoursActual)
 						&& numTwosInput.equals(numTwosActual)
 						&& numOnesInput.equals(numOnesActual)   ){
-					//welcomePage.loadDecBin4();  //fix here
+						welcomePage.loadDecBin4(); 
 				}
 				else{
 					String errorMessage = "Wrong answer, try again!";
