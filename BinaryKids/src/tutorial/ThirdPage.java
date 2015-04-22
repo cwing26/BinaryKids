@@ -52,6 +52,7 @@ import java.io.IOException;
 
 public class ThirdPage extends JPanel
 {
+    boolean pageClickedOnce = false;
     
 	String binaryDef1 =  "The word binary comes from 'Bi-' meaning two." ;
 	String binaryDef2 = "We see 'bi-' in words such as 'bicycle' (two wheels) or 'binocular (two eyes).";
@@ -177,6 +178,11 @@ public class ThirdPage extends JPanel
 			{
 				if(firstPanelClicked == false)
 				{
+					welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
+					welcomePage.validate();
+					welcomePage.repaint();
+					welcomePage.setVisible(true);
+					
 					remove(secondPanel);
 					remove(thirdPanel);
 					remove(fourthPanel);
@@ -208,6 +214,11 @@ public class ThirdPage extends JPanel
 			{
 				if(secondPanelClicked == false)
 				{
+					welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
+					welcomePage.validate();
+					welcomePage.repaint();
+					welcomePage.setVisible(true);
+					
 					remove(firstPanel);
 					remove(thirdPanel);
 					remove(fourthPanel);
@@ -239,6 +250,11 @@ public class ThirdPage extends JPanel
 			{
 				if(thirdPanelClicked == false)
 				{
+					
+					welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
+					welcomePage.validate();
+					welcomePage.repaint();
+					welcomePage.setVisible(true);
 					remove(firstPanel);
 					remove(secondPanel);
 					remove(fourthPanel);
@@ -270,6 +286,11 @@ public class ThirdPage extends JPanel
 			{
 				if(fourthPanelClicked == false)
 				{
+					welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
+					welcomePage.validate();
+					welcomePage.repaint();
+					welcomePage.setVisible(true);
+					
 					remove(firstPanel);
 					remove(secondPanel);
 					remove(thirdPanel);
@@ -414,30 +435,38 @@ public class ThirdPage extends JPanel
     	fourthPanel.setLayout(new GridLayout(0,1));
     	
     	JPanel textPanel = new JPanel();
-    	JPanel labelPanel = new JPanel();
-    	JPanel answerPanel = new JPanel();
+    	JPanel labelPanel = new JPanel(new GridLayout(2,5));
+    	//JPanel answerPanel = new JPanel();
     	JPanel submitPanel = new JPanel();
     	
     	JLabel textLabel = new JLabel("Each binary digit is a power of two");
     	JLabel questionLabel = new JLabel("What are the powers of two, or places in binary?");
+    	textLabel.setFont(new Font("Verdana", 1, 20));
+    	questionLabel.setFont(new Font("Verdana", 1, 20));
     	//textPanel.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     	textPanel.add(textLabel);
     	textPanel.add(questionLabel);
     	
     	sixteen = new JLabel("2^4");
     	sixteen.setFont(new Font("Verdana", 1, 25));
+    	sixteen.setBorder(new LineBorder(Color.blue)); 
     	
     	eight = new JLabel("2^3");
     	eight.setFont(new Font("Verdana", 1, 25));
+    	eight.setBorder(new LineBorder(Color.green)); 
     	
     	four = new JLabel("2^2");
     	four.setFont(new Font("Verdana", 1, 25));
+    	four.setBorder(new LineBorder(Color.blue)); 
     	
     	two = new JLabel("2^1");
     	two.setFont(new Font("Verdana", 1, 25));
+    	two.setBorder(new LineBorder(Color.green)); 
     	
     	one = new JLabel("2^0");
     	one.setFont(new Font("Verdana", 1, 25));
+    	one.setBorder(new LineBorder(Color.blue)); 
+
 
     	labelPanel.add(sixteen);
     	labelPanel.add(eight);
@@ -451,26 +480,40 @@ public class ThirdPage extends JPanel
     	answerField4 = new JTextField();
     	answerField5 = new JTextField();
     	
-    	answerField1.setColumns(5);
-    	answerField2.setColumns(5);
-    	answerField3.setColumns(5);
-    	answerField4.setColumns(5);
-    	answerField5.setColumns(5);
+    	/*
+    	answerField1.setSize(200, 200);
+    	answerField2.setSize(200, 200);
+    	answerField3.setSize(200, 200);
+    	answerField4.setSize(200, 200);
+    	answerField5.setSize(200, 200);
+    	*/
     	
-    	answerPanel.add(answerField1);
-    	answerPanel.add(answerField2);
-    	answerPanel.add(answerField3);
-    	answerPanel.add(answerField4);
-    	answerPanel.add(answerField5);
+    	answerField1.setColumns(5);
+    	answerField1.setFont(new Font("Verdana", 1, 25));
+    	answerField2.setColumns(5);
+    	answerField2.setFont(new Font("Verdana", 1, 25));
+    	answerField3.setColumns(5);
+    	answerField3.setFont(new Font("Verdana", 1, 25));
+    	answerField4.setColumns(5);
+    	answerField4.setFont(new Font("Verdana", 1, 25));
+    	answerField5.setColumns(5);
+    	answerField5.setFont(new Font("Verdana", 1, 25));
+    	
+    	labelPanel.add(answerField1);
+    	labelPanel.add(answerField2);
+    	labelPanel.add(answerField3);
+    	labelPanel.add(answerField4);
+    	labelPanel.add(answerField5);
     	
     	
     	submitButton = new JButton("Check your answer");
-    	submitPanel.setBackground(new Color(160, 40, 20));
+    	submitButton.addActionListener(new submitButtonListener());
+    	submitPanel.setBackground(new Color(100, 140, 20));
     	submitPanel.add(submitButton);
     	
     	fourthPanel.add(textPanel);
     	fourthPanel.add(labelPanel);
-    	fourthPanel.add(answerPanel);
+    	//fourthPanel.add(answerPanel);
     	fourthPanel.add(submitPanel);
     	
     	
@@ -498,6 +541,18 @@ public class ThirdPage extends JPanel
     			
     	} //end if
     }
+    
+	class submitButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			//get text, give user 3 chances to get it right and then if not, replace with labels in grid
+			validate();
+	        setVisible(true);
+	        repaint();	
+		}
+	}
+	
 
 }
 
