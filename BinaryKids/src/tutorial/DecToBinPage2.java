@@ -27,6 +27,7 @@ import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 
+<<<<<<< HEAD
 import java.awt.*; 
 import java.applet.*;
 import java.awt.BorderLayout;
@@ -53,14 +54,22 @@ import java.util.ArrayList;
 
 
 
-public class BinaryDecimalTwo extends JPanel implements MouseListener
-{	
+@SuppressWarnings("serial")
+public class DecToBinPage2 extends JPanel implements MouseListener, ActionListener 
+{
+	
+	
+	private Timer timer;
+	private final int DELAY = 500;
+	
 	WelcomePage welcomePage;
 
 	//Labels
 	JLabel DecToBinNumSquaresText;
 	JLabel DecToBinNumSquaresText2;
 	JLabel DecToBinNumSquaresText3;
+	JLabel DecToBinNumSquaresText4;
+	JLabel DecToBinNumSquaresText5;
 	JLabel TextEights;
 	JLabel TextFours;
 	JLabel TextTwos;
@@ -147,33 +156,32 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 
 
     
-    public BinaryDecimalTwo(WelcomePage welcome)
-    {
-    	welcomePage = welcome;
-    	
-    	initJLabels();
-    	initTextFields();
-    	initTitlePanel();
-    	initRects();
-    	initTextFields();
-    	initTextPanel();
-    	initButton();
-    	initBoxLabelPanel();
-		initBoxCoords();
-		initQuestionPanel();
-    	
-		//add panels
-		add(titlePanel);
-		add(textPanel);
-		add(questionPanel);
-		add(boxLabelPanel);
-		
-    	
-    	addMouseListener(this); //adds mouse listener to listen for clicks on objects
-    	
-    	setVisible(true);
-
-    }
+//    public DecToBinPage2(WelcomePage welcome)
+//    {
+//    	welcomePage = welcome;
+//    	
+//    	initJLabels();
+//    	initTextFields();
+//    	initTitlePanel();
+//    	initRects();
+//    	initTextPanel();
+//    	initButton();
+//    	initBoxLabelPanel();
+//		initBoxCoords();
+//		initQuestionPanel();
+//    	
+//		//add panels
+//		add(titlePanel);
+//		add(textPanel);
+//		add(questionPanel);
+//		add(boxLabelPanel);
+//		
+//    	
+//    	addMouseListener(this); //adds mouse listener to listen for clicks on objects
+//    	
+//    	setVisible(true);
+//
+//    }
     
 	//formats the title panel
 	public void initTitlePanel()
@@ -186,23 +194,6 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		titlePanel.setBorder(new LineBorder(Color.BLACK));
 	}
     
-	//inits format of text field
-	public void initTextFields()
-	{
-		answerField2 = new JTextField();
-		answerField3 = new JTextField();
-		answerField4 = new JTextField();
-		answerField5 = new JTextField();
-		answerField2.setColumns(3);
-		answerField3.setColumns(3);
-		answerField4.setColumns(3);
-		answerField5.setColumns(3);
-		
-		//answerField2.setFont(new Font("Verdana", 1, 45));
-		//answerField3.setFont(new Font("Verdana", 1, 45));
-		//answerField4.setFont(new Font("Verdana", 1, 45));
-		//answerField5.setFont(new Font("Verdana", 1, 45));
-	}
 
 	//inits the coords of the rects that user will move
 	public void initRects()
@@ -220,6 +211,25 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 	{
 		submitButton = new JButton("Submit Answer");
     	submitButton.addActionListener(new submitButtonListener());
+	}
+
+	public void initJLabels(){
+		TextTens = new JLabel("Tens");
+		TextOnes = new JLabel("Ones");
+		TextHowManyTens = new JLabel("How many TENS are there in 11?");
+		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
+		DecToBinNumSquaresText = new JLabel("How do we get the number 11? Click on a square and then click inside one of the boxes to assign");
+		DecToBinNumSquaresText2 = new JLabel("the square to the box. Distribute squares to the largest box possible, starting from the left.");
+		DecToBinNumSquaresText3 = new JLabel("We will do this example for you.");
+		DecToBinNumSquaresText4 = new JLabel("        11 = 1*10 + 1*1. We moved ten squares into the TENS box and one square into the ONES box.");
+		DecToBinNumSquaresText5 = new JLabel("        Enter 1 ten and 1 one in the boxes above and then click submit.");
+	}
+
+	public void initTextFields(){
+		NumberTensField = new JTextField();
+		NumberOnesField = new JTextField();
+		NumberTensField.setColumns(5);
+		NumberOnesField.setColumns(5);
 	}
 	
 	//formats the text panel layout
@@ -254,49 +264,7 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		DecToBinNumSquaresText2 = new JLabel("inside one of the boxes to assign the square to the box. Distribute squares to the largest box");
 		DecToBinNumSquaresText3 = new JLabel("possible, starting from the left.");
 	}
-	
-	//formats the labels for the boxes
-	public void initBoxLabelPanel()
-	{
-		boxLabelPanel = new JPanel();
-		boxLabelPanel.setLayout(new GridBagLayout());
-		GridBagConstraints c3 = new GridBagConstraints();
-		c3.anchor = GridBagConstraints.FIRST_LINE_START;
-		c3.insets = new Insets(0,40,0,0);
-		c3.fill = GridBagConstraints.HORIZONTAL;
-		c3.ipadx = 60;
-		boxLabelPanel.add(TextEights,c3);
-		boxLabelPanel.add(TextFours,c3);
-		boxLabelPanel.add(TextTwos,c3);
-		boxLabelPanel.add(TextOnes,c3);
-		
-    	/*
-    	JPanel tablePanel = new JPanel(new GridLayout(1, 6));
-    	JLabel blank1 = new JLabel(" ");
-    	blank1.setFont(new Font("Verdana", 1, 40));
-    	JLabel blank2 = new JLabel(" ");
-    	blank2.setFont(new Font("Verdana", 1, 40));
-    	JLabel eights = new JLabel("8");
-    	eights.setFont(new Font("Verdana", 1, 40));
-    	JLabel fours = new JLabel("4");
-    	fours.setFont(new Font("Verdana", 1, 40));
-    	JLabel twos = new JLabel("2");
-    	twos.setFont(new Font("Verdana", 1, 40));
-    	JLabel ones = new JLabel("1");
-    	ones.setFont(new Font("Verdana", 1, 40));
-    	
 
-    	tablePanel.setBorder(new LineBorder(Color.BLACK)); 
-    	tablePanel.add(blank1);
-    	tablePanel.add(eights);
-    	tablePanel.add(fours);
-    	tablePanel.add(twos);
-    	tablePanel.add(ones);
-    	tablePanel.add(blank2);
-    	*/
-    	
-
-	}
     
 	//init the coords of the boxes will move rects into
 	public void initBoxCoords()
@@ -361,8 +329,61 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		questionPanel.add(answerField5, c2);
 		c2.gridx = 0;
 		c2.gridy = 2;
+<<<<<<< HEAD
 		c2.gridwidth = 4;
 		questionPanel.add(submitButton, c2);
+=======
+		questionPanel.add(DecToBinNumSquaresText4, c2);
+		c2.gridy = 3;
+		questionPanel.add(DecToBinNumSquaresText5, c2);
+		DecToBinNumSquaresText4.setVisible(false);
+		DecToBinNumSquaresText5.setVisible(false);
+	}
+
+
+	//formats the labels for the boxes
+	public void initBoxLabelPanel(){
+		boxLabelPanel = new JPanel();
+		boxLabelPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c3 = new GridBagConstraints();
+		c3.anchor = GridBagConstraints.FIRST_LINE_START;
+		c3.insets = new Insets(50,40,0,0);
+		c3.fill = GridBagConstraints.HORIZONTAL;
+		c3.ipadx = 100;
+		boxLabelPanel.add(TextTens,c3);
+		boxLabelPanel.add(TextOnes,c3);
+
+	}
+
+	public DecToBinPage2(WelcomePage welcome)
+	{
+		timer = new Timer(DELAY, this);
+		//timer.setInitialDelay(INITIAL_DELAY);
+        timer.start();
+		welcomePage = welcome;
+
+		//initializations
+		initJLabels();
+		initTextFields();
+		initButton();
+		initTitlePanel();
+		initTextPanel();
+		initQuestionPanel();
+		initRects();
+		initBoxLabelPanel();
+		initBoxCoords();  
+
+		//add panels
+		add(titlePanel);
+		add(textPanel);
+		add(questionPanel);
+		add(boxLabelPanel);
+
+		// Add the MouseListener to your applet 
+		addMouseListener(this); 
+
+
+>>>>>>> parent of 4f1bfb2... adjusted formatting
 	}
 	
     public void paint(Graphics g)
