@@ -1,15 +1,12 @@
 package tutorial;
 
-import javax.imageio.ImageIO;
-import javax.swing.*; 
+
 
 import java.awt.*; 
 import java.awt.event.*; 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
-import javax.swing.JPanel;
+import javax.swing.*; 
 import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
