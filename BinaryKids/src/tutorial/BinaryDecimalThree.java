@@ -22,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 
@@ -36,8 +37,12 @@ import java.awt.CheckboxGroup;
 import java.awt.EventQueue;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Image;
@@ -45,37 +50,23 @@ import java.awt.TextField;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 
-//TRACK WHICH BOX THEY ENTER TO SEE IF ITS RIGHT IN THE END
-//SIZE OF FIRST RECT ARRAY SHOULD BE 10
-//SIZE OF SECOND RECT ARRAY SHOULD BE 3
 
-//when submit button is hit, check how many are within bounds of 10s box and how many are within ones box
-//if not, then reset their positions back to starting
 
 public class BinaryDecimalThree extends JPanel implements MouseListener
 {	
 	WelcomePage welcomePage;
-	BinaryDecimalFour bdFour;
-	
-	JButton submitButton;
-	TextField answerField1;
-	TextField answerField2;
-	TextField answerField3;
-	TextField answerField4;
-	TextField answerField5;
 	
 	//13 in base 10 = 013
 	final int BinToDecNumSquaresActual = 13;
 	final int answer1 = 0;
 	final int answer2 = 1;
 	final int answer3 = 3;
-
-	
+	final String answerOne = "0";
+	final String answerTwo = "1";
+	final String answerThree = "3";
 	int userAnswer1;
 	int userAnswer2;
 	int userAnswer3;
-
-	private Rectangle rec;
 	
 	// The X-coordinate and Y-coordinate of the last click. 
 	int xpos; 
@@ -85,100 +76,195 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 	int box10x, box10y, box10width, box10height;
 	int box1x, box1y, box1width, box1height;
 		
-	// variable that will be true when the user clicked i the rectangle  
-	// the we will draw. 
-	
+	//flags for rectangle movement
 	int rectSelectedNum = 0;
-
-	boolean clickOrMove = true;
 	boolean boxSelected10 = false;
 	boolean boxSelected1 = false;
 	boolean rectSelected = false;
 
+	//rectangle data
 	final int rectUnit = 25;
-	
-	ArrayList<Image> imgList = new ArrayList<Image>();
+	private Rectangle rec;
 	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
+	final int startx = 60;
+	final int starty = 550;
 
+	//labels and text fields
+	JButton submitButton;
+	JTextField answerField1;
+	JTextField answerField2;
+	JTextField answerField3;
+
+	//labels
+	JLabel DecToBinNumSquaresText;
+	JLabel DecToBinNumSquaresText2;
+	JLabel DecToBinNumSquaresText3;
+	JLabel DecToBinNumSquaresText4;
+	JLabel DecToBinNumSquaresText5;
+	JLabel TextTens;
+	JLabel TextOnes;
+	JLabel TextHowManyTens;
+	JLabel TextHowManyOnes;
+
+	//Panels
+	JPanel titlePanel;
+	JPanel textPanel;
+	JPanel questionPanel;
+	JPanel boxLabelPanel;
+	
     
     public BinaryDecimalThree(WelcomePage welcome)
     {
     	welcomePage = welcome;
-    	bdFour = new BinaryDecimalFour(welcome);
-    	
-		int startx = 60;
-		int starty = 600;
-		
-		for (int i = 0; i < BinToDecNumSquaresActual; i++)
-		{
-			rec = new Rectangle(startx, starty, rectUnit,rectUnit);
-			recList.add(rec);
-			startx+=40;
-		}
-		
-    	
-    	JPanel titlePanel = new JPanel();
-    	JLabel titleLabel = new JLabel("BinaryKids (Page 3 Bin to Dec)");
-    	titleLabel.setFont(new Font("Verdana",1,20));
-    	titlePanel.add(titleLabel);
-    	titlePanel.setBorder(new LineBorder(Color.BLACK));     	
-    	
-    	JLabel descriptionLabel = new JLabel("Let's learn how to convert from binary back to decimal with an example! (3)");
-    	descriptionLabel.setFont(new Font("Verdana",1,20));
-    	
-    	JLabel descriptionLabel2 = new JLabel("In base ten...");
-    	descriptionLabel2.setFont(new Font("Verdana",1,20));
-    	
-    	JPanel tablePanel = new JPanel();
-    	JLabel tableLabel = new JLabel("100  		-			10				-				1");
-    	tableLabel.setFont(new Font("Verdana",1,15));
-    	tablePanel.add(tableLabel);
-    	tablePanel.setBorder(new LineBorder(Color.BLACK)); 
-    	
-    	submitButton = new JButton("Submit Answer");
-    	answerField1 = new TextField(" ______");
-    	answerField1.setSize(100, 200);
-    	
-    	answerField2 = new TextField(" ______");
-    	answerField2.setSize(100, 200);
-    	
-    	answerField3 = new TextField(" ______");
-    	answerField3.setSize(100, 200);
-    	
-		// Assign values to the rectanagle coordinates. 
-		box10x = 60; 
-		box10y = 160; 
-		box10width = 200; 
-		box10height = 400;
 
-		// Assign values to the rectanagle coordinates. 
-		box1x = 300; 
-		box1y = 160; 
-		box1width= 200; 
-		box1height = 400;
-    	
-    	submitButton.addActionListener(new submitButtonListener());
+    	initRects();
+    	initButton();
+    	initTitlePanel();
+    	initBoxCoords();
+    	initJLabels();
+    	initTextFields();
+    	initTextPanel();
+    	initBoxLabelPanel();
+    	initQuestionPanel();
+
     	
     	add(titlePanel);
-    	add(descriptionLabel);
-    	add(descriptionLabel2);
+    	add(textPanel);
+    	add(questionPanel);
+    	add(boxLabelPanel);
 
-    	add(answerField1);
-    	add(answerField2);
-    	add(answerField3);
 
-    	add(submitButton);
-    	add(tablePanel);
     	addMouseListener(this); 
     	
     	setVisible(true);
 
     }
     
+    
+	//formats the title panel
+	public void initTitlePanel()
+	{
+		titlePanel = new JPanel();
+		titlePanel.setLayout(new BorderLayout());
+		JLabel titleLabel = new JLabel("Converting Binary to Decimal");
+		titleLabel.setFont(new Font("Verdana",1,20));
+		titlePanel.add(titleLabel, BorderLayout.CENTER);
+		titlePanel.setBorder(new LineBorder(Color.BLACK));
+	}
+	
+	public void initButton()
+	{
+		submitButton = new JButton("Submit Answer");
+		submitButton.addActionListener(new submitButtonListener());
+	}
+	
+	//inits the coords of the rects that user will move
+	public void initRects()
+	{
+		int startX = startx;
+		for (int i = 0; i < BinToDecNumSquaresActual; i++){
+			rec = new Rectangle(startX, starty, rectUnit,rectUnit);
+			recList.add(rec);
+			startX+=40;
+		}
+	}
+    
+	public void initBoxCoords()
+	{
+		box10x = 210; 
+		box10y = 240; 
+		box10width = 150; 
+		box10height = 300;
+
+		box1x = 400; 
+		box1y = 240; 
+		box1width= 150; 
+		box1height = 300;	
+	}
+    
+
+	public void initJLabels(){
+		TextTens = new JLabel("Tens");
+		TextOnes = new JLabel("Ones");
+		TextHowManyTens = new JLabel("How many TENS are there in 11?");
+		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
+		DecToBinNumSquaresText = new JLabel("                  How do we get the number 11? 11 = how many tens + how many ones?");
+		DecToBinNumSquaresText2 = new JLabel("Click on a square and then click in one of the boxes to assign the square to the box. Distribute");
+		DecToBinNumSquaresText3 = new JLabel("squares to the largest box possible, starting from the left.");
+	}
+
+	public void initTextFields(){
+		answerField2 = new JTextField();
+		answerField3 = new JTextField();
+		answerField2.setColumns(5);
+		answerField3.setColumns(5);
+	}
+
+	//formats the text panel layout
+	public void initTextPanel(){
+		textPanel = new JPanel();
+		textPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.anchor = GridBagConstraints.CENTER;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipadx = 20;
+		c.gridx = 0;
+		c.gridy = 0;
+		textPanel.add(DecToBinNumSquaresText, c);
+		c.gridy = 1;
+		textPanel.add(DecToBinNumSquaresText2, c);
+		c.gridy = 2;
+		textPanel.add(DecToBinNumSquaresText3, c);
+		
+	}
+
+	//formats the question panel layout
+	public void initQuestionPanel(){
+		questionPanel = new JPanel();
+		questionPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c2 = new GridBagConstraints();
+		c2.anchor = GridBagConstraints.CENTER;
+		c2.fill = GridBagConstraints.HORIZONTAL;
+		c2.ipadx = 20;
+		c2.gridx = 0;
+		c2.gridy = 0;
+		questionPanel.add(TextHowManyTens, c2);
+		c2.gridx = 1;
+		c2.gridy = 0;
+		questionPanel.add(answerField2, c2);
+		c2.gridx = 2;
+		c2.gridy = 0;
+		questionPanel.add(TextHowManyOnes, c2);
+		c2.gridx = 3;
+		c2.gridy = 0;
+		questionPanel.add(answerField3, c2);
+		c2.gridx = 0;
+		c2.gridy = 1;
+		c2.gridwidth = 4;
+		questionPanel.add(submitButton, c2);
+
+	}
+
+
+	//formats the labels for the boxes
+	public void initBoxLabelPanel(){
+		boxLabelPanel = new JPanel();
+		boxLabelPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c3 = new GridBagConstraints();
+		c3.anchor = GridBagConstraints.FIRST_LINE_START;
+		c3.insets = new Insets(50,40,0,0);
+		c3.fill = GridBagConstraints.HORIZONTAL;
+		c3.ipadx = 100;
+		boxLabelPanel.add(TextTens,c3);
+		boxLabelPanel.add(TextOnes,c3);
+
+	}
+
+    
     public void paint(Graphics g)
     {
     	super.paint(g);
-    	
+    	g.setColor(Color.black);
     	if (boxSelected1)
 			g.setColor(Color.RED);
 		g.drawRect(box1x,box1y,box1width,box1height);
@@ -205,12 +291,12 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			//get all text from text boxes, if correct then display dialog box
 			//then go to new page
 			
-			String input1 =  answerField1.getText();
+			//String input1 =  answerField1.getText();
 			String input2 =  answerField2.getText();
 			String input3 =  answerField3.getText();
 
 			
-			userAnswer1 = Integer.parseInt(input1);
+			//userAnswer1 = Integer.parseInt(input1);
 			userAnswer2 = Integer.parseInt(input2);
 			userAnswer3 = Integer.parseInt(input3);
 			
@@ -243,16 +329,21 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			}
 			
 
-			 
-			if(userAnswer1 == answer1 
-					&& userAnswer2 == answer2
+			
+			/*
+			if(input2.equals(answerTwo)
+					&& input3.equals(answerThree) && countTens == 10 && countOnes == 3)
+			*/
+			if(userAnswer2 == answer2
 					&& userAnswer3 == answer3 && countTens == 10 && countOnes == 3)
 			{
 				String congratsMessage = "Good job!";
 		    	JOptionPane.showMessageDialog(welcomePage, congratsMessage, "good job", JOptionPane.YES_NO_OPTION);
 		    	
 		    	welcomePage.getContentPane().remove(welcomePage.bdThree);
-				welcomePage.getContentPane().add(bdFour, BorderLayout.CENTER);
+				welcomePage.getContentPane().add(welcomePage.bdFour, BorderLayout.CENTER);
+				welcomePage.loadBinToDec4();
+
 				
 				welcomePage.validate();
 		        welcomePage.setVisible(true);
