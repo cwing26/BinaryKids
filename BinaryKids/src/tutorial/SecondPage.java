@@ -100,11 +100,12 @@ public class SecondPage extends JPanel implements ActionListener
     	JLabel answerLabel = new JLabel("How do you use computers?");
     	answerLabel.setFont(new Font("Verdana", 1, 15));
     	
-    	JPanel answerPanel = new JPanel();
+    	answerPanel = new JPanel();
     	JLabel answerLab = new JLabel(answer);
     	answerLab.setFont(new Font("Verdana", 1, 13));
     	answerPanel.setBorder(new LineBorder(Color.green)); 
     	answerPanel.add(answerLabel);
+    	answerPanel.setVisible(true);
     	//answerPanel.add(answerLab);
     	//answerPanel.add(label2);
     	//answerPanel.add(label3);
@@ -122,12 +123,13 @@ public class SecondPage extends JPanel implements ActionListener
     public void paint(Graphics g)
     {
     	super.paint(g);
-    	g.setFont(new Font("Monospaced", 1, 40));
-    	g.drawString(answer, 100, 250);
-    	
+    	    	
     	
     	if(animationButtonClicked == false)
     	{	
+    		g.setFont(new Font("Monospaced", 1, 40));
+        	g.drawString(answer, 200, 100);
+        	
     		g.setFont(new Font("Verdana", 1, 20));
     		g.drawString(explanation1, 20, 400);
     	}
@@ -135,19 +137,25 @@ public class SecondPage extends JPanel implements ActionListener
     	g.setFont(new Font("Verdana", 1, 15));
     		if(countAnimation == 1)
     		{
-    			g.drawString(explanation2, 10, 400);
+    			
+    			g.drawString(explanation2, 10, 100);
     		}
     		else if(countAnimation == 2)
     		{
-    			g.drawString(explanation2, 10, 400);
-    			g.drawString(explanation3, 20, 450);
+    			
+    			g.drawString(explanation2, 10, 100);
+    			g.drawString(explanation3, 20, 250);
     			//also images!
     		}
     		else if(countAnimation == 3)
     		{
-    			g.drawString(explanation2, 10, 400);
-    			g.drawString(explanation3, 20, 450);
-    			g.drawString(explanation4, 30, 500);
+    			
+    			g.drawString(explanation2, 10, 100);
+    			g.drawString(explanation3, 20, 250);
+    			g.drawString(explanation4, 100, 270);
+    			g.setColor(Color.blue);
+    			g.fillOval(40, 310, 100, 100);
+    			g.fillOval(300, 310, 100, 100);
     			//also images!
     		}
     		
@@ -176,6 +184,7 @@ public class SecondPage extends JPanel implements ActionListener
 
 			animationButtonClicked = true;
 			animationButton.setVisible(false);
+			answerPanel.setVisible(false);
 			timer.start();
 			repaint();
 		} 
