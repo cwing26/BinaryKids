@@ -1,25 +1,28 @@
 package tutorial;
 
-import javax.imageio.ImageIO;
-import javax.swing.*; 
-
+ 
 import java.awt.*; 
 import java.awt.event.*; 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
-
+import javax.swing.*;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-public class DecToBinPage2 extends JPanel implements MouseListener
+@SuppressWarnings("serial")
+public class DecToBinPage2 extends JPanel implements MouseListener, ActionListener 
 {
-
+	
+	
+	private Timer timer;
+	private final int DELAY = 500;
+	
 	WelcomePage welcomePage;
 	JButton DecToBinSubmit; 
 	JLabel DecToBinNumSquaresText;
 	JLabel DecToBinNumSquaresText2;
 	JLabel DecToBinNumSquaresText3;
+	JLabel DecToBinNumSquaresText4;
+	JLabel DecToBinNumSquaresText5;
 	JLabel TextTens;
 	JLabel TextOnes;
 	JLabel TextHowManyTens;
@@ -29,8 +32,6 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 
 	final int DecToBinNumSquaresActual = 11;
 	int DecToBinNumSquaresInput;
-	private ImageIcon boxIcon;
-	private Image img;
 	private Rectangle rec;
 	String numTensInput;
 	String numOnesInput;
@@ -45,13 +46,10 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 	int box10x, box10y, box10width, box10height;
 	int box1x, box1y, box1width, box1height;
 
-
-	int rectSelectedNum = 0;
-
-	boolean clickOrMove = true;
 	boolean boxSelected10 = false;
 	boolean boxSelected1 = false;
 	boolean rectSelected = false;
+	int rectSelectedNum = 0;
 
 	final int rectUnit = 30;
 	final int startx = 180;
@@ -59,6 +57,8 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 
 	ArrayList<Image> imgList = new ArrayList<>();
 	ArrayList<Rectangle> recList = new ArrayList<>();
+	ArrayList<Integer> xCoordList =  new ArrayList<>();
+	ArrayList<Integer> yCoordList =  new ArrayList<>();
 
 	//Panels
 	JPanel titlePanel;
@@ -66,6 +66,23 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 	JPanel questionPanel;
 	JPanel boxLabelPanel;
 
+	int globalI = 0;
+	
+	@Override
+    public void actionPerformed(ActionEvent e) {
+		if (globalI < recList.size()){
+			recList.get(globalI).setLocation(xCoordList.get(globalI), yCoordList.get(globalI));
+			globalI++;
+		}
+		else{
+			DecToBinNumSquaresText4.setVisible(true);
+			DecToBinNumSquaresText5.setVisible(true);
+		}
+
+        repaint();
+    }
+	
+	
 	//formats the title panel
 	public void initTitlePanel(){
 		titlePanel = new JPanel();
@@ -79,12 +96,29 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 
 	//inits the coords of the rects that user will move
 	public void initRects(){
+		//starting locations
 		int startX = startx;
 		for (int i = 0; i < DecToBinNumSquaresActual; i++){
 			rec = new Rectangle(startX, starty, rectUnit,rectUnit);
 			recList.add(rec);
 			startX+=40;
 		}
+		
+		int y = 250;
+		for (int i = 0; i < 5; i++){
+			xCoordList.add(220);
+			yCoordList.add(y);
+			y = y + 10 + rectUnit;
+		}
+		y=250;
+		for (int i = 0; i < 5; i++){
+			xCoordList.add(260);
+			yCoordList.add(y);
+			y = y + 10 + rectUnit;
+		}
+		xCoordList.add(410);
+		yCoordList.add(250);
+		
 	}
 
 	public void initBoxCoords(){
@@ -128,8 +162,10 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 		TextHowManyTens = new JLabel("How many TENS are there in 11?");
 		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
 		DecToBinNumSquaresText = new JLabel("How do we get the number 11? Click on a square and then click inside one of the boxes to assign");
-		DecToBinNumSquaresText2 = new JLabel("the square to the box. Distribute squares to the largest box possible, starting from ");
-		DecToBinNumSquaresText3 = new JLabel("the left. We will do this example for you.");
+		DecToBinNumSquaresText2 = new JLabel("the square to the box. Distribute squares to the largest box possible, starting from the left.");
+		DecToBinNumSquaresText3 = new JLabel("We will do this example for you.");
+		DecToBinNumSquaresText4 = new JLabel("        11 = 1*10 + 1*1. We moved ten squares into the TENS box and one square into the ONES box.");
+		DecToBinNumSquaresText5 = new JLabel("        Enter 1 ten and 1 one in the boxes above and then click submit.");
 	}
 
 	public void initTextFields(){
@@ -154,6 +190,7 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 		textPanel.add(DecToBinNumSquaresText2, c);
 		c.gridy = 2;
 		textPanel.add(DecToBinNumSquaresText3, c);
+		
 	}
 
 	//formats the question panel layout
@@ -180,6 +217,12 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 		c2.gridy = 1;
 		c2.gridwidth = 4;
 		questionPanel.add(DecToBinSubmit, c2);
+		c2.gridy = 2;
+		questionPanel.add(DecToBinNumSquaresText4, c2);
+		c2.gridy = 3;
+		questionPanel.add(DecToBinNumSquaresText5, c2);
+		DecToBinNumSquaresText4.setVisible(false);
+		DecToBinNumSquaresText5.setVisible(false);
 	}
 
 
@@ -189,7 +232,7 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 		boxLabelPanel.setLayout(new GridBagLayout());
 		GridBagConstraints c3 = new GridBagConstraints();
 		c3.anchor = GridBagConstraints.FIRST_LINE_START;
-		c3.insets = new Insets(70,40,0,0);
+		c3.insets = new Insets(50,40,0,0);
 		c3.fill = GridBagConstraints.HORIZONTAL;
 		c3.ipadx = 100;
 		boxLabelPanel.add(TextTens,c3);
@@ -199,6 +242,9 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 
 	public DecToBinPage2(WelcomePage welcome)
 	{
+		timer = new Timer(DELAY, this);
+		//timer.setInitialDelay(INITIAL_DELAY);
+        timer.start();
 		welcomePage = welcome;
 		DecToBinSubmit = new JButton("Submit"); 
 
@@ -287,8 +333,6 @@ public class DecToBinPage2 extends JPanel implements MouseListener
 			}
 
 		}
-
-
 
 
 		//show the results of the click 
