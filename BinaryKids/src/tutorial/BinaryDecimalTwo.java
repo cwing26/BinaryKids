@@ -15,7 +15,6 @@ import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
 
 import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JApplet;
 import javax.swing.JButton;
@@ -23,6 +22,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 
@@ -37,8 +37,12 @@ import java.awt.CheckboxGroup;
 import java.awt.EventQueue;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Image;
@@ -48,206 +52,236 @@ import java.util.ArrayList;
 
 
 
-public class BinaryDecimalTwo extends JPanel implements MouseListener
+public class BinaryDecimalThree extends JPanel implements MouseListener
 {	
 	WelcomePage welcomePage;
 	
-	BinaryDecimalThree bdThree;
-	
-	JLabel binToDecNumSquaresText; // 16, 8, 4, 2, etc
-
-	
-	int binToDecNumSquaresInput;
-	private ImageIcon boxIcon;
-	private Image img;
-	private Rectangle rec;
-	
-	JButton submitButton;
-	TextField answerField2;
-	TextField answerField3;
-	TextField answerField4;
-	TextField answerField5;
-	
-	//13 in binary is 01101
+	//13 in base 10 = 013
 	final int BinToDecNumSquaresActual = 13;
+	final int answer1 = 0;
 	final int answer2 = 1;
-	final int answer3 = 1;
-	final int answer4 = 0;
-	final int answer5 = 1;
-	
+	final int answer3 = 3;
+	final String answerOne = "0";
 	final String answerTwo = "1";
-	final String answerThree = "0";
-	final String answerFour = "1";
-	final String answerFive = "1";
-	
+	final String answerThree = "3";
 	int userAnswer1;
 	int userAnswer2;
 	int userAnswer3;
-	int userAnswer4;
-	int userAnswer5;
-	
-	// The coordinates of the 10's rectangle and 1s rectangle 
-	int box8x, box8y, box8width, box8height;
-	int box4x, box4y, box4width, box4height;
-	int box2x, box2y, box2width, box2height;
-	int box1x, box1y, box1width, box1height;
-	
-
-	
 	
 	// The X-coordinate and Y-coordinate of the last click. 
 	int xpos; 
 	int ypos;
+	
+	// The coordinates of the 10's rectangle and 1s rectangle 
+	int box10x, box10y, box10width, box10height;
+	int box1x, box1y, box1width, box1height;
 		
-	// variable that will be true when the user clicked i the rectangle  
-	// the we will draw. 
-	
-	boolean clickOrMove = true;
-	boolean boxSelected16 = false;
-	boolean boxSelected8 = false;
-	boolean boxSelected4 = false;
-	boolean boxSelected2 = false;
-	boolean boxSelected1 = false;
-	
-	boolean rectSelected = false;
+	//flags for rectangle movement
 	int rectSelectedNum = 0;
-	
+	boolean boxSelected10 = false;
+	boolean boxSelected1 = false;
+	boolean rectSelected = false;
+
+	//rectangle data
 	final int rectUnit = 25;
-
-	ArrayList<Image> imgList = new ArrayList<Image>();
+	private Rectangle rec;
 	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
+	final int startx = 60;
+	final int starty = 550;
 
+	//labels and text fields
+	JButton submitButton;
+	JTextField answerField1;
+	JTextField answerField2;
+	JTextField answerField3;
+
+	//labels
+	JLabel DecToBinNumSquaresText;
+	JLabel DecToBinNumSquaresText2;
+	JLabel DecToBinNumSquaresText3;
+	JLabel DecToBinNumSquaresText4;
+	JLabel DecToBinNumSquaresText5;
+	JLabel TextTens;
+	JLabel TextOnes;
+	JLabel TextHowManyTens;
+	JLabel TextHowManyOnes;
+
+	//Panels
+	JPanel titlePanel;
+	JPanel textPanel;
+	JPanel questionPanel;
+	JPanel boxLabelPanel;
+	
     
-    public BinaryDecimalTwo(WelcomePage welcome)
+    public BinaryDecimalThree(WelcomePage welcome)
     {
     	welcomePage = welcome;
-    	bdThree = new BinaryDecimalThree(welcome);
 
-    	int startx = 60;
-		int starty = 600;
-    	
-		for (int i = 0; i < BinToDecNumSquaresActual; i++)
-		{
-			//g.drawImage(img, startx, starty, this);
+    	initRects();
+    	initButton();
+    	initTitlePanel();
+    	initBoxCoords();
+    	initJLabels();
+    	initTextFields();
+    	initTextPanel();
+    	initBoxLabelPanel();
+    	initQuestionPanel();
 
-			rec = new Rectangle(startx, starty, rectUnit,rectUnit);
-			recList.add(rec);
-			startx+=40;
-		}
-		
-		
-    	JPanel titlePanel = new JPanel();
-    	JLabel titleLabel = new JLabel("BinaryKids");
-    	titleLabel.setFont(new Font("Verdana",1,20));
-    	titlePanel.add(titleLabel);
-    	titlePanel.setBorder(new LineBorder(Color.BLACK));     	
-    	
-    	JLabel descriptionLabel = new JLabel("Let's learn how to convert from binary back to decimal with an example! (2)");
-    	descriptionLabel.setFont(new Font("Verdana",1,20));
-    	
-    	JLabel descriptionLabel2 = new JLabel("In base two...");
-    	descriptionLabel2.setFont(new Font("Verdana",1,20));
-    	
-    	JPanel tablePanel = new JPanel();
-    	binToDecNumSquaresText = new JLabel("		8			4			2			1");
-    	binToDecNumSquaresText.setFont(new Font("Verdana",1,60));
-    	tablePanel.add(binToDecNumSquaresText);
-    	tablePanel.setBorder(new LineBorder(Color.BLACK)); 
-    	
-    	submitButton = new JButton("Submit Answer");
-
-    	
-    	answerField2 = new TextField(" ______");
-    	answerField2.setSize(100, 200);
-    	
-    	answerField3 = new TextField(" ______");
-    	answerField3.setSize(100, 200);
-    	
-    	answerField4 = new TextField(" ______");
-    	answerField4.setSize(100, 200);
-    	
-    	answerField5 = new TextField(" ______");
-    	answerField5.setSize(100, 200);
-    	
-    	
-    	submitButton.addActionListener(new submitButtonListener());
-    	
-		// Assign values to the rectanagle coordinates. 
-
-		// Assign values to the rectanagle coordinates. 
-		box8x = 200; 
-		box8y = 160; 
-		box8width= 120; 
-		box8height = 400;
-		
-		// Assign values to the rectanagle coordinates. 
-		box4x = 340; 
-		box4y = 160; 
-		box4width= 120; 
-		box4height = 400;
-		
-		// Assign values to the rectanagle coordinates. 
-		box2x = 480; 
-		box2y = 160; 
-		box2width= 120; 
-		box2height = 400;
-		
-		// Assign values to the rectanagle coordinates. 
-		box1x = 620; 
-		box1y = 160; 
-		box1width= 120; 
-		box1height = 400;
-		
     	
     	add(titlePanel);
-    	add(descriptionLabel);
-    	add(descriptionLabel2);
-    	add(answerField2);
-    	add(answerField3);
-    	add(answerField4);
-    	add(answerField5);
-    	add(submitButton);
-    	add(tablePanel);
-    	
+    	add(textPanel);
+    	add(questionPanel);
+    	add(boxLabelPanel);
+
+
     	addMouseListener(this); 
     	
     	setVisible(true);
 
     }
     
+    
+	//formats the title panel
+	public void initTitlePanel()
+	{
+		titlePanel = new JPanel();
+		titlePanel.setLayout(new BorderLayout());
+		JLabel titleLabel = new JLabel("Converting Binary to Decimal");
+		titleLabel.setFont(new Font("Verdana",1,20));
+		titlePanel.add(titleLabel, BorderLayout.CENTER);
+		titlePanel.setBorder(new LineBorder(Color.BLACK));
+	}
+	
+	public void initButton()
+	{
+		submitButton = new JButton("Submit Answer");
+		submitButton.addActionListener(new submitButtonListener());
+	}
+	
+	//inits the coords of the rects that user will move
+	public void initRects()
+	{
+		int startX = startx;
+		for (int i = 0; i < BinToDecNumSquaresActual; i++){
+			rec = new Rectangle(startX, starty, rectUnit,rectUnit);
+			recList.add(rec);
+			startX+=40;
+		}
+	}
+    
+	public void initBoxCoords()
+	{
+		box10x = 210; 
+		box10y = 240; 
+		box10width = 150; 
+		box10height = 300;
+
+		box1x = 400; 
+		box1y = 240; 
+		box1width= 150; 
+		box1height = 300;	
+	}
+    
+
+	public void initJLabels(){
+		TextTens = new JLabel("Tens");
+		TextOnes = new JLabel("Ones");
+		TextHowManyTens = new JLabel("How many TENS are there in 11?");
+		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
+		DecToBinNumSquaresText = new JLabel("                  How do we get the number 11? 11 = how many tens + how many ones?");
+		DecToBinNumSquaresText2 = new JLabel("Click on a square and then click in one of the boxes to assign the square to the box. Distribute");
+		DecToBinNumSquaresText3 = new JLabel("squares to the largest box possible, starting from the left.");
+	}
+
+	public void initTextFields(){
+		answerField2 = new JTextField();
+		answerField3 = new JTextField();
+		answerField2.setColumns(5);
+		answerField3.setColumns(5);
+	}
+
+	//formats the text panel layout
+	public void initTextPanel(){
+		textPanel = new JPanel();
+		textPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.anchor = GridBagConstraints.CENTER;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipadx = 20;
+		c.gridx = 0;
+		c.gridy = 0;
+		textPanel.add(DecToBinNumSquaresText, c);
+		c.gridy = 1;
+		textPanel.add(DecToBinNumSquaresText2, c);
+		c.gridy = 2;
+		textPanel.add(DecToBinNumSquaresText3, c);
+		
+	}
+
+	//formats the question panel layout
+	public void initQuestionPanel(){
+		questionPanel = new JPanel();
+		questionPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c2 = new GridBagConstraints();
+		c2.anchor = GridBagConstraints.CENTER;
+		c2.fill = GridBagConstraints.HORIZONTAL;
+		c2.ipadx = 20;
+		c2.gridx = 0;
+		c2.gridy = 0;
+		questionPanel.add(TextHowManyTens, c2);
+		c2.gridx = 1;
+		c2.gridy = 0;
+		questionPanel.add(answerField2, c2);
+		c2.gridx = 2;
+		c2.gridy = 0;
+		questionPanel.add(TextHowManyOnes, c2);
+		c2.gridx = 3;
+		c2.gridy = 0;
+		questionPanel.add(answerField3, c2);
+		c2.gridx = 0;
+		c2.gridy = 1;
+		c2.gridwidth = 4;
+		questionPanel.add(submitButton, c2);
+
+	}
+
+
+	//formats the labels for the boxes
+	public void initBoxLabelPanel(){
+		boxLabelPanel = new JPanel();
+		boxLabelPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c3 = new GridBagConstraints();
+		c3.anchor = GridBagConstraints.FIRST_LINE_START;
+		c3.insets = new Insets(50,40,0,0);
+		c3.fill = GridBagConstraints.HORIZONTAL;
+		c3.ipadx = 100;
+		boxLabelPanel.add(TextTens,c3);
+		boxLabelPanel.add(TextOnes,c3);
+
+	}
+
+    
     public void paint(Graphics g)
     {
     	super.paint(g);
-    	
+    	g.setColor(Color.black);
     	if (boxSelected1)
 			g.setColor(Color.RED);
 		g.drawRect(box1x,box1y,box1width,box1height);
 		g.setColor(Color.BLACK);
-		
-		if (boxSelected2)
+		if (boxSelected10)
 			g.setColor(Color.RED);
-		g.drawRect(box2x,box2y,box2width,box2height);
-		g.setColor(Color.BLACK);
-		
-		if (boxSelected4)
-			g.setColor(Color.RED);
-		g.drawRect(box4x,box4y,box4width,box4height);
-		g.setColor(Color.BLACK);
-		
-		if (boxSelected8)
-			g.setColor(Color.RED);
-		g.drawRect(box8x,box8y,box8width,box8height);
-		g.setColor(Color.BLACK);
-    	
-
+		g.drawRect(box10x,box10y,box10width,box10height);
     	
     	g.setColor(Color.blue);
+    	
 
-		//Graphics2D g2d = (Graphics2D) g.create();
-		for (int i = 0;i < recList.size(); i++){
-			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
-		}
-
+    	//Graphics2D g2d = (Graphics2D) g.create();
+    	for (int i = 0;i < recList.size(); i++)
+    	{
+    		g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
+    	}
+    	
     }
     
 	class submitButtonListener implements ActionListener 
@@ -257,20 +291,19 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 			//get all text from text boxes, if correct then display dialog box
 			//then go to new page
 			
+			//String input1 =  answerField1.getText();
 			String input2 =  answerField2.getText();
 			String input3 =  answerField3.getText();
-			String input4 =  answerField4.getText();
-			String input5 =  answerField5.getText();
-			
 
+			
+			//userAnswer1 = Integer.parseInt(input1);
 			userAnswer2 = Integer.parseInt(input2);
 			userAnswer3 = Integer.parseInt(input3);
-			userAnswer4 = Integer.parseInt(input4);
-			userAnswer5 = Integer.parseInt(input5);
 			
-			int countEights = 0;
-			int countFours = 0;
-			int countTwos = 0;
+			
+			//second part of correct answer: determine 
+			//whether correct number of rects are in each box
+			int countTens = 0;
 			int countOnes = 0;
 			
 			for(int i = 0; i < recList.size(); i++)
@@ -279,19 +312,9 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 				int y = (int) recList.get(i).getY();
 				
 
-				if((x >= box8x) && (x <= (box8x + box8width)) && (y >= box8y) && (y <= (box8y + box8height)))
+				if((x >= box10x) && (x <= (box10x + box10width)) && (y >= box10y) && (y <= (box10y + box10height)))
 				{
-					countEights++; //if the rect is in the eights box, add 1
-				}
-				else if((x >= box4x) && (x <= (box4x + box4width)) && (y >= box4y) && (y <= (box4y + box4height)))
-				{
-					//if the rect is in the fours box
-					countFours++;
-				}
-				else if((x >= box2x) && (x <= (box2x + box2width)) && (y >= box2y) && (y <= (box2y + box2height)))
-				{
-					//if the rect is in the twos box
-					countTwos++;
+					countTens++; //if the rect is in the tens box, add 1
 				}
 				else if((x >= box1x) && (x <= (box1x + box1width)) && (y >= box1y) && (y <= (box1y + box1height)))
 				{
@@ -300,28 +323,29 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 				}
 				else
 				{
-					
+					//test
 				}
 				
 			}
 			
 
+			
+			/*
+			if(input2.equals(answerTwo)
+					&& input3.equals(answerThree) && countTens == 10 && countOnes == 3)
+			*/
 			if(userAnswer2 == answer2
-					&& userAnswer3 == answer3
-					&& userAnswer4 == answer4
-					&& userAnswer5 == answer5
-					&& countEights == 8
-					&& countFours == 4
-					&& countTwos == 0
-					&& countOnes == 1
-					)
+					&& userAnswer3 == answer3 && countTens == 10 && countOnes == 3)
 			{
-				welcomePage.getContentPane().remove(welcomePage.bdOne.bdTwo);
-				welcomePage.getContentPane().add(bdThree, BorderLayout.CENTER);
+				String congratsMessage = "Good job!";
+		    	JOptionPane.showMessageDialog(welcomePage, congratsMessage, "good job", JOptionPane.YES_NO_OPTION);
+		    	
+				welcomePage.loadBinToDec4();
 				
 				welcomePage.validate();
 		        welcomePage.setVisible(true);
 		        welcomePage.repaint();
+
 			}
 			else
 			{
@@ -329,10 +353,9 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		    	String errorMessage = "Wrong answer, try again!";
 		    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "worng answer", JOptionPane.YES_NO_OPTION);
 		    	
+		    	answerField1.setText("");
 		    	answerField2.setText("");
 		    	answerField3.setText("");
-		    	answerField4.setText("");
-		    	answerField5.setText("");
 		    	
 				int startx = 60;
 				int starty = 600;
@@ -343,9 +366,9 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 					startx+=40;
 				}
 				repaint();
-		    	
-				
+
 			}
+
 
 			
 		} //end action performed
@@ -367,8 +390,7 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 	 // This method will be called when the mouse has been clicked. 
 	 public void mouseClicked (MouseEvent me) 
 	 {
-		 
-			// Save the coordinates of the click lke this.
+		// Save the coordinates of the click lke this.
 			xpos = me.getX(); 
 			ypos = me.getY();
 
@@ -388,40 +410,18 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 			
 			if(rectSelected)
 			{
-
-				if((xpos >= box8x) && (xpos <= (box8x + box8width)) && (ypos >= box8y) && (ypos <= (box8y + box8height)))
+				if((xpos >= box10x) && (xpos <= (box10x + box10width)) && (ypos >= box10y) && (ypos <= (box10y + box10height)))
 				{
-					boxSelected8 = true;
-					boxSelected4 = false;
-					boxSelected2 = false;
+					boxSelected10 = true;
 					boxSelected1 = false;
 					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-					
-				}
-				else if((xpos >= box4x) && (xpos <= (box4x + box4width)) && (ypos >= box4y) && (ypos <= (box4y + box4height)))
-				{
-					boxSelected4 = true;
-					boxSelected8 = false;
-					boxSelected2 = false;
-					boxSelected1 = false;
-					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-					
-				}
-				else if((xpos >= box2x) && (xpos <= (box2x + box2width)) && (ypos >= box2y) && (ypos <= (box2y + box2height)))
-				{
-					boxSelected2 = true;
-					boxSelected4 = false;
-					boxSelected8 = false;
-					boxSelected1 = false;
-					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+					//imgList.get(rectSelectedNum).
 					
 				}
 				else if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
 				{
 					boxSelected1 = true;
-					boxSelected4 = false;
-					boxSelected2 = false;
-					boxSelected8 = false;
+					boxSelected10 = false;
 					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 					
 				}
@@ -436,8 +436,8 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 
 			//show the results of the click 
 			repaint();
-		
-	 } //end mouse click listener
+		 
+	 }
 	
 	
 	 // When it has been released 
