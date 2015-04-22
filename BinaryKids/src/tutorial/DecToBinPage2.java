@@ -1,37 +1,6 @@
 package tutorial;
 
-<<<<<<< HEAD
-
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.swing.JApplet;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.border.LineBorder;
-
-<<<<<<< HEAD
-=======
-//revert
->>>>>>> origin/master
+ 
 import java.awt.*; 
 import java.awt.event.*; 
 import java.util.ArrayList;
@@ -39,15 +8,8 @@ import javax.swing.*;
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
-<<<<<<< HEAD
-
-
-@SuppressWarnings("serial")
-public class DecToBinPage2 extends JPanel implements MouseListener, ActionListener 
-=======
 @SuppressWarnings("serial")
 public class DecToBinPage2 extends JPanel implements ActionListener 
->>>>>>> origin/master
 {
 	
 	
@@ -61,13 +23,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	JLabel DecToBinNumSquaresText3;
 	JLabel DecToBinNumSquaresText4;
 	JLabel DecToBinNumSquaresText5;
-<<<<<<< HEAD
-	JLabel TextEights;
-	JLabel TextFours;
-	JLabel TextTwos;
-=======
 	JLabel TextTens;
->>>>>>> origin/master
 	JLabel TextOnes;
 	JLabel TextHowManyTens;
 	JLabel TextHowManyOnes;
@@ -110,36 +66,6 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	JPanel questionPanel;
 	JPanel boxLabelPanel;
 
-<<<<<<< HEAD
-    
-//    public DecToBinPage2(WelcomePage welcome)
-//    {
-//    	welcomePage = welcome;
-//    	
-//    	initJLabels();
-//    	initTextFields();
-//    	initTitlePanel();
-//    	initRects();
-//    	initTextPanel();
-//    	initButton();
-//    	initBoxLabelPanel();
-//		initBoxCoords();
-//		initQuestionPanel();
-//    	
-//		//add panels
-//		add(titlePanel);
-//		add(textPanel);
-//		add(questionPanel);
-//		add(boxLabelPanel);
-//		
-//    	
-//    	addMouseListener(this); //adds mouse listener to listen for clicks on objects
-//    	
-//    	setVisible(true);
-//
-//    }
-    
-=======
 	int globalI = 0;
 	
 	@Override
@@ -157,7 +83,6 @@ public class DecToBinPage2 extends JPanel implements ActionListener
     }
 	
 	
->>>>>>> origin/master
 	//formats the title panel
 	public void initTitlePanel(){
 		titlePanel = new JPanel();
@@ -167,11 +92,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		titlePanel.add(titleLabel, BorderLayout.CENTER);
 		titlePanel.setBorder(new LineBorder(Color.BLACK));
 	}
-<<<<<<< HEAD
-    
-=======
 
->>>>>>> origin/master
 
 	//inits the coords of the rects that user will move
 	public void initRects(){
@@ -212,8 +133,6 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		box1height = 300;	
 	}
 
-<<<<<<< HEAD
-=======
 	public void initSubmitButtonListener(){
 		DecToBinSubmit.addActionListener(new ActionListener() {      
 			public void actionPerformed(ActionEvent le) {  
@@ -237,25 +156,16 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 
 	}
 
->>>>>>> origin/master
 	public void initJLabels(){
 		TextTens = new JLabel("Tens");
 		TextOnes = new JLabel("Ones");
 		TextHowManyTens = new JLabel("How many TENS are there in 11?");
 		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
-<<<<<<< HEAD
-		DecToBinNumSquaresText = new JLabel("How do we get the number 11? Click on a square and then click inside one of the boxes to assign");
-		DecToBinNumSquaresText2 = new JLabel("the square to the box. Distribute squares to the largest box possible, starting from the left.");
-		DecToBinNumSquaresText3 = new JLabel("We will do this example for you.");
-		DecToBinNumSquaresText4 = new JLabel("        11 = 1*10 + 1*1. We moved ten squares into the TENS box and one square into the ONES box.");
-		DecToBinNumSquaresText5 = new JLabel("        Enter 1 ten and 1 one in the boxes above and then click submit.");
-=======
 		DecToBinNumSquaresText = new JLabel("                  How do we get the number 11? 11 = how many tens + how many ones?");
 		DecToBinNumSquaresText2 = new JLabel("Click on a square and then click in one of the boxes to assign the square to the box. Distribute");
 		DecToBinNumSquaresText3 = new JLabel("squares to the largest box possible, starting from the left. Let's do this example together!!");
 		DecToBinNumSquaresText4 = new JLabel("        11 = 1*10 + 1*1. We moved ten squares into the TENS box and one square into the ONES box.");
 		DecToBinNumSquaresText5 = new JLabel("                                            Enter 1 ten and 1 one in the boxes above and then click submit.");
->>>>>>> origin/master
 	}
 
 	public void initTextFields(){
@@ -264,11 +174,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		NumberTensField.setColumns(5);
 		NumberOnesField.setColumns(5);
 	}
-<<<<<<< HEAD
-	
-=======
 
->>>>>>> origin/master
 	//formats the text panel layout
 	public void initTextPanel(){
 		textPanel = new JPanel();
@@ -284,60 +190,9 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		textPanel.add(DecToBinNumSquaresText2, c);
 		c.gridy = 2;
 		textPanel.add(DecToBinNumSquaresText3, c);
-<<<<<<< HEAD
-	}
-
-    
-	//sets all the texts of all Jlabels
-	public void initJLabels(){
-		TextEights = new JLabel("Eights");
-		TextFours = new JLabel("Fours");
-		TextTwos = new JLabel("Twos");
-		TextOnes = new JLabel("Ones");
-		TextHowManyEights = new JLabel("How many EIGHTS are there in 13?");
-		TextHowManyFours = new JLabel("How many FOURS are there in 13?");
-		TextHowManyTwos = new JLabel("How many TWOS are there in 13?");
-		TextHowManyOnes = new JLabel("How many ONES are there in 13?");
-		DecToBinNumSquaresText = new JLabel("Now let's see visually how to represent 13 in binary (base 2)! Click on a square and then click ");
-		DecToBinNumSquaresText2 = new JLabel("inside one of the boxes to assign the square to the box. Distribute squares to the largest box");
-		DecToBinNumSquaresText3 = new JLabel("possible, starting from the left.");
-	}
-
-    
-	//init the coords of the boxes will move rects into
-	public void initBoxCoords()
-	{
-		// Assign values to the rectanagle coordinates. 
-		box8x = 160; 
-		box8y = 210; 
-		box8width= 120; 
-		box8height = 300;
-		
-		// Assign values to the rectanagle coordinates. 
-		box4x = 300; 
-		box4y = 210; 
-		box4width= 120; 
-		box4height = 300;
-		
-		// Assign values to the rectanagle coordinates. 
-		box2x = 440; 
-		box2y = 210; 
-		box2width= 120; 
-		box2height = 300;
-		
-		// Assign values to the rectanagle coordinates. 
-		box1x = 580; 
-		box1y = 210; 
-		box1width= 120; 
-		box1height = 300;
-		
-	}
-	
-=======
 		
 	}
 
->>>>>>> origin/master
 	//formats the question panel layout
 	public void initQuestionPanel(){
 		questionPanel = new JPanel();
@@ -360,82 +215,14 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		questionPanel.add(NumberOnesField, c2);
 		c2.gridx = 0;
 		c2.gridy = 1;
-<<<<<<< HEAD
-		questionPanel.add(TextHowManyTwos, c2);
-		c2.gridx = 1;
-		c2.gridy = 1;
-		questionPanel.add(answerField4, c2);
-		c2.gridx = 2;
-		c2.gridy = 1;
-		questionPanel.add(TextHowManyOnes, c2);
-		c2.gridx = 3;
-		c2.gridy = 1;
-		questionPanel.add(answerField5, c2);
-		c2.gridx = 0;
-		c2.gridy = 2;
-<<<<<<< HEAD
-		c2.gridwidth = 4;
-		questionPanel.add(submitButton, c2);
-=======
-=======
 		c2.gridwidth = 4;
 		questionPanel.add(DecToBinSubmit, c2);
 		c2.gridy = 2;
->>>>>>> origin/master
 		questionPanel.add(DecToBinNumSquaresText4, c2);
 		c2.gridy = 3;
 		questionPanel.add(DecToBinNumSquaresText5, c2);
 		DecToBinNumSquaresText4.setVisible(false);
 		DecToBinNumSquaresText5.setVisible(false);
-<<<<<<< HEAD
-	}
-
-
-	//formats the labels for the boxes
-	public void initBoxLabelPanel(){
-		boxLabelPanel = new JPanel();
-		boxLabelPanel.setLayout(new GridBagLayout());
-		GridBagConstraints c3 = new GridBagConstraints();
-		c3.anchor = GridBagConstraints.FIRST_LINE_START;
-		c3.insets = new Insets(50,40,0,0);
-		c3.fill = GridBagConstraints.HORIZONTAL;
-		c3.ipadx = 100;
-		boxLabelPanel.add(TextTens,c3);
-		boxLabelPanel.add(TextOnes,c3);
-
-	}
-
-	public DecToBinPage2(WelcomePage welcome)
-	{
-		timer = new Timer(DELAY, this);
-		//timer.setInitialDelay(INITIAL_DELAY);
-        timer.start();
-		welcomePage = welcome;
-
-		//initializations
-		initJLabels();
-		initTextFields();
-		initButton();
-		initTitlePanel();
-		initTextPanel();
-		initQuestionPanel();
-		initRects();
-		initBoxLabelPanel();
-		initBoxCoords();  
-
-		//add panels
-		add(titlePanel);
-		add(textPanel);
-		add(questionPanel);
-		add(boxLabelPanel);
-
-		// Add the MouseListener to your applet 
-		addMouseListener(this); 
-
-
->>>>>>> parent of 4f1bfb2... adjusted formatting
-=======
->>>>>>> origin/master
 	}
 
 
