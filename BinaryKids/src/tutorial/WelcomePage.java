@@ -3,20 +3,33 @@ package tutorial;
 
 import javax.swing.JApplet;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import java.awt.*; 
+import java.applet.*;
 import java.awt.BorderLayout;
 import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.EventQueue;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.Image;
+import java.awt.TextField;
+import java.awt.Toolkit;
 
 
 
 
-@SuppressWarnings("serial")
 public class WelcomePage extends JApplet
 {
 	public enum TutorialType {
@@ -28,7 +41,6 @@ public class WelcomePage extends JApplet
 	WelcomePage welcome = this;
 	
 	int pageFlag = 0;
-	int tutorialFlag = 0;
 	
 	private int frameWidth = 800;
 	private int frameHeight = 620;
@@ -40,6 +52,9 @@ public class WelcomePage extends JApplet
 	private ThirdPage thirdPage;
 	FourthPage fourthPage;
 	BinaryDecimalOne bdOne;
+	private BinaryDecimalTwo bdTwo;
+	private BinaryDecimalThree bdThree;
+	private BinaryDecimalFour bdFour;
 	private DecToBinPage decToBinPage;
 	private DecToBinPage2 decToBinPage2;
 	private DecToBinPage3 decToBinPage3;
@@ -58,9 +73,13 @@ public class WelcomePage extends JApplet
 	private String userName = "";
 	private String userAnswer = "";
 	
-	public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
-	public static String obstImgFileName1 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
-	public static String obstImgFileName2 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOff.jpg";
+	//public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
+	//public static String obstImgFileName1 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
+	//public static String obstImgFileName2 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
+
+	public static String obstImgFileName = "titleImage.jpg";
+	public static String obstImgFileName1 = "lightOn.jpg";
+	public static String obstImgFileName2 = "lightOff.jpg.jpg";
 
 	
     //Called when this applet is loaded into the browser.
@@ -90,6 +109,7 @@ public class WelcomePage extends JApplet
      */
     private void createGUI() 
     {
+    	//initializaing all of the components of the tutorial
     	contentPane = getContentPane();
     	startPage = new StartPage(this);
     	firstPage = new FirstPage(this);
@@ -97,6 +117,9 @@ public class WelcomePage extends JApplet
     	thirdPage = new ThirdPage(this);
     	fourthPage = new FourthPage(this);
     	bdOne = new BinaryDecimalOne(this);
+    	bdTwo = new BinaryDecimalTwo(this);
+    	bdThree = new BinaryDecimalThree(this);
+    	bdFour = new BinaryDecimalFour(this);
     	decToBinPage = new DecToBinPage(this);
     	decToBinPage2 = new DecToBinPage2(this);
     	decToBinPage3 = new DecToBinPage3(this);
@@ -107,30 +130,14 @@ public class WelcomePage extends JApplet
     	String welcomeMessage = "Welcome to BinaryKids: Type in your name and click next to get started!";
     	JOptionPane.showMessageDialog(this, welcomeMessage, "Welcome to BinaryKids", JOptionPane.YES_NO_OPTION);
     	
+    	//set up the panel of buttons that is always visible
+    	createButtonPanel();
     	
     	//Create and set up the content pane.
     	setLayout(new BorderLayout()); 
     	add(startPage, BorderLayout.CENTER);
+    	add(buttonPanel, BorderLayout.NORTH); //add buttonPanel to the top of game frame
     	
-  		//creates a close button to allow user to exit whenever
-  		closeButton = new JButton("Close");
-  		closeButton.addActionListener(new closeButtonListener());
-  		nextButton = new JButton("NextPage");
-  		nextButton.addActionListener(new nextButtonListener());
-  		tutorialButton = new JButton("Tutorials");
-  		tutorialButton.addActionListener(new tutorialButtonListener());
-  		gameButton = new JButton("Play Game");
-  		gameButton.addActionListener(new gameButtonListener());
-  		page3GoBackButton = new JButton("Go back");
-  		page3GoBackButton.addActionListener(new backButtonListener());
-  		
-  		//buttons panel that holds close button
-  		buttonPanel = new JPanel();
-  		buttonPanel.setBackground(Color.darkGray);
-  		buttonPanel.add(closeButton); //add button to the buttonPanel
-  		buttonPanel.add(nextButton);
-  		add(buttonPanel, BorderLayout.NORTH); //add buttonPanel to the top of game frame
-  		 
   		
   		 // Setup the applet
   		 setBackground(Color.pink);
@@ -140,6 +147,31 @@ public class WelcomePage extends JApplet
   		    
     }  
     
+    public void createButtonPanel()
+    {
+  		//creates a close button to allow user to exit whenever
+  		closeButton = new JButton("Close");
+  		closeButton.addActionListener(new closeButtonListener());
+  		
+  		nextButton = new JButton("NextPage");
+  		nextButton.addActionListener(new nextButtonListener());
+  		
+  		tutorialButton = new JButton("Tutorials");
+  		tutorialButton.addActionListener(new tutorialButtonListener());
+  		
+  		gameButton = new JButton("Play Game");
+  		gameButton.addActionListener(new gameButtonListener());
+  		
+  		page3GoBackButton = new JButton("Go back");
+  		page3GoBackButton.addActionListener(new backButtonListener());
+  		
+  		//buttons panel that holds close button
+  		buttonPanel = new JPanel();
+  		buttonPanel.setBackground(Color.darkGray);
+  		buttonPanel.add(closeButton); //add button to the buttonPanel
+  		buttonPanel.add(nextButton);
+  		
+    }
  
     
     public void paint(Graphics g) 
@@ -248,6 +280,36 @@ public class WelcomePage extends JApplet
         repaint();
 	}
 	
+	public void loadBinToDec2()
+	{
+		contentPane.remove(bdOne);
+		bdTwo = new BinaryDecimalTwo(welcome);
+		contentPane.add(bdTwo, BorderLayout.CENTER);
+		validate();
+        setVisible(true);
+        repaint();
+	}
+	
+	public void loadBinToDec3()
+	{
+		contentPane.remove(bdTwo);
+		bdThree = new BinaryDecimalThree(welcome);
+		contentPane.add(bdThree, BorderLayout.CENTER);
+		validate();
+        setVisible(true);
+        repaint();
+	}
+	
+	public void loadBinToDec4()
+	{
+		contentPane.remove(bdThree);
+		bdFour = new BinaryDecimalFour(welcome);
+		contentPane.add(bdFour, BorderLayout.CENTER);
+		validate();
+        setVisible(true);
+        repaint();
+	}
+	
 	public void binAddTutorial()
 	{
 		contentPane.remove(fourthPage);
@@ -286,11 +348,13 @@ public class WelcomePage extends JApplet
 			contentPane.remove(thirdPage);
 			contentPane.remove(fourthPage);
 			contentPane.remove(bdOne);
-			contentPane.remove(bdOne.bdTwo);
-			contentPane.remove(bdOne.bdTwo.bdThree);
+			contentPane.remove(bdTwo);
+			contentPane.remove(bdThree);
+			contentPane.remove(bdFour);
 			contentPane.remove(decToBinPage);
 			contentPane.remove(decToBinPage2);
 			contentPane.remove(decToBinPage3);
+			contentPane.remove(decToBinPage4);
 			contentPane.remove(baOne);
 			contentPane.add(fourthPage);
 			validate();
@@ -306,8 +370,9 @@ public class WelcomePage extends JApplet
 			contentPane.remove(thirdPage);
 			contentPane.remove(fourthPage);
 			contentPane.remove(bdOne);
-			contentPane.remove(bdOne.bdTwo);
-			contentPane.remove(bdOne.bdTwo.bdThree);
+			contentPane.remove(bdTwo);
+			contentPane.remove(bdThree);
+			contentPane.remove(bdFour);
 			contentPane.remove(decToBinPage);
 			contentPane.remove(decToBinPage2);
 			//contentPane.add(gamePage);
@@ -371,7 +436,10 @@ public class WelcomePage extends JApplet
 			{
 				contentPane.remove(secondPage);
 				contentPane.add(thirdPage, BorderLayout.CENTER);
-				buttonPanel.add(page3GoBackButton);
+				if(thirdPage.pageClickedOnce)
+				{
+					buttonPanel.add(page3GoBackButton);
+				}
 				pageFlag++;
 				
 				validate();
