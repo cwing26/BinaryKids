@@ -74,8 +74,8 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	{
 		welcomePage = welcome;
 
-		int startx = 60;
-		int starty = 100;
+		int startx = 200;
+		int starty = 180;
 
 		JPanel titlePanel = new JPanel();
 		titlePanel.setLayout(new BorderLayout());
@@ -112,15 +112,79 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 		
 		JPanel textPanel = new JPanel();
-		textPanel.setLayout(new GridLayout(0,1));
-		textPanel.add(DecToBinNumSquaresText);
-		textPanel.add(DecToBinNumSquaresText2);
-		textPanel.add(DecToBinNumSquaresText3);
+		textPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.anchor = GridBagConstraints.CENTER;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipadx = 20;
+		c.gridx = 0;
+		c.gridy = 0;
+		textPanel.add(DecToBinNumSquaresText, c);
+		c.gridy = 1;
+		textPanel.add(DecToBinNumSquaresText2, c);
+		c.gridy = 2;
+		textPanel.add(DecToBinNumSquaresText3, c);
 		
 		
+		JPanel questionPanel = new JPanel();
+		questionPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c2 = new GridBagConstraints();
+		c2.anchor = GridBagConstraints.CENTER;
+		c2.fill = GridBagConstraints.HORIZONTAL;
+		c2.ipadx = 20;
+		c2.gridx = 0;
+		c2.gridy = 0;
+		questionPanel.add(TextHowManyEights, c2);
+		c2.gridx = 1;
+		c2.gridy = 0;
+		questionPanel.add(NumberEightsField, c2);
+		c2.gridx = 2;
+		c2.gridy = 0;
+		questionPanel.add(TextHowManyFours, c2);
+		c2.gridx = 3;
+		c2.gridy = 0;
+		questionPanel.add(NumberFoursField, c2);
+		c2.gridx = 0;
+		c2.gridy = 1;
+		questionPanel.add(TextHowManyTwos, c2);
+		c2.gridx = 1;
+		c2.gridy = 1;
+		questionPanel.add(NumberTwosField, c2);
+		c2.gridx = 2;
+		c2.gridy = 1;
+		questionPanel.add(TextHowManyOnes, c2);
+		c2.gridx = 3;
+		c2.gridy = 1;
+		questionPanel.add(NumberOnesField, c2);
+		c2.gridx = 0;
+		c2.gridy = 2;
+		c2.gridwidth = 4;
+		questionPanel.add(DecToBinSubmit, c2);
+		
+		
+		JPanel boxLabelPanel = new JPanel();
+		boxLabelPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c3 = new GridBagConstraints();
+		c3.anchor = GridBagConstraints.FIRST_LINE_START;
+		c3.insets = new Insets(70,40,0,0);
+		c3.fill = GridBagConstraints.HORIZONTAL;
+		c3.ipadx = 60;
+		c2.gridx = 0;
+		c2.gridy = 0;
+		boxLabelPanel.add(TextEights,c3);
+		c2.gridx = 1;
+		c2.gridy = 0;
+		boxLabelPanel.add(TextFours,c3);
+		c2.gridx = 2;
+		c2.gridy = 0;
+		boxLabelPanel.add(TextTwos,c3);
+		c2.gridx = 3;
+		c2.gridy = 0;
+		boxLabelPanel.add(TextOnes,c3);
+		
+		
+		//init rect coordinates
 		for (int i = 0; i < DecToBinNumSquaresActual; i++){
-			//g.drawImage(img, startx, starty, this);
-
 			rec = new Rectangle(startx, starty, rectUnit,rectUnit);
 			recList.add(rec);
 			startx+=40;
@@ -147,6 +211,8 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 					JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 
 					NumberEightsField.setText("");
+					NumberTwosField.setText("");
+					NumberFoursField.setText("");
 					NumberOnesField.setText("");
 				}
 
@@ -158,51 +224,37 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 		add(titlePanel);
 		add(textPanel);
-//		add(DecToBinNumSquaresText);
-//		add(DecToBinNumSquaresText2);
-//		add(DecToBinNumSquaresText3);
-		
+		add(questionPanel);
+		add(boxLabelPanel);
 
-		add(TextHowManyEights);
-		add(NumberEightsField);
-		add(TextHowManyFours);
-		add(NumberFoursField);
-		add(TextHowManyTwos);
-		add(NumberTwosField);
-		add(TextHowManyOnes);
-		add(NumberOnesField);
-		add(DecToBinSubmit);
 
-		add(TextEights);
-		add(TextFours);
-		add(TextTwos);
-		add(TextOnes);
+
 
 
 		// Assign values to the rectanagle coordinates. 
-		box8x = 60; 
-		box8y = 160; 
+		box8x = 150; 
+		box8y = 260; 
 		box8width = 100; 
-		box8height = 400;
+		box8height = 300;
 		
 		// Assign values to the rectanagle coordinates. 
-		box4x = 200; 
-		box4y = 160; 
+		box4x = 290; 
+		box4y = 260; 
 		box4width = 100; 
-		box4height = 400;
+		box4height = 300;
 
 
 		// Assign values to the rectanagle coordinates. 
-		box2x = 340; 
-		box2y = 160; 
+		box2x = 430; 
+		box2y = 260; 
 		box2width = 100; 
-		box2height = 400;
+		box2height = 300;
 
 		// Assign values to the rectanagle coordinates. 
-		box1x = 480; 
-		box1y = 160; 
+		box1x = 570; 
+		box1y = 260; 
 		box1width= 100; 
-		box1height = 400;
+		box1height = 300;
 
 		// Add the MouseListener to your applet 
 		addMouseListener(this); 

@@ -133,7 +133,7 @@ public class ThirdPage extends JPanel
     	String obstImgFileName1 = "lightOn.jpg";
 		//try to load the image file
 		try {
-			boxIcon = new ImageIcon(ImageIO.read(new File(obstImgFileName1)));
+			boxIcon = new ImageIcon(ImageIO.read(new File(WelcomePage.obstImgFileName))); //obstImgFileName1
 		} catch (IOException e) {
 			System.out.println("Please check image file path.");
 			e.printStackTrace();
@@ -145,7 +145,7 @@ public class ThirdPage extends JPanel
 		String fileName2 = "titleImage.jpg";
 		//try to load the image file
 		try {
-			boxIcon2 = new ImageIcon(ImageIO.read(new File(fileName2)));
+			boxIcon2 = new ImageIcon(ImageIO.read(new File(WelcomePage.obstImgFileName))); //fileName2
 		} catch (IOException e) {
 			System.out.println("Please check image file path.");
 			e.printStackTrace();
