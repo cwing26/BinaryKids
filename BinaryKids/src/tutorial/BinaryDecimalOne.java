@@ -1,5 +1,6 @@
 package tutorial;
 
+
 import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
@@ -19,6 +20,7 @@ import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
+import javax.swing.JTextField;
 import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 
@@ -33,104 +35,146 @@ import java.awt.CheckboxGroup;
 import java.awt.EventQueue;
 import java.awt.Color;
 import java.awt.Dimension;
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Graphics2D;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Rectangle;
 import java.awt.RenderingHints;
 import java.awt.Image;
 import java.awt.TextField;
 import java.awt.Toolkit;
+import java.util.ArrayList;
+
 
 
 public class BinaryDecimalOne extends JPanel
 {	
-	WelcomePage welcomePage;
-	
-	BinaryDecimalTwo bdTwo;
-	
+	WelcomePage welcomePage; //to connect with the applet
+
+	JPanel titlePanel;
+	JPanel textPanel;
+	JLabel questionLabel;
 	JButton submitButton;
-	TextField answerField;
+	JTextField answerField;
 
 	final int correctAnswer = 13;
+	final String correctAnswerString = "13";
 	int inputAnswer = 0;
 	
-	// Assign values to the rectanagle coordinates. 
-	int rect1xco = 20; 
-	int rect1yco = 200; 
-	int rect1width = 25; 
-	int rect1height = 25;
+	int startx = 180;
+	int starty = 100;
+
+	final int rectUnit = 25;
 	
-	FourthPage fourthPage;
+	private Rectangle rec;
+	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
+
     
     public BinaryDecimalOne(WelcomePage welcome)
     {
     	welcomePage = welcome;
-    	fourthPage = new FourthPage(welcome);
-    	bdTwo = new BinaryDecimalTwo(welcome);
-    	
-    	JPanel titlePanel = new JPanel();
-    	JLabel titleLabel = new JLabel("BinaryKids");
-    	titleLabel.setFont(new Font("Verdana",1,20));
-    	titlePanel.add(titleLabel);
-    	titlePanel.setBorder(new LineBorder(Color.BLACK));     	
-    	
-    	JLabel descriptionLabel = new JLabel("Let's learn how to convert from binary back to decimal with an example!");
-    	descriptionLabel.setFont(new Font("Verdana",1,20));
-    	
-    	JLabel descriptionLabel2 = new JLabel("How many squares are there");
-    	descriptionLabel2.setFont(new Font("Verdana",1,20));
-    	
-    	submitButton = new JButton("Submit Answer");
-    	answerField = new TextField("Type your answer here");
-    	answerField.setSize(200, 200);
-    	
-    	
-    	submitButton.addActionListener(new submitButtonListener());
+    
+    	initComponents();
+    	initSubmitButton();
+    	initTitlePanel();
+    	initTextPanel();
+    	initRects();
     	
     	add(titlePanel);
-    	add(descriptionLabel);
-    	add(descriptionLabel2);
-    	add(answerField);
-    	add(submitButton);
+    	add(textPanel);
+
     	
     	setVisible(true);
 
     }
     
+  //adds an action listener to the submit button to verify input is correct
+  	public void initSubmitButton()
+  	{
+  		submitButton = new JButton("Submit Answer");
+  		submitButton.addActionListener(new submitButtonListener()); 
+  	}
+
+
+
+
+	//init title panel format
+	public void initTitlePanel()
+	{
+		titlePanel = new JPanel();
+		titlePanel.setLayout(new BorderLayout());
+		JLabel titleLabel = new JLabel("Let's learn how to convert binary to decimal!");
+		titleLabel.setFont(new Font("Verdana",1,20));
+		titlePanel.add(titleLabel, BorderLayout.CENTER);
+		titlePanel.setBorder(new LineBorder(Color.BLACK));
+	}
+	
+	//init swing components
+	public void initComponents()
+	{
+		questionLabel = new JLabel("How many squares are shown?");
+		answerField = new JTextField();
+		answerField.setColumns(5);
+	}
+
+	//formats the text panel layout
+	public void initTextPanel()
+	{
+		textPanel = new JPanel();
+		textPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 50;
+		c.gridx = 0;
+		c.gridy = 0;
+		textPanel.add(questionLabel, c);
+		c.gridx = 1;
+		c.gridy = 0;
+		textPanel.add(answerField);
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 2;
+		textPanel.add(submitButton);
+	}
+	
+
+	//inits the coords of the rects that user will move
+	public void initRects()
+	{
+		for (int i = 0; i < correctAnswer; i++)
+		{
+			rec = new Rectangle(startx, starty, rectUnit,rectUnit);
+			recList.add(rec);
+			startx+=40;
+		}
+	}
+  	
     public void paint(Graphics g)
     {
     	super.paint(g);
-    	g.setColor(Color.BLUE);
-    	//paint 12 rectangles
-    	for(int i = 0; i < 6; i++)
-    	{
-    		g.fillRect(rect1xco,rect1yco,rect1width,rect1height);
-    		rect1xco = rect1xco + 50;
-    	}
+
+    	//paint 13 rectangles
     	
-    	rect1xco = 20;
-    	rect1yco = rect1yco + 50;
-    	
-    	for(int i = 0; i < 7; i++)
-    	{
-    		g.fillRect(rect1xco,rect1yco,rect1width,rect1height);
-    		rect1xco = rect1xco + 50;
-    	}
+    	for (int i = 0;i < recList.size(); i++){
+			if (i%2 == 1)
+			{
+				g.setColor(Color.YELLOW);
+			}
+			else
+			{
+				g.setColor(Color.MAGENTA);
+			}
+			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
+		}
     	
     }
     
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent e) 
-		{
-			/*
-			welcomePage.getContentPane().remove(welcomePage.bdOne);
-			welcomePage.getContentPane().add(bdTwo, BorderLayout.CENTER);
-			
-			welcomePage.validate();
-	        welcomePage.setVisible(true);
-	        welcomePage.repaint();
-			*/
-			
+		{			
 			String input =  answerField.getText();
 			inputAnswer = Integer.parseInt(input);
 			
@@ -138,7 +182,7 @@ public class BinaryDecimalOne extends JPanel
 			if(inputAnswer == correctAnswer)
 			{
 				welcomePage.getContentPane().remove(welcomePage.bdOne);
-				welcomePage.getContentPane().add(bdTwo, BorderLayout.CENTER);
+				welcomePage.loadBinToDec2();
 				
 				welcomePage.validate();
 		        welcomePage.setVisible(true);
@@ -162,6 +206,6 @@ public class BinaryDecimalOne extends JPanel
 		
 	} //end button listener
 
-} //end class thirdpage
+} //end class binary decimal one
 
 
