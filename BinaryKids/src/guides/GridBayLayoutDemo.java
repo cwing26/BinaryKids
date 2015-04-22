@@ -1,4 +1,4 @@
-package tutorial;
+package guides;
 
 // https://docs.oracle.com/javase/8/docs/api/java/awt/GridBagLayout.html
 // https://docs.oracle.com/javase/tutorial/uiswing/layout/gridbag.html

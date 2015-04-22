@@ -1,16 +1,14 @@
 package tutorial;
-import javax.imageio.ImageIO;
 import javax.swing.*; 
 
 import java.awt.*; 
 import java.awt.event.*; 
-import java.io.File;
-import java.io.IOException;
 import java.util.ArrayList;
 
 import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
+@SuppressWarnings("serial")
 public class DecToBinPage extends JPanel
 {
 
@@ -22,35 +20,23 @@ public class DecToBinPage extends JPanel
 	final String DecToBinNumSquaresActual = "11";
 	final int numSquares = 11;
 	String DecToBinNumSquaresInput;
-	private ImageIcon boxIcon;
-	private Image img;
-	private Rectangle rec;
-	int startx = 60;
+
+	int startx = 180;
 	int starty = 100;
 
 	final int rectUnit = 30;
 
+	private Rectangle rec;
 	ArrayList<Rectangle> recList = new ArrayList<>();
-	
-	public DecToBinPage(WelcomePage welcome)
-	{
-		welcomePage = welcome;
 
+	//Panels
+	JPanel titlePanel;
+	JPanel textPanel;
+	JPanel questionPanel;
+	JPanel boxLabelPanel;
 
-		JPanel titlePanel = new JPanel();
-		JLabel titleLabel = new JLabel("Let's learn how to convert decimal to binary!");
-		titleLabel.setFont(new Font("Verdana",1,20));
-		titlePanel.add(titleLabel);
-		titlePanel.setBorder(new LineBorder(Color.BLACK)); 
-
-
-		DecToBinSubmit = new JButton("Submit Answer"); 
-		DecToBinNumSquaresField = new JTextField();
-		DecToBinNumSquaresField.setColumns(20);
-		DecToBinNumSquaresText = new JLabel("How many squares are there?");
-
-
-		//Add action listeners for the buttons. 
+	//adds an action listener to the submit button to verify input is correct
+	public void initSubmitButtonListener(){
 		DecToBinSubmit.addActionListener(new ActionListener() {      
 			public void actionPerformed(ActionEvent le) {  
 				DecToBinNumSquaresInput = DecToBinNumSquaresField.getText();
@@ -59,36 +45,90 @@ public class DecToBinPage extends JPanel
 				}
 				else{
 					String errorMessage = "Wrong answer, try again!";
-			    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
-			    	
-			    	DecToBinNumSquaresField.setText("");
-			    	
+					JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+
+					DecToBinNumSquaresField.setText("");
+
 				}
 
 			}      
-		});      
+		}); 
+	}
 
+	//init title panel format
+	public void initTitlePanel(){
+		titlePanel = new JPanel();
+		titlePanel.setLayout(new BorderLayout());
+		JLabel titleLabel = new JLabel("Let's learn how to convert decimal to binary!");
+		titleLabel.setFont(new Font("Verdana",1,20));
+		titlePanel.add(titleLabel, BorderLayout.CENTER);
+		titlePanel.setBorder(new LineBorder(Color.BLACK));
+	}
 
+	//formats the text panel layout
+	public void initTextPanel(){
+		textPanel = new JPanel();
+		textPanel.setLayout(new GridBagLayout());
+		GridBagConstraints c = new GridBagConstraints();
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 50;
+		c.gridx = 0;
+		c.gridy = 0;
+		textPanel.add(DecToBinNumSquaresText, c);
+		c.gridx = 1;
+		c.gridy = 0;
+		textPanel.add(DecToBinNumSquaresField);
+		c.gridx = 0;
+		c.gridy = 1;
+		c.gridwidth = 2;
+		textPanel.add(DecToBinSubmit);
+	}
+	
+	//init swing components
+	public void initComponents(){
+		DecToBinNumSquaresText = new JLabel("How many squares are shown?");
+		DecToBinNumSquaresField = new JTextField();
+		DecToBinNumSquaresField.setColumns(5);
+		DecToBinSubmit = new JButton("Submit"); 
+	}
+
+	//constructor, param is the applet
+	public DecToBinPage(WelcomePage welcome)
+	{
+		welcomePage = welcome;
+		
+		//initializations
+		initComponents();
+		initTitlePanel();
+		initTextPanel();
+		initSubmitButtonListener();
+		initRects();
+
+		//add panels
 		add(titlePanel);
-		add(DecToBinNumSquaresText);
-		add(DecToBinNumSquaresField);
-		add(DecToBinSubmit);
+		add(textPanel);
 
+
+	}
+
+	//inits the coords of the rects that user will move
+	public void initRects(){
 		for (int i = 0; i < numSquares; i++){
-			//g.drawImage(img, startx, starty, this);
-
 			rec = new Rectangle(startx, starty, rectUnit,rectUnit);
 			recList.add(rec);
 			startx+=40;
 		}
-	
-	
 	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
-		//drawBoxes(DecToBinNumSquaresActual, g);
 		for (int i = 0;i < recList.size(); i++){
+			if (i%2 == 1){
+				g.setColor(Color.BLUE);
+			}
+			else{
+				g.setColor(Color.GREEN);
+			}
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 		}
 	}
