@@ -3,33 +3,20 @@ package tutorial;
 
 import javax.swing.JApplet;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
 import java.awt.*; 
-import java.applet.*;
 import java.awt.BorderLayout;
 import java.awt.event.*;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.EventQueue;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.Image;
-import java.awt.TextField;
-import java.awt.Toolkit;
 
 
 
 
+@SuppressWarnings("serial")
 public class WelcomePage extends JApplet
 {
 	public enum TutorialType {
@@ -56,6 +43,7 @@ public class WelcomePage extends JApplet
 	private DecToBinPage decToBinPage;
 	private DecToBinPage2 decToBinPage2;
 	private DecToBinPage3 decToBinPage3;
+	private DecToBinPage4 decToBinPage4;
 	private BinaryAddOne baOne;
 
 	JPanel buttonPanel;
@@ -112,6 +100,7 @@ public class WelcomePage extends JApplet
     	decToBinPage = new DecToBinPage(this);
     	decToBinPage2 = new DecToBinPage2(this);
     	decToBinPage3 = new DecToBinPage3(this);
+    	decToBinPage4 = new DecToBinPage4(this);
     	baOne = new BinaryAddOne(this);
     	
     	//dialog box welcomes user to game and gives them brief instructions
@@ -224,6 +213,16 @@ public class WelcomePage extends JApplet
 		contentPane.remove(decToBinPage2);
 		decToBinPage3 = new DecToBinPage3(welcome);
 		contentPane.add(decToBinPage3, BorderLayout.CENTER);
+		validate();
+        setVisible(true);
+        repaint();
+	}
+	
+	public void loadDecBin4()
+	{
+		contentPane.remove(decToBinPage3);
+		decToBinPage4 = new DecToBinPage4(welcome);
+		contentPane.add(decToBinPage4, BorderLayout.CENTER);
 		validate();
         setVisible(true);
         repaint();
