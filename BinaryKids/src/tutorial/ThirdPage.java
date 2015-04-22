@@ -89,8 +89,23 @@ public class ThirdPage extends JPanel
 	Boolean secondPanelOn = false;
 	Boolean oneClicked = false;
 	
+	//variables for 4th panel
+	JButton submitButton;
+	JTextField answerField1;
+	JTextField answerField2;
+	JTextField answerField3;
+	JTextField answerField4;
+	JTextField answerField5;
+	JLabel one;
+	JLabel two;
+	JLabel four;
+	JLabel eight;
+	JLabel sixteen;
+	
+	
 	WelcomePage welcomePage;
-    public ThirdPage(WelcomePage welcome)
+	
+	public ThirdPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
     	
@@ -258,7 +273,7 @@ public class ThirdPage extends JPanel
 					remove(firstPanel);
 					remove(secondPanel);
 					remove(thirdPanel);
-					
+					loadFourthPanel();
 					validate();
 			        setVisible(true);
 			        repaint();
@@ -392,6 +407,78 @@ public class ThirdPage extends JPanel
         setVisible(true);
         repaint();
     }
+    
+    public void loadFourthPanel()
+    {
+    	fourthPanel.setBackground(Color.blue);
+    	fourthPanel.setLayout(new GridLayout(0,1));
+    	
+    	JPanel textPanel = new JPanel();
+    	JPanel labelPanel = new JPanel();
+    	JPanel answerPanel = new JPanel();
+    	JPanel submitPanel = new JPanel();
+    	
+    	JLabel textLabel = new JLabel("Each binary digit is a power of two");
+    	JLabel questionLabel = new JLabel("What are the powers of two, or places in binary?");
+    	//textPanel.setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
+    	textPanel.add(textLabel);
+    	textPanel.add(questionLabel);
+    	
+    	sixteen = new JLabel("2^4");
+    	sixteen.setFont(new Font("Verdana", 1, 25));
+    	
+    	eight = new JLabel("2^3");
+    	eight.setFont(new Font("Verdana", 1, 25));
+    	
+    	four = new JLabel("2^2");
+    	four.setFont(new Font("Verdana", 1, 25));
+    	
+    	two = new JLabel("2^1");
+    	two.setFont(new Font("Verdana", 1, 25));
+    	
+    	one = new JLabel("2^0");
+    	one.setFont(new Font("Verdana", 1, 25));
+
+    	labelPanel.add(sixteen);
+    	labelPanel.add(eight);
+    	labelPanel.add(four);
+    	labelPanel.add(two);
+    	labelPanel.add(one);
+    	
+    	answerField1 = new JTextField();
+    	answerField2 = new JTextField();
+    	answerField3 = new JTextField();
+    	answerField4 = new JTextField();
+    	answerField5 = new JTextField();
+    	
+    	answerField1.setSize(200, 200);
+    	answerField2.setSize(200, 200);
+    	answerField3.setSize(200, 200);
+    	answerField4.setSize(200, 200);
+    	answerField5.setSize(200, 200);
+    	
+    	answerPanel.add(answerField1);
+    	answerPanel.add(answerField2);
+    	answerPanel.add(answerField3);
+    	answerPanel.add(answerField4);
+    	answerPanel.add(answerField5);
+    	
+    	
+    	submitButton = new JButton("Check your answer");
+    	submitPanel.setBackground(new Color(160, 40, 20));
+    	submitPanel.add(submitButton);
+    	
+    	fourthPanel.add(textPanel);
+    	fourthPanel.add(labelPanel);
+    	fourthPanel.add(answerPanel);
+    	fourthPanel.add(submitPanel);
+    	
+    	
+    	validate();
+        setVisible(true);
+        repaint();
+    }
+    
     public void paint(Graphics g)
     {
     	super.paint(g);
