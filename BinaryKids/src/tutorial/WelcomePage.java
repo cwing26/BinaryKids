@@ -262,6 +262,8 @@ public class WelcomePage extends JApplet
         repaint();
 	}
 	
+
+	
 	public void decToBinTutorial()
 	{
 		contentPane.remove(fourthPage);
@@ -301,7 +303,7 @@ public class WelcomePage extends JApplet
         setVisible(true);
         repaint();
 	}
-	
+
 	public void loadBinToDec4()
 	{
 		contentPane.remove(bdThree);
