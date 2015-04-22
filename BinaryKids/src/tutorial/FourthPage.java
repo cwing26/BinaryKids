@@ -77,7 +77,7 @@ public class FourthPage extends JPanel
     	binSubButton.addActionListener(new tutorialButtonListener());
     	
     	JPanel buttonPanel = new JPanel(new GridBagLayout());
-    	buttonPanel.setBackground(Color.pink);
+    	buttonPanel.setBackground(WelcomePage.backgroundColor);
     	GridBagConstraints c = new GridBagConstraints();
     	c.anchor = GridBagConstraints.LINE_START;
 		c.fill = GridBagConstraints.HORIZONTAL;

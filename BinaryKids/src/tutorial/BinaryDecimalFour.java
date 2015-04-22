@@ -53,7 +53,7 @@ public class BinaryDecimalFour extends JPanel
     public BinaryDecimalFour(WelcomePage welcome)
     {
     	welcomePage = welcome;
-
+    	setBackground(WelcomePage.backgroundColor);
     	
     	JPanel titlePanel = new JPanel();
     	JLabel titleLabel = new JLabel("BinaryKids (Page 4 Bin to Dec)");

@@ -127,10 +127,10 @@ public class DecToBinPage extends JPanel
 		super.paint(g);
 		for (int i = 0;i < recList.size(); i++){
 			if (i%2 == 1){
-				g.setColor(WelcomePage.darkBlueColor);
+				g.setColor(new Color(153, 178, 191));
 			}
 			else{
-				g.setColor(Color.GREEN);
+				g.setColor(new Color (255, 204, 208));
 			}
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 		}

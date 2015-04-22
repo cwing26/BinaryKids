@@ -7,7 +7,6 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*; 
-import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class DecToBinPage3 extends JPanel implements MouseListener
@@ -95,6 +94,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	public void initTextPanel(){
 		textPanel = new JPanel();
 		textPanel.setLayout(new GridBagLayout());
+		textPanel.setBackground(WelcomePage.backgroundColor);
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -112,6 +112,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	public void initQuestionPanel(){
 		questionPanel = new JPanel();
 		questionPanel.setLayout(new GridBagLayout());
+		questionPanel.setBackground(WelcomePage.backgroundColor);
 		GridBagConstraints c2 = new GridBagConstraints();
 		c2.anchor = GridBagConstraints.CENTER;
 		c2.fill = GridBagConstraints.HORIZONTAL;
@@ -157,8 +158,8 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		TextHowManyTwos = new JLabel("How many TWOS are there in 11?");
 		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
 		DecToBinNumSquaresText = new JLabel("Now let's see visually how to represent 11 in binary (base 2)! Click on a square and then click ");
-		DecToBinNumSquaresText2 = new JLabel("inside one of the boxes to assign the square to the box. Distribute squares to the largest box");
-		DecToBinNumSquaresText3 = new JLabel("possible, starting from the left.");
+		DecToBinNumSquaresText2 = new JLabel("inside one of the boxes to assign the square to the box. Distribute the remaining squares to ");
+		DecToBinNumSquaresText3 = new JLabel("the largest box possible, starting from the left.");
 	}
 
 	//inits format of text field
@@ -187,6 +188,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	public void initBoxLabelPanel(){
 		boxLabelPanel = new JPanel();
 		boxLabelPanel.setLayout(new GridBagLayout());
+		boxLabelPanel.setBackground(WelcomePage.backgroundColor);
 		GridBagConstraints c3 = new GridBagConstraints();
 		c3.anchor = GridBagConstraints.FIRST_LINE_START;
 		c3.insets = new Insets(70,40,0,0);
@@ -208,6 +210,60 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 				numTwosInput = NumberTwosField.getText();
 				numOnesInput = NumberOnesField.getText();
 
+				int countEights = 0;
+				int countFours = 0;
+				int countTwos = 0;
+				int countOnes = 0;
+				
+				for(int i = 0; i < recList.size(); i++)
+				{
+					int x = (int) recList.get(i).getX();
+					int y = (int) recList.get(i).getY();
+					
+
+					if((x >= box8x) && (x <= (box8x + box8width)) && (y >= box8y) && (y <= (box8y + box8height)))
+					{
+						countEights++; //if the rect is in the eights box, add 1
+					}
+					else if((x >= box4x) && (x <= (box4x + box4width)) && (y >= box4y) && (y <= (box4y + box4height)))
+					{
+						//if the rect is in the fours box
+						countFours++;
+					}
+					else if((x >= box2x) && (x <= (box2x + box2width)) && (y >= box2y) && (y <= (box2y + box2height)))
+					{
+						//if the rect is in the twos box
+						countTwos++;
+					}
+					else if((x >= box1x) && (x <= (box1x + box1width)) && (y >= box1y) && (y <= (box1y + box1height)))
+					{
+						//if the rect is in the ones box
+						countOnes++;
+					}
+					else
+					{
+						
+					}
+					
+				}
+				
+				if (countEights == 8
+						&& countFours == 0
+						&& countTwos == 2
+						&& countOnes == 1){
+					
+				}
+				else{
+					String errorMessage = "The squares are not in the correct boxes, try again!";
+					JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+					NumberEightsField.setText("");
+					NumberTwosField.setText("");
+					NumberFoursField.setText("");
+					NumberOnesField.setText("");
+					return;
+				}
+				
+				
 				if (numEightsInput.equals(numEightsActual)
 						&& numFoursInput.equals(numFoursActual)
 						&& numTwosInput.equals(numTwosActual)
