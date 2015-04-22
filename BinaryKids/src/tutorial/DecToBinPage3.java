@@ -1,6 +1,6 @@
 package tutorial;
 
-
+//revert
 
 import java.awt.*; 
 import java.awt.event.*; 
@@ -72,7 +72,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	//rectangle width and height
 	final int rectUnit = 30;
 	private Rectangle rec;
-	ArrayList<Rectangle> recList = new ArrayList<>();
+	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
 	
 	//Panels
 	JPanel titlePanel;
