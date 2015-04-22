@@ -84,10 +84,11 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	public void initTitlePanel(){
 		titlePanel = new JPanel();
 		titlePanel.setLayout(new BorderLayout());
+		titlePanel.setBackground(WelcomePage.backgroundColor);
 		JLabel titleLabel = new JLabel("Converting Decimal to Binary");
 		titleLabel.setFont(new Font("Verdana",1,20));
 		titlePanel.add(titleLabel, BorderLayout.CENTER);
-		titlePanel.setBorder(new LineBorder(Color.BLACK));
+		//titlePanel.setBorder(new LineBorder(WelcomePage.darkBlueColor));
 	}
 
 	//formats the text panel layout
@@ -289,23 +290,23 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 			g.setColor(Color.RED);
 		g.drawRect(box1x,box1y,box1width,box1height);
 
-		g.setColor(Color.BLACK);
+		g.setColor(WelcomePage.darkBlueColor);
 		if (boxSelected2)
 			g.setColor(Color.RED);
 		g.drawRect(box2x,box2y,box2width,box2height);
 
-		g.setColor(Color.BLACK);
+		g.setColor(WelcomePage.darkBlueColor);
 		if (boxSelected4)
 			g.setColor(Color.RED);
 		g.drawRect(box4x,box4y,box4width,box4height);
 
-		g.setColor(Color.BLACK);
+		g.setColor(WelcomePage.darkBlueColor);
 		if (boxSelected8)
 			g.setColor(Color.RED);
 		g.drawRect(box8x,box8y,box8width,box8height);
 
 
-		g.setColor(Color.BLACK);
+		g.setColor(WelcomePage.darkBlueColor);
 		for (int i = 0;i < recList.size(); i++){
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 		}

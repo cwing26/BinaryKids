@@ -96,10 +96,10 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	public void initTitlePanel(){
 		titlePanel = new JPanel();
 		titlePanel.setLayout(new BorderLayout());
+		titlePanel.setBackground(WelcomePage.backgroundColor);
 		JLabel titleLabel = new JLabel("Converting Decimal to Binary");
 		titleLabel.setFont(new Font("Verdana",1,20));
 		titlePanel.add(titleLabel, BorderLayout.CENTER);
-		titlePanel.setBorder(new LineBorder(Color.BLACK));
 	}
 
 
@@ -306,12 +306,12 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		if (boxSelected1)
 			g.setColor(Color.RED);
 		g.drawRect(box1x,box1y,box1width,box1height);
-		g.setColor(Color.BLACK);
+		g.setColor(WelcomePage.darkBlueColor);
 		if (boxSelected10)
 			g.setColor(Color.RED);
 		g.drawRect(box10x,box10y,box10width,box10height);
 		//Graphics2D g2d = (Graphics2D) g.create();
-		g.setColor(Color.BLACK);
+		g.setColor(WelcomePage.darkBlueColor);
 		for (int i = 0;i < recList.size(); i++){
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 		}

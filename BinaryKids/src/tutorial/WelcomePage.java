@@ -46,6 +46,7 @@ public class WelcomePage extends JApplet
 	private int frameHeight = 620;
 	
 	public static Color backgroundColor = new Color(204, 238, 255);
+	public static Color darkBlueColor = new Color(76, 89, 95);
 	
 	private StartPage startPage;
 	private FirstPage firstPage;
@@ -74,13 +75,13 @@ public class WelcomePage extends JApplet
 	private String userName = "";
 	private String userAnswer = "";
 	
-	//public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
-	//public static String obstImgFileName1 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
-	//public static String obstImgFileName2 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
+	public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
+	public static String obstImgFileName1 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
+	public static String obstImgFileName2 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOff.jpg";
 
-	public static String obstImgFileName = "titleImage.jpg";
-	public static String obstImgFileName1 = "lightOn.jpg";
-	public static String obstImgFileName2 = "lightOff.jpg.jpg";
+//	public static String obstImgFileName = "titleImage.jpg";
+//	public static String obstImgFileName1 = "lightOn.jpg";
+//	public static String obstImgFileName2 = "lightOff.jpg.jpg";
 
 	
     //Called when this applet is loaded into the browser.
@@ -168,7 +169,7 @@ public class WelcomePage extends JApplet
   		
   		//buttons panel that holds close button
   		buttonPanel = new JPanel();
-  		buttonPanel.setBackground(Color.darkGray);
+  		buttonPanel.setBackground(new Color(76, 89, 95));
   		buttonPanel.add(closeButton); //add button to the buttonPanel
   		buttonPanel.add(nextButton);
   		

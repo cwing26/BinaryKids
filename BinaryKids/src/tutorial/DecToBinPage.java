@@ -59,10 +59,11 @@ public class DecToBinPage extends JPanel
 	public void initTitlePanel(){
 		titlePanel = new JPanel();
 		titlePanel.setLayout(new BorderLayout());
+		titlePanel.setBackground(WelcomePage.backgroundColor);
 		JLabel titleLabel = new JLabel("Let's learn how to convert decimal to binary!");
 		titleLabel.setFont(new Font("Verdana",1,20));
 		titlePanel.add(titleLabel, BorderLayout.CENTER);
-		titlePanel.setBorder(new LineBorder(Color.BLACK));
+		//titlePanel.setBorder(new LineBorder(Color.BLACK));
 	}
 
 	//formats the text panel layout
@@ -126,7 +127,7 @@ public class DecToBinPage extends JPanel
 		super.paint(g);
 		for (int i = 0;i < recList.size(); i++){
 			if (i%2 == 1){
-				g.setColor(Color.BLUE);
+				g.setColor(WelcomePage.darkBlueColor);
 			}
 			else{
 				g.setColor(Color.GREEN);
