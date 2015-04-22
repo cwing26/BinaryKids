@@ -257,6 +257,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	public DecToBinPage3(WelcomePage welcome)
 	{
 		welcomePage = welcome;
+		setBackground(WelcomePage.backgroundColor);
 		DecToBinSubmit = new JButton("Submit"); 
 
 		//initializations

@@ -63,7 +63,7 @@ public class SecondPage extends JPanel
     	//setLayout(new BoxLayout(this, BoxLayout.Y_AXIS));
     	//setLayout(new GridLayout(4,1));
     	
-    	setBackground(Color.pink);
+    	setBackground(WelcomePage.backgroundColor);
     	
     	titlePanel = new JPanel();
     	titleLabel = new JLabel("Welcome to binarykids!");

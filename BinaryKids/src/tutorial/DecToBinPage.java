@@ -68,6 +68,7 @@ public class DecToBinPage extends JPanel
 	//formats the text panel layout
 	public void initTextPanel(){
 		textPanel = new JPanel();
+		textPanel.setBackground(WelcomePage.backgroundColor);
 		textPanel.setLayout(new GridBagLayout());
 		GridBagConstraints c = new GridBagConstraints();
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -96,6 +97,7 @@ public class DecToBinPage extends JPanel
 	public DecToBinPage(WelcomePage welcome)
 	{
 		welcomePage = welcome;
+		setBackground(WelcomePage.backgroundColor);
 		
 		//initializations
 		initComponents();

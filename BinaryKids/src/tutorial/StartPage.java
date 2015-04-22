@@ -64,7 +64,8 @@ public class StartPage extends JPanel
     {
     	welcomePage = welcome;
     	
-    	setBackground(Color.pink);
+    	setBackground(WelcomePage.backgroundColor);
+    	
     	
     	titlePanel = new JPanel();
     	titleLabel = new JLabel("Welcome to BinaryKids!");

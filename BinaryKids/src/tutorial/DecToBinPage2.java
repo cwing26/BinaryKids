@@ -194,6 +194,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	public void initTextPanel(){
 		textPanel = new JPanel();
 		textPanel.setLayout(new GridBagLayout());
+		textPanel.setBackground(WelcomePage.backgroundColor);
 		GridBagConstraints c = new GridBagConstraints();
 		c.anchor = GridBagConstraints.CENTER;
 		c.fill = GridBagConstraints.HORIZONTAL;
@@ -214,6 +215,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	public void initQuestionPanel(){
 		questionPanel = new JPanel();
 		questionPanel.setLayout(new GridBagLayout());
+		questionPanel.setBackground(WelcomePage.backgroundColor);
 		GridBagConstraints c2 = new GridBagConstraints();
 		c2.anchor = GridBagConstraints.CENTER;
 		c2.fill = GridBagConstraints.HORIZONTAL;
@@ -247,6 +249,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	public void initBoxLabelPanel(){
 		boxLabelPanel = new JPanel();
 		boxLabelPanel.setLayout(new GridBagLayout());
+		boxLabelPanel.setBackground(WelcomePage.backgroundColor);
 		GridBagConstraints c3 = new GridBagConstraints();
 		c3.anchor = GridBagConstraints.FIRST_LINE_START;
 		c3.insets = new Insets(50,40,0,0);
@@ -271,6 +274,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		//timer.setInitialDelay(INITIAL_DELAY);
         //timer.start();
 		welcomePage = welcome;
+		setBackground(WelcomePage.backgroundColor);
 
 		//initializations
 		initJLabels();

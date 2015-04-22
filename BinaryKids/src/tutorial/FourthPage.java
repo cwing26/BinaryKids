@@ -57,7 +57,7 @@ public class FourthPage extends JPanel
     {
     	welcomePage = welcome;
     	setLayout(new BorderLayout());
-    	setBackground(Color.pink);
+    	setBackground(WelcomePage.backgroundColor);
     	JPanel titlePanel = new JPanel();
     	JLabel titleLabel = new JLabel("What would you like to learn first??");
     	titleLabel.setFont(new Font("Verdana",1,20));

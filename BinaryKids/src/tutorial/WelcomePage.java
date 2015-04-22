@@ -45,6 +45,7 @@ public class WelcomePage extends JApplet
 	private int frameWidth = 800;
 	private int frameHeight = 620;
 	
+	public static Color backgroundColor = new Color(204, 238, 255);
 	
 	private StartPage startPage;
 	private FirstPage firstPage;
@@ -140,7 +141,7 @@ public class WelcomePage extends JApplet
     	
   		
   		 // Setup the applet
-  		 setBackground(Color.pink);
+    	 getContentPane().setBackground(backgroundColor);
   		 setName("BinaryKids");
   		 setSize(frameWidth, frameHeight);
   		 setVisible(true);

@@ -61,7 +61,7 @@ public class FirstPage extends JPanel
     public FirstPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
-    	setBackground(Color.pink);
+    	setBackground(WelcomePage.backgroundColor);
     	//userName = welcomePage.getUserName();
     	
     	JPanel titlePanel = new JPanel();
