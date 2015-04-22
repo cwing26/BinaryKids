@@ -130,10 +130,9 @@ public class ThirdPage extends JPanel
     	
 
     	
-    	String obstImgFileName1 = "lightOn.jpg";
 		//try to load the image file
 		try {
-			boxIcon = new ImageIcon(ImageIO.read(new File(WelcomePage.obstImgFileName))); //obstImgFileName1
+			boxIcon = new ImageIcon(ImageIO.read(new File(WelcomePage.obstImgFileName1))); //obstImgFileName1
 		} catch (IOException e) {
 			System.out.println("Please check image file path.");
 			e.printStackTrace();

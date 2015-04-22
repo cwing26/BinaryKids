@@ -44,7 +44,7 @@ public class WelcomePage extends JApplet
 	int tutorialFlag = 0;
 	
 	private int frameWidth = 800;
-	private int frameHeight = 600;
+	private int frameHeight = 620;
 	
 	
 	private StartPage startPage;
@@ -71,6 +71,8 @@ public class WelcomePage extends JApplet
 	private String userAnswer = "";
 	
 	public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
+	public static String obstImgFileName1 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
+	public static String obstImgFileName2 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
 
 	
     //Called when this applet is loaded into the browser.
@@ -89,6 +91,7 @@ public class WelcomePage extends JApplet
         catch (Exception e) 
         { 
             System.err.println("createGUI didn't complete successfully");
+            e.printStackTrace();
         }
     }
     
