@@ -9,7 +9,7 @@ import javax.swing.JPanel;
 import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
-public class DecToBinPage2 extends JPanel implements MouseListener, ActionListener 
+public class DecToBinPage2 extends JPanel implements ActionListener 
 {
 	
 	
@@ -161,11 +161,11 @@ public class DecToBinPage2 extends JPanel implements MouseListener, ActionListen
 		TextOnes = new JLabel("Ones");
 		TextHowManyTens = new JLabel("How many TENS are there in 11?");
 		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
-		DecToBinNumSquaresText = new JLabel("How do we get the number 11? Click on a square and then click inside one of the boxes to assign");
-		DecToBinNumSquaresText2 = new JLabel("the square to the box. Distribute squares to the largest box possible, starting from the left.");
-		DecToBinNumSquaresText3 = new JLabel("We will do this example for you.");
+		DecToBinNumSquaresText = new JLabel("                  How do we get the number 11? 11 = how many tens + how many ones?");
+		DecToBinNumSquaresText2 = new JLabel("Click on a square and then click in one of the boxes to assign the square to the box. Distribute");
+		DecToBinNumSquaresText3 = new JLabel("squares to the largest box possible, starting from the left. Let's do this example together!!");
 		DecToBinNumSquaresText4 = new JLabel("        11 = 1*10 + 1*1. We moved ten squares into the TENS box and one square into the ONES box.");
-		DecToBinNumSquaresText5 = new JLabel("        Enter 1 ten and 1 one in the boxes above and then click submit.");
+		DecToBinNumSquaresText5 = new JLabel("                                            Enter 1 ten and 1 one in the boxes above and then click submit.");
 	}
 
 	public void initTextFields(){
@@ -266,7 +266,7 @@ public class DecToBinPage2 extends JPanel implements MouseListener, ActionListen
 		add(boxLabelPanel);
 
 		// Add the MouseListener to your applet 
-		addMouseListener(this); 
+		//addMouseListener(this); 
 
 
 	}
