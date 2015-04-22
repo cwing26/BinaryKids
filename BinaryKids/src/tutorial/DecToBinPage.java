@@ -19,8 +19,9 @@ public class DecToBinPage extends JPanel
 	JLabel DecToBinNumSquaresText;
 	JTextField DecToBinNumSquaresField;
 
-	final int DecToBinNumSquaresActual = 11;
-	int DecToBinNumSquaresInput;
+	final String DecToBinNumSquaresActual = "11";
+	final int numSquares = 11;
+	String DecToBinNumSquaresInput;
 	private ImageIcon boxIcon;
 	private Image img;
 	private Rectangle rec;
@@ -52,9 +53,8 @@ public class DecToBinPage extends JPanel
 		//Add action listeners for the buttons. 
 		DecToBinSubmit.addActionListener(new ActionListener() {      
 			public void actionPerformed(ActionEvent le) {  
-				String input = DecToBinNumSquaresField.getText();
-				DecToBinNumSquaresInput = Integer.parseInt(input);
-				if (DecToBinNumSquaresInput == DecToBinNumSquaresActual){
+				DecToBinNumSquaresInput = DecToBinNumSquaresField.getText();
+				if (DecToBinNumSquaresInput.equals(DecToBinNumSquaresActual)){
 					welcomePage.loadDecBin2();
 				}
 				else{
@@ -74,7 +74,7 @@ public class DecToBinPage extends JPanel
 		add(DecToBinNumSquaresField);
 		add(DecToBinSubmit);
 
-		for (int i = 0; i < DecToBinNumSquaresActual; i++){
+		for (int i = 0; i < numSquares; i++){
 			//g.drawImage(img, startx, starty, this);
 
 			rec = new Rectangle(startx, starty, rectUnit,rectUnit);

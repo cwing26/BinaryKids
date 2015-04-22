@@ -147,11 +147,10 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		TextHowManyFours = new JLabel("How many FOURS are there in 11?");
 		TextHowManyTwos = new JLabel("How many TWOS are there in 11?");
 		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
-		DecToBinNumSquaresText = new JLabel("Now let's see visually how to represent 11 in binary (base 2)!");
-		DecToBinNumSquaresText2 = new JLabel("Click on a square and then click "
-				+ "inside one of the boxes to assign the square to the box.");
+		DecToBinNumSquaresText = new JLabel("Now let's see visually how to represent 11 in binary (base 2)! Click on a square and then click ");
+		DecToBinNumSquaresText2 = new JLabel("inside one of the boxes to assign the square to the box. Distribute squares to the largest box");
 
-		DecToBinNumSquaresText3 = new JLabel("You should assign squares to the largest box possible, starting from the left.");
+		DecToBinNumSquaresText3 = new JLabel("possible, starting from the left.");
 	}
 
 	//inits format of text field
