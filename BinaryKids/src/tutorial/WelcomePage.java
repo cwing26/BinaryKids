@@ -52,9 +52,9 @@ public class WelcomePage extends JApplet
 	private ThirdPage thirdPage;
 	FourthPage fourthPage;
 	BinaryDecimalOne bdOne;
-	private BinaryDecimalTwo bdTwo;
-	private BinaryDecimalThree bdThree;
-	private BinaryDecimalFour bdFour;
+	BinaryDecimalTwo bdTwo;
+	BinaryDecimalThree bdThree;
+	BinaryDecimalFour bdFour;
 	private DecToBinPage decToBinPage;
 	private DecToBinPage2 decToBinPage2;
 	private DecToBinPage3 decToBinPage3;
@@ -73,13 +73,13 @@ public class WelcomePage extends JApplet
 	private String userName = "";
 	private String userAnswer = "";
 	
-	//public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
-	//public static String obstImgFileName1 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
-	//public static String obstImgFileName2 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
+	public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
+	public static String obstImgFileName1 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
+	public static String obstImgFileName2 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOff.jpg";
 
-	public static String obstImgFileName = "titleImage.jpg";
-	public static String obstImgFileName1 = "lightOn.jpg";
-	public static String obstImgFileName2 = "lightOff.jpg.jpg";
+//	public static String obstImgFileName = "titleImage.jpg";
+//	public static String obstImgFileName1 = "lightOn.jpg";
+//	public static String obstImgFileName2 = "lightOff.jpg.jpg";
 
 	
     //Called when this applet is loaded into the browser.

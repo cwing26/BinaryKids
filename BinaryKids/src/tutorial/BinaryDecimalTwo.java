@@ -52,7 +52,7 @@ import java.util.ArrayList;
 
 
 
-public class BinaryDecimalThree extends JPanel implements MouseListener
+public class BinaryDecimalTwo extends JPanel implements MouseListener
 {	
 	WelcomePage welcomePage;
 	
@@ -113,7 +113,7 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 	JPanel boxLabelPanel;
 	
     
-    public BinaryDecimalThree(WelcomePage welcome)
+    public BinaryDecimalTwo(WelcomePage welcome)
     {
     	welcomePage = welcome;
 
