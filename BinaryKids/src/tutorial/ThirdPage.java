@@ -58,8 +58,6 @@ public class ThirdPage extends JPanel
 	
 	ImageIcon boxIcon;
 	ImageIcon boxIcon2;
-	Image img1;
-	Image img2;
 	
 	Boolean secondPanelOn = false;
 	Boolean oneClicked = false;
@@ -141,30 +139,6 @@ public class ThirdPage extends JPanel
     	
     	setVisible(true);
     	
-
-    	
-		//try to load the image file
-    	//String fileName = "lightOn.jpg";
-		try {
-			boxIcon = new ImageIcon(ImageIO.read(new File(WelcomePage.lightOnImagePath)));
-		} catch (IOException e) {
-			System.out.println("Please check image file path.");
-			e.printStackTrace();
-		};
-		img1 = boxIcon.getImage();
-		img1 = img1.getScaledInstance(200, 400, Image.SCALE_SMOOTH);
-		
-		
-		//String fileName2 = "titleImage.jpg";
-		//try to load the image file
-		try {
-			boxIcon2 = new ImageIcon(ImageIO.read(new File(WelcomePage.lightOffImagePath)));
-		} catch (IOException e) {
-			System.out.println("Please check image file path.");
-			e.printStackTrace();
-		};
-		img2 = boxIcon2.getImage();
-		img2 = img2.getScaledInstance(200, 400, Image.SCALE_SMOOTH);
     	
     	
     	
@@ -543,11 +517,11 @@ public class ThirdPage extends JPanel
     	{	
     		if(oneClicked)
     		{
-    			g.drawImage(img1, 650, 300, this);
+    			g.drawImage(welcomePage.lightOnImg, 650, 300, this);
     		}
     		else
     		{
-    			g.drawImage(img2, 650, 300, this);
+    			g.drawImage(welcomePage.lightOffImg, 650, 300, this);
     		}
     			
     	} //end if

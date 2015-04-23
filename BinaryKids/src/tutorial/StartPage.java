@@ -2,18 +2,22 @@ package tutorial;
 import java.awt.Button;
 import java.awt.Graphics;
 import java.awt.TextField;
+import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
+
 import java.awt.Color;
 import java.awt.Font;
 import java.awt.Image;
 import java.io.File;
 import java.io.IOException;
+import java.net.URL;
 
 
 @SuppressWarnings("serial")
@@ -24,9 +28,7 @@ public class StartPage extends JPanel
 	JPanel titlePanel;
 	JLabel titleLabel;
 	boolean nameEntered = false;
-	
-	private ImageIcon boxIcon;
-	private Image img;
+
 	
 	
 	private WelcomePage welcomePage; //to connect welcome page to individual pages 
@@ -63,18 +65,6 @@ public class StartPage extends JPanel
     	add(submitButton);
     	
     	
-    	
-		//try to load the image file
-		try {
-			boxIcon = new ImageIcon(ImageIO.read(new File(WelcomePage.titleImagePath)));
-		} catch (IOException e) {
-			System.out.println("Please check image file path.");
-			e.printStackTrace();
-		};
-		img = boxIcon.getImage();
-		img = img.getScaledInstance(400, 300, Image.SCALE_SMOOTH);
-    	
-    	
     }
     
     public void paint(Graphics g) 
@@ -89,7 +79,7 @@ public class StartPage extends JPanel
     	g.setFont(new Font("Verdana", 1, 20));
     	g.drawString(nameString, 280,200);
     	
-    	g.drawImage(img, 200, 300, this);
+    	g.drawImage(welcomePage.titleImg, 200, 300, this);
 
     }
     

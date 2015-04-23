@@ -75,15 +75,12 @@ public class WelcomePage extends JApplet
 	private String userName = "";
 	private String userAnswer = "";
 	
-
-	public static String titleImagePath = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
-	public static String lightOnImagePath = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
-	public static String lightOffImagePath = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOff.jpg";
-
-//	public static String obstImgFileName = "titleImage.jpg";
-//	public static String obstImgFileName1 = "lightOn.jpg";
-//	public static String obstImgFileName2 = "lightOff.jpg.jpg";
-
+	public static String titleImagePath = "images/titleImage.jpg";
+	public static String lightOnImagePath = "images/lightOn.jpg";
+	public static String lightOffImagePath = "images/lightOff.jpg";
+	public Image titleImg;
+	public Image lightOnImg;
+	public Image lightOffImg;
 	
     //Called when this applet is loaded into the browser.
     public void init() 
@@ -145,6 +142,8 @@ public class WelcomePage extends JApplet
     	add(buttonPanel, BorderLayout.NORTH); //add buttonPanel to the top of game frame
     	
   		
+    	loadImages();
+    	
   		 // Setup the applet
     	 getContentPane().setBackground(backgroundColor);
   		 setName("BinaryKids");
@@ -152,6 +151,19 @@ public class WelcomePage extends JApplet
   		 setVisible(true);
   		    
     }  
+    
+    public void loadImages(){
+    	
+    	titleImg = Toolkit.getDefaultToolkit().getImage(
+    			getClass().getClassLoader().getResource(WelcomePage.titleImagePath));
+    	titleImg = titleImg.getScaledInstance(400, 300, Image.SCALE_SMOOTH);
+    	lightOnImg = Toolkit.getDefaultToolkit().getImage(
+    			getClass().getClassLoader().getResource(WelcomePage.lightOnImagePath));
+    	lightOnImg = lightOnImg.getScaledInstance(200, 400, Image.SCALE_SMOOTH);
+    	lightOffImg = Toolkit.getDefaultToolkit().getImage(
+    			getClass().getClassLoader().getResource(WelcomePage.lightOffImagePath));
+    	lightOffImg = lightOnImg.getScaledInstance(200, 400, Image.SCALE_SMOOTH);
+    }
     
     public void createButtonPanel()
     {
