@@ -491,7 +491,7 @@ public class WelcomePage extends JApplet
 			else if(pageFlag == 4)
 			{
 
-				contentPane.remove(thirdPage);
+				contentPane.remove(demoPage);
 				buttonPanel.remove(nextButton);
 				buttonPanel.remove(page3GoBackButton);
 				buttonPanel.add(tutorialButton);
