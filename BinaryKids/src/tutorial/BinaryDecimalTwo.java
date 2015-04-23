@@ -69,75 +69,75 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 	JLabel TextHowManyFours;
 	JLabel TextHowManyTwos;
 	JLabel TextHowManyOnes;
-	
+
 	//Panels
 	JPanel titlePanel;
 	JPanel textPanel;
 	JPanel questionPanel;
 	JPanel boxLabelPanel;
-	
+
 	//my panels--hope grid layout
 	JPanel labelPanel; //for the 8, 4, 2, 1
 	JPanel answerPanel; //for the textboxes
-	
+
 	//text fields
 	JTextField answerField2;
 	JTextField answerField3;
 	JTextField answerField4;
 	JTextField answerField5;
-	
+
 	//button to submit answer
 	JButton submitButton;
 
-	
+
 	//13 in binary is 01101
 	final int BinToDecNumSquaresActual = 13;
-	final int answer2 = 1;
-	final int answer3 = 1;
-	final int answer4 = 0;
-	final int answer5 = 1;
-	
+	final String answer2 = "1";
+	final String answer3 = "1";
+	final String answer4 = "0";
+	final String answer5 = "1";
+
 	final String answerTwo = "1";
 	final String answerThree = "0";
 	final String answerFour = "1";
 	final String answerFive = "1";
-	
+
 	//int version user answer
-	int userAnswer2;
-	int userAnswer3;
-	int userAnswer4;
-	int userAnswer5;
-	
+	String userAnswer2;
+	String userAnswer3;
+	String userAnswer4;
+	String userAnswer5;
+
 	//string version user answer
 	String numEightsInput;
 	String numFoursInput;
 	String numTwosInput;
 	String numOnesInput;
-	
+
 	// The coordinates of the 10's rectangle and 1s rectangle 
 	int box8x, box8y, box8width, box8height;
 	int box4x, box4y, box4width, box4height;
 	int box2x, box2y, box2width, box2height;
 	int box1x, box1y, box1width, box1height;
-	
+
 
 	// The X-coordinate and Y-coordinate of the last click. 
 	int xpos; 
 	int ypos;
-		
+
 	// variable that will be true when the user clicked i the rectangle  
 	// the we will draw. 
-	
+
 	boolean clickOrMove = true;
 	boolean boxSelected16 = false;
 	boolean boxSelected8 = false;
 	boolean boxSelected4 = false;
 	boolean boxSelected2 = false;
 	boolean boxSelected1 = false;
-	
+
 	boolean rectSelected = false;
 	int rectSelectedNum = 0;
-	
+
 	//rectangles
 	final int rectUnit = 25;
 	final int startx = 60;
@@ -146,35 +146,35 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
 
 
-    
-    public BinaryDecimalTwo(WelcomePage welcome)
-    {
-    	welcomePage = welcome;
-    	
-    	initJLabels();
-    	initTextFields();
-    	initTitlePanel();
-    	initRects();
-    	initTextFields();
-    	initTextPanel();
-    	initButton();
-    	initBoxLabelPanel();
+
+	public BinaryDecimalTwo(WelcomePage welcome)
+	{
+		welcomePage = welcome;
+
+		initJLabels();
+		initTextFields();
+		initTitlePanel();
+		initRects();
+		initTextFields();
+		initTextPanel();
+		initButton();
+		initBoxLabelPanel();
 		initBoxCoords();
 		initQuestionPanel();
-    	
+
 		//add panels
 		add(titlePanel);
 		add(textPanel);
 		add(questionPanel);
 		add(boxLabelPanel);
-		
-    	
-    	addMouseListener(this); //adds mouse listener to listen for clicks on objects
-    	
-    	setVisible(true);
 
-    }
-    
+
+		addMouseListener(this); //adds mouse listener to listen for clicks on objects
+
+		setVisible(true);
+
+	}
+
 	//formats the title panel
 	public void initTitlePanel()
 	{
@@ -185,7 +185,7 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		titlePanel.add(titleLabel, BorderLayout.CENTER);
 		titlePanel.setBorder(new LineBorder(Color.BLACK));
 	}
-    
+
 	//inits format of text field
 	public void initTextFields()
 	{
@@ -197,7 +197,7 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		answerField3.setColumns(3);
 		answerField4.setColumns(3);
 		answerField5.setColumns(3);
-		
+
 		//answerField2.setFont(new Font("Verdana", 1, 45));
 		//answerField3.setFont(new Font("Verdana", 1, 45));
 		//answerField4.setFont(new Font("Verdana", 1, 45));
@@ -215,13 +215,13 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 			startX+=40;
 		}
 	}
-	
+
 	public void initButton()
 	{
 		submitButton = new JButton("Submit Answer");
-    	submitButton.addActionListener(new submitButtonListener());
+		submitButton.addActionListener(new submitButtonListener());
 	}
-	
+
 	//formats the text panel layout
 	public void initTextPanel(){
 		textPanel = new JPanel();
@@ -239,7 +239,7 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		textPanel.add(DecToBinNumSquaresText3, c);
 	}
 
-    
+
 	//sets all the texts of all Jlabels
 	public void initJLabels(){
 		TextEights = new JLabel("Eights");
@@ -254,7 +254,7 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		DecToBinNumSquaresText2 = new JLabel("inside one of the boxes to assign the square to the box. Distribute squares to the largest box");
 		DecToBinNumSquaresText3 = new JLabel("possible, starting from the left.");
 	}
-	
+
 	//formats the labels for the boxes
 	public void initBoxLabelPanel()
 	{
@@ -269,8 +269,8 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		boxLabelPanel.add(TextFours,c3);
 		boxLabelPanel.add(TextTwos,c3);
 		boxLabelPanel.add(TextOnes,c3);
-		
-    	/*
+
+		/*
     	JPanel tablePanel = new JPanel(new GridLayout(1, 6));
     	JLabel blank1 = new JLabel(" ");
     	blank1.setFont(new Font("Verdana", 1, 40));
@@ -284,7 +284,7 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
     	twos.setFont(new Font("Verdana", 1, 40));
     	JLabel ones = new JLabel("1");
     	ones.setFont(new Font("Verdana", 1, 40));
-    	
+
 
     	tablePanel.setBorder(new LineBorder(Color.BLACK)); 
     	tablePanel.add(blank1);
@@ -293,11 +293,11 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
     	tablePanel.add(twos);
     	tablePanel.add(ones);
     	tablePanel.add(blank2);
-    	*/
-    	
+		 */
+
 
 	}
-    
+
 	//init the coords of the boxes will move rects into
 	public void initBoxCoords()
 	{
@@ -306,27 +306,27 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		box8y = 210; 
 		box8width= 120; 
 		box8height = 300;
-		
+
 		// Assign values to the rectanagle coordinates. 
 		box4x = 300; 
 		box4y = 210; 
 		box4width= 120; 
 		box4height = 300;
-		
+
 		// Assign values to the rectanagle coordinates. 
 		box2x = 440; 
 		box2y = 210; 
 		box2width= 120; 
 		box2height = 300;
-		
+
 		// Assign values to the rectanagle coordinates. 
 		box1x = 580; 
 		box1y = 210; 
 		box1width= 120; 
 		box1height = 300;
-		
+
 	}
-	
+
 	//formats the question panel layout
 	public void initQuestionPanel(){
 		questionPanel = new JPanel();
@@ -364,76 +364,71 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 		c2.gridwidth = 4;
 		questionPanel.add(submitButton, c2);
 	}
-	
-    public void paint(Graphics g)
-    {
-    	super.paint(g);
-    	g.setColor(Color.black);
-    	if (boxSelected1)
+
+	public void paint(Graphics g)
+	{
+		super.paint(g);
+		g.setColor(Color.black);
+		if (boxSelected1)
 			g.setColor(Color.RED);
 		g.drawRect(box1x,box1y,box1width,box1height);
 		g.setColor(Color.BLACK);
-		
+
 		if (boxSelected2)
 			g.setColor(Color.RED);
 		g.drawRect(box2x,box2y,box2width,box2height);
 		g.setColor(Color.BLACK);
-		
+
 		if (boxSelected4)
 			g.setColor(Color.RED);
 		g.drawRect(box4x,box4y,box4width,box4height);
 		g.setColor(Color.BLACK);
-		
+
 		if (boxSelected8)
 			g.setColor(Color.RED);
 		g.drawRect(box8x,box8y,box8width,box8height);
 		g.setColor(Color.BLACK);
-    	
 
-    	g.setColor(Color.blue);
+
+		g.setColor(Color.blue);
 
 		for (int i = 0;i < recList.size(); i++){
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 		}
 
-    }
-    
-    
-    
-    
-    
-    
-    
-    
-    
+	}
+
+
+
+
+
+
+
+
+
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
 			//get all text from text boxes, if correct then display dialog box
 			//then go to new page
-			
-			String input2 =  answerField2.getText();
-			String input3 =  answerField3.getText();
-			String input4 =  answerField4.getText();
-			String input5 =  answerField5.getText();
-			
 
-			userAnswer2 = Integer.parseInt(input2);
-			userAnswer3 = Integer.parseInt(input3);
-			userAnswer4 = Integer.parseInt(input4);
-			userAnswer5 = Integer.parseInt(input5);
-			
+			userAnswer2 =  answerField2.getText();
+			userAnswer3 =  answerField3.getText();
+			userAnswer4 =  answerField4.getText();
+			userAnswer5 =  answerField5.getText();
+
+
 			int countEights = 0;
 			int countFours = 0;
 			int countTwos = 0;
 			int countOnes = 0;
-			
+
 			for(int i = 0; i < recList.size(); i++)
 			{
 				int x = (int) recList.get(i).getX();
 				int y = (int) recList.get(i).getY();
-				
+
 
 				if((x >= box8x) && (x <= (box8x + box8width)) && (y >= box8y) && (y <= (box8y + box8height)))
 				{
@@ -456,171 +451,150 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 				}
 				else
 				{
-					
+
 				}
-				
+
 			}
-			
-			/* string version
-			if(input2.equals(answerTwo)
-					&& input3.equals(answerThree)
-					&& input4.equals(answerFour)
-					&& input5.equals(answerFive)
+
+
+			if(userAnswer2.equals(answer2)
+					&& userAnswer3.equals(answer3)
+					&& userAnswer4.equals(answer4)
+					&& userAnswer5.equals(answer5)
 					&& countEights == 8
 					&& countFours == 4
 					&& countTwos == 0
-					&& countOnes == 1
-					)
-				*/
-			
-				if(userAnswer2 == answer2
-						&& userAnswer3 == answer3
-						&& userAnswer4 == answer4
-						&& userAnswer5 == answer5
-						&& countEights == 8
-						&& countFours == 4
-						&& countTwos == 0
-						&& countOnes == 1
-						)
+					&& countOnes == 1)
 			{
 
 				welcomePage.loadBinToDec3();
-				
+
 				welcomePage.validate();
-		        welcomePage.setVisible(true);
-		        welcomePage.repaint();
+				welcomePage.setVisible(true);
+				welcomePage.repaint();
 			}
 			else
 			{
 				//dialog box welcomes user to game and gives them brief instructions
-		    	String errorMessage = "Wrong answer, try again!";
-		    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "worng answer", JOptionPane.YES_NO_OPTION);
-		    	
-		    	answerField2.setText("");
-		    	answerField3.setText("");
-		    	answerField4.setText("");
-		    	answerField5.setText("");
-		    	
+				String errorMessage = "Wrong answer, try again!";
+				JOptionPane.showMessageDialog(welcomePage, errorMessage, "worng answer", JOptionPane.YES_NO_OPTION);
+
+				answerField2.setText("");
+				answerField3.setText("");
+				answerField4.setText("");
+				answerField5.setText("");
+
 				int startx = 60;
 				int starty = 600;
-				
+
 				for (int i = 0; i < recList.size(); i++)
 				{
 					recList.get(i).setLocation(startx, starty);
 					startx+=40;
 				}
 				repaint();
-		    	
-				
+
+
 			}
 
-			
+
 		} //end action performed
-		
-		
+
+
 	} //end button listener
-	
-	
-	
-	/* These methods always have to present when you implement MouseListener
-	
-	 public void mouseClicked (MouseEvent me) {} 
-	 public void mouseEntered (MouseEvent me) {} 
-	 public void mousePressed (MouseEvent me) {} 
-	 public void mouseReleased (MouseEvent me) {}  
-	 public void mouseExited (MouseEvent me) {}  
-	*/
-	
-	 // This method will be called when the mouse has been clicked. 
-	 public void mouseClicked (MouseEvent me) 
-	 {
-		 
-			// Save the coordinates of the click lke this.
-			xpos = me.getX(); 
-			ypos = me.getY();
 
 
-			//select one of the rectangles first
-			for (int i = 0; i < recList.size(); i++){
-				int recx = (int) recList.get(i).getX();
-				int recy = (int) recList.get(i).getY();
-				if ((xpos >= recx) && (xpos <= (recx + rectUnit)) && (ypos >= recy) && (ypos <= (recy + rectUnit))){
-					rectSelected = true;
-					rectSelectedNum = i;
-					break;
-				} 
-				
 
-			}
-			
-			if(rectSelected)
+	// This method will be called when the mouse has been clicked. 
+	public void mouseClicked (MouseEvent me) 
+	{
+
+		// Save the coordinates of the click lke this.
+		xpos = me.getX(); 
+		ypos = me.getY();
+
+
+		//select one of the rectangles first
+		for (int i = 0; i < recList.size(); i++){
+			int recx = (int) recList.get(i).getX();
+			int recy = (int) recList.get(i).getY();
+			if ((xpos >= recx) && (xpos <= (recx + rectUnit)) && (ypos >= recy) && (ypos <= (recy + rectUnit))){
+				rectSelected = true;
+				rectSelectedNum = i;
+				break;
+			} 
+
+
+		}
+
+		if(rectSelected)
+		{
+
+			if((xpos >= box8x) && (xpos <= (box8x + box8width)) && (ypos >= box8y) && (ypos <= (box8y + box8height)))
 			{
+				boxSelected8 = true;
+				boxSelected4 = false;
+				boxSelected2 = false;
+				boxSelected1 = false;
+				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
-				if((xpos >= box8x) && (xpos <= (box8x + box8width)) && (ypos >= box8y) && (ypos <= (box8y + box8height)))
-				{
-					boxSelected8 = true;
-					boxSelected4 = false;
-					boxSelected2 = false;
-					boxSelected1 = false;
-					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-					
-				}
-				else if((xpos >= box4x) && (xpos <= (box4x + box4width)) && (ypos >= box4y) && (ypos <= (box4y + box4height)))
-				{
-					boxSelected4 = true;
-					boxSelected8 = false;
-					boxSelected2 = false;
-					boxSelected1 = false;
-					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-					
-				}
-				else if((xpos >= box2x) && (xpos <= (box2x + box2width)) && (ypos >= box2y) && (ypos <= (box2y + box2height)))
-				{
-					boxSelected2 = true;
-					boxSelected4 = false;
-					boxSelected8 = false;
-					boxSelected1 = false;
-					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-					
-				}
-				else if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
-				{
-					boxSelected1 = true;
-					boxSelected4 = false;
-					boxSelected2 = false;
-					boxSelected8 = false;
-					recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-					
-				}
-				else {
-					
-				}
+			}
+			else if((xpos >= box4x) && (xpos <= (box4x + box4width)) && (ypos >= box4y) && (ypos <= (box4y + box4height)))
+			{
+				boxSelected4 = true;
+				boxSelected8 = false;
+				boxSelected2 = false;
+				boxSelected1 = false;
+				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+
+			}
+			else if((xpos >= box2x) && (xpos <= (box2x + box2width)) && (ypos >= box2y) && (ypos <= (box2y + box2height)))
+			{
+				boxSelected2 = true;
+				boxSelected4 = false;
+				boxSelected8 = false;
+				boxSelected1 = false;
+				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+
+			}
+			else if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
+			{
+				boxSelected1 = true;
+				boxSelected4 = false;
+				boxSelected2 = false;
+				boxSelected8 = false;
+				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+
+			}
+			else {
 
 			}
 
+		}
 
 
 
-			//show the results of the click 
-			repaint();
-		
-	 } //end mouse click listener
-	
-	
-	 // When it has been released 
-	 // note that a click also calls these Mouse-Pressed and Released. 
-	 // since they are empty nothing hapens here. 
-	 public void mouseReleased (MouseEvent me) {} 
-	 
-	 // This is called when the mous has been pressed 
-	 public void mousePressed (MouseEvent me) {}
-	
-	 // This is executed when the mouse enters the applet. it will only 
-	 // be executed again when the mouse has left and then re-entered. 
-	 public void mouseEntered (MouseEvent me) {}
-	
-	 // When the Mouse leaves the applet. 
-	 public void mouseExited (MouseEvent me) {} 
+
+		//show the results of the click 
+		repaint();
+
+	} //end mouse click listener
+
+
+	// When it has been released 
+	// note that a click also calls these Mouse-Pressed and Released. 
+	// since they are empty nothing hapens here. 
+	public void mouseReleased (MouseEvent me) {} 
+
+	// This is called when the mous has been pressed 
+	public void mousePressed (MouseEvent me) {}
+
+	// This is executed when the mouse enters the applet. it will only 
+	// be executed again when the mouse has left and then re-entered. 
+	public void mouseEntered (MouseEvent me) {}
+
+	// When the Mouse leaves the applet. 
+	public void mouseExited (MouseEvent me) {} 
 
 } //end class thirdpage
 

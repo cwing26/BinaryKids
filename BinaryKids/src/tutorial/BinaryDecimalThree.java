@@ -58,15 +58,15 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 	
 	//13 in base 10 = 013
 	final int BinToDecNumSquaresActual = 13;
-	final int answer1 = 0;
-	final int answer2 = 1;
-	final int answer3 = 3;
+	final String answer1 = "0";
+	final String answer2 = "1";
+	final String answer3 = "3";
 	final String answerOne = "0";
 	final String answerTwo = "1";
 	final String answerThree = "3";
-	int userAnswer1;
-	int userAnswer2;
-	int userAnswer3;
+	String userAnswer1;
+	String userAnswer2;
+	String userAnswer3;
 	
 	// The X-coordinate and Y-coordinate of the last click. 
 	int xpos; 
@@ -292,14 +292,8 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			//then go to new page
 			
 			//String input1 =  answerField1.getText();
-			String input2 =  answerField2.getText();
-			String input3 =  answerField3.getText();
-
-			
-			//userAnswer1 = Integer.parseInt(input1);
-			userAnswer2 = Integer.parseInt(input2);
-			userAnswer3 = Integer.parseInt(input3);
-			
+			userAnswer2 =  answerField2.getText();
+			userAnswer3 =  answerField3.getText();		
 			
 			//second part of correct answer: determine 
 			//whether correct number of rects are in each box
@@ -334,8 +328,8 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			if(input2.equals(answerTwo)
 					&& input3.equals(answerThree) && countTens == 10 && countOnes == 3)
 			*/
-			if(userAnswer2 == answer2
-					&& userAnswer3 == answer3 && countTens == 10 && countOnes == 3)
+			if(userAnswer2.equals(answer2)
+					&& userAnswer3.equals(answer3) && countTens == 10 && countOnes == 3)
 			{
 				String congratsMessage = "Good job!";
 		    	JOptionPane.showMessageDialog(welcomePage, congratsMessage, "good job", JOptionPane.YES_NO_OPTION);
