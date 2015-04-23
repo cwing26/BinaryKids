@@ -1,0 +1,25 @@
+1.	representations of numbers (decimal, roman numeral, blocks) how theyre used
+2.	one system of numbers you might not be familiar with is binary, which we’re going to teach you
+
+3.	binary numbers are essential for computers….checkboxes. 
+4.	you use computers for these things, but actually all of these use binary!! Lots of images. (social media, cell phones)
+
+5.	where does binary comes from?
+6.	Comes from root bi, root two. Images of bicycle and binocular. 
+
+7.	Before we talk about binary, lets talk about decimal ..show how places are derived using a base 10 system, which is what they already know. 
+8.	Exponent base thing 
+9.	Decimal numbers can be from 0-9 (values in each place) 
+
+10.	Show different places in binary are derived from powers of two. (2^0)
+11.	Binary numbers use a  base2 system, they can only be 0 and 1 
+
+12.	Show a quick conversion to illustrate different places in decimal/binary
+
+
+13.	WHAT IS SIGNIFICance? Why would you ever want to know about these numbers? –diff number systems apply to different situations
+14.	One situation where they fit is computers/electronics/electricity. One means something is turned, on and 0 means turned off
+15.	This is basic principle that was used to build comp youre using now. 
+
+16.	Completed progress on page 4 
+17.	Play music after each right answer 
