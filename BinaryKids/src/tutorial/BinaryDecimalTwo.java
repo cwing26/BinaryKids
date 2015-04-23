@@ -1,58 +1,30 @@
 package tutorial;
 
 
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
+
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
 import javax.swing.JPanel;
-import javax.swing.JApplet;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
-
-import java.awt.*; 
-import java.applet.*;
 import java.awt.BorderLayout;
 import java.awt.event.*;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.EventQueue;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.Image;
-import java.awt.TextField;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
 
 
+@SuppressWarnings("serial")
 public class BinaryDecimalTwo extends JPanel implements MouseListener
 {	
 	WelcomePage welcomePage;
@@ -97,22 +69,11 @@ public class BinaryDecimalTwo extends JPanel implements MouseListener
 	final String answer4 = "0";
 	final String answer5 = "1";
 
-	final String answerTwo = "1";
-	final String answerThree = "0";
-	final String answerFour = "1";
-	final String answerFive = "1";
-
-	//int version user answer
+	//user answer
 	String userAnswer2;
 	String userAnswer3;
 	String userAnswer4;
 	String userAnswer5;
-
-	//string version user answer
-	String numEightsInput;
-	String numFoursInput;
-	String numTwosInput;
-	String numOnesInput;
 
 	// The coordinates of the 10's rectangle and 1s rectangle 
 	int box8x, box8y, box8width, box8height;

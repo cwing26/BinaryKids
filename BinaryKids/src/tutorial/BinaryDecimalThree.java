@@ -1,69 +1,37 @@
 package tutorial;
 
 
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JApplet;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
-import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
-
-import java.awt.*; 
-import java.applet.*;
 import java.awt.BorderLayout;
 import java.awt.event.*;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.EventQueue;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
 import java.awt.Insets;
 import java.awt.Rectangle;
-import java.awt.RenderingHints;
-import java.awt.Image;
-import java.awt.TextField;
-import java.awt.Toolkit;
 import java.util.ArrayList;
 
 
 
+@SuppressWarnings("serial")
 public class BinaryDecimalThree extends JPanel implements MouseListener
 {	
 	WelcomePage welcomePage;
 	
-	//13 in base 10 = 013
+	//13 in base 10 = 13
 	final int BinToDecNumSquaresActual = 13;
-	final String answer1 = "0";
 	final String answer2 = "1";
 	final String answer3 = "3";
-	final String answerOne = "0";
-	final String answerTwo = "1";
-	final String answerThree = "3";
 	String userAnswer1;
 	String userAnswer2;
 	String userAnswer3;
@@ -186,9 +154,9 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 	public void initJLabels(){
 		TextTens = new JLabel("Tens");
 		TextOnes = new JLabel("Ones");
-		TextHowManyTens = new JLabel("How many TENS are there in 11?");
-		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
-		DecToBinNumSquaresText = new JLabel("                  How do we get the number 11? 11 = how many tens + how many ones?");
+		TextHowManyTens = new JLabel("How many TENS are there in 13?");
+		TextHowManyOnes = new JLabel("How many ONES are there in 13?");
+		DecToBinNumSquaresText = new JLabel("                  How do we get the number 13? 13 = how many tens + how many ones?");
 		DecToBinNumSquaresText2 = new JLabel("Click on a square and then click in one of the boxes to assign the square to the box. Distribute");
 		DecToBinNumSquaresText3 = new JLabel("squares to the largest box possible, starting from the left.");
 	}
