@@ -93,6 +93,7 @@ public class StartPage extends JPanel
 		{
 			welcomePage.setUserName(nameField.getText());
 			nameEntered = true;
+			welcomePage.loadFirstPage();
 			repaint();
 			
 		}
