@@ -157,10 +157,10 @@ public class FirstPage extends JPanel
 
     	add(submitButton2);
     	
-    	String obstImgFileName = "titleImage.jpg";
+    	//String obstImgFileName = "titleImage.jpg";
 		//try to load the image file
 		try {
-			boxIcon = new ImageIcon(ImageIO.read(new File(obstImgFileName)));
+			boxIcon = new ImageIcon(ImageIO.read(new File(WelcomePage.obstImgFileName)));
 		} catch (IOException e) {
 			System.out.println("Please check image file path.");
 			e.printStackTrace();

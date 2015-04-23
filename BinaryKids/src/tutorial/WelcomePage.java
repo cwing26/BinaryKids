@@ -13,6 +13,7 @@ import java.awt.*;
 import java.applet.*;
 import java.awt.BorderLayout;
 import java.awt.event.*;
+import java.awt.image.BufferedImage;
 import java.awt.BorderLayout;
 import java.awt.Button;
 import java.awt.Checkbox;
@@ -26,17 +27,15 @@ import java.awt.RenderingHints;
 import java.awt.Image;
 import java.awt.TextField;
 import java.awt.Toolkit;
+import java.io.BufferedReader;
+import java.io.InputStream;
+import java.io.InputStreamReader;
 
 
 
 
 public class WelcomePage extends JApplet
 {
-	public enum TutorialType {
-		DECBIN, BINDEC, BINADD, BINSUB
-	}
-	
-	TutorialType tutorial;
 	
 	WelcomePage welcome = this;
 	
@@ -75,6 +74,7 @@ public class WelcomePage extends JApplet
 	private String userName = "";
 	private String userAnswer = "";
 	
+
 	public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
 	public static String obstImgFileName1 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
 	public static String obstImgFileName2 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOff.jpg";
@@ -111,6 +111,7 @@ public class WelcomePage extends JApplet
      */
     private void createGUI() 
     {
+    	
     	//initializaing all of the components of the tutorial
     	contentPane = getContentPane();
     	startPage = new StartPage(this);

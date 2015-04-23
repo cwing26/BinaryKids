@@ -157,10 +157,10 @@ public class ThirdPage extends JPanel
 		img1 = img1.getScaledInstance(200, 400, Image.SCALE_SMOOTH);
 		
 		
-		String fileName2 = "titleImage.jpg";
+		//String fileName2 = "titleImage.jpg";
 		//try to load the image file
 		try {
-			boxIcon2 = new ImageIcon(ImageIO.read(new File(WelcomePage.obstImgFileName))); //fileName2
+			boxIcon2 = new ImageIcon(ImageIO.read(new File(WelcomePage.obstImgFileName2))); //fileName2
 		} catch (IOException e) {
 			System.out.println("Please check image file path.");
 			e.printStackTrace();

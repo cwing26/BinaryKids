@@ -42,6 +42,7 @@ import java.awt.RenderingHints;
 import java.awt.Image;
 import java.awt.TextField;
 import java.awt.Toolkit;
+import java.io.BufferedInputStream;
 import java.io.File;
 import java.io.IOException;
 

@@ -81,6 +81,7 @@ public class DecToBinPage4 extends JPanel
 	//constructor, param is the applet
 	public DecToBinPage4(WelcomePage welcome)
 	{
+		setBackground(WelcomePage.backgroundColor);
 		welcomePage = welcome;
 
 		//initializations
