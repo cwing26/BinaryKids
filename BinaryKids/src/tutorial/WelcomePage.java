@@ -61,7 +61,6 @@ public class WelcomePage extends JApplet
 	private DecToBinPage3 decToBinPage3;
 	private DecToBinPage4 decToBinPage4;
 	private BinaryAddOne baOne;
-	
 	private DemoPage demoPage;
 
 	JPanel buttonPanel;
@@ -219,6 +218,7 @@ public class WelcomePage extends JApplet
 	public void loadNewTutorial(String tutorialType)
 	{
 		contentPane.remove(fourthPage);
+		contentPane.remove(demoPage);
 		if (tutorialType.equals("DECBIN"))
 		{
 			contentPane.add(decToBinPage, BorderLayout.CENTER);
@@ -386,6 +386,7 @@ public class WelcomePage extends JApplet
 			contentPane.remove(decToBinPage4);
 			contentPane.remove(baOne);
 			contentPane.add(fourthPage);
+			contentPane.remove(demoPage);
 			validate();
 	        setVisible(true);
 	        repaint();	
