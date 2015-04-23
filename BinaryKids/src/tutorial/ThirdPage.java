@@ -103,6 +103,29 @@ public class ThirdPage extends JPanel
 	JLabel eight;
 	JLabel sixteen;
 	
+	JLabel oneAnswer;
+	JLabel twoAnswer;
+	JLabel fourAnswer;
+	JLabel eightAnswer;
+	JLabel sixteenAnswer;
+	
+	int answerTries = 0;
+	final int maxTries = 2;
+	
+	int userAnswer1;
+	int userAnswer2;
+	int userAnswer3;
+	int userAnswer4;
+	int userAnswer5;
+	
+	int answer16 = 16;
+	int answer8 = 8;
+	int answer4 = 4;
+	int answer2 = 2;
+	int answer1 = 1;
+	
+	//for fourth panel 
+	JPanel labelPanel;
 	
 	WelcomePage welcomePage;
 	
@@ -147,8 +170,9 @@ public class ThirdPage extends JPanel
 
     	
 		//try to load the image file
+    	//String fileName = "lightOn.jpg";
 		try {
-			boxIcon = new ImageIcon(ImageIO.read(new File(WelcomePage.obstImgFileName1))); //obstImgFileName1
+			boxIcon = new ImageIcon(ImageIO.read(new File(WelcomePage.lightOnImagePath)));
 		} catch (IOException e) {
 			System.out.println("Please check image file path.");
 			e.printStackTrace();
@@ -160,7 +184,7 @@ public class ThirdPage extends JPanel
 		//String fileName2 = "titleImage.jpg";
 		//try to load the image file
 		try {
-			boxIcon2 = new ImageIcon(ImageIO.read(new File(WelcomePage.obstImgFileName2))); //fileName2
+			boxIcon2 = new ImageIcon(ImageIO.read(new File(WelcomePage.lightOffImagePath)));
 		} catch (IOException e) {
 			System.out.println("Please check image file path.");
 			e.printStackTrace();
@@ -435,7 +459,7 @@ public class ThirdPage extends JPanel
     	fourthPanel.setLayout(new GridLayout(0,1));
     	
     	JPanel textPanel = new JPanel();
-    	JPanel labelPanel = new JPanel(new GridLayout(2,5));
+    	labelPanel = new JPanel(new GridLayout(2,5));
     	//JPanel answerPanel = new JPanel();
     	JPanel submitPanel = new JPanel();
     	
@@ -467,7 +491,27 @@ public class ThirdPage extends JPanel
     	one.setFont(new Font("Verdana", 1, 25));
     	one.setBorder(new LineBorder(Color.blue)); 
 
-
+    	sixteenAnswer = new JLabel("16");
+    	sixteenAnswer.setFont(new Font("Verdana", 1, 25));
+    	sixteenAnswer.setBorder(new LineBorder(Color.blue)); 
+    	
+    	eightAnswer = new JLabel("8");
+    	eightAnswer.setFont(new Font("Verdana", 1, 25));
+    	eightAnswer.setBorder(new LineBorder(Color.green)); 
+    	
+    	fourAnswer = new JLabel("4");
+    	fourAnswer.setFont(new Font("Verdana", 1, 25));
+    	fourAnswer.setBorder(new LineBorder(Color.blue)); 
+    	
+    	twoAnswer = new JLabel("2");
+    	twoAnswer.setFont(new Font("Verdana", 1, 25));
+    	twoAnswer.setBorder(new LineBorder(Color.green)); 
+    	
+    	oneAnswer = new JLabel("1");
+    	oneAnswer.setFont(new Font("Verdana", 1, 25));
+    	oneAnswer.setBorder(new LineBorder(Color.blue)); 
+    	
+    	
     	labelPanel.add(sixteen);
     	labelPanel.add(eight);
     	labelPanel.add(four);
@@ -480,13 +524,6 @@ public class ThirdPage extends JPanel
     	answerField4 = new JTextField();
     	answerField5 = new JTextField();
     	
-    	/*
-    	answerField1.setSize(200, 200);
-    	answerField2.setSize(200, 200);
-    	answerField3.setSize(200, 200);
-    	answerField4.setSize(200, 200);
-    	answerField5.setSize(200, 200);
-    	*/
     	
     	answerField1.setColumns(5);
     	answerField1.setFont(new Font("Verdana", 1, 25));
@@ -508,7 +545,7 @@ public class ThirdPage extends JPanel
     	
     	submitButton = new JButton("Check your answer");
     	submitButton.addActionListener(new submitButtonListener());
-    	submitPanel.setBackground(new Color(100, 140, 20));
+    	submitPanel.setBackground(WelcomePage.backgroundColor);
     	submitPanel.add(submitButton);
     	
     	fourthPanel.add(textPanel);
@@ -546,7 +583,105 @@ public class ThirdPage extends JPanel
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			//get text, give user 3 chances to get it right and then if not, replace with labels in grid
+			//get text, give user 2 chances to get it right and then if not, replace with labels in grid
+			String userInput1 = answerField1.getText();
+			String userInput2 = answerField2.getText();
+			String userInput3 = answerField3.getText();
+			String userInput4 = answerField4.getText();
+			String userInput5 = answerField5.getText();
+			
+			userAnswer1 = Integer.parseInt(userInput1);
+			userAnswer2 = Integer.parseInt(userInput2);
+			userAnswer3 = Integer.parseInt(userInput3);
+			userAnswer4 = Integer.parseInt(userInput4);
+			userAnswer5 = Integer.parseInt(userInput5);
+			
+			if(answerTries < maxTries)
+			{
+				if(userAnswer1 == answer16 
+						&& userAnswer2 == answer8
+						&& userAnswer3 == answer4
+						&& userAnswer4 == answer2
+						&& userAnswer5 == answer1)
+				{
+					//dialog box welcomes user to game and gives them brief instructions
+			    	String errorMessage = "correct answer";
+			    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "worng answer", JOptionPane.YES_NO_OPTION);
+	
+					labelPanel.remove(answerField1);
+			    	labelPanel.remove(answerField2);
+			    	labelPanel.remove(answerField3);
+			    	labelPanel.remove(answerField4);
+			    	labelPanel.remove(answerField5);
+			    	
+			    	labelPanel.add(sixteenAnswer);
+			    	labelPanel.add(eightAnswer);
+			    	labelPanel.add(fourAnswer);
+			    	labelPanel.add(twoAnswer);
+			    	labelPanel.add(oneAnswer);
+			    	
+			    	labelPanel.validate();
+			    	labelPanel.setVisible(true);
+			    	labelPanel.repaint();
+			    	
+			    	fourthPanel.validate();
+			    	fourthPanel.repaint();
+			    	fourthPanel.setVisible(true);
+			    	
+			    
+				}
+				else
+				{
+					//dialog box welcomes user to game and gives them brief instructions
+			    	String errorMessage = "wrong answer";
+			    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "worng answer", JOptionPane.YES_NO_OPTION);
+			    	
+			    	answerField1.setText("");
+			    	answerField2.setText("");
+			    	answerField3.setText("");
+			    	answerField4.setText("");
+			    	answerField5.setText("");
+			    	
+			    	labelPanel.validate();
+			    	labelPanel.setVisible(true);
+			    	labelPanel.repaint();
+			    	
+			    	fourthPanel.validate();
+			    	fourthPanel.repaint();
+			    	fourthPanel.setVisible(true);
+			    	
+			    	answerTries++;
+			    	
+				}
+			}
+			else
+			{
+				//dialog box welcomes user to game and gives them brief instructions
+		    	String errorMessage = "wrong answer";
+		    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "worng answer", JOptionPane.YES_NO_OPTION);
+		    	
+		    	labelPanel.remove(answerField1);
+		    	labelPanel.remove(answerField2);
+		    	labelPanel.remove(answerField3);
+		    	labelPanel.remove(answerField4);
+		    	labelPanel.remove(answerField5);
+		    	
+		    	labelPanel.add(sixteenAnswer);
+		    	labelPanel.add(eightAnswer);
+		    	labelPanel.add(fourAnswer);
+		    	labelPanel.add(twoAnswer);
+		    	labelPanel.add(oneAnswer);
+		    	
+		    	labelPanel.validate();
+		    	labelPanel.setVisible(true);
+		    	labelPanel.repaint();
+		    	
+		    	fourthPanel.validate();
+		    	fourthPanel.repaint();
+		    	fourthPanel.setVisible(true);
+		    	
+		    	
+			}
 			validate();
 	        setVisible(true);
 	        repaint();	

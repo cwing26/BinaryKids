@@ -61,6 +61,8 @@ public class WelcomePage extends JApplet
 	private DecToBinPage3 decToBinPage3;
 	private DecToBinPage4 decToBinPage4;
 	private BinaryAddOne baOne;
+	
+	private DemoPage demoPage;
 
 	JPanel buttonPanel;
 	JButton nextButton;
@@ -75,9 +77,9 @@ public class WelcomePage extends JApplet
 	private String userAnswer = "";
 	
 
-	public static String obstImgFileName = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
-	public static String obstImgFileName1 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
-	public static String obstImgFileName2 = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOff.jpg";
+	public static String titleImagePath = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\titleImage.jpg";
+	public static String lightOnImagePath = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOn.jpg";
+	public static String lightOffImagePath = "C:\\Users\\Christopher\\Documents\\GitHub\\BinaryKids\\BinaryKids\\resources\\lightOff.jpg";
 
 //	public static String obstImgFileName = "titleImage.jpg";
 //	public static String obstImgFileName1 = "lightOn.jpg";
@@ -128,6 +130,7 @@ public class WelcomePage extends JApplet
     	decToBinPage3 = new DecToBinPage3(this);
     	decToBinPage4 = new DecToBinPage4(this);
     	baOne = new BinaryAddOne(this);
+    	demoPage = new DemoPage(this);
     	
     	//dialog box welcomes user to game and gives them brief instructions
     	String welcomeMessage = "Welcome to BinaryKids: Type in your name and click next to get started!";
@@ -138,6 +141,7 @@ public class WelcomePage extends JApplet
     	
     	//Create and set up the content pane.
     	setLayout(new BorderLayout()); 
+    	//add(startPage, BorderLayout.CENTER);
     	add(startPage, BorderLayout.CENTER);
     	add(buttonPanel, BorderLayout.NORTH); //add buttonPanel to the top of game frame
     	
@@ -325,6 +329,26 @@ public class WelcomePage extends JApplet
         repaint();
 	}
 	
+	public void loadFirstPage()
+	{
+		contentPane.remove(startPage);
+		firstPage = new FirstPage(welcome);
+		contentPane.add(firstPage, BorderLayout.CENTER);
+		validate();
+        setVisible(true);
+        repaint();
+	}
+	
+	public void loadSecondPage()
+	{
+		contentPane.remove(firstPage);
+		secondPage = new SecondPage(welcome);
+		contentPane.add(secondPage, BorderLayout.CENTER);
+		validate();
+        setVisible(true);
+        repaint();
+	}
+	
 	public void setUserName(String name)
 	{
 		userName = name;
@@ -452,6 +476,18 @@ public class WelcomePage extends JApplet
 		        repaint();
 			}
 			else if(pageFlag == 3)
+			{
+
+				contentPane.remove(thirdPage);
+				contentPane.add(demoPage, BorderLayout.CENTER);
+				
+				pageFlag++;
+				
+				validate();
+		        setVisible(true);
+		        repaint();
+			}
+			else if(pageFlag == 4)
 			{
 
 				contentPane.remove(thirdPage);
