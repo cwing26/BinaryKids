@@ -75,12 +75,14 @@ public class WelcomePage extends JApplet
 	private String userName = "";
 	private String userAnswer = "";
 	
+	public static String titlePath = "images/titleTextImage.jpg";
 	public static String titleImagePath = "images/titleImage.jpg";
 	public static String lightOnImagePath = "images/lightOn.jpg";
 	public static String lightOffImagePath = "images/lightOff.jpg";
 	public Image titleImg;
 	public Image lightOnImg;
 	public Image lightOffImg;
+	public Image titleTextImg;
 	
     //Called when this applet is loaded into the browser.
     public void init() 
@@ -163,6 +165,9 @@ public class WelcomePage extends JApplet
     	lightOffImg = Toolkit.getDefaultToolkit().getImage(
     			getClass().getClassLoader().getResource(WelcomePage.lightOffImagePath));
     	lightOffImg = lightOnImg.getScaledInstance(200, 400, Image.SCALE_SMOOTH);
+    	titleTextImg = Toolkit.getDefaultToolkit().getImage(
+    			getClass().getClassLoader().getResource(WelcomePage.titlePath));
+    	titleTextImg = titleTextImg.getScaledInstance(400, 300, Image.SCALE_SMOOTH);
     }
     
     public void createButtonPanel()

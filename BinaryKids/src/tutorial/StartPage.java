@@ -38,11 +38,15 @@ public class StartPage extends JPanel
     	welcomePage = welcome;
     	
     	setBackground(WelcomePage.backgroundColor);
-    	
+    	//ImageIcon icon = new ImageIcon(welcomePage.titleTextImg);
+    	//ImageIcon icon = new ImageIcon("images/titleTextImg");
     	
     	titlePanel = new JPanel();
     	titleLabel = new JLabel("Welcome to BinaryKids!");
     	titleLabel.setFont(new Font("Verdana",1,20));
+    	//titleLabel = new JLabel();
+    	//titleLabel.setIcon(icon);
+    	//titlePanel.add(welcomePage.titleTextImg);
     	titlePanel.add(titleLabel);
     	titlePanel.setBorder(new LineBorder(Color.BLACK)); 
     	
