@@ -57,7 +57,7 @@ public class DemoPage extends JPanel implements ActionListener
     JLabel titleLabel;
     JButton animationButton;
 
-    //components of animation
+    //components of first decimal animation
     String one = "1";
     String three = "3";
     String two = "2";
@@ -77,8 +77,39 @@ public class DemoPage extends JPanel implements ActionListener
     
     String explanation = "Decimal numbers can have many digits.";
     
+    
+    //components of second binary animation
+    //45 in binary is 101101
+    String binaryOne = "1";
+    String binaryZero = "0";
+    
+    String thirtyTwosPlace = "Thirty-Twos Place";
+    String sixteensPlace = "Sixteens place";
+    String eightsPlace = "Eights place";
+    String foursPlace = "Fours place";
+    String twosPlace = "Twos place";
+     
+    String thirtyTwoMultiplication = "32 x 1";
+    String thirtyTwoMultiplicationAnswer = "32 x 1 = 32";
+    
+    String sixteenMultiplication = "16 x 0";
+    String sixteenMultiplicationAnswer = "16 x 1 = 0";
+    
+    String eightMultiplication = "8 x 1";
+    String eightMultiplicationAnswer = "8 x 1 = 8";
+    
+    String fourMultiplication = "4 x 1";
+    String fourMultiplicationAnswer = "4 x 1 = 4";
+    
+    String twoMultiplication = "2 x 0";
+    String twoMultiplicationAnswer = "2 x 0 = 0";
+    
+    String oneMultiplication = "1 x 1";
+    String oneMultiplicationAnswer = "1 x 1 = 1";
+    
+    
 	private Timer timer;
-	private int DELAY = 2000;
+	private int DELAY = 1000;
 	int countAnimation = 0;
 	
     
@@ -310,6 +341,153 @@ public class DemoPage extends JPanel implements ActionListener
         	
         	g.setColor(Color.blue);
         	g.drawString("Sum : 132", 615, 320);
+        	explanation = "Binary numbers can also have many digits";
+
+    	}
+    	else if(countAnimation == 12)
+    	{		
+    		//101101
+    		g.setColor(Color.black);
+    		g.setFont(new Font("Verdana", 1, 150));
+        	g.drawString(binaryOne, 50, 275);
+        	g.drawString(binaryZero, 170, 275);
+        	g.drawString(binaryOne, 290, 275);
+        	g.drawString(binaryOne, 410, 275);
+        	g.drawString(binaryZero, 530, 275);
+        	g.drawString(binaryOne, 650, 275);
+        	
+        	g.setColor(Color.blue);
+        	g.setFont(new Font("Verdana", 1, 16));
+        	
+        	g.drawString(thirtyTwosPlace, 45, 130);
+        	g.drawString(sixteensPlace, 165, 130);
+        	g.drawString(eightsPlace, 285, 130);
+        	g.drawString(foursPlace, 410, 130);
+        	g.drawString(twosPlace, 530, 130);
+        	g.drawString(onesPlace, 650, 130);
+        	
+        	
+        	g.setColor(Color.red);
+        	g.drawRect(50, 140, 110, 150);
+        	g.drawRect(170, 140, 110, 150);
+        	g.drawRect(290, 140, 110, 150);
+        	g.drawRect(410, 140, 110, 150);
+        	g.drawRect(530, 140, 110, 150);
+        	g.drawRect(650, 140, 110, 150);
+        	
+        	
+        	
+    	}
+    	else if(countAnimation == 13)
+    	{		
+    		//101101
+    		g.setColor(Color.black);
+    		g.setFont(new Font("Verdana", 1, 150));
+        	g.drawString(binaryOne, 50, 275);
+        	g.drawString(binaryZero, 170, 275);
+        	g.drawString(binaryOne, 290, 275);
+        	g.drawString(binaryOne, 410, 275);
+        	g.drawString(binaryZero, 530, 275);
+        	g.drawString(binaryOne, 650, 275);
+        	
+        	g.setColor(Color.red);
+        	g.drawRect(50, 140, 110, 150);
+
+        	
+    	}
+    	else if(countAnimation == 14)
+    	{		
+    		//101101
+    		g.setColor(Color.black);
+    		g.setFont(new Font("Verdana", 1, 150));
+        	g.drawString(binaryOne, 50, 275);
+        	g.drawString(binaryZero, 170, 275);
+        	g.drawString(binaryOne, 290, 275);
+        	g.drawString(binaryOne, 410, 275);
+        	g.drawString(binaryZero, 530, 275);
+        	g.drawString(binaryOne, 650, 275);
+        	
+        	g.setColor(Color.red);
+        	g.drawRect(50, 140, 110, 150);
+        	
+        	g.setColor(Color.blue);
+        	g.setFont(new Font("Verdana", 1, 16));
+        	
+        	g.drawString(thirtyTwosPlace, 45, 130);
+
+    	}
+    	else if(countAnimation == 15)
+    	{		
+    		//101101
+    		g.setColor(Color.black);
+    		g.setFont(new Font("Verdana", 1, 150));
+        	g.drawString(binaryOne, 50, 275);
+        	g.drawString(binaryZero, 170, 275);
+        	g.drawString(binaryOne, 290, 275);
+        	g.drawString(binaryOne, 410, 275);
+        	g.drawString(binaryZero, 530, 275);
+        	g.drawString(binaryOne, 650, 275);
+        	
+        	g.setColor(Color.red);
+        	g.drawRect(50, 140, 110, 150);
+        	
+        	g.setColor(Color.blue);
+        	g.setFont(new Font("Verdana", 1, 16));
+        	
+        	g.drawString(thirtyTwosPlace, 45, 130);
+        	
+        	g.setColor(Color.black);
+        	g.drawString(thirtyTwoMultiplication, 55,310);
+        	g.setFont(new Font("Verdana", 1, 25));
+        	g.drawString("32", 55,375);
+        	
+
+    	}
+    	else if(countAnimation == 16)
+    	{		
+    		//101101
+    		g.setColor(Color.black);
+    		g.setFont(new Font("Verdana", 1, 150));
+        	g.drawString(binaryOne, 50, 275);
+        	g.drawString(binaryZero, 170, 275);
+        	g.drawString(binaryOne, 290, 275);
+        	g.drawString(binaryOne, 410, 275);
+        	g.drawString(binaryZero, 530, 275);
+        	g.drawString(binaryOne, 650, 275);
+        	
+        	
+        	g.setColor(Color.red);
+        	g.drawRect(170, 140, 110, 150);
+        	
+        	g.setColor(Color.black);
+        	g.setFont(new Font("Verdana", 1, 25));
+        	g.drawString("32", 55,375);
+
+    	}
+    	else if(countAnimation == 17)
+    	{		
+    		//101101
+    		g.setColor(Color.black);
+    		g.setFont(new Font("Verdana", 1, 150));
+        	g.drawString(binaryOne, 50, 275);
+        	g.drawString(binaryZero, 170, 275);
+        	g.drawString(binaryOne, 290, 275);
+        	g.drawString(binaryOne, 410, 275);
+        	g.drawString(binaryZero, 530, 275);
+        	g.drawString(binaryOne, 650, 275);
+        
+        	
+        	g.setColor(Color.red);
+        	g.drawRect(170, 140, 110, 150);
+        	
+        	g.setColor(Color.blue);
+        	g.setFont(new Font("Verdana", 1, 16));
+        	
+        	g.drawString(sixteensPlace, 165, 130);
+        	
+        	g.setColor(Color.black);
+        	g.setFont(new Font("Verdana", 1, 25));
+        	g.drawString("32", 55,375);
 
     	}
     		
@@ -321,7 +499,7 @@ public class DemoPage extends JPanel implements ActionListener
     public void actionPerformed(ActionEvent e) 
 	{
 		
-		if(countAnimation < 12)
+		if(countAnimation < 20)
 		{	
 			countAnimation++;
 		}
