@@ -86,17 +86,17 @@ public class ThirdPage extends JPanel
 	int answerTries = 0;
 	final int maxTries = 2;
 	
-	int userAnswer1;
-	int userAnswer2;
-	int userAnswer3;
-	int userAnswer4;
-	int userAnswer5;
+	String userAnswer1;
+	String userAnswer2;
+	String userAnswer3;
+	String userAnswer4;
+	String userAnswer5;
 	
-	int answer16 = 16;
-	int answer8 = 8;
-	int answer4 = 4;
-	int answer2 = 2;
-	int answer1 = 1;
+	String answer16 = "16";
+	String answer8 = "8";
+	String answer4 = "4";
+	String answer2 = "2";
+	String answer1 = "1";
 	
 	//for fourth panel 
 	JPanel labelPanel;
@@ -558,25 +558,20 @@ public class ThirdPage extends JPanel
 		public void actionPerformed(ActionEvent e) 
 		{
 			//get text, give user 2 chances to get it right and then if not, replace with labels in grid
-			String userInput1 = answerField1.getText();
-			String userInput2 = answerField2.getText();
-			String userInput3 = answerField3.getText();
-			String userInput4 = answerField4.getText();
-			String userInput5 = answerField5.getText();
-			
-			userAnswer1 = Integer.parseInt(userInput1);
-			userAnswer2 = Integer.parseInt(userInput2);
-			userAnswer3 = Integer.parseInt(userInput3);
-			userAnswer4 = Integer.parseInt(userInput4);
-			userAnswer5 = Integer.parseInt(userInput5);
+			userAnswer1 = answerField1.getText();
+			userAnswer2 = answerField2.getText();
+			userAnswer3 = answerField3.getText();
+			userAnswer4 = answerField4.getText();
+			userAnswer5 = answerField5.getText();
+		
 			
 			if(answerTries < maxTries)
 			{
-				if(userAnswer1 == answer16 
-						&& userAnswer2 == answer8
-						&& userAnswer3 == answer4
-						&& userAnswer4 == answer2
-						&& userAnswer5 == answer1)
+				if(userAnswer1.equals(answer16)  
+						&& userAnswer2.equals(answer8)
+						&& userAnswer3.equals(answer4)
+						&& userAnswer4.equals(answer2)
+						&& userAnswer5.equals(answer1))
 				{
 					//dialog box welcomes user to game and gives them brief instructions
 			    	String errorMessage = "correct answer";
