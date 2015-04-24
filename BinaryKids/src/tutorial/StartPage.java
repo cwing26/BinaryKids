@@ -1,5 +1,4 @@
 package tutorial;
-import java.awt.Button;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -11,6 +10,7 @@ import java.awt.event.ActionListener;
 
 import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
+import javax.swing.JButton;
 import javax.swing.JPanel;
 import javax.swing.JLabel;
 import javax.swing.border.LineBorder;
@@ -26,7 +26,7 @@ import java.net.URL;
 @SuppressWarnings("serial")
 public class StartPage extends JPanel
 {
-	Button submitButton;
+	JButton submitButton;
 	TextField nameField;
 	JPanel titlePanel;
 	JLabel titleLabel;
@@ -50,7 +50,7 @@ public class StartPage extends JPanel
     	
     	//titlePanel.setBorder(new LineBorder(Color.BLACK)); 
     	
-    	submitButton = new Button("Submit");
+    	submitButton = new JButton("Submit");
     	submitButton.addActionListener(new nameButtonListener());
     	nameField = new TextField("Enter your name here");
     	nameField.setColumns(20);
