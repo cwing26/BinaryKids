@@ -192,7 +192,7 @@ public class WelcomePage extends JApplet
   		buttonPanel = new JPanel();
   		buttonPanel.setBackground(new Color(76, 89, 95));
   		buttonPanel.add(closeButton); //add button to the buttonPanel
-  		//buttonPanel.add(nextButton);
+  		buttonPanel.add(nextButton);
   		
     }
  
@@ -391,6 +391,8 @@ public class WelcomePage extends JApplet
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
+			contentPane.remove(firstPage);
+			contentPane.remove(secondPage);
 			contentPane.remove(thirdPage);
 			contentPane.remove(fourthPage);
 			contentPane.remove(bdOne);
@@ -402,8 +404,8 @@ public class WelcomePage extends JApplet
 			contentPane.remove(decToBinPage3);
 			contentPane.remove(decToBinPage4);
 			contentPane.remove(baOne);
-			contentPane.add(fourthPage);
 			contentPane.remove(demoPage);
+			contentPane.add(fourthPage);
 			validate();
 	        setVisible(true);
 	        repaint();	
