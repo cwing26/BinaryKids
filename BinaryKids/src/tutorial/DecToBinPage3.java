@@ -25,14 +25,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	JLabel DecToBinNumSquaresText7;
 	JLabel DecToBinNumSquaresText8;
 	JLabel DecToBinNumSquaresText9;
-	JLabel TextEights;
-	JLabel TextFours;
-	JLabel TextTwos;
-	JLabel TextOnes;
-	JLabel TextHowManyEights;
-	JLabel TextHowManyFours;
-	JLabel TextHowManyTwos;
-	JLabel TextHowManyOnes;
+	JLabel DecToBinNumSquaresText10;
 	
 	//TextFields
 	JTextField NumberEightsField;
@@ -51,7 +44,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 	final int DecToBinNumSquaresActual = 11;
 	final int startx = 200;
-	final int starty = 180;
+	final int starty = 220;
 	int DecToBinNumSquaresInput;
 	
 
@@ -61,10 +54,11 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	int ypos;
 
 	// The coordinates of the boxes
-	int box8x, box8y, box8width, box8height;
-	int box4x, box4y, box4width, box4height;
-	int box2x, box2y, box2width, box2height;
-	int box1x, box1y, box1width, box1height;
+	final int box8x = 150, box8y = 280, box8width = 100, box8height = 250;
+	final int box4x = 290, box4y = 280, box4width = 100, box4height = 250;
+	final int box2x = 430, box2y = 280, box2width = 100, box2height = 250;
+	final int box1x = 570, box1y = 280, box1width = 100, box1height = 250;
+
 
 	//flags for boxes and rectangles
 	boolean boxSelected8 = false;
@@ -83,7 +77,6 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	JPanel titlePanel;
 	JPanel textPanel;
 	JPanel questionPanel;
-	JPanel boxLabelPanel;
 
 	//formats the title panel
 	public void initTitlePanel(){
@@ -112,6 +105,20 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		textPanel.add(DecToBinNumSquaresText2, c);
 		c.gridy = 2;
 		textPanel.add(DecToBinNumSquaresText3, c);
+		c.gridy = 3;
+		textPanel.add(DecToBinNumSquaresText4, c);
+		c.gridy = 4;
+		textPanel.add(DecToBinNumSquaresText5, c);
+		c.gridy = 5;
+		textPanel.add(DecToBinNumSquaresText6, c);
+		c.gridy = 6;
+		textPanel.add(DecToBinNumSquaresText7, c);
+		c.gridy = 7;
+		textPanel.add(DecToBinNumSquaresText8, c);
+		c.gridy = 8;
+		textPanel.add(DecToBinNumSquaresText9, c);
+		c.gridy = 9;
+		textPanel.add(DecToBinNumSquaresText10, c);
 	}
 
 	//formats the question panel layout
@@ -119,63 +126,25 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		questionPanel = new JPanel();
 		questionPanel.setLayout(new GridBagLayout());
 		questionPanel.setBackground(WelcomePage.backgroundColor);
-		GridBagConstraints c2 = new GridBagConstraints();
-		c2.anchor = GridBagConstraints.CENTER;
-		c2.fill = GridBagConstraints.HORIZONTAL;
-		c2.ipadx = 20;
-		c2.gridx = 0;
-		c2.gridy = 0;
-		questionPanel.add(TextHowManyEights, c2);
-		c2.gridx = 1;
-		c2.gridy = 0;
-		questionPanel.add(NumberEightsField, c2);
-		c2.gridx = 2;
-		c2.gridy = 0;
-		questionPanel.add(TextHowManyFours, c2);
-		c2.gridx = 3;
-		c2.gridy = 0;
-		questionPanel.add(NumberFoursField, c2);
-		c2.gridx = 0;
-		c2.gridy = 1;
-		questionPanel.add(TextHowManyTwos, c2);
-		c2.gridx = 1;
-		c2.gridy = 1;
-		questionPanel.add(NumberTwosField, c2);
-		c2.gridx = 2;
-		c2.gridy = 1;
-		questionPanel.add(TextHowManyOnes, c2);
-		c2.gridx = 3;
-		c2.gridy = 1;
-		questionPanel.add(NumberOnesField, c2);
-		c2.gridx = 0;
-		c2.gridy = 2;
-		c2.gridwidth = 4;
-		questionPanel.add(DecToBinSubmit, c2);
+		GridBagConstraints c = new GridBagConstraints();
+		c.anchor = GridBagConstraints.CENTER;
+		c.fill = GridBagConstraints.HORIZONTAL;
+		c.ipady = 10;
+		questionPanel.add(DecToBinSubmit, c);
 	}
 
 	//sets all the texts of all Jlabels
 	public void initJLabels(){
-		TextEights = new JLabel("Eights");
-		TextFours = new JLabel("Fours");
-		TextTwos = new JLabel("Twos");
-		TextOnes = new JLabel("Ones");
-		TextHowManyEights = new JLabel("How many EIGHTS are there in 11?");
-		TextHowManyFours = new JLabel("How many FOURS are there in 11?");
-		TextHowManyTwos = new JLabel("How many TWOS are there in 11?");
-		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
-		DecToBinNumSquaresText = new JLabel("Now we are going to convert 11 from decimal to binary!");
-		DecToBinNumSquaresText2 = new JLabel("Step 1: Look for the greatest power of 2. Choose the biggest number that will fit into the number you are converting.");
-		DecToBinNumSquaresText3 = new JLabel("Step 2: Move squares into this box until one whole unit is formed.");
-		DecToBinNumSquaresText4 = new JLabel("Step 3: Subtract this number from 11 and calculate the remainder.");
-		DecToBinNumSquaresText5 = new JLabel("Step 4: Move to the next lower power of two. If the next power of two cannot fit into the remainder, do not");
-		DecToBinNumSquaresText6 = new JLabel("         move any squares into that box. Continue until you reach a number that can go into the remainder.");
-		DecToBinNumSquaresText7 = new JLabel("         move any squares into that box. Continue until you reach a number that can go into the remainder.");
-		
-		
-		
-//		DecToBinNumSquaresText = new JLabel("Now we are going to convert 11 from decimal to binary! let's see visually how to represent 11 in binary (base 2)! Click on a square and then click ");
-//		DecToBinNumSquaresText2 = new JLabel("inside one of the boxes to assign the square to the box. Distribute the remaining squares to ");
-//		DecToBinNumSquaresText3 = new JLabel("the largest box possible, starting from the left.");
+		DecToBinNumSquaresText = new JLabel("Now we are going to convert 11 from decimal to binary! In decimal, we put 10 squares ino ");
+		DecToBinNumSquaresText2 = new JLabel("the TENS box and 1 square into the ONES box. Now we are going to put squares into the EIGHTS, FOURS, TWOS, and ONES boxes.");
+		DecToBinNumSquaresText3 = new JLabel("Step 1: Do we have enough squares to put eight squares in the EIGHTS box? If yes, put eight squares in the");
+		DecToBinNumSquaresText4 = new JLabel("              EIGHTS box. Click on a square and then click on the box to put the square inside.");
+		DecToBinNumSquaresText5 = new JLabel("Step 2: Since we had enough squares, type 1 below the EIGHTS box.");
+		DecToBinNumSquaresText6 = new JLabel("Step 3: Check how many squares are left remaining. Do we have enough to put four squares in the FOURS box?");
+		DecToBinNumSquaresText7 = new JLabel("Step 4: Since we don't have enough, type 0 below the FOURS box.");
+		DecToBinNumSquaresText8 = new JLabel("Step 5: Keep assigning the remaining squares until none are left.");
+		DecToBinNumSquaresText9 = new JLabel("Step 6: Remember: If you had enough squares to put in a box, type 1, otherwise type 0.");
+		DecToBinNumSquaresText10 = new JLabel("Step 7: When you finish, click submit to check your answer.");
 	}
 
 	//inits format of text field
@@ -198,23 +167,6 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 			recList.add(rec);
 			startX+=40;
 		}
-	}
-
-	//formats the labels for the boxes
-	public void initBoxLabelPanel(){
-		boxLabelPanel = new JPanel();
-		boxLabelPanel.setLayout(new GridBagLayout());
-		boxLabelPanel.setBackground(WelcomePage.backgroundColor);
-		GridBagConstraints c3 = new GridBagConstraints();
-		c3.anchor = GridBagConstraints.FIRST_LINE_START;
-		c3.insets = new Insets(70,40,0,0);
-		c3.fill = GridBagConstraints.HORIZONTAL;
-		c3.ipadx = 60;
-		boxLabelPanel.add(TextEights,c3);
-		boxLabelPanel.add(TextFours,c3);
-		boxLabelPanel.add(TextTwos,c3);
-		boxLabelPanel.add(TextOnes,c3);
-
 	}
 
 	//adds an action listener to the submit button to verify input is correct
@@ -300,30 +252,6 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		});  
 	}
 
-	//init the coords of the boxes will move rects into
-	public void initBoxCoords(){
-		box8x = 150; 
-		box8y = 260; 
-		box8width = 100; 
-		box8height = 300;
-
-		box4x = 290; 
-		box4y = 260; 
-		box4width = 100; 
-		box4height = 300;
-
-
-		box2x = 430; 
-		box2y = 260; 
-		box2width = 100; 
-		box2height = 300;
-
-		box1x = 570; 
-		box1y = 260; 
-		box1width= 100; 
-		box1height = 300;
-
-	}
 
 
 	//constructor, param is the applet
@@ -340,15 +268,12 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		initTextPanel();
 		initQuestionPanel();
 		initRects();
-		initBoxLabelPanel();
-		initSubmitButtonListener();
-		initBoxCoords();    	
+		initSubmitButtonListener();   	
 
 		//add panels
 		add(titlePanel);
 		add(textPanel);
 		add(questionPanel);
-		add(boxLabelPanel);
 
 		// Add the MouseListener to the applet 
 		addMouseListener(this); 
@@ -358,6 +283,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		super.paint(g);
 		
 		//change the color of the box if it is selected
+		g.setColor(WelcomePage.darkBlueColor);
 		if (boxSelected1)
 			g.setColor(Color.RED);
 		g.drawRect(box1x,box1y,box1width,box1height);
@@ -377,11 +303,19 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 			g.setColor(Color.RED);
 		g.drawRect(box8x,box8y,box8width,box8height);
 
-
+		//draw the squares
 		g.setColor(WelcomePage.darkBlueColor);
 		for (int i = 0;i < recList.size(); i++){
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 		}
+		
+		//box labels
+		g.setFont(new Font("Verdana", 1, 20));
+		g.drawString("EIGHTS", box8x+10, box8y-4);
+		g.drawString("FOURS", box4x+15, box4y-4);
+		g.drawString("TWOS", box2x+20, box2y-4);
+		g.drawString("ONES", box1x+20, box1y-4);
+		
 	}
 
 	// This method will be called when the mouse has been clicked. 
