@@ -49,7 +49,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	final int starty = 220;
 	int DecToBinNumSquaresInput;
 
-	String text1 = "Now we are going to convert 11 from decimal to binary!"; // In decimal, we put 10 squares into the TENS box and";
+	//String text1 = "Now we are going to convert 11 from decimal to binary!"; // In decimal, we put 10 squares into the TENS box and";
 	String text2 = "";//1 square into the ONES box. Now we will put squares into the EIGHTS, FOURS, TWOS, and ONES boxes.";
 	String text3 = "Step 1: Do we have enough squares to put eight squares in the EIGHTS box? If yes, put eight squares in the";
 	String text4 = "          EIGHTS box. Click on a square and then click on the box to put the square inside.";
@@ -124,19 +124,19 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 //		questionPanel.add(submitButton, c);
 //	}
 
-	//sets all the texts of all Jlabels
-	public void initJLabels(){
-		DecToBinNumSquaresText = new JLabel("Now we are going to convert 11 from decimal to binary! In decimal, we put 10 squares ino ");
-		DecToBinNumSquaresText2 = new JLabel("the TENS box and 1 square into the ONES box. Now we are going to put squares into the EIGHTS, FOURS, TWOS, and ONES boxes.");
-		DecToBinNumSquaresText3 = new JLabel("Step 1: Do we have enough squares to put eight squares in the EIGHTS box? If yes, put eight squares in the");
-		DecToBinNumSquaresText4 = new JLabel("              EIGHTS box. Click on a square and then click on the box to put the square inside.");
-		DecToBinNumSquaresText5 = new JLabel("Step 2: Since we had enough squares, type 1 below the EIGHTS box.");
-		DecToBinNumSquaresText6 = new JLabel("Step 3: Check how many squares are left remaining. Do we have enough to put four squares in the FOURS box?");
-		DecToBinNumSquaresText7 = new JLabel("Step 4: Since we don't have enough, type 0 below the FOURS box.");
-		DecToBinNumSquaresText8 = new JLabel("Step 5: Keep assigning the remaining squares until none are left.");
-		DecToBinNumSquaresText9 = new JLabel("Step 6: Remember: If you had enough squares to put in a box, type 1, otherwise type 0.");
-		DecToBinNumSquaresText10 = new JLabel("Step 7: When you finish, click submit to check your answer.");
-	}
+//	//sets all the texts of all Jlabels
+//	public void initJLabels(){
+//		DecToBinNumSquaresText = new JLabel("Now we are going to convert 11 from decimal to binary! In decimal, we put 10 squares ino ");
+//		DecToBinNumSquaresText2 = new JLabel("the TENS box and 1 square into the ONES box. Now we are going to put squares into the EIGHTS, FOURS, TWOS, and ONES boxes.");
+//		DecToBinNumSquaresText3 = new JLabel("Step 1: Do we have enough squares to put eight squares in the EIGHTS box? If yes, put eight squares in the");
+//		DecToBinNumSquaresText4 = new JLabel("              EIGHTS box. Click on a square and then click on the box to put the square inside.");
+//		DecToBinNumSquaresText5 = new JLabel("Step 2: Since we had enough squares, type 1 below the EIGHTS box.");
+//		DecToBinNumSquaresText6 = new JLabel("Step 3: Check how many squares are left remaining. Do we have enough to put four squares in the FOURS box?");
+//		DecToBinNumSquaresText7 = new JLabel("Step 4: Since we don't have enough, type 0 below the FOURS box.");
+//		DecToBinNumSquaresText8 = new JLabel("Step 5: Keep assigning the remaining squares until none are left.");
+//		DecToBinNumSquaresText9 = new JLabel("Step 6: Remember: If you had enough squares to put in a box, type 1, otherwise type 0.");
+//		DecToBinNumSquaresText10 = new JLabel("Step 7: When you finish, click submit to check your answer.");
+//	}
 
 	//inits format of text field
 	public void initTextFields(){
@@ -254,7 +254,7 @@ public DecToBinPage3(WelcomePage welcome)
 
 
 	//initializations
-	initJLabels();
+	//initJLabels();
 	initTextFields();
 	initRects();
 	initButtons();
@@ -268,6 +268,8 @@ public DecToBinPage3(WelcomePage welcome)
 	add(NumberOnesField);
 	add(submitButton);
 	Insets insets = getInsets();
+	
+	
 	Dimension size = NumberEightsField.getPreferredSize();
 	NumberEightsField.setBounds(box8x +25 + insets.left, box8y+box8height+5 + insets.top,
             size.width, size.height);
@@ -325,7 +327,10 @@ public void paint(Graphics g) {
 	int startTextX = 40;
 	int startTextY = 50;
 	int textYInc = 18;
-	g.drawString(text1, startTextX, startTextY);
+	
+	g.drawImage(welcomePage.binDec3TitleImg, 75, 10, this);
+	
+	//g.drawString(text1, startTextX, startTextY);
 	g.drawString(text2, startTextX, startTextY+=textYInc);
 	g.drawString(text3, startTextX, startTextY+=textYInc);
 	g.drawString(text4, startTextX, startTextY+=textYInc);
