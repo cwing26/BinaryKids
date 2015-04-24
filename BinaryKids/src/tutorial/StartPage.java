@@ -1,6 +1,9 @@
 package tutorial;
 import java.awt.Button;
 import java.awt.Graphics;
+import java.awt.GridBagConstraints;
+import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.TextField;
 import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
@@ -41,32 +44,53 @@ public class StartPage extends JPanel
     	//ImageIcon icon = new ImageIcon(welcomePage.titleTextImg);
     	//ImageIcon icon = new ImageIcon("images/titleTextImg");
     	
-    	titlePanel = new JPanel();
+    	
     	titleLabel = new JLabel("Welcome to BinaryKids!");
     	titleLabel.setFont(new Font("Verdana",1,20));
-    	//titleLabel = new JLabel();
-    	//titleLabel.setIcon(icon);
-    	//titlePanel.add(welcomePage.titleTextImg);
-    	titlePanel.add(titleLabel);
-    	titlePanel.setBorder(new LineBorder(Color.BLACK)); 
     	
+    	//titlePanel.setBorder(new LineBorder(Color.BLACK)); 
     	
     	submitButton = new Button("Submit");
-    	nameField = new TextField("Enter your name here");
-    	
-    	
-    	JLabel directionsLabel = new JLabel("This applet will teach you how to use binary. "
-    			+ "Then you can play a fun game with the skills you've learned!!");
-    	directionsLabel.setFont(new Font("Verdana", 1, 12));
-    	
-    	
     	submitButton.addActionListener(new nameButtonListener());
+    	nameField = new TextField("Enter your name here");
+    	nameField.setColumns(20);
     	
+    	
+    	JLabel directionsLabel = new JLabel("This applet will teach you how to use binary. ");
+    	directionsLabel.setFont(new Font("Verdana", 1, 14));
+    	
+    	JLabel directionsLabel2 = new JLabel("Then you can play a fun game with the skills you've learned!!");
+    	directionsLabel2.setFont(new Font("Verdana", 1, 14));
+    	
+    	titlePanel = new JPanel();
+    	titlePanel.setLayout(new GridBagLayout());
+    	titlePanel.setBackground(WelcomePage.backgroundColor);
+    	GridBagConstraints c = new GridBagConstraints();
+		c.anchor = GridBagConstraints.CENTER;
+		c.gridx = 0;
+		c.gridy = 0;
+		c.ipady = 50;
+    	titlePanel.add(titleLabel, c);
+    	c.ipady = 0;
+    	c.gridx = 0;
+		c.gridy = 1;
+		//c.insets = new Insets (0,50,0,50);
+    	titlePanel.add(nameField, c);
+    	c.gridx = 1;
+		c.gridy = 1;
+    	titlePanel.add(submitButton, c);
+    	c.gridx = 0;
+		c.gridy = 2;
+		c.anchor = GridBagConstraints.CENTER;
+		titlePanel.add(directionsLabel, c);
+    	c.gridx = 0;
+		c.gridy = 3;
+    	titlePanel.add(directionsLabel2, c);
     	add(titlePanel);
-    	add(directionsLabel);
     	
-    	add(nameField);
-    	add(submitButton);
+    	
+    	//add(nameField);
+    	//add(submitButton);
     	
     	
     }
@@ -82,7 +106,7 @@ public class StartPage extends JPanel
 
     	g.setFont(new Font("Verdana", 1, 20));
     	g.drawString(nameString, 280,200);
-    	
+    	g.drawImage(welcomePage.titleTextImg, 0 , 0, this);
     	g.drawImage(welcomePage.titleImg, 200, 300, this);
 
     }
