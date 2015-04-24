@@ -66,7 +66,7 @@ public class StartPage extends JPanel
     	titlePanel.setLayout(new GridBagLayout());
     	titlePanel.setBackground(WelcomePage.backgroundColor);
     	GridBagConstraints c = new GridBagConstraints();
-		c.anchor = GridBagConstraints.CENTER;
+    	c.anchor = GridBagConstraints.LINE_START;
 		c.gridx = 0;
 		c.gridy = 0;
 		c.ipady = 80;
@@ -74,23 +74,19 @@ public class StartPage extends JPanel
     	c.ipady = 0;
     	c.gridx = 0;
 		c.gridy = 1;
-		//c.insets = new Insets (0,50,0,50);
     	titlePanel.add(nameField, c);
-    	//c.gridx = 1;
+    	c.gridx = 1;
 		c.gridy = 1;
     	titlePanel.add(submitButton, c);
     	c.gridx = 0;
 		c.gridy = 2;
+		c.gridwidth = 2;
 		c.anchor = GridBagConstraints.CENTER;
 		titlePanel.add(directionsLabel, c);
     	c.gridx = 0;
 		c.gridy = 3;
     	titlePanel.add(directionsLabel2, c);
     	add(titlePanel);
-    	
-    	
-    	//add(nameField);
-    	//add(submitButton);
     	
     	
     }
