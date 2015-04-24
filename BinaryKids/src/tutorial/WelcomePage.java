@@ -132,8 +132,8 @@ public class WelcomePage extends JApplet
     	demoPage = new DemoPage(this);
     	
     	//dialog box welcomes user to game and gives them brief instructions
-    	String welcomeMessage = "Welcome to BinaryKids: Type in your name and click next to get started!";
-    	JOptionPane.showMessageDialog(this, welcomeMessage, "Welcome to BinaryKids", JOptionPane.YES_NO_OPTION);
+    	//String welcomeMessage = "Welcome to BinaryKids: Type in your name and click next to get started!";
+    	//JOptionPane.showMessageDialog(this, welcomeMessage, "Welcome to BinaryKids", JOptionPane.YES_NO_OPTION);
     	
     	//set up the panel of buttons that is always visible
     	createButtonPanel();
