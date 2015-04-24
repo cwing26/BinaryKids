@@ -69,14 +69,14 @@ public class StartPage extends JPanel
 		c.anchor = GridBagConstraints.CENTER;
 		c.gridx = 0;
 		c.gridy = 0;
-		c.ipady = 50;
+		c.ipady = 80;
     	titlePanel.add(titleLabel, c);
     	c.ipady = 0;
     	c.gridx = 0;
 		c.gridy = 1;
 		//c.insets = new Insets (0,50,0,50);
     	titlePanel.add(nameField, c);
-    	c.gridx = 1;
+    	//c.gridx = 1;
 		c.gridy = 1;
     	titlePanel.add(submitButton, c);
     	c.gridx = 0;

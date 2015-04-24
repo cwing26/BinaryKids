@@ -14,6 +14,7 @@
 // It is started by the user clicking enter and then automatically exists when
 // the game has ended
 //
+package snake;
 
 import java.awt.BorderLayout;
 import java.awt.Color;

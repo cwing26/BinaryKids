@@ -167,7 +167,7 @@ public class WelcomePage extends JApplet
     	lightOffImg = lightOnImg.getScaledInstance(200, 400, Image.SCALE_SMOOTH);
     	titleTextImg = Toolkit.getDefaultToolkit().getImage(
     			getClass().getClassLoader().getResource(WelcomePage.titlePath));
-    	titleTextImg = titleTextImg.getScaledInstance(800, 90, Image.SCALE_SMOOTH);
+    	titleTextImg = titleTextImg.getScaledInstance(800, 120, Image.SCALE_SMOOTH);
     }
     
     public void createButtonPanel()
