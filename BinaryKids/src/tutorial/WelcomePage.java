@@ -44,8 +44,10 @@ public class WelcomePage extends JApplet
 	private int frameWidth = 800;
 	private int frameHeight = 620;
 
-	public static Color backgroundColor = new Color(204, 238, 255);
-	public static Color darkBlueColor = new Color(76, 89, 95);
+	//public static Color backgroundColor = new Color(204, 238, 255);
+	//public static Color darkBlueColor = new Color(76, 89, 95);
+	public static Color backgroundColor = new Color(255, 255, 204);
+	public static Color darkBlueColor = new Color(204, 153, 153);
 
 	private StartPage startPage;
 	private FirstPage firstPage;
