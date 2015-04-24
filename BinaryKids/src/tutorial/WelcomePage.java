@@ -46,8 +46,11 @@ public class WelcomePage extends JApplet
 
 	//public static Color backgroundColor = new Color(204, 238, 255);
 	//public static Color darkBlueColor = new Color(76, 89, 95);
+	
+	//new colors
 	public static Color backgroundColor = new Color(255, 255, 204);
-	public static Color darkBlueColor = new Color(204, 153, 153);
+	public static Color buttonPanelColor = new Color(204, 153, 153);
+	public static Color textColor = new Color(95, 38, 38);
 
 	private StartPage startPage;
 	private FirstPage firstPage;
