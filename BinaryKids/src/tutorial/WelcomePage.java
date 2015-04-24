@@ -67,6 +67,7 @@ public class WelcomePage extends JApplet
 	JButton nextButton;
 	JButton closeButton;
 	JButton tutorialButton;
+	JButton debugButton;
 	JButton gameButton; //only become available once completed tutorials
 	JButton page3GoBackButton;
 	
@@ -176,6 +177,9 @@ public class WelcomePage extends JApplet
   		closeButton = new JButton("Close");
   		closeButton.addActionListener(new closeButtonListener());
   		
+  		debugButton = new JButton("Debug");
+  		debugButton.addActionListener(new debugButtonListener());
+  		
   		nextButton = new JButton("NextPage");
   		nextButton.addActionListener(new nextButtonListener());
   		
@@ -192,7 +196,7 @@ public class WelcomePage extends JApplet
   		buttonPanel = new JPanel();
   		buttonPanel.setBackground(new Color(76, 89, 95));
   		buttonPanel.add(closeButton); //add button to the buttonPanel
-  		buttonPanel.add(nextButton);
+  		buttonPanel.add(debugButton);
   		
     }
  
@@ -448,6 +452,34 @@ public class WelcomePage extends JApplet
 		}
 	}
 	
+	class debugButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			contentPane.remove(startPage);
+			contentPane.remove(firstPage);
+			contentPane.remove(secondPage);
+			contentPane.remove(thirdPage);
+			contentPane.remove(fourthPage);
+			contentPane.remove(bdOne);
+			contentPane.remove(bdTwo);
+			contentPane.remove(bdThree);
+			contentPane.remove(bdFour);
+			contentPane.remove(decToBinPage);
+			contentPane.remove(decToBinPage2);
+			contentPane.remove(decToBinPage3);
+			contentPane.remove(decToBinPage4);
+			contentPane.remove(baOne);
+			contentPane.remove(demoPage);
+			
+			
+			contentPane.add(new DecToBinPage3(welcome));
+			
+			validate();
+	        setVisible(true);
+	        repaint();	
+		}
+	}
 	
 	class nextButtonListener implements ActionListener 
 	{

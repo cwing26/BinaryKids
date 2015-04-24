@@ -19,6 +19,12 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	JLabel DecToBinNumSquaresText;
 	JLabel DecToBinNumSquaresText2;
 	JLabel DecToBinNumSquaresText3;
+	JLabel DecToBinNumSquaresText4;
+	JLabel DecToBinNumSquaresText5;
+	JLabel DecToBinNumSquaresText6;
+	JLabel DecToBinNumSquaresText7;
+	JLabel DecToBinNumSquaresText8;
+	JLabel DecToBinNumSquaresText9;
 	JLabel TextEights;
 	JLabel TextFours;
 	JLabel TextTwos;
@@ -157,9 +163,19 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		TextHowManyFours = new JLabel("How many FOURS are there in 11?");
 		TextHowManyTwos = new JLabel("How many TWOS are there in 11?");
 		TextHowManyOnes = new JLabel("How many ONES are there in 11?");
-		DecToBinNumSquaresText = new JLabel("Now let's see visually how to represent 11 in binary (base 2)! Click on a square and then click ");
-		DecToBinNumSquaresText2 = new JLabel("inside one of the boxes to assign the square to the box. Distribute the remaining squares to ");
-		DecToBinNumSquaresText3 = new JLabel("the largest box possible, starting from the left.");
+		DecToBinNumSquaresText = new JLabel("Now we are going to convert 11 from decimal to binary!");
+		DecToBinNumSquaresText2 = new JLabel("Step 1: Look for the greatest power of 2. Choose the biggest number that will fit into the number you are converting.");
+		DecToBinNumSquaresText3 = new JLabel("Step 2: Move squares into this box until one whole unit is formed.");
+		DecToBinNumSquaresText4 = new JLabel("Step 3: Subtract this number from 11 and calculate the remainder.");
+		DecToBinNumSquaresText5 = new JLabel("Step 4: Move to the next lower power of two. If the next power of two cannot fit into the remainder, do not");
+		DecToBinNumSquaresText6 = new JLabel("         move any squares into that box. Continue until you reach a number that can go into the remainder.");
+		DecToBinNumSquaresText7 = new JLabel("         move any squares into that box. Continue until you reach a number that can go into the remainder.");
+		
+		
+		
+//		DecToBinNumSquaresText = new JLabel("Now we are going to convert 11 from decimal to binary! let's see visually how to represent 11 in binary (base 2)! Click on a square and then click ");
+//		DecToBinNumSquaresText2 = new JLabel("inside one of the boxes to assign the square to the box. Distribute the remaining squares to ");
+//		DecToBinNumSquaresText3 = new JLabel("the largest box possible, starting from the left.");
 	}
 
 	//inits format of text field
