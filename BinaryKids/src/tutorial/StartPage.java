@@ -1,92 +1,103 @@
 package tutorial;
+
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
 import java.awt.Graphics;
-import java.awt.GridBagConstraints;
-import java.awt.GridBagLayout;
-import java.awt.Insets;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
 import java.awt.TextField;
-import java.awt.Toolkit;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
 
 import javax.imageio.ImageIO;
+import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
-import javax.swing.JButton;
 import javax.swing.JPanel;
+import javax.swing.JApplet;
+import javax.swing.JButton;
+import javax.swing.JFrame;
 import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JTextField;
+import javax.swing.SwingUtilities;
 import javax.swing.border.LineBorder;
 
+import java.awt.*; 
+import java.applet.*;
+import java.awt.BorderLayout;
+import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.EventQueue;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.Insets;
+import java.awt.RenderingHints;
 import java.awt.Image;
+import java.awt.TextField;
+import java.awt.Toolkit;
 import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
 
-@SuppressWarnings("serial")
 public class StartPage extends JPanel
 {
+	//gui components
 	JButton submitButton;
-	TextField nameField;
-	JPanel titlePanel;
-	JLabel titleLabel;
-	boolean nameEntered = false;
-
+	JTextField nameField;
+	
+	//page directions
+	String directions = "This applet will teach you about binary numbers.";
+	String directions2 = "Then you can play a fun game with the skills you've learned!";
 	
 	
 	private WelcomePage welcomePage; //to connect welcome page to individual pages 
     
+	//initializes all gui components on the page
+	public void initComponents()
+	{
+    	submitButton = new JButton("Submit");
+    	submitButton.addActionListener(new nameButtonListener());
+    	
+    	nameField = new JTextField("Enter your name");
+    	nameField.setColumns(15);
+    	nameField.setFont(new Font("Geneva", 1 , 18));
+    	
+	}
+	
+	
     public StartPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
-    	
+
     	setBackground(WelcomePage.backgroundColor);
-    	//ImageIcon icon = new ImageIcon(welcomePage.titleTextImg);
-    	//ImageIcon icon = new ImageIcon("images/titleTextImg");
+    	
+    	initComponents();
+		
+    	setLayout(null);
+    	add(nameField);
+    	add(submitButton);
     	
     	
-    	titleLabel = new JLabel("Welcome to BinaryKids!");
-    	titleLabel.setFont(new Font("Verdana",1,20));
-    	
-    	//titlePanel.setBorder(new LineBorder(Color.BLACK)); 
-    	
-    	submitButton = new JButton("Submit");
-    	submitButton.addActionListener(new nameButtonListener());
-    	nameField = new TextField("Enter your name here");
-    	nameField.setColumns(20);
-    	
-    	
-    	JLabel directionsLabel = new JLabel("This applet will teach you how to use binary. ");
-    	directionsLabel.setFont(new Font("Verdana", 1, 14));
-    	
-    	JLabel directionsLabel2 = new JLabel("Then you can play a fun game with the skills you've learned!!");
-    	directionsLabel2.setFont(new Font("Verdana", 1, 14));
-    	
-    	titlePanel = new JPanel();
-    	titlePanel.setLayout(new GridBagLayout());
-    	titlePanel.setBackground(WelcomePage.backgroundColor);
-    	GridBagConstraints c = new GridBagConstraints();
-    	c.anchor = GridBagConstraints.LINE_START;
-		c.gridx = 0;
-		c.gridy = 0;
-		c.ipady = 80;
-    	titlePanel.add(titleLabel, c);
-    	c.ipady = 0;
-    	c.gridx = 0;
-		c.gridy = 1;
-    	titlePanel.add(nameField, c);
-    	c.gridx = 1;
-		c.gridy = 1;
-    	titlePanel.add(submitButton, c);
-    	c.gridx = 0;
-		c.gridy = 2;
-		c.gridwidth = 2;
-		c.anchor = GridBagConstraints.CENTER;
-		titlePanel.add(directionsLabel, c);
-    	c.gridx = 0;
-		c.gridy = 3;
-    	titlePanel.add(directionsLabel2, c);
-    	add(titlePanel);
+    	Insets insets = getInsets();
+		Dimension textFieldSize = nameField.getPreferredSize();
+		nameField.setBounds(80 + insets.left, 150 + insets.top,
+	            textFieldSize.width, textFieldSize.height);
+		
+		Dimension buttonSize = submitButton.getPreferredSize();
+		submitButton.setBounds(80 + insets.left, 190 + insets.top, buttonSize.width, buttonSize.height);
+		
+
     	
     	
     }
@@ -94,16 +105,18 @@ public class StartPage extends JPanel
     public void paint(Graphics g) 
     { 
     	super.paint(g);
-
-    	g.setColor(Color.blue);
-    	String nameString = "Welcome!!!!!";
-    	if(nameEntered)
-    		nameString = "Welcome, " + nameField.getText() + "!";
-
-    	g.setFont(new Font("Verdana", 1, 20));
-    	g.drawString(nameString, 280,200);
-    	g.drawImage(welcomePage.titleTextImg, 0 , 0, this);
-    	g.drawImage(welcomePage.titleImg, 200, 300, this);
+    	g.drawImage(welcomePage.titleHeadline, 100, 10, this);
+    	
+    	//directions 
+    	g.setFont(new Font("Geneva", 1 , 20));
+    	g.drawString(directions, 50, 100);
+    	g.drawString(directions2, 50, 125);
+    	
+    	g.drawImage(welcomePage.binaryGraphic, 1, 400, this);
+    	g.drawImage(welcomePage.binaryGraphic, 201, 400, this);
+    	g.drawImage(welcomePage.binaryGraphic, 401, 400, this);
+    	g.drawImage(welcomePage.binaryGraphic, 601, 400, this);
+    	
 
     }
     
@@ -112,7 +125,6 @@ public class StartPage extends JPanel
 		public void actionPerformed(ActionEvent e) 
 		{
 			welcomePage.setUserName(nameField.getText());
-			nameEntered = true;
 			welcomePage.loadFirstPage();
 			repaint();
 			
