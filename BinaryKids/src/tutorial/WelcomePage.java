@@ -31,6 +31,10 @@ import java.io.BufferedReader;
 import java.io.InputStream;
 import java.io.InputStreamReader;
 
+import java.io.File;
+import java.io.IOException;
+import java.net.URL;
+
 
 
 
@@ -76,6 +80,7 @@ public class WelcomePage extends JApplet
 	JButton debugButton;
 	JButton gameButton; //only become available once completed tutorials
 	JButton page3GoBackButton;
+	JButton backToHomeButton;
 
 	Container contentPane;
 
@@ -92,6 +97,11 @@ public class WelcomePage extends JApplet
 	public Image lightOffImg;
 	public Image titleTextImg;
 	public Image binDec3TitleImg;
+
+	//meghan's added images
+    	public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
+    	public Image titleHeadline;
+   	public Image binaryGraphic;
 
 	//Called when this applet is loaded into the browser.
 	public void init() 
@@ -168,8 +178,10 @@ public class WelcomePage extends JApplet
 		titleImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.titleImagePath));
 		titleImg = titleImg.getScaledInstance(400, 300, Image.SCALE_SMOOTH);
+
 		lightOnImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.lightOnImagePath));
+
 		lightOnImg = lightOnImg.getScaledInstance(200, 400, Image.SCALE_SMOOTH);
 		lightOffImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.lightOffImagePath));
@@ -180,6 +192,20 @@ public class WelcomePage extends JApplet
 		binDec3TitleImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binDecPg3TitleImagePath));  
 		binDec3TitleImg = binDec3TitleImg.getScaledInstance(650, 50, Image.SCALE_SMOOTH);
+		
+		titleHeadline = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(WelcomePage.welcomeToBKPath)); 
+		titleHeadline = titleHeadline.getScaledInstance(586, 50, Image.SCALE_SMOOTH);
+		
+		//try to load the image file
+		try {
+			binaryGraphic = new ImageIcon(new URL("http://media.giphy.com/media/nlJF31X6I1LW/giphy.gif")).getImage();
+
+		} catch (IOException e) {
+			System.out.println("Please check image file path.");
+			e.printStackTrace();
+		};
+		binaryGraphic = binaryGraphic.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
 	}
 
 	public void createButtonPanel()
@@ -203,9 +229,13 @@ public class WelcomePage extends JApplet
 		page3GoBackButton = new JButton("Go back");
 		page3GoBackButton.addActionListener(new backButtonListener());
 
+  		backToHomeButton = new JButton("Back to Home");
+  		backToHomeButton.addActionListener(new backHomeButtonListener());
+
 		//buttons panel that holds close button
 		buttonPanel = new JPanel();
 		buttonPanel.setBackground(WelcomePage.buttonPanelColor);
+		buttonPanel.add(backToHomeButton);
 		buttonPanel.add(closeButton); //add button to the buttonPanel
 		buttonPanel.add(debugButton);
 
@@ -424,6 +454,35 @@ public class WelcomePage extends JApplet
 			validate();
 			setVisible(true);
 			repaint();	
+		}
+	}
+
+	class backHomeButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			contentPane.remove(startPage);
+			contentPane.remove(firstPage);
+			contentPane.remove(secondPage);
+			contentPane.remove(thirdPage);
+			contentPane.remove(fourthPage);
+			contentPane.remove(bdOne);
+			contentPane.remove(bdTwo);
+			contentPane.remove(bdThree);
+			contentPane.remove(bdFour);
+			contentPane.remove(decToBinPage);
+			contentPane.remove(decToBinPage2);
+			contentPane.remove(decToBinPage3);
+			contentPane.remove(decToBinPage4);
+			contentPane.remove(baOne);
+			contentPane.remove(demoPage);
+			
+			startPage = new StartPage(welcome);
+			contentPane.add(startPage);
+			
+			validate();
+	        setVisible(true);
+	        repaint();	
 		}
 	}
 
