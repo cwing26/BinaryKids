@@ -38,7 +38,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	//String text1 = "Now we are going to convert 11 from decimal to binary!"; // In decimal, we put 10 squares into the TENS box and";
 	String text2 = "";//1 square into the ONES box. Now we will put squares into the EIGHTS, FOURS, TWOS, and ONES boxes.";
 	String text3 = "Step 1: Do we have enough squares to put eight squares in the EIGHTS box? If yes, put eight squares in the";
-	String text4 = "          EIGHTS box. Click on a square and then click on the box to put the square inside.";
+	String text4 = "          EIGHTS box. Click on a red square and then click on the box to put the square inside.";
 	String text5 = "Step 2: Since we had enough squares, type 1 below the EIGHTS box.";
 	String text6 = "Step 3: Check how many squares are left remaining. Do we have enough to put four squares in the FOURS box?";
 	String text7 = "Step 4: Since we don't have enough, type 0 below the FOURS box.";
@@ -88,41 +88,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		//titlePanel.setBorder(new LineBorder(WelcomePage.darkBlueColor));
 	}
 
-//	//formats the question panel layout
-//	public void initQuestionPanel(){
-//		questionPanel = new JPanel();
-//		
-//		questionPanel.setLayout(new GridBagLayout());
-//		questionPanel.setBackground(WelcomePage.backgroundColor);
-//		GridBagConstraints c = new GridBagConstraints();
-//		c.anchor = GridBagConstraints.CENTER;
-//		c.fill = GridBagConstraints.HORIZONTAL;
-//		c.ipadx = 40;
-//		c.gridx = 0;
-//		questionPanel.add(NumberEightsField,c);
-//		c.gridx = 1;
-//		questionPanel.add(NumberFoursField,c);
-//		c.gridx = 2;
-//		questionPanel.add(NumberTwosField,c);
-//		c.gridx = 3;
-//		questionPanel.add(NumberOnesField,c);
-//		c.gridx = 4;
-//		questionPanel.add(submitButton, c);
-//	}
 
-//	//sets all the texts of all Jlabels
-//	public void initJLabels(){
-//		DecToBinNumSquaresText = new JLabel("Now we are going to convert 11 from decimal to binary! In decimal, we put 10 squares ino ");
-//		DecToBinNumSquaresText2 = new JLabel("the TENS box and 1 square into the ONES box. Now we are going to put squares into the EIGHTS, FOURS, TWOS, and ONES boxes.");
-//		DecToBinNumSquaresText3 = new JLabel("Step 1: Do we have enough squares to put eight squares in the EIGHTS box? If yes, put eight squares in the");
-//		DecToBinNumSquaresText4 = new JLabel("              EIGHTS box. Click on a square and then click on the box to put the square inside.");
-//		DecToBinNumSquaresText5 = new JLabel("Step 2: Since we had enough squares, type 1 below the EIGHTS box.");
-//		DecToBinNumSquaresText6 = new JLabel("Step 3: Check how many squares are left remaining. Do we have enough to put four squares in the FOURS box?");
-//		DecToBinNumSquaresText7 = new JLabel("Step 4: Since we don't have enough, type 0 below the FOURS box.");
-//		DecToBinNumSquaresText8 = new JLabel("Step 5: Keep assigning the remaining squares until none are left.");
-//		DecToBinNumSquaresText9 = new JLabel("Step 6: Remember: If you had enough squares to put in a box, type 1, otherwise type 0.");
-//		DecToBinNumSquaresText10 = new JLabel("Step 7: When you finish, click submit to check your answer.");
-//	}
 
 	//inits format of text field
 	public void initTextFields(){
@@ -431,3 +397,40 @@ public void mouseDragged(MouseEvent me) {}
 
 
 } //end class
+
+
+////formats the question panel layout
+//public void initQuestionPanel(){
+//	questionPanel = new JPanel();
+//	
+//	questionPanel.setLayout(new GridBagLayout());
+//	questionPanel.setBackground(WelcomePage.backgroundColor);
+//	GridBagConstraints c = new GridBagConstraints();
+//	c.anchor = GridBagConstraints.CENTER;
+//	c.fill = GridBagConstraints.HORIZONTAL;
+//	c.ipadx = 40;
+//	c.gridx = 0;
+//	questionPanel.add(NumberEightsField,c);
+//	c.gridx = 1;
+//	questionPanel.add(NumberFoursField,c);
+//	c.gridx = 2;
+//	questionPanel.add(NumberTwosField,c);
+//	c.gridx = 3;
+//	questionPanel.add(NumberOnesField,c);
+//	c.gridx = 4;
+//	questionPanel.add(submitButton, c);
+//}
+
+////sets all the texts of all Jlabels
+//public void initJLabels(){
+//	DecToBinNumSquaresText = new JLabel("Now we are going to convert 11 from decimal to binary! In decimal, we put 10 squares ino ");
+//	DecToBinNumSquaresText2 = new JLabel("the TENS box and 1 square into the ONES box. Now we are going to put squares into the EIGHTS, FOURS, TWOS, and ONES boxes.");
+//	DecToBinNumSquaresText3 = new JLabel("Step 1: Do we have enough squares to put eight squares in the EIGHTS box? If yes, put eight squares in the");
+//	DecToBinNumSquaresText4 = new JLabel("              EIGHTS box. Click on a square and then click on the box to put the square inside.");
+//	DecToBinNumSquaresText5 = new JLabel("Step 2: Since we had enough squares, type 1 below the EIGHTS box.");
+//	DecToBinNumSquaresText6 = new JLabel("Step 3: Check how many squares are left remaining. Do we have enough to put four squares in the FOURS box?");
+//	DecToBinNumSquaresText7 = new JLabel("Step 4: Since we don't have enough, type 0 below the FOURS box.");
+//	DecToBinNumSquaresText8 = new JLabel("Step 5: Keep assigning the remaining squares until none are left.");
+//	DecToBinNumSquaresText9 = new JLabel("Step 6: Remember: If you had enough squares to put in a box, type 1, otherwise type 0.");
+//	DecToBinNumSquaresText10 = new JLabel("Step 7: When you finish, click submit to check your answer.");
+//}
