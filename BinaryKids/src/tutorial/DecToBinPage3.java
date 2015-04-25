@@ -83,7 +83,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		titlePanel.setLayout(new BorderLayout());
 		titlePanel.setBackground(WelcomePage.backgroundColor);
 		JLabel titleLabel = new JLabel("Converting Decimal to Binary");
-		titleLabel.setFont(new Font("Verdana",1,20));
+		titleLabel.setFont(new Font("Geneva",1,20));
 		titlePanel.add(titleLabel, BorderLayout.CENTER);
 		//titlePanel.setBorder(new LineBorder(WelcomePage.darkBlueColor));
 	}
@@ -295,12 +295,13 @@ public void paint(Graphics g) {
 	g.drawRect(box8x,box8y,box8width,box8height);
 
 	//draw the squares
-	g.setColor(WelcomePage.textColor);
+	g.setColor(WelcomePage.buttonPanelColor);
 	for (int i = 0;i < recList.size(); i++){
 		g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 	}
 
 	//box labels
+	g.setColor(WelcomePage.textColor);
 	g.setFont(new Font("Verdana", 1, 20));
 	g.drawString("EIGHTS", box8x+10, box8y-4);
 	g.drawString("FOURS", box4x+15, box4y-4);
@@ -309,7 +310,7 @@ public void paint(Graphics g) {
 
 
 	//instructions
-	g.setFont(new Font("Verdana", Font.BOLD, 12));
+	g.setFont(new Font("Geneva", Font.BOLD, 12));
 	int startTextX = 40;
 	int startTextY = 50;
 	int textYInc = 18;
