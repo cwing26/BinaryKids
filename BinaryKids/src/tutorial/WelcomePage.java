@@ -476,6 +476,8 @@ public class WelcomePage extends JApplet
 			
 			startPage = new StartPage(welcome);
 			contentPane.add(startPage);
+
+			pageFlag = 0;
 			
 			validate();
 	        setVisible(true);
