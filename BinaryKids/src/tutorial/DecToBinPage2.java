@@ -306,12 +306,12 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		if (boxSelected1)
 			g.setColor(Color.RED);
 		g.drawRect(box1x,box1y,box1width,box1height);
-		g.setColor(WelcomePage.darkBlueColor);
+		g.setColor(WelcomePage.textColor);
 		if (boxSelected10)
 			g.setColor(Color.RED);
 		g.drawRect(box10x,box10y,box10width,box10height);
 		//Graphics2D g2d = (Graphics2D) g.create();
-		g.setColor(WelcomePage.darkBlueColor);
+		g.setColor(WelcomePage.textColor);
 		for (int i = 0;i < recList.size(); i++){
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 		}

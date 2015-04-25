@@ -12,23 +12,9 @@ import javax.swing.*;
 public class DecToBinPage3 extends JPanel implements MouseListener
 {
 
-	boolean drawStep2 = false;
-
 	WelcomePage welcomePage;
 	JButton submitButton; 
-
-	//Labels
-	JLabel DecToBinNumSquaresText;
-	JLabel DecToBinNumSquaresText2;
-	JLabel DecToBinNumSquaresText3;
-	JLabel DecToBinNumSquaresText4;
-	JLabel DecToBinNumSquaresText5;
-	JLabel DecToBinNumSquaresText6;
-	JLabel DecToBinNumSquaresText7;
-	JLabel DecToBinNumSquaresText8;
-	JLabel DecToBinNumSquaresText9;
-	JLabel DecToBinNumSquaresText10;
-
+	
 	//TextFields
 	JTextField NumberEightsField;
 	JTextField NumberFoursField;
@@ -288,28 +274,28 @@ public void paint(Graphics g) {
 	super.paint(g);
 
 	//change the color of the box if it is selected
-	g.setColor(WelcomePage.darkBlueColor);
+	g.setColor(WelcomePage.textColor);
 	if (boxSelected1)
 		g.setColor(Color.RED);
 	g.drawRect(box1x,box1y,box1width,box1height);
 
-	g.setColor(WelcomePage.darkBlueColor);
+	g.setColor(WelcomePage.textColor);
 	if (boxSelected2)
 		g.setColor(Color.RED);
 	g.drawRect(box2x,box2y,box2width,box2height);
 
-	g.setColor(WelcomePage.darkBlueColor);
+	g.setColor(WelcomePage.textColor);
 	if (boxSelected4)
 		g.setColor(Color.RED);
 	g.drawRect(box4x,box4y,box4width,box4height);
 
-	g.setColor(WelcomePage.darkBlueColor);
+	g.setColor(WelcomePage.textColor);
 	if (boxSelected8)
 		g.setColor(Color.RED);
 	g.drawRect(box8x,box8y,box8width,box8height);
 
 	//draw the squares
-	g.setColor(WelcomePage.darkBlueColor);
+	g.setColor(WelcomePage.textColor);
 	for (int i = 0;i < recList.size(); i++){
 		g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 	}
@@ -323,7 +309,7 @@ public void paint(Graphics g) {
 
 
 	//instructions
-	g.setFont(new Font("Comic Sans MS", Font.BOLD, 13));
+	g.setFont(new Font("Verdana", Font.BOLD, 12));
 	int startTextX = 40;
 	int startTextY = 50;
 	int textYInc = 18;

@@ -49,8 +49,8 @@ public class WelcomePage extends JApplet
 	
 	//new colors
 	public static Color backgroundColor = new Color(255, 255, 204);
-	public static Color buttonPanelColor = new Color(204, 153, 153);
-	public static Color textColor = new Color(95, 38, 38);
+	public static Color buttonPanelColor = new Color(152, 46, 68);
+	public static Color textColor = new Color(0, 0, 0); //102
 
 	private StartPage startPage;
 	private FirstPage firstPage;
@@ -204,7 +204,7 @@ public class WelcomePage extends JApplet
 
 		//buttons panel that holds close button
 		buttonPanel = new JPanel();
-		buttonPanel.setBackground(new Color(76, 89, 95));
+		buttonPanel.setBackground(WelcomePage.buttonPanelColor);
 		buttonPanel.add(closeButton); //add button to the buttonPanel
 		buttonPanel.add(debugButton);
 
