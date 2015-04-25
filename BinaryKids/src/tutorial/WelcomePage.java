@@ -43,9 +43,6 @@ public class WelcomePage extends JApplet
 
 	private int frameWidth = 800;
 	private int frameHeight = 620;
-
-	//public static Color backgroundColor = new Color(204, 238, 255);
-	//public static Color darkBlueColor = new Color(76, 89, 95);
 	
 	//new colors
 	public static Color backgroundColor = new Color(255, 255, 204);
@@ -57,7 +54,7 @@ public class WelcomePage extends JApplet
 	private FirstPage firstPage;
 	private SecondPage secondPage;
 	private ThirdPage thirdPage;
-	FourthPage fourthPage;
+	private FourthPage fourthPage;
 	BinaryDecimalOne bdOne;
 	private BinaryDecimalTwo bdTwo;
 	private BinaryDecimalThree bdThree;
@@ -87,7 +84,7 @@ public class WelcomePage extends JApplet
 	public static String lightOnImagePath = "images/lightOn.jpg";
 	public static String lightOffImagePath = "images/lightOff.jpg";
 	public static String binDecPg3TitleImagePath = "images/BinDecPg3Title.jpg";
-	public Image titleImg;
+	public Image titleImg;  //http://www.cs.colostate.edu/~boese/Geek/binaryCalculator.gif
 	public Image lightOnImg;
 	public Image lightOffImg;
 	public Image titleTextImg;
@@ -176,7 +173,7 @@ public class WelcomePage extends JApplet
 		lightOffImg = lightOnImg.getScaledInstance(200, 400, Image.SCALE_SMOOTH);
 		titleTextImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.titlePath));
-		titleTextImg = titleTextImg.getScaledInstance(800, 120, Image.SCALE_SMOOTH);
+		titleTextImg = titleTextImg.getScaledInstance(700, 40, Image.SCALE_SMOOTH);
 		binDec3TitleImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binDecPg3TitleImagePath));  
 		binDec3TitleImg = binDec3TitleImg.getScaledInstance(650, 50, Image.SCALE_SMOOTH);

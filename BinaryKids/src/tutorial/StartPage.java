@@ -1,4 +1,5 @@
 package tutorial;
+import java.awt.Dimension;
 import java.awt.Graphics;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
@@ -41,52 +42,15 @@ public class StartPage extends JPanel
     	welcomePage = welcome;
     	
     	setBackground(WelcomePage.backgroundColor);
-    	//ImageIcon icon = new ImageIcon(welcomePage.titleTextImg);
-    	//ImageIcon icon = new ImageIcon("images/titleTextImg");
     	
-    	
-    	titleLabel = new JLabel("Welcome to BinaryKids!");
-    	titleLabel.setFont(new Font("Verdana",1,20));
-    	
-    	//titlePanel.setBorder(new LineBorder(Color.BLACK)); 
-    	
-    	submitButton = new JButton("Submit");
-    	submitButton.addActionListener(new nameButtonListener());
-    	nameField = new TextField("Enter your name here");
-    	nameField.setColumns(20);
-    	
-    	
-    	JLabel directionsLabel = new JLabel("This applet will teach you how to use binary. ");
-    	directionsLabel.setFont(new Font("Verdana", 1, 14));
-    	
-    	JLabel directionsLabel2 = new JLabel("Then you can play a fun game with the skills you've learned!!");
-    	directionsLabel2.setFont(new Font("Verdana", 1, 14));
-    	
-    	titlePanel = new JPanel();
-    	titlePanel.setLayout(new GridBagLayout());
-    	titlePanel.setBackground(WelcomePage.backgroundColor);
-    	GridBagConstraints c = new GridBagConstraints();
-    	c.anchor = GridBagConstraints.LINE_START;
-		c.gridx = 0;
-		c.gridy = 0;
-		c.ipady = 80;
-    	titlePanel.add(titleLabel, c);
-    	c.ipady = 0;
-    	c.gridx = 0;
-		c.gridy = 1;
-    	titlePanel.add(nameField, c);
-    	c.gridx = 1;
-		c.gridy = 1;
-    	titlePanel.add(submitButton, c);
-    	c.gridx = 0;
-		c.gridy = 2;
-		c.gridwidth = 2;
-		c.anchor = GridBagConstraints.CENTER;
-		titlePanel.add(directionsLabel, c);
-    	c.gridx = 0;
-		c.gridy = 3;
-    	titlePanel.add(directionsLabel2, c);
-    	add(titlePanel);
+    	submitButton = new JButton("Let's Get Started!");
+    	submitButton.addActionListener(new submitButtonListener());
+    	setLayout(null);
+    	add(submitButton);
+    	Insets insets = getInsets();
+    	Dimension size = submitButton.getPreferredSize();
+    	submitButton.setBounds(330-size.width/2 + insets.left, 200 + insets.top,
+                2*size.width, size.height);
     	
     	
     }
@@ -94,25 +58,17 @@ public class StartPage extends JPanel
     public void paint(Graphics g) 
     { 
     	super.paint(g);
-
-    	g.setColor(Color.blue);
-    	String nameString = "Welcome!!!!!";
-    	if(nameEntered)
-    		nameString = "Welcome, " + nameField.getText() + "!";
-
-    	g.setFont(new Font("Verdana", 1, 20));
-    	g.drawString(nameString, 280,200);
-    	g.drawImage(welcomePage.titleTextImg, 0 , 0, this);
-    	g.drawImage(welcomePage.titleImg, 200, 300, this);
+    	g.drawImage(welcomePage.titleTextImg, 50 , 50, this);
+    	g.drawImage(welcomePage.titleImg, 200, 100, this);
 
     }
     
-	class nameButtonListener implements ActionListener 
+	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			welcomePage.setUserName(nameField.getText());
-			nameEntered = true;
+			//welcomePage.setUserName(nameField.getText());
+			//nameEntered = true;
 			welcomePage.loadFirstPage();
 			repaint();
 			
