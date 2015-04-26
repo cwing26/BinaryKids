@@ -53,63 +53,33 @@ import java.awt.Toolkit;
 public class DemoPage extends JPanel implements ActionListener
 {
 
-    JPanel titlePanel;
-    JLabel titleLabel;
-    JButton animationButton;
-
-    //components of first decimal animation
-    String one = "1";
-    String three = "3";
-    String two = "2";
+    //images
+	private Image titleImage;
+	
+	String explanation1 = "Counting with decimal numbers and binary numbers is the same!";
+	String explanation1cont = "Just add the sum of all digits based on what place they are.";
+	
+	String explanation2 = "Let's do an example where we count to 45 in decimal and binary:";
+	
+	
+	//components of first decimal animation
+	String four = "4";
+    String five = "5";
     
-    String hundredsPlace = "Hundreds Place";
     String tensPlace = "Tens Place";
     String onesPlace = "Ones Place";
     
-    String hundredsMultiplication = "100 x 1";
-    String hundredsMultiplicationAnswer = "100 x 1 = 100";
+    String tensMultiplication = "10 x 4";
+    String tensMultiplicationAnswer = "40";
     
-    String tensMultiplication = "10 x 3";
-    String tensMultiplicationAnswer = "10 x 3 = 30";
+    String onesMultiplication = "1 x 5";
+    String onesMultiplicationAnswer = "5";
     
-    String onesMultiplication = "1 x 2";
-    String onesMultiplicationAnswer = "1 x 2 = 2";
-    
-    String explanation = "Decimal numbers can have many digits.";
-    
-    
-    //components of second binary animation
-    //45 in binary is 101101
-    String binaryOne = "1";
-    String binaryZero = "0";
-    
-    String thirtyTwosPlace = "Thirty-Twos Place";
-    String sixteensPlace = "Sixteens place";
-    String eightsPlace = "Eights place";
-    String foursPlace = "Fours place";
-    String twosPlace = "Twos place";
-     
-    String thirtyTwoMultiplication = "32 x 1";
-    String thirtyTwoMultiplicationAnswer = "32 x 1 = 32";
-    
-    String sixteenMultiplication = "16 x 0";
-    String sixteenMultiplicationAnswer = "16 x 1 = 0";
-    
-    String eightMultiplication = "8 x 1";
-    String eightMultiplicationAnswer = "8 x 1 = 8";
-    
-    String fourMultiplication = "4 x 1";
-    String fourMultiplicationAnswer = "4 x 1 = 4";
-    
-    String twoMultiplication = "2 x 0";
-    String twoMultiplicationAnswer = "2 x 0 = 0";
-    
-    String oneMultiplication = "1 x 1";
-    String oneMultiplicationAnswer = "1 x 1 = 1";
-    
+    String plusSign = "+";
+    String equalSign = "=";
     
 	private Timer timer;
-	private int DELAY = 1000;
+	private int DELAY = 3000;
 	int countAnimation = 0;
 	
     
@@ -121,385 +91,167 @@ public class DemoPage extends JPanel implements ActionListener
     	timer = new Timer(DELAY, this);
     	setBackground(WelcomePage.backgroundColor);
     	
-    	initTitlePanel();
-    	initButtons();
+    	loadImages();
 
-    	add(titlePanel);
-    	add(animationButton);
-    	
-    	
     	setVisible(true);
+    	
+    	timer.start();
+    	
 
     }
     
-    public void initTitlePanel()
+    public void loadImages()
     {
-    	titlePanel = new JPanel();
-    	titleLabel = new JLabel("Binary numbers vs. decimal numbers");
-    	titleLabel.setFont(new Font("Verdana",1,20));
-    	titlePanel.add(titleLabel);
-    	titlePanel.setBorder(new LineBorder(Color.BLACK));    
-    	titlePanel.setBackground(new Color(200,40,160));
+    	titleImage = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(WelcomePage.puttingTogetherPath)); 
+		titleImage = titleImage.getScaledInstance(680, 60, Image.SCALE_SMOOTH);
+		
+		
     }
-    
-    public void initButtons()
-    {
-    	animationButton = new JButton("Click to learn more!");
-    	animationButton.addActionListener(new animationButtonListener());
-    }
-    
     
     public void paint(Graphics g)
     {
     	super.paint(g);
     	
-    	g.setFont(new Font("Verdana", 1, 20));
-    	g.drawString(explanation, 20, 100);
+    	g.drawImage(titleImage, 50, 5, this);
     	
+    	g.setFont(new Font("Geneva", 1, 20));
+    	g.drawString(explanation1, 20, 100);
+    	g.drawString(explanation1cont, 20, 125);
     	
-    	if(countAnimation == 1)
+    	g.drawString(explanation2, 20, 160);
+    	
+    	if(countAnimation == 0)
     	{	
     		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
+    		g.setFont(new Font("Geneva", 1, 150));
+        	g.drawString(four, 240, 330);
+        	g.drawString(five, 350, 330);
+        	
+        	g.setColor(welcomePage.textColor);
+        	g.setFont(new Font("Geneva", 1, 20));
+        	g.drawString(tensPlace, 230, 370);
+        	g.drawString(onesPlace, 355, 370);
+        	
+    	}
+    	else if(countAnimation == 1)
+    	{	
+    		g.setColor(Color.black);
+    		g.setFont(new Font("Geneva", 1, 150));
+        	g.drawString(four, 240, 330);
+        	g.drawString(five, 350, 330);
+        	
+        	g.setColor(Color.red);
+        	g.drawRect(230, 195, 110, 150);
+        	
+        	g.setColor(welcomePage.textColor);
+        	g.setFont(new Font("Geneva", 1, 20));
+        	g.drawString(tensPlace, 230, 370);
+        	g.drawString(onesPlace, 355, 370);
+        	
+        	
+        	g.drawString(tensMultiplication, 240, 400);
+        	
+        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setFont(new Font("Geneva", 1, 30));
+        	g.drawString(tensMultiplicationAnswer, 250, 440);
+        	
     	}
     	else if(countAnimation == 2)
-    	{		
+    	{	
     		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
+    		g.setFont(new Font("Geneva", 1, 150));
+        	g.drawString(four, 240, 330);
+        	g.drawString(five, 350, 330);
+        	
         	g.setColor(Color.red);
-        	g.drawRect(198, 175, 110, 150);
+        	g.drawRect(345, 195, 110, 150);
+        	
+        	g.setColor(welcomePage.textColor);
+        	g.setFont(new Font("Geneva", 1, 20));
+        	g.drawString(tensPlace, 230, 370);
+        	g.drawString(onesPlace, 355, 370);
+        	
+        	
+        	g.drawString(onesMultiplication, 365, 400);
+        	g.drawString(tensMultiplication, 240, 400);
+        	
+        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setFont(new Font("Geneva", 1, 30));
+        	g.drawString(tensMultiplicationAnswer, 250, 440);
+        	g.drawString(onesMultiplicationAnswer, 375, 440);
+        
         	
     	}
     	else if(countAnimation == 3)
-    	{		
+    	{	
     		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
-        	g.setColor(Color.red);
-        	g.drawRect(198, 175, 110, 150);
-        	g.setColor(Color.blue);
-        	g.setFont(new Font("Verdana", 1, 16));
-        	g.drawString(hundredsPlace, 190, 165);
-        	
-    	}
-    	else if(countAnimation == 4)
-    	{		
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
-        	g.setColor(Color.red);
-        	g.drawRect(198, 175, 110, 150);
-        	
-        	g.setColor(Color.blue);
-        	g.setFont(new Font("Verdana", 1, 16));
-        	g.drawString(hundredsPlace, 190, 165);
-        	g.drawString(hundredsMultiplication, 215, 345);
-        	
-        	g.setColor(Color.black);
-        	g.setFont(new Font("Verdana", 1, 20));
-        	g.drawString(hundredsMultiplicationAnswer, 615, 200);
-
-    	}
-    	else if(countAnimation == 5)
-    	{		
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
-        	g.setColor(Color.red);
-        	g.drawRect(348, 175, 110, 150);
-        	
-        	g.setColor(Color.black);
-        	g.setFont(new Font("Verdana", 1, 20));
-        	g.drawString(hundredsMultiplicationAnswer, 615, 200);
-
-    	}
-    	else if(countAnimation == 6)
-    	{		
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
-        	g.setColor(Color.red);
-        	g.drawRect(348, 175, 110, 150);
-        	
-        	g.setColor(Color.blue);
-        	g.setFont(new Font("Verdana", 1, 16));
-        	g.drawString(tensPlace, 340, 165);
-        	
-        	g.setColor(Color.black);
-        	g.setFont(new Font("Verdana", 1, 20));
-        	g.drawString(hundredsMultiplicationAnswer, 615, 200);
-
-    	}
-    	else if(countAnimation == 7)
-    	{		
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
-        	g.setColor(Color.red);
-        	g.drawRect(348, 175, 110, 150);
-        	
-        	g.setColor(Color.blue);
-        	g.setFont(new Font("Verdana", 1, 16));
-        	g.drawString(tensPlace, 340, 165);
-        	g.drawString(tensMultiplication, 350, 345);
-        	
-        	g.setColor(Color.black);
-        	g.setFont(new Font("Verdana", 1, 20));
-        	g.drawString(hundredsMultiplicationAnswer, 615, 200);
-        	g.drawString(tensMultiplicationAnswer, 615, 240);
-
-    	}
-    	else if(countAnimation == 8)
-    	{		
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
-        	g.setColor(Color.red);
-        	g.drawRect(500, 175, 110, 150);
-
-        	g.setColor(Color.black);
-        	g.setFont(new Font("Verdana", 1, 20));
-        	g.drawString(hundredsMultiplicationAnswer, 615, 200);
-        	g.drawString(tensMultiplicationAnswer, 615, 240);
-
-    	}
-    	else if(countAnimation == 9)
-    	{		
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
-        	g.setColor(Color.red);
-        	g.drawRect(500, 175, 110, 150);
-        	
-        	g.setColor(Color.blue);
-        	g.setFont(new Font("Verdana", 1, 16));
-        	g.drawString(onesPlace, 500, 165);
-        	
-        	g.setColor(Color.black);
-        	g.setFont(new Font("Verdana", 1, 20));
-        	g.drawString(hundredsMultiplicationAnswer, 615, 200);
-        	g.drawString(tensMultiplicationAnswer, 615, 240);
-
-    	}
-    	else if(countAnimation == 10)
-    	{		
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
-        	g.setColor(Color.red);
-        	g.drawRect(500, 175, 110, 150);
-
-        	g.setColor(Color.blue);
-        	g.setFont(new Font("Verdana", 1, 16));
-        	g.drawString(onesPlace, 500, 165);
-        	g.drawString(onesMultiplication, 500, 345);
-        	
-        	g.setColor(Color.black);
-        	g.setFont(new Font("Verdana", 1, 20));
-        	g.drawString(hundredsMultiplicationAnswer, 615, 200);
-        	g.drawString(tensMultiplicationAnswer, 615, 240);
-        	g.drawString(onesMultiplicationAnswer, 615, 280);
-        	
-
-    	}
-    	else if(countAnimation == 11)
-    	{		
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(one, 200, 300);
-        	g.drawString(three, 350, 300);
-        	g.drawString(two, 500, 300);
-
-        	
-        	g.setColor(Color.black);
-        	g.setFont(new Font("Verdana", 1, 20));
-        	g.drawString(hundredsMultiplicationAnswer, 615, 200);
-        	g.drawString(tensMultiplicationAnswer, 615, 240);
-        	g.drawString(onesMultiplicationAnswer, 615, 280);
-        	
-        	g.setColor(Color.blue);
-        	g.drawString("Sum : 132", 615, 320);
-        	explanation = "Binary numbers can also have many digits";
-
-    	}
-    	else if(countAnimation == 12)
-    	{		
-    		//101101
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(binaryOne, 50, 275);
-        	g.drawString(binaryZero, 170, 275);
-        	g.drawString(binaryOne, 290, 275);
-        	g.drawString(binaryOne, 410, 275);
-        	g.drawString(binaryZero, 530, 275);
-        	g.drawString(binaryOne, 650, 275);
-        	
-        	g.setColor(Color.blue);
-        	g.setFont(new Font("Verdana", 1, 16));
-        	
-        	g.drawString(thirtyTwosPlace, 45, 130);
-        	g.drawString(sixteensPlace, 165, 130);
-        	g.drawString(eightsPlace, 285, 130);
-        	g.drawString(foursPlace, 410, 130);
-        	g.drawString(twosPlace, 530, 130);
-        	g.drawString(onesPlace, 650, 130);
+    		g.setFont(new Font("Geneva", 1, 150));
+        	g.drawString(four, 240, 330);
+        	g.drawString(five, 350, 330);
         	
         	
-        	g.setColor(Color.red);
-        	g.drawRect(50, 140, 110, 150);
-        	g.drawRect(170, 140, 110, 150);
-        	g.drawRect(290, 140, 110, 150);
-        	g.drawRect(410, 140, 110, 150);
-        	g.drawRect(530, 140, 110, 150);
-        	g.drawRect(650, 140, 110, 150);
+        	g.setColor(welcomePage.textColor);
+        	g.setFont(new Font("Geneva", 1, 20));
+        	g.drawString(tensPlace, 230, 370);
+        	g.drawString(onesPlace, 355, 370);
         	
         	
+        	g.drawString(tensMultiplication, 240, 400);
+        	g.drawString(onesMultiplication, 365, 400);
         	
-    	}
-    	else if(countAnimation == 13)
-    	{		
-    		//101101
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(binaryOne, 50, 275);
-        	g.drawString(binaryZero, 170, 275);
-        	g.drawString(binaryOne, 290, 275);
-        	g.drawString(binaryOne, 410, 275);
-        	g.drawString(binaryZero, 530, 275);
-        	g.drawString(binaryOne, 650, 275);
+        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setFont(new Font("Geneva", 1, 30));
+        	g.drawString(tensMultiplicationAnswer, 250, 440);
+        	g.drawString(onesMultiplicationAnswer, 375, 440);
         	
-        	g.setColor(Color.red);
-        	g.drawRect(50, 140, 110, 150);
+        	
+        	g.setColor(welcomePage.textColor);
+        	g.drawString(plusSign, 320, 440);
 
         	
     	}
-    	else if(countAnimation == 14)
-    	{		
-    		//101101
+    	else if(countAnimation >= 4)
+    	{	
     		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(binaryOne, 50, 275);
-        	g.drawString(binaryZero, 170, 275);
-        	g.drawString(binaryOne, 290, 275);
-        	g.drawString(binaryOne, 410, 275);
-        	g.drawString(binaryZero, 530, 275);
-        	g.drawString(binaryOne, 650, 275);
+    		g.setFont(new Font("Geneva", 1, 150));
+        	g.drawString(four, 240, 330);
+        	g.drawString(five, 350, 330);
         	
-        	g.setColor(Color.red);
-        	g.drawRect(50, 140, 110, 150);
         	
-        	g.setColor(Color.blue);
-        	g.setFont(new Font("Verdana", 1, 16));
+        	g.setColor(welcomePage.textColor);
+        	g.setFont(new Font("Geneva", 1, 20));
+        	g.drawString(tensPlace, 230, 370);
+        	g.drawString(onesPlace, 355, 370);
         	
-        	g.drawString(thirtyTwosPlace, 45, 130);
-
+        	
+        	g.drawString(tensMultiplication, 240, 400);
+        	g.drawString(onesMultiplication, 365, 400);
+        	
+        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setFont(new Font("Geneva", 1, 30));
+        	g.drawString(tensMultiplicationAnswer, 250, 440);
+        	g.drawString(onesMultiplicationAnswer, 375, 440);
+        	
+        	
+        	g.setColor(welcomePage.textColor);
+        	g.drawString(plusSign, 320, 440);
+        	
+        	g.drawString(equalSign, 480, 440);
+        	
+        	g.setColor(welcomePage.buttonPanelColor);
+        	g.drawString("45", 510, 440);
+        	
     	}
-    	else if(countAnimation == 15)
-    	{		
-    		//101101
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(binaryOne, 50, 275);
-        	g.drawString(binaryZero, 170, 275);
-        	g.drawString(binaryOne, 290, 275);
-        	g.drawString(binaryOne, 410, 275);
-        	g.drawString(binaryZero, 530, 275);
-        	g.drawString(binaryOne, 650, 275);
-        	
-        	g.setColor(Color.red);
-        	g.drawRect(50, 140, 110, 150);
-        	
-        	g.setColor(Color.blue);
-        	g.setFont(new Font("Verdana", 1, 16));
-        	
-        	g.drawString(thirtyTwosPlace, 45, 130);
-        	
-        	g.setColor(Color.black);
-        	g.drawString(thirtyTwoMultiplication, 55,310);
-        	g.setFont(new Font("Verdana", 1, 25));
-        	g.drawString("32", 55,375);
-        	
-
-    	}
-    	else if(countAnimation == 16)
-    	{		
-    		//101101
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(binaryOne, 50, 275);
-        	g.drawString(binaryZero, 170, 275);
-        	g.drawString(binaryOne, 290, 275);
-        	g.drawString(binaryOne, 410, 275);
-        	g.drawString(binaryZero, 530, 275);
-        	g.drawString(binaryOne, 650, 275);
-        	
-        	
-        	g.setColor(Color.red);
-        	g.drawRect(170, 140, 110, 150);
-        	
-        	g.setColor(Color.black);
-        	g.setFont(new Font("Verdana", 1, 25));
-        	g.drawString("32", 55,375);
-
-    	}
-    	else if(countAnimation == 17)
-    	{		
-    		//101101
-    		g.setColor(Color.black);
-    		g.setFont(new Font("Verdana", 1, 150));
-        	g.drawString(binaryOne, 50, 275);
-        	g.drawString(binaryZero, 170, 275);
-        	g.drawString(binaryOne, 290, 275);
-        	g.drawString(binaryOne, 410, 275);
-        	g.drawString(binaryZero, 530, 275);
-        	g.drawString(binaryOne, 650, 275);
-        
-        	
-        	g.setColor(Color.red);
-        	g.drawRect(170, 140, 110, 150);
-        	
-        	g.setColor(Color.blue);
-        	g.setFont(new Font("Verdana", 1, 16));
-        	
-        	g.drawString(sixteensPlace, 165, 130);
-        	
-        	g.setColor(Color.black);
-        	g.setFont(new Font("Verdana", 1, 25));
-        	g.drawString("32", 55,375);
-
-    	}
-    		
-
-    		
-    }
+    	
+    } //end paint
+    	
     
 	@Override
     public void actionPerformed(ActionEvent e) 
 	{
 		
-		if(countAnimation < 20)
+		if(countAnimation < 5)
 		{	
 			countAnimation++;
 		}
@@ -509,16 +261,6 @@ public class DemoPage extends JPanel implements ActionListener
         repaint();
     }
 	
-	class animationButtonListener implements ActionListener 
-	{
-		public void actionPerformed(ActionEvent le) 
-		{  
 
-			animationButton.setVisible(false);
-			timer.start();
-			repaint();
-		} 
-	}
-    
 
 }
