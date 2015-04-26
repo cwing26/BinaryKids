@@ -50,7 +50,7 @@ import java.awt.Toolkit;
 
 //create a binary stream and bits and shit
 
-public class terceraPage extends JPanel implements ActionListener
+public class TerceraPage extends JPanel implements ActionListener
 {
     
 	private Timer timer;
@@ -87,7 +87,7 @@ public class terceraPage extends JPanel implements ActionListener
     //bit = binary digit (timer)
     
     
-    public terceraPage(WelcomePage welcome)
+    public TerceraPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
 

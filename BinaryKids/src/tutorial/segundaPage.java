@@ -50,7 +50,7 @@ import java.awt.TextField;
 import java.awt.Toolkit;
 
 
-public class segundaPage extends JPanel implements ActionListener
+public class SegundaPage extends JPanel implements ActionListener
 {
     
 	private Timer timer;
@@ -94,7 +94,7 @@ public class segundaPage extends JPanel implements ActionListener
     //example click button and have it change binary to decimal
     
     
-    public segundaPage(WelcomePage welcome)
+    public SegundaPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
     	setLayout(null);

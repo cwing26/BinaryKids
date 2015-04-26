@@ -54,10 +54,10 @@ import java.net.URL;
 
 /*
 3.	representations of numbers (decimal, roman numeral, blocks) how theyre used
-4.	one system of numbers you might not be familiar with is binary, which weâ€™re going to teach you
+4.	one system of numbers you might not be familiar with is binary, which we’re going to teach you
 */
 
-public class numRepresentationPage2 extends JPanel
+public class NumRepresentationPage2 extends JPanel
 {
 
 	public Image titleImage;
@@ -81,7 +81,7 @@ public class numRepresentationPage2 extends JPanel
 	private WelcomePage welcomePage; //to connect welcome page to individual pages 
 			
     
-    public numRepresentationPage2(WelcomePage welcome)
+    public NumRepresentationPage2(WelcomePage welcome)
     {
     	welcomePage = welcome;
 

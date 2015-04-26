@@ -1,4 +1,4 @@
-package tutorial;
+package unused;
 
 
 import java.awt.Button;
@@ -24,6 +24,8 @@ import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.border.LineBorder;
+
+import tutorial.WelcomePage;
 
 import java.awt.*; 
 import java.applet.*;

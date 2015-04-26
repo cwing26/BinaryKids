@@ -153,7 +153,6 @@ public class BinaryDecimalOne extends JPanel
 
 			if(inputAnswer == correctAnswer)
 			{
-				welcomePage.getContentPane().remove(welcomePage.bdOne);
 				welcomePage.loadBinToDec2();
 				
 				welcomePage.validate();

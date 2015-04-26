@@ -165,7 +165,7 @@ public class FirstPage extends JPanel
         emailCheck.addItemListener(new useListener());
         
         checkPanel = new JPanel(new GridLayout(0, 1));
-        checkPanel.setBackground(welcomePage.backgroundColor);
+        checkPanel.setBackground(WelcomePage.backgroundColor);
         
         checkPanel.add(gameCheck);
         checkPanel.add(skypeCheck);
@@ -324,7 +324,7 @@ public class FirstPage extends JPanel
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			welcomePage.loadSecondPage();
+			welcomePage.loadSegundaPage();
 			repaint();
 		}
 	}

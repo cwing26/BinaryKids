@@ -112,13 +112,13 @@ public class FourthPage extends JPanel
 				welcomePage.binToDecTutorial();
 				
 			}
-			else if(e.getSource() == binAddButton)
-			{
-				welcomePage.binAddTutorial();
-			}
-			else if(e.getSource() == binSubButton)
-			{
-			}
+//			else if(e.getSource() == binAddButton)
+//			{
+//				welcomePage.binAddTutorial();
+//			}
+//			else if(e.getSource() == binSubButton)
+//			{
+//			}
 			else
 			{
 				welcomePage.gameOver();

@@ -1,10 +1,11 @@
-package tutorial;
+package unused;
 
 
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.MouseEvent;
+
 import javax.imageio.ImageIO;
 import javax.swing.BoxLayout;
 import javax.swing.ImageIcon;
@@ -15,6 +16,9 @@ import javax.swing.JOptionPane;
 import javax.swing.JTextArea;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+
+import tutorial.WelcomePage;
+
 import java.awt.*; 
 import java.awt.event.*;
 import java.awt.Color;
@@ -150,7 +154,7 @@ public class ThirdPage extends JPanel
 			{
 				if(firstPanelClicked == false)
 				{
-					welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
+//					welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
 					welcomePage.validate();
 					welcomePage.repaint();
 					welcomePage.setVisible(true);
@@ -186,7 +190,7 @@ public class ThirdPage extends JPanel
 			{
 				if(secondPanelClicked == false)
 				{
-					welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
+					//welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
 					welcomePage.validate();
 					welcomePage.repaint();
 					welcomePage.setVisible(true);
@@ -223,7 +227,7 @@ public class ThirdPage extends JPanel
 				if(thirdPanelClicked == false)
 				{
 					
-					welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
+					//welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
 					welcomePage.validate();
 					welcomePage.repaint();
 					welcomePage.setVisible(true);
@@ -258,7 +262,7 @@ public class ThirdPage extends JPanel
 			{
 				if(fourthPanelClicked == false)
 				{
-					welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
+					//welcomePage.buttonPanel.add(welcomePage.page3GoBackButton);
 					welcomePage.validate();
 					welcomePage.repaint();
 					welcomePage.setVisible(true);

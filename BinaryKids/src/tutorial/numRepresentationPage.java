@@ -1,5 +1,6 @@
 package tutorial;
 
+
 import java.awt.Button;
 import java.awt.Checkbox;
 import java.awt.CheckboxGroup;
@@ -53,10 +54,10 @@ import java.io.IOException;
 
 /*
 3.	representations of numbers (decimal, roman numeral, blocks) how theyre used
-4.	one system of numbers you might not be familiar with is binary, which weâ€™re going to teach you
+4.	one system of numbers you might not be familiar with is binary, which we’re going to teach you
 */
 
-public class numRepresentationPage extends JPanel implements ActionListener
+public class NumRepresentationPage extends JPanel implements ActionListener
 {
 
 	String userName = "";
@@ -81,7 +82,7 @@ public class numRepresentationPage extends JPanel implements ActionListener
 	private int DELAY = 2000;
 	int countAnimation = 0;
 
-    public numRepresentationPage(WelcomePage welcome)
+    public NumRepresentationPage(WelcomePage welcome)
     {
     	
     	welcomePage = welcome;

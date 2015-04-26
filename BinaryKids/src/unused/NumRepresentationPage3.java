@@ -1,4 +1,4 @@
-package tutorial;
+package unused;
 
 import java.awt.Button;
 import java.awt.Checkbox;
@@ -29,6 +29,8 @@ import javax.swing.SwingUtilities;
 import javax.swing.Timer;
 import javax.swing.border.LineBorder;
 
+import tutorial.WelcomePage;
+
 import java.awt.*; 
 import java.applet.*;
 import java.awt.BorderLayout;
@@ -54,10 +56,10 @@ import java.net.URL;
 
 /*
 3.	representations of numbers (decimal, roman numeral, blocks) how theyre used
-4.	one system of numbers you might not be familiar with is binary, which weâ€™re going to teach you
+4.	one system of numbers you might not be familiar with is binary, which we’re going to teach you
 */
 
-public class numRepresentationPage3 extends JPanel
+public class NumRepresentationPage3 extends JPanel
 {
 
 	public Image titleImage;
@@ -72,7 +74,7 @@ public class numRepresentationPage3 extends JPanel
 	private WelcomePage welcomePage; //to connect welcome page to individual pages 
 			
     
-    public numRepresentationPage3(WelcomePage welcome)
+    public NumRepresentationPage3(WelcomePage welcome)
     {
     	welcomePage = welcome;
 

@@ -50,7 +50,7 @@ import java.awt.TextField;
 import java.awt.Toolkit;
 
 
-public class preDemoPage extends JPanel implements ActionListener
+public class PreDemoPage extends JPanel implements ActionListener
 {
     
 	private Timer timer;
@@ -83,7 +83,7 @@ public class preDemoPage extends JPanel implements ActionListener
     String baseTen1 = "10";
     String baseTen2 = "10x10";
     
-    public preDemoPage(WelcomePage welcome)
+    public PreDemoPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
     	setLayout(null);

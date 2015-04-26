@@ -60,6 +60,7 @@ public class StartPage extends JPanel
 	{
     	submitButton = new JButton("Start Binary Kids");
     	submitButton.addActionListener(new submitButtonListener());
+		
 	}
 	
 	
@@ -103,11 +104,12 @@ public class StartPage extends JPanel
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-
+			
 			//welcomePage.setUserName(nameField.getText());
 			//nameEntered = true;
-
-			welcomePage.loadFirstPage();
+			welcomePage.pageFlag++;
+			welcomePage.backButton.setVisible(true);
+			welcomePage.loadNumRep1();
 			repaint();
 			
 		}

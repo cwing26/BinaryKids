@@ -50,7 +50,7 @@ import java.awt.TextField;
 import java.awt.Toolkit;
 
 
-public class preDemoBinaryPage extends JPanel implements ActionListener
+public class PreDemoBinaryPage extends JPanel implements ActionListener
 {
     
 	private Timer timer;
@@ -83,7 +83,7 @@ public class preDemoBinaryPage extends JPanel implements ActionListener
     String baseTwo1 = "2";
     String baseTwo2 = "2x2";
     
-    public preDemoBinaryPage(WelcomePage welcome)
+    public PreDemoBinaryPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
     	setLayout(null);

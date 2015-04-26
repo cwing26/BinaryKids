@@ -4,82 +4,72 @@ package tutorial;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
-
 import java.awt.*; 
-import java.applet.*;
 import java.awt.BorderLayout;
 import java.awt.event.*;
-import java.awt.image.BufferedImage;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.EventQueue;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Image;
-import java.awt.TextField;
 import java.awt.Toolkit;
-import java.io.BufferedReader;
-import java.io.InputStream;
-import java.io.InputStreamReader;
-import java.io.File;
 import java.io.IOException;
 import java.net.URL;
 
-
+import game.GamePage;
 
 
 @SuppressWarnings("serial")
 public class WelcomePage extends JApplet
 {
 
+	boolean notOnStartScreen = false;
 	WelcomePage welcome = this;
 
 	int pageFlag = 0;
 
 	private int frameWidth = 800;
 	private int frameHeight = 620;
-	
+
 	//new colors
 	public static Color backgroundColor = new Color(255, 255, 204);
 	public static Color buttonPanelColor = new Color(152, 46, 68);
 	public static Color textColor = new Color(0, 0, 0);
 	public static Color headersColor = new Color(255,102,102);
 
+	//"cards"
 	private StartPage startPage;
+	private NumRepresentationPage numRepresentationPage;
+	private NumRepresentationPage2 numRepresentationPage2;
 	private FirstPage firstPage;
-	private SecondPage secondPage;
-	private ThirdPage thirdPage;
+	private SegundaPage segundaPage;
+	private TerceraPage terceraPage;
+	private PreDemoPage preDemoPage;
+	private PreDemoBinaryPage preDemoBinaryPage;
+	private DemoPage demoPage;
+	private DemoPage2 demoPage2;
 	private FourthPage fourthPage;
-	BinaryDecimalOne bdOne;
-	private BinaryDecimalTwo bdTwo;
-	private BinaryDecimalThree bdThree;
-	private BinaryDecimalFour bdFour;
 	private DecToBinPage decToBinPage;
 	private DecToBinPage2 decToBinPage2;
 	private DecToBinPage3 decToBinPage3;
 	private DecToBinPage4 decToBinPage4;
-	private BinaryAddOne baOne;
-	private DemoPage demoPage;
+	private BinaryDecimalOne bdOne;
+	private BinaryDecimalTwo bdTwo;
+	private BinaryDecimalThree bdThree;
+	private BinaryDecimalFour bdFour;
+	private GamePage gamePage;
 
+	//top panel commponents
 	JPanel buttonPanel;
 	JButton nextButton;
 	JButton closeButton;
 	JButton tutorialButton;
 	JButton debugButton;
 	JButton gameButton; //only become available once completed tutorials
-	JButton page3GoBackButton;
+	JButton backButton;
 	JButton backToHomeButton;
-	
+
 	CardLayout cardLayout;
 	JPanel cards;
 
@@ -100,49 +90,47 @@ public class WelcomePage extends JApplet
 	public Image binDec3TitleImg;
 
 	//meghan's added images
-    	public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
-    	public Image titleHeadline;
-   	public Image binaryGraphic;
+	public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
+	public Image titleHeadline;
+	public Image binaryGraphic;
+
+	//num representation page images
+	public static String binaryImageLightPath = "images/binaryLight.jpg";
+	public static String binaryImageDarkPath = "images/binaryDark.jpg";
+	public static String decimalImagePath = "images/decimal.jpg";
+	public static String romanNumeralImagePath = "images/romanNumeral.jpg";
+	public static String shapesImagePath = "images/shapes.jpg";
+	public static String numRepTitlePath = "images/numRepPageTitle.jpg";
+	public static String soccerBallPath = "images/soccerBall.jpg";
 
 
-	    
-    //num representation page images
-    public static String binaryImageLightPath = “images/binaryLight.jpg";
-    public static String binaryImageDarkPath = "images/binaryDark.jpg";
-    public static String decimalImagePath = "images/decimal.jpg";
-    public static String romanNumeralImagePath = "images/romanNumeral.jpg";
-    public static String shapesImagePath = "images/shapes.jpg";
-    public static String numRepTitlePath = "images/numRepPageTitle.jpg";
-    public static String soccerBallPath = "images/soccerBall.jpg";
-    
-    
-    //what are binary numbers page
-    public static String whatBinaryTitlePath = "images/whatBinaryTitle.jpg";
-    public static String dogBinaryImagePath = "images/dogBinary.gif";
-    public static String bikeImagePath = "images/bicycle.png";
-    public static String binocularsPath = "images/binoculars.png";
-    
-    //why binary numbers important page
-    public static String whyBinaryImportantTitlePath = "images/thirdPageTitle.jpg";
-    public static String instagramPath = "images/instagram.png";
-    public static String fbPath = "images/fb.png";
-    public static String youtubePath = "images/youtube.png";
-    public static String emailPath = "images/gmail.png";
-    public static String skypePath = "images/skype.png";
-    public static String gamePath = "images/game.png";
-    public static String cellPath = "images/cellPhone.png";
-    public static String lightOffPath = "images/realLightOff.png";
-    public static String lightOnPath = "images/realLightOn.png";
-    public static String binaryDigitPath = "images/binaryDigit.gif";
-    
-    //dec number basics/bin num basics images
-    public static String decBasicsPath = "images/decNumBasics.jpg";
-    public static String crossOutPath = "images/crossOut.png";
-    public static String binBasicsPath = "images/binNumBasics.jpg";
-    
-    //demo page images
-    public static String puttingTogetherPath = "images/puttingAllTogether.jpg";
-    
+	//what are binary numbers page
+	public static String whatBinaryTitlePath = "images/whatBinaryTitle.jpg";
+	public static String dogBinaryImagePath = "images/dogBinary.jpg";
+	public static String bikeImagePath = "images/bicycle.png";
+	public static String binocularsPath = "images/binoculars.png";
+
+	//why binary numbers important page
+	public static String whyBinaryImportantTitlePath = "images/thirdPageTitle.jpg";
+	public static String instagramPath = "images/instagram.png";
+	public static String fbPath = "images/fb.png";
+	public static String youtubePath = "images/youtube.png";
+	public static String emailPath = "images/gmail.png";
+	public static String skypePath = "images/skype.png";
+	public static String gamePath = "images/game.png";
+	public static String cellPath = "images/cellPhone.png";
+	public static String lightOffPath = "images/realLightOff.png";
+	public static String lightOnPath = "images/realLightOn.png";
+	public static String binaryDigitPath = "images/binaryDigit.gif";
+
+	//dec number basics/bin num basics images
+	public static String decBasicsPath = "images/decNumBasics.jpg";
+	public static String crossOutPath = "images/crossOut.png";
+	public static String binBasicsPath = "images/binNumBasics.jpg";
+
+	//demo page images
+	public static String puttingTogetherPath = "images/puttingAllTogether.jpg";
+
 
 	//Called when this applet is loaded into the browser.
 	public void init() 
@@ -172,49 +160,75 @@ public class WelcomePage extends JApplet
 	private void createGUI() 
 	{
 
+		//load all images to be used in the applet
+		loadImages();
+
+		//set up the panel of buttons that is always visible
+		createButtonPanel();
+
 		//initializaing all of the components of the tutorial
 		cards = new JPanel(new CardLayout());
 		contentPane = getContentPane();
+
+
 		startPage = new StartPage(this);
+
+		numRepresentationPage = new NumRepresentationPage(this);
+		numRepresentationPage2 = new NumRepresentationPage2(this);
 		firstPage = new FirstPage(this);
-		secondPage = new SecondPage(this);
-		thirdPage = new ThirdPage(this);
+		segundaPage = new SegundaPage(this);
+		terceraPage = new TerceraPage(this);
+		preDemoPage = new PreDemoPage(this);
+		preDemoBinaryPage = new PreDemoBinaryPage(this);
+		demoPage = new DemoPage(this);
+		demoPage2 = new DemoPage2(this);
 		fourthPage = new FourthPage(this);
-		bdOne = new BinaryDecimalOne(this);
-		bdTwo = new BinaryDecimalTwo(this);
-		bdThree = new BinaryDecimalThree(this);
-		bdFour = new BinaryDecimalFour(this);
 		decToBinPage = new DecToBinPage(this);
 		decToBinPage2 = new DecToBinPage2(this);
 		decToBinPage3 = new DecToBinPage3(this);
 		decToBinPage4 = new DecToBinPage4(this);
-		baOne = new BinaryAddOne(this);
-		demoPage = new DemoPage(this);
-		
-		
+		bdOne = new BinaryDecimalOne(this);
+		bdTwo = new BinaryDecimalTwo(this);
+		bdThree = new BinaryDecimalThree(this);
+		bdFour = new BinaryDecimalFour(this);
+		gamePage = new GamePage(this);
+
+
+		cards.add(startPage, "START PAGE");
+		cards.add(numRepresentationPage, "NUM REP 1");
+		cards.add(numRepresentationPage2, "NUM REP 2");
+		cards.add(firstPage, "FIRST");
+		cards.add(segundaPage, "SEGUNDA");
+		cards.add(terceraPage, "TERCERDA");
+		cards.add(preDemoPage, "PRE DEMO");
+		cards.add(preDemoBinaryPage, "PRE DEMO 2");
+		cards.add(demoPage, "DEMO");
+		cards.add(demoPage2, "DEMO 2");
+		cards.add(fourthPage, "FOURTH");
+		cards.add(decToBinPage, "DEC BIN PAGE 1");
 		cards.add(decToBinPage2, "DEC BIN PAGE 2");
 		cards.add(decToBinPage3, "DEC BIN PAGE 3");
-		
+		cards.add(decToBinPage4, "DEC BIN PAGE 4");
+		cards.add(bdOne, "BIN DEC PAGE 1");
+		cards.add(bdTwo, "BIN DEC PAGE 2");
+		cards.add(bdThree, "BIN DEC PAGE 3");
+		cards.add(bdFour, "BIN DEC PAGE 4");
+		cards.add(gamePage, "GAME");
 
-		//dialog box welcomes user to game and gives them brief instructions
-		//String welcomeMessage = "Welcome to BinaryKids: Type in your name and click next to get started!";
-		//JOptionPane.showMessageDialog(this, welcomeMessage, "Welcome to BinaryKids", JOptionPane.YES_NO_OPTION);
 
-		//set up the panel of buttons that is always visible
-		createButtonPanel();
 
 		//Create and set up the content pane.
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		cardLayout.show(cards, "DEC BIN PAGE 2");
-		
+		cardLayout.show(cards, "START PAGE");
+
 		//add(startPage, BorderLayout.CENTER);
 		//add buttonPanel to the top of game frame
 		add(buttonPanel, BorderLayout.NORTH);
 
 
-		loadImages();
+
 
 		// Setup the applet
 		getContentPane().setBackground(backgroundColor);
@@ -243,11 +257,11 @@ public class WelcomePage extends JApplet
 		binDec3TitleImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binDecPg3TitleImagePath));  
 		binDec3TitleImg = binDec3TitleImg.getScaledInstance(650, 50, Image.SCALE_SMOOTH);
-		
+
 		titleHeadline = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.welcomeToBKPath)); 
 		titleHeadline = titleHeadline.getScaledInstance(586, 50, Image.SCALE_SMOOTH);
-		
+
 		//try to load the image file
 		try {
 			binaryGraphic = new ImageIcon(new URL("http://media.giphy.com/media/nlJF31X6I1LW/giphy.gif")).getImage();
@@ -268,7 +282,7 @@ public class WelcomePage extends JApplet
 		debugButton = new JButton("Debug");
 		debugButton.addActionListener(new debugButtonListener());
 
-		nextButton = new JButton("NextPage");
+		nextButton = new JButton("NEXT");
 		nextButton.addActionListener(new nextButtonListener());
 
 		tutorialButton = new JButton("Tutorials");
@@ -277,18 +291,21 @@ public class WelcomePage extends JApplet
 		gameButton = new JButton("Play Game");
 		gameButton.addActionListener(new gameButtonListener());
 
-		page3GoBackButton = new JButton("Go back");
-		page3GoBackButton.addActionListener(new backButtonListener());
+		backButton = new JButton("BACK");
+		backButton.addActionListener(new backButtonListener());
 
-  		backToHomeButton = new JButton("Back to Home");
-  		backToHomeButton.addActionListener(new backHomeButtonListener());
+		backToHomeButton = new JButton("Back to Home");
+		backToHomeButton.addActionListener(new backHomeButtonListener());
 
 		//buttons panel that holds close button
 		buttonPanel = new JPanel();
 		buttonPanel.setBackground(WelcomePage.buttonPanelColor);
 		buttonPanel.add(backToHomeButton);
-		buttonPanel.add(closeButton); //add button to the buttonPanel
-		buttonPanel.add(debugButton);
+		buttonPanel.add(closeButton); 
+		buttonPanel.add(backButton);
+		backButton.setVisible(false);
+		buttonPanel.add(nextButton);
+		//buttonPanel.add(debugButton);
 
 	}
 
@@ -330,15 +347,19 @@ public class WelcomePage extends JApplet
 
 	public void loadNewTutorial(String tutorialType)
 	{
-		contentPane.remove(fourthPage);
-		contentPane.remove(demoPage);
 		if (tutorialType.equals("DECBIN"))
 		{
-			contentPane.add(decToBinPage, BorderLayout.CENTER);
+			decToBinPage = new DecToBinPage(this);
+			cardLayout.show(cards, "DEC BIN PAGE 1");
+			backButton.setVisible(false);
+			nextButton.setVisible(false);
 		}
 		else if (tutorialType.equals("BINDEC"))
 		{
-			contentPane.add(bdOne, BorderLayout.CENTER);
+			bdOne = new BinaryDecimalOne(this);
+			cardLayout.show(cards, "BIN DEC PAGE 1");
+			backButton.setVisible(false);
+			nextButton.setVisible(false);
 		}
 		else {
 			System.out.println("still need to implement other tutorial pages");
@@ -435,35 +456,26 @@ public class WelcomePage extends JApplet
 		repaint();
 	}
 
-	public void binAddTutorial()
-	{
-		contentPane.remove(fourthPage);
-		baOne = new BinaryAddOne(this);
-		contentPane.add(baOne, BorderLayout.CENTER);
-		validate();
-		setVisible(true);
-		repaint();
+	public void loadNumRep1(){
+		cardLayout.show(cards, "NUM REP 1");
 	}
 
-	public void loadFirstPage()
-	{
-		contentPane.remove(startPage);
-		firstPage = new FirstPage(welcome);
-		contentPane.add(firstPage, BorderLayout.CENTER);
-		validate();
-		setVisible(true);
-		repaint();
+	public void loadNumRep2(){
+		cardLayout.show(cards, "NUM REP 2");
 	}
 
-	public void loadSecondPage()
-	{
-		contentPane.remove(firstPage);
-		secondPage = new SecondPage(welcome);
-		contentPane.add(secondPage, BorderLayout.CENTER);
-		validate();
-		setVisible(true);
-		repaint();
+	public void loadNumRep3(){
+		cardLayout.show(cards, "NUM REP 3");
 	}
+
+	public void loadSegundaPage(){
+		cardLayout.show(cards, "SEGUNDA");
+	}
+
+	public void loadTerceraPage(){
+		cardLayout.show(cards, "TERCERA");
+	}
+
 
 	public void setUserName(String name)
 	{
@@ -490,21 +502,20 @@ public class WelcomePage extends JApplet
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			contentPane.remove(firstPage);
-			contentPane.remove(secondPage);
-			contentPane.remove(thirdPage);
-			contentPane.remove(fourthPage);
-			contentPane.remove(bdOne);
-			contentPane.remove(bdTwo);
-			contentPane.remove(bdThree);
-			contentPane.remove(bdFour);
-			contentPane.remove(decToBinPage);
-			contentPane.remove(decToBinPage2);
-			contentPane.remove(decToBinPage3);
-			contentPane.remove(decToBinPage4);
-			contentPane.remove(baOne);
-			contentPane.remove(demoPage);
-			contentPane.add(fourthPage);
+			cardLayout.show(fourthPage, "FOURTH");
+			//			contentPane.remove(firstPage);
+			//			contentPane.remove(fourthPage);
+			//			contentPane.remove(bdOne);
+			//			contentPane.remove(bdTwo);
+			//			contentPane.remove(bdThree);
+			//			contentPane.remove(bdFour);
+			//			contentPane.remove(decToBinPage);
+			//			contentPane.remove(decToBinPage2);
+			//			contentPane.remove(decToBinPage3);
+			//			contentPane.remove(decToBinPage4);
+			//			contentPane.remove(baOne);
+			//			contentPane.remove(demoPage);
+			//			contentPane.add(fourthPage);
 			validate();
 			setVisible(true);
 			repaint();	
@@ -515,30 +526,32 @@ public class WelcomePage extends JApplet
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			contentPane.remove(startPage);
-			contentPane.remove(firstPage);
-			contentPane.remove(secondPage);
-			contentPane.remove(thirdPage);
-			contentPane.remove(fourthPage);
-			contentPane.remove(bdOne);
-			contentPane.remove(bdTwo);
-			contentPane.remove(bdThree);
-			contentPane.remove(bdFour);
-			contentPane.remove(decToBinPage);
-			contentPane.remove(decToBinPage2);
-			contentPane.remove(decToBinPage3);
-			contentPane.remove(decToBinPage4);
-			contentPane.remove(baOne);
-			contentPane.remove(demoPage);
-			
-			startPage = new StartPage(welcome);
-			contentPane.add(startPage);
+			//			contentPane.remove(startPage);
+			//			contentPane.remove(firstPage);
+			//			contentPane.remove(secondPage);
+			//			contentPane.remove(thirdPage);
+			//			contentPane.remove(fourthPage);
+			//			contentPane.remove(bdOne);
+			//			contentPane.remove(bdTwo);
+			//			contentPane.remove(bdThree);
+			//			contentPane.remove(bdFour);
+			//			contentPane.remove(decToBinPage);
+			//			contentPane.remove(decToBinPage2);
+			//			contentPane.remove(decToBinPage3);
+			//			contentPane.remove(decToBinPage4);
+			//			contentPane.remove(baOne);
+			//			contentPane.remove(demoPage);
 
+			startPage = new StartPage(welcome);
+			//contentPane.add(startPage);
+			notOnStartScreen = false;
 			pageFlag = 0;
-			
+			backButton.setVisible(false);
+			nextButton.setVisible(true);
+			cardLayout.show(cards, "START PAGE");
 			validate();
-	        setVisible(true);
-	        repaint();	
+			setVisible(true);
+			repaint();	
 		}
 	}
 
@@ -546,14 +559,15 @@ public class WelcomePage extends JApplet
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			contentPane.remove(thirdPage);
-			contentPane.remove(fourthPage);
-			contentPane.remove(bdOne);
-			contentPane.remove(bdTwo);
-			contentPane.remove(bdThree);
-			contentPane.remove(bdFour);
-			contentPane.remove(decToBinPage);
-			contentPane.remove(decToBinPage2);
+			cardLayout.show(gamePage, "GAME");
+			//			contentPane.remove(thirdPage);
+			//			contentPane.remove(fourthPage);
+			//			contentPane.remove(bdOne);
+			//			contentPane.remove(bdTwo);
+			//			contentPane.remove(bdThree);
+			//			contentPane.remove(bdFour);
+			//			contentPane.remove(decToBinPage);
+			//			contentPane.remove(decToBinPage2);
 			//contentPane.add(gamePage);
 			validate();
 			setVisible(true);
@@ -565,13 +579,14 @@ public class WelcomePage extends JApplet
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			contentPane.remove(secondPage);
-			contentPane.remove(thirdPage);
-			contentPane.remove(bdOne);
-			contentPane.remove(decToBinPage);
-			contentPane.remove(decToBinPage2);
-			thirdPage = new ThirdPage(welcome);
-			contentPane.add(thirdPage);
+			pageFlag--;
+			if (pageFlag == 0){
+				backButton.setVisible(false);
+			}
+			else{
+				backButton.setVisible(true);
+			}
+			cardLayout.previous(cards);
 			validate();
 			setVisible(true);
 			repaint();	
@@ -582,24 +597,24 @@ public class WelcomePage extends JApplet
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			contentPane.remove(startPage);
-			contentPane.remove(firstPage);
-			contentPane.remove(secondPage);
-			contentPane.remove(thirdPage);
-			contentPane.remove(fourthPage);
-			contentPane.remove(bdOne);
-			contentPane.remove(bdTwo);
-			contentPane.remove(bdThree);
-			contentPane.remove(bdFour);
-			contentPane.remove(decToBinPage);
-			contentPane.remove(decToBinPage2);
-			contentPane.remove(decToBinPage3);
-			contentPane.remove(decToBinPage4);
-			contentPane.remove(baOne);
-			contentPane.remove(demoPage);
-
-
-			contentPane.add(new DecToBinPage2(welcome));
+			//			contentPane.remove(startPage);
+			//			contentPane.remove(firstPage);
+			//			contentPane.remove(secondPage);
+			//			contentPane.remove(thirdPage);
+			//			contentPane.remove(fourthPage);
+			//			contentPane.remove(bdOne);
+			//			contentPane.remove(bdTwo);
+			//			contentPane.remove(bdThree);
+			//			contentPane.remove(bdFour);
+			//			contentPane.remove(decToBinPage);
+			//			contentPane.remove(decToBinPage2);
+			//			contentPane.remove(decToBinPage3);
+			//			contentPane.remove(decToBinPage4);
+			//			contentPane.remove(baOne);
+			//			contentPane.remove(demoPage);
+			//
+			//
+			//			contentPane.add(new DecToBinPage2(welcome));
 
 			validate();
 			setVisible(true);
@@ -612,6 +627,16 @@ public class WelcomePage extends JApplet
 
 		public void actionPerformed(ActionEvent e) 
 		{
+			pageFlag++;
+			cardLayout.next(cards);
+			notOnStartScreen = true;
+			if (pageFlag == 0){
+				backButton.setVisible(false);
+			}
+			else{
+				backButton.setVisible(true);
+			}
+			
 			/*
 			if(pageFlag == 0)
 			{
@@ -640,52 +665,52 @@ public class WelcomePage extends JApplet
 
 			}
 			 */
-			if(pageFlag == 0)
-			{
-				contentPane.remove(secondPage);
-				contentPane.add(thirdPage, BorderLayout.CENTER);
-				if(thirdPage.pageClickedOnce)
-				{
-					buttonPanel.add(page3GoBackButton);
-				}
-				pageFlag++;
-
-				validate();
-				setVisible(true);
-				repaint();
-			}
-			else if(pageFlag == 1)
-			{
-
-				contentPane.remove(thirdPage);
-				contentPane.add(demoPage, BorderLayout.CENTER);
-
-				pageFlag++;
-
-				validate();
-				setVisible(true);
-				repaint();
-			}
-			else if(pageFlag == 2)
-			{
-
-				contentPane.remove(demoPage);
-				buttonPanel.remove(nextButton);
-				buttonPanel.remove(page3GoBackButton);
-				buttonPanel.add(tutorialButton);
-				contentPane.add(fourthPage, BorderLayout.CENTER);
-
-				pageFlag++;
-
-				validate();
-				setVisible(true);
-				repaint();
-			}
-			else
-			{
-				//buttonPanel.add(gameButton);
-				//gameOver();
-			}
+			//			if(pageFlag == 0)
+			//			{
+			//				contentPane.remove(secondPage);
+			//				contentPane.add(thirdPage, BorderLayout.CENTER);
+			//				if(thirdPage.pageClickedOnce)
+			//				{
+			//					buttonPanel.add(page3GoBackButton);
+			//				}
+			//				pageFlag++;
+			//
+			//				validate();
+			//				setVisible(true);
+			//				repaint();
+			//			}
+			//			else if(pageFlag == 1)
+			//			{
+			//
+			//				contentPane.remove(thirdPage);
+			//				contentPane.add(demoPage, BorderLayout.CENTER);
+			//
+			//				pageFlag++;
+			//
+			//				validate();
+			//				setVisible(true);
+			//				repaint();
+			//			}
+			//			else if(pageFlag == 2)
+			//			{
+			//
+			//				contentPane.remove(demoPage);
+			//				buttonPanel.remove(nextButton);
+			//				buttonPanel.remove(page3GoBackButton);
+			//				buttonPanel.add(tutorialButton);
+			//				contentPane.add(fourthPage, BorderLayout.CENTER);
+			//
+			//				pageFlag++;
+			//
+			//				validate();
+			//				setVisible(true);
+			//				repaint();
+			//			}
+			//			else
+			//			{
+			//				//buttonPanel.add(gameButton);
+			//				//gameOver();
+			//			}
 
 		} //end action performed
 
