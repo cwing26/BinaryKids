@@ -14,17 +14,20 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 	WelcomePage welcomePage;
 	JButton submitButton; 
-	
+
 	//TextFields
 	JTextField NumberEightsField;
 	JTextField NumberFoursField;
 	JTextField NumberTwosField;
 	JTextField NumberOnesField;
 
+	//user input
 	String numEightsInput;
 	String numFoursInput;
 	String numTwosInput;
 	String numOnesInput;
+
+	//actual values
 	final String numEightsActual = "1";
 	final String numFoursActual = "0";
 	final String numTwosActual = "1";
@@ -77,16 +80,6 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	JPanel textPanel;
 	JPanel questionPanel;
 
-	//formats the title panel
-	public void initTitlePanel(){
-		titlePanel = new JPanel();
-		titlePanel.setLayout(new BorderLayout());
-		titlePanel.setBackground(WelcomePage.backgroundColor);
-		JLabel titleLabel = new JLabel("Converting Decimal to Binary");
-		titleLabel.setFont(new Font("Geneva",1,20));
-		titlePanel.add(titleLabel, BorderLayout.CENTER);
-		//titlePanel.setBorder(new LineBorder(WelcomePage.darkBlueColor));
-	}
 
 
 
@@ -193,211 +186,215 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		}      
 	}
 
-public void initButtons(){
-	submitButton = new JButton("Submit"); 
-	submitButton.addActionListener(new submitButtonListener());
-}
-
-//constructor, param is the applet
-public DecToBinPage3(WelcomePage welcome)
-{
-	welcomePage = welcome;
-	setBackground(WelcomePage.backgroundColor);
-
-
-	//initializations
-	//initJLabels();
-	initTextFields();
-	initRects();
-	initButtons();
-	initTitlePanel();
-
-	setLayout(null);
-	//add(titlePanel);
-	add(NumberEightsField);
-	add(NumberFoursField);
-	add(NumberTwosField);
-	add(NumberOnesField);
-	add(submitButton);
-	Insets insets = getInsets();
-	
-	
-	Dimension size = NumberEightsField.getPreferredSize();
-	NumberEightsField.setBounds(box8x +25 + insets.left, box8y+box8height+5 + insets.top,
-            size.width, size.height);
-	NumberFoursField.setBounds(box4x +25 + insets.left, box4y+box8height+5 + insets.top,
-            size.width, size.height);
-	NumberTwosField.setBounds(box2x +25 + insets.left, box2y+box8height+5 + insets.top,
-            size.width, size.height);
-	NumberOnesField.setBounds(box1x +25 + insets.left, box1y+box8height+5 + insets.top,
-            size.width, size.height);
-	
-	Dimension buttonSize = submitButton.getPreferredSize();
-	submitButton.setBounds(box1x +box1width + 20 + insets.left, box1y+box1height+5 + insets.top,
-			buttonSize.width, buttonSize.height);
-
-	// Add the MouseListener to the applet 
-	addMouseListener(this); 
-}
-
-public void paint(Graphics g) {
-	super.paint(g);
-
-	//change the color of the box if it is selected
-	g.setColor(WelcomePage.textColor);
-	if (boxSelected1)
-		g.setColor(Color.RED);
-	g.drawRect(box1x,box1y,box1width,box1height);
-
-	g.setColor(WelcomePage.textColor);
-	if (boxSelected2)
-		g.setColor(Color.RED);
-	g.drawRect(box2x,box2y,box2width,box2height);
-
-	g.setColor(WelcomePage.textColor);
-	if (boxSelected4)
-		g.setColor(Color.RED);
-	g.drawRect(box4x,box4y,box4width,box4height);
-
-	g.setColor(WelcomePage.textColor);
-	if (boxSelected8)
-		g.setColor(Color.RED);
-	g.drawRect(box8x,box8y,box8width,box8height);
-
-	//draw the squares
-	g.setColor(WelcomePage.buttonPanelColor);
-	for (int i = 0;i < recList.size(); i++){
-		g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
+	public void initButtons(){
+		submitButton = new JButton("Submit"); 
+		submitButton.addActionListener(new submitButtonListener());
 	}
 
-	//box labels
-	g.setColor(WelcomePage.textColor);
-	g.setFont(new Font("Verdana", 1, 20));
-	g.drawString("EIGHTS", box8x+10, box8y-4);
-	g.drawString("FOURS", box4x+15, box4y-4);
-	g.drawString("TWOS", box2x+20, box2y-4);
-	g.drawString("ONES", box1x+20, box1y-4);
-
-
-	//instructions
-	g.setFont(new Font("Geneva", Font.BOLD, 12));
-	int startTextX = 40;
-	int startTextY = 50;
-	int textYInc = 18;
-	
-	g.drawImage(welcomePage.binDec3TitleImg, 75, 10, this);
-	
-	//g.drawString(text1, startTextX, startTextY);
-	g.drawString(text2, startTextX, startTextY+=textYInc);
-	g.drawString(text3, startTextX, startTextY+=textYInc);
-	g.drawString(text4, startTextX, startTextY+=textYInc);
-	g.drawString(text5, startTextX, startTextY+=textYInc);
-	g.drawString(text6, startTextX, startTextY+=textYInc);
-	g.drawString(text7, startTextX, startTextY+=textYInc);
-	g.drawString(text8, startTextX, startTextY+=textYInc);
-	g.drawString(text9, startTextX, startTextY+=textYInc);
-	g.drawString(text10, startTextX, startTextY+=textYInc);
-
-
-}
-
-// This method will be called when the mouse has been clicked. 
-public void mouseClicked (MouseEvent me) 
-{
-
-	// Save the coordinates of the click lke this.
-	xpos = me.getX(); 
-	ypos = me.getY();
-
-
-	//select one of the rectangles first
-	for (int i = 0; i < recList.size(); i++){
-		int recx = (int) recList.get(i).getX();
-		int recy = (int) recList.get(i).getY();
-		if ((xpos >= recx) && (xpos <= (recx + rectUnit)) && (ypos >= recy) && (ypos <= (recy + rectUnit))){
-			rectSelected = true;
-			rectSelectedNum = i;
-			break;
-		} 
-
-
-	}
-
-	if(rectSelected)
+	//constructor, param is the applet
+	public DecToBinPage3(WelcomePage welcome)
 	{
-		if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
+		welcomePage = welcome;
+		setBackground(WelcomePage.backgroundColor);
+
+
+		//initializations
+		//initJLabels();
+		initTextFields();
+		initRects();
+		initButtons();
+		//	initTitlePanel();
+
+		setLayout(null);
+		//add(titlePanel);
+		add(NumberEightsField);
+		add(NumberFoursField);
+		add(NumberTwosField);
+		add(NumberOnesField);
+		add(submitButton);
+		Insets insets = getInsets();
+
+
+		Dimension size = NumberEightsField.getPreferredSize();
+		NumberEightsField.setBounds(box8x +25 + insets.left, box8y+box8height+5 + insets.top,
+				size.width, size.height);
+		NumberFoursField.setBounds(box4x +25 + insets.left, box4y+box8height+5 + insets.top,
+				size.width, size.height);
+		NumberTwosField.setBounds(box2x +25 + insets.left, box2y+box8height+5 + insets.top,
+				size.width, size.height);
+		NumberOnesField.setBounds(box1x +25 + insets.left, box1y+box8height+5 + insets.top,
+				size.width, size.height);
+
+		Dimension buttonSize = submitButton.getPreferredSize();
+		submitButton.setBounds(box1x +box1width + 20 + insets.left, box1y+box1height+5 + insets.top,
+				buttonSize.width, buttonSize.height);
+
+		// Add the MouseListener to the applet 
+		addMouseListener(this); 
+
+		setVisible(true);
+		repaint();
+
+	}
+
+	public void paint(Graphics g) {
+		super.paint(g);
+
+		//change the color of the box if it is selected
+		g.setColor(WelcomePage.textColor);
+		if (boxSelected1)
+			g.setColor(Color.RED);
+		g.drawRect(box1x,box1y,box1width,box1height);
+
+		g.setColor(WelcomePage.textColor);
+		if (boxSelected2)
+			g.setColor(Color.RED);
+		g.drawRect(box2x,box2y,box2width,box2height);
+
+		g.setColor(WelcomePage.textColor);
+		if (boxSelected4)
+			g.setColor(Color.RED);
+		g.drawRect(box4x,box4y,box4width,box4height);
+
+		g.setColor(WelcomePage.textColor);
+		if (boxSelected8)
+			g.setColor(Color.RED);
+		g.drawRect(box8x,box8y,box8width,box8height);
+
+		//draw the squares
+		g.setColor(WelcomePage.buttonPanelColor);
+		for (int i = 0;i < recList.size(); i++){
+			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
+		}
+
+		//box labels
+		g.setColor(WelcomePage.textColor);
+		g.setFont(new Font("Verdana", 1, 20));
+		g.drawString("EIGHTS", box8x+10, box8y-4);
+		g.drawString("FOURS", box4x+15, box4y-4);
+		g.drawString("TWOS", box2x+20, box2y-4);
+		g.drawString("ONES", box1x+20, box1y-4);
+
+
+		//instructions
+		g.setFont(new Font("Geneva", Font.BOLD, 12));
+		int startTextX = 40;
+		int startTextY = 50;
+		int textYInc = 18;
+
+		g.drawImage(welcomePage.binDec3TitleImg, 75, 10, this);
+
+		//g.drawString(text1, startTextX, startTextY);
+		g.drawString(text2, startTextX, startTextY+=textYInc);
+		g.drawString(text3, startTextX, startTextY+=textYInc);
+		g.drawString(text4, startTextX, startTextY+=textYInc);
+		g.drawString(text5, startTextX, startTextY+=textYInc);
+		g.drawString(text6, startTextX, startTextY+=textYInc);
+		g.drawString(text7, startTextX, startTextY+=textYInc);
+		g.drawString(text8, startTextX, startTextY+=textYInc);
+		g.drawString(text9, startTextX, startTextY+=textYInc);
+		g.drawString(text10, startTextX, startTextY+=textYInc);
+
+
+	}
+
+	// This method will be called when the mouse has been clicked. 
+	public void mouseClicked (MouseEvent me) 
+	{
+
+		// Save the coordinates of the click lke this.
+		xpos = me.getX(); 
+		ypos = me.getY();
+
+
+		//select one of the rectangles first
+		for (int i = 0; i < recList.size(); i++){
+			int recx = (int) recList.get(i).getX();
+			int recy = (int) recList.get(i).getY();
+			if ((xpos >= recx) && (xpos <= (recx + rectUnit)) && (ypos >= recy) && (ypos <= (recy + rectUnit))){
+				rectSelected = true;
+				rectSelectedNum = i;
+				break;
+			} 
+
+
+		}
+
+		if(rectSelected)
 		{
-			boxSelected1 = true;
-			boxSelected2 = false;
-			boxSelected4 = false;
-			boxSelected8 = false;
-			recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+			if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
+			{
+				boxSelected1 = true;
+				boxSelected2 = false;
+				boxSelected4 = false;
+				boxSelected8 = false;
+				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+
+			}
+			else if((xpos >= box2x) && (xpos <= (box2x + box2width)) && (ypos >= box2y) && (ypos <= (box2y + box2height)))
+			{
+				boxSelected1 = false;
+				boxSelected2 = true;
+				boxSelected4 = false;
+				boxSelected8 = false;
+				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+
+			}
+
+			else if((xpos >= box4x) && (xpos <= (box4x + box1width)) && (ypos >= box4y) && (ypos <= (box4y + box4height)))
+			{
+				boxSelected1 = false;
+				boxSelected2 = false;
+				boxSelected4 = true;
+				boxSelected8 = false;
+				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+
+			}
+			else if((xpos >= box8x) && (xpos <= (box8x + box8width)) && (ypos >= box8y) && (ypos <= (box8y + box8height)))
+			{
+				boxSelected1 = false;
+				boxSelected2 = false;
+				boxSelected4 = false;
+				boxSelected8 = true;
+				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+
+			}
+			else {
+				boxSelected1 = false;
+				boxSelected2 = false;
+				boxSelected4 = false;
+				boxSelected8 = false;
+			}
 
 		}
-		else if((xpos >= box2x) && (xpos <= (box2x + box2width)) && (ypos >= box2y) && (ypos <= (box2y + box2height)))
-		{
-			boxSelected1 = false;
-			boxSelected2 = true;
-			boxSelected4 = false;
-			boxSelected8 = false;
-			recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
-		}
 
-		else if((xpos >= box4x) && (xpos <= (box4x + box1width)) && (ypos >= box4y) && (ypos <= (box4y + box4height)))
-		{
-			boxSelected1 = false;
-			boxSelected2 = false;
-			boxSelected4 = true;
-			boxSelected8 = false;
-			recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
-		}
-		else if((xpos >= box8x) && (xpos <= (box8x + box8width)) && (ypos >= box8y) && (ypos <= (box8y + box8height)))
-		{
-			boxSelected1 = false;
-			boxSelected2 = false;
-			boxSelected4 = false;
-			boxSelected8 = true;
-			recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
-		}
-		else {
-			boxSelected1 = false;
-			boxSelected2 = false;
-			boxSelected4 = false;
-			boxSelected8 = false;
-		}
+		//show the results of the click 
+		repaint();
 
 	}
 
 
+	// When it has been released 
+	// note that a click also calls these Mouse-Pressed and Released. 
+	// since they are empty nothing hapens here. 
+	public void mouseReleased (MouseEvent me) {} 
 
+	// This is called when the mous has been pressed 
+	public void mousePressed (MouseEvent me) {}
 
-	//show the results of the click 
-	repaint();
+	// This is executed when the mouse enters the applet. it will only 
+	// be executed again when the mouse has left and then re-entered. 
+	public void mouseEntered (MouseEvent me) {}
 
-}
+	// When the Mouse leaves the applet. 
+	public void mouseExited (MouseEvent me) {} 
 
+	public void mouseMoved(MouseEvent me){}
 
-// When it has been released 
-// note that a click also calls these Mouse-Pressed and Released. 
-// since they are empty nothing hapens here. 
-public void mouseReleased (MouseEvent me) {} 
-
-// This is called when the mous has been pressed 
-public void mousePressed (MouseEvent me) {}
-
-// This is executed when the mouse enters the applet. it will only 
-// be executed again when the mouse has left and then re-entered. 
-public void mouseEntered (MouseEvent me) {}
-
-// When the Mouse leaves the applet. 
-public void mouseExited (MouseEvent me) {} 
-
-public void mouseMoved(MouseEvent me){}
-
-public void mouseDragged(MouseEvent me) {}
+	public void mouseDragged(MouseEvent me) {}
 
 
 } //end class
@@ -438,3 +435,15 @@ public void mouseDragged(MouseEvent me) {}
 //	DecToBinNumSquaresText9 = new JLabel("Step 6: Remember: If you had enough squares to put in a box, type 1, otherwise type 0.");
 //	DecToBinNumSquaresText10 = new JLabel("Step 7: When you finish, click submit to check your answer.");
 //}
+
+////formats the title panel
+//public void initTitlePanel(){
+//	titlePanel = new JPanel();
+//	titlePanel.setLayout(new BorderLayout());
+//	titlePanel.setBackground(WelcomePage.backgroundColor);
+//	JLabel titleLabel = new JLabel("Converting Decimal to Binary");
+//	titleLabel.setFont(new Font("Geneva",1,20));
+//	titlePanel.add(titleLabel, BorderLayout.CENTER);
+//	//titlePanel.setBorder(new LineBorder(WelcomePage.darkBlueColor));
+//}
+

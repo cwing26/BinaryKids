@@ -79,6 +79,9 @@ public class WelcomePage extends JApplet
 	JButton gameButton; //only become available once completed tutorials
 	JButton page3GoBackButton;
 	JButton backToHomeButton;
+	
+	CardLayout cardLayout;
+	JPanel cards;
 
 	Container contentPane;
 
@@ -170,6 +173,7 @@ public class WelcomePage extends JApplet
 	{
 
 		//initializaing all of the components of the tutorial
+		cards = new JPanel(new CardLayout());
 		contentPane = getContentPane();
 		startPage = new StartPage(this);
 		firstPage = new FirstPage(this);
@@ -186,6 +190,11 @@ public class WelcomePage extends JApplet
 		decToBinPage4 = new DecToBinPage4(this);
 		baOne = new BinaryAddOne(this);
 		demoPage = new DemoPage(this);
+		
+		
+		cards.add(decToBinPage2, "DEC BIN PAGE 2");
+		cards.add(decToBinPage3, "DEC BIN PAGE 3");
+		
 
 		//dialog box welcomes user to game and gives them brief instructions
 		//String welcomeMessage = "Welcome to BinaryKids: Type in your name and click next to get started!";
@@ -196,9 +205,13 @@ public class WelcomePage extends JApplet
 
 		//Create and set up the content pane.
 		setLayout(new BorderLayout()); 
+		add(cards, BorderLayout.CENTER);
+		cardLayout = (CardLayout)(cards.getLayout());
+		cardLayout.show(cards, "DEC BIN PAGE 2");
+		
 		//add(startPage, BorderLayout.CENTER);
-		add(startPage, BorderLayout.CENTER);
-		add(buttonPanel, BorderLayout.NORTH); //add buttonPanel to the top of game frame
+		//add buttonPanel to the top of game frame
+		add(buttonPanel, BorderLayout.NORTH);
 
 
 		loadImages();
@@ -342,6 +355,7 @@ public class WelcomePage extends JApplet
 		contentPane.remove(decToBinPage);
 		decToBinPage2 = new DecToBinPage2(welcome);
 		contentPane.add(decToBinPage2, BorderLayout.CENTER);
+		invalidate();
 		validate();
 		setVisible(true);
 		repaint();
@@ -349,9 +363,11 @@ public class WelcomePage extends JApplet
 
 	public void loadDecBin3()
 	{
-		contentPane.remove(decToBinPage2);
-		decToBinPage3 = new DecToBinPage3(welcome);
-		contentPane.add(decToBinPage3, BorderLayout.CENTER);
+		//contentPane.remove(decToBinPage2);
+		//decToBinPage3 = new DecToBinPage3(welcome);
+		cardLayout.show(cards, "DEC BIN PAGE 3");
+		//contentPane.add(decToBinPage3, BorderLayout.CENTER);
+		invalidate();
 		validate();
 		setVisible(true);
 		repaint();
