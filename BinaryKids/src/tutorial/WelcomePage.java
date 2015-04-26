@@ -104,41 +104,41 @@ public class WelcomePage extends JApplet
 
 	    
     //num representation page images
-    public static String binaryImageLightPath = "binaryLight.jpg";
-    public static String binaryImageDarkPath = "binaryDark.jpg";
-    public static String decimalImagePath = "decimal.jpg";
-    public static String romanNumeralImagePath = "romanNumeral.jpg";
-    public static String shapesImagePath = "shapes.jpg";
-    public static String numRepTitlePath = "numRepPageTitle.jpg";
-    public static String soccerBallPath = "soccerBall.jpg";
+    public static String binaryImageLightPath = “images/binaryLight.jpg";
+    public static String binaryImageDarkPath = "images/binaryDark.jpg";
+    public static String decimalImagePath = "images/decimal.jpg";
+    public static String romanNumeralImagePath = "images/romanNumeral.jpg";
+    public static String shapesImagePath = "images/shapes.jpg";
+    public static String numRepTitlePath = "images/numRepPageTitle.jpg";
+    public static String soccerBallPath = "images/soccerBall.jpg";
     
     
     //what are binary numbers page
-    public static String whatBinaryTitlePath = "whatBinaryTitle.jpg";
-    public static String dogBinaryImagePath = "dogBinary.gif";
-    public static String bikeImagePath = "bicycle.png";
-    public static String binocularsPath = "binoculars.png";
+    public static String whatBinaryTitlePath = "images/whatBinaryTitle.jpg";
+    public static String dogBinaryImagePath = "images/dogBinary.gif";
+    public static String bikeImagePath = "images/bicycle.png";
+    public static String binocularsPath = "images/binoculars.png";
     
     //why binary numbers important page
-    public static String whyBinaryImportantTitlePath = "thirdPageTitle.jpg";
-    public static String instagramPath = "instagram.png";
-    public static String fbPath = "fb.png";
-    public static String youtubePath = "youtube.png";
-    public static String emailPath = "gmail.png";
-    public static String skypePath = "skype.png";
-    public static String gamePath = "game.png";
-    public static String cellPath = "cellPhone.png";
-    public static String lightOffPath = "realLightOff.png";
-    public static String lightOnPath = "realLightOn.png";
-    public static String binaryDigitPath = "binaryDigit.gif";
+    public static String whyBinaryImportantTitlePath = "images/thirdPageTitle.jpg";
+    public static String instagramPath = "images/instagram.png";
+    public static String fbPath = "images/fb.png";
+    public static String youtubePath = "images/youtube.png";
+    public static String emailPath = "images/gmail.png";
+    public static String skypePath = "images/skype.png";
+    public static String gamePath = "images/game.png";
+    public static String cellPath = "images/cellPhone.png";
+    public static String lightOffPath = "images/realLightOff.png";
+    public static String lightOnPath = "images/realLightOn.png";
+    public static String binaryDigitPath = "images/binaryDigit.gif";
     
     //dec number basics/bin num basics images
-    public static String decBasicsPath = "decNumBasics.jpg";
-    public static String crossOutPath = "crossOut.png";
-    public static String binBasicsPath = "binNumBasics.jpg";
+    public static String decBasicsPath = "images/decNumBasics.jpg";
+    public static String crossOutPath = "images/crossOut.png";
+    public static String binBasicsPath = "images/binNumBasics.jpg";
     
     //demo page images
-    public static String puttingTogetherPath = "puttingAllTogether.jpg";
+    public static String puttingTogetherPath = "images/puttingAllTogether.jpg";
     
 
 	//Called when this applet is loaded into the browser.
