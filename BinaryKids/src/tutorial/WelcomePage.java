@@ -97,8 +97,8 @@ public class WelcomePage extends JApplet
 	public Image binDec3TitleImg;
 
 	//meghan's added images
-    	public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
-    	public Image titleHeadline;
+    public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
+    public Image titleHeadline;
    	public Image binaryGraphic;
 
 	//Called when this applet is loaded into the browser.
@@ -175,7 +175,7 @@ public class WelcomePage extends JApplet
 
 		titleImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.titleImagePath));
-		titleImg = titleImg.getScaledInstance(400, 300, Image.SCALE_SMOOTH);
+		titleImg = titleImg.getScaledInstance(550, 300, Image.SCALE_SMOOTH);
 
 		lightOnImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.lightOnImagePath));

@@ -58,7 +58,7 @@ public class StartPage extends JPanel
 	//initializes all gui components on the page
 	public void initComponents()
 	{
-    	submitButton = new JButton("Submit");
+    	submitButton = new JButton("Start Binary Kids");
     	submitButton.addActionListener(new submitButtonListener());
     	
 	}
@@ -75,38 +75,21 @@ public class StartPage extends JPanel
     	Insets insets = getInsets();
     	Dimension size = submitButton.getPreferredSize();
     	submitButton.setBounds(330-size.width/2 + insets.left, 200 + insets.top,
-                2*size.width, size.height);
-
-    	
-		
-//    	setLayout(null);
-//    	add(submitButton);
-    	
-//    	
-//    	Insets insets = getInsets();
-//		Dimension textFieldSize = nameField.getPreferredSize();
-//		nameField.setBounds(80 + insets.left, 150 + insets.top,
-//	            textFieldSize.width, textFieldSize.height);
-//		
-//		Dimension buttonSize = submitButton.getPreferredSize();
-//		submitButton.setBounds(80 + insets.left, 190 + insets.top, buttonSize.width, buttonSize.height);
-//		
-
-    	
+                2*size.width, size.height);   	
     	
     }
     
     public void paint(Graphics g) 
     { 
     	super.paint(g);
-    	g.drawImage(welcomePage.titleTextImg, 50 , 50, this);
-    	g.drawImage(welcomePage.titleImg, 200, 100, this);
-    	g.drawImage(welcomePage.titleHeadline, 100, 10, this);
+//    	g.drawImage(welcomePage.titleTextImg, 50 , 50, this);
+//    	g.drawImage(welcomePage.titleImg, 100, 100, this);
+    	g.drawImage(welcomePage.titleHeadline, 100, 50, this);
     	
     	//directions 
     	g.setFont(new Font("Geneva", 1 , 20));
-    	g.drawString(directions, 50, 100);
-    	g.drawString(directions2, 50, 125);
+    	g.drawString(directions, 170, 150);
+    	g.drawString(directions2, 110, 175);
     	
     	g.drawImage(welcomePage.binaryGraphic, 1, 400, this);
     	g.drawImage(welcomePage.binaryGraphic, 201, 400, this);
