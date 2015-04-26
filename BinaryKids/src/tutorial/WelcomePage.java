@@ -97,9 +97,49 @@ public class WelcomePage extends JApplet
 	public Image binDec3TitleImg;
 
 	//meghan's added images
-    public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
-    public Image titleHeadline;
+    	public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
+    	public Image titleHeadline;
    	public Image binaryGraphic;
+
+
+	    
+    //num representation page images
+    public static String binaryImageLightPath = "binaryLight.jpg";
+    public static String binaryImageDarkPath = "binaryDark.jpg";
+    public static String decimalImagePath = "decimal.jpg";
+    public static String romanNumeralImagePath = "romanNumeral.jpg";
+    public static String shapesImagePath = "shapes.jpg";
+    public static String numRepTitlePath = "numRepPageTitle.jpg";
+    public static String soccerBallPath = "soccerBall.jpg";
+    
+    
+    //what are binary numbers page
+    public static String whatBinaryTitlePath = "whatBinaryTitle.jpg";
+    public static String dogBinaryImagePath = "dogBinary.gif";
+    public static String bikeImagePath = "bicycle.png";
+    public static String binocularsPath = "binoculars.png";
+    
+    //why binary numbers important page
+    public static String whyBinaryImportantTitlePath = "thirdPageTitle.jpg";
+    public static String instagramPath = "instagram.png";
+    public static String fbPath = "fb.png";
+    public static String youtubePath = "youtube.png";
+    public static String emailPath = "gmail.png";
+    public static String skypePath = "skype.png";
+    public static String gamePath = "game.png";
+    public static String cellPath = "cellPhone.png";
+    public static String lightOffPath = "realLightOff.png";
+    public static String lightOnPath = "realLightOn.png";
+    public static String binaryDigitPath = "binaryDigit.gif";
+    
+    //dec number basics/bin num basics images
+    public static String decBasicsPath = "decNumBasics.jpg";
+    public static String crossOutPath = "crossOut.png";
+    public static String binBasicsPath = "binNumBasics.jpg";
+    
+    //demo page images
+    public static String puttingTogetherPath = "puttingAllTogether.jpg";
+    
 
 	//Called when this applet is loaded into the browser.
 	public void init() 
