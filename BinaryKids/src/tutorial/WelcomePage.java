@@ -38,6 +38,7 @@ import java.net.URL;
 
 
 
+@SuppressWarnings("serial")
 public class WelcomePage extends JApplet
 {
 
@@ -542,7 +543,7 @@ public class WelcomePage extends JApplet
 			contentPane.remove(demoPage);
 
 
-			contentPane.add(new DecToBinPage3(welcome));
+			contentPane.add(new DecToBinPage2(welcome));
 
 			validate();
 			setVisible(true);

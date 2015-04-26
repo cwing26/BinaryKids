@@ -231,6 +231,10 @@ public DecToBinPage3(WelcomePage welcome)
             size.width, size.height);
 	NumberOnesField.setBounds(box1x +25 + insets.left, box1y+box8height+5 + insets.top,
             size.width, size.height);
+	
+	Dimension buttonSize = submitButton.getPreferredSize();
+	submitButton.setBounds(box1x +box1width + 20 + insets.left, box1y+box1height+5 + insets.top,
+			buttonSize.width, buttonSize.height);
 
 	// Add the MouseListener to the applet 
 	addMouseListener(this); 
