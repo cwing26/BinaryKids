@@ -131,6 +131,11 @@ public class WelcomePage extends JApplet
 	//demo page images
 	public static String puttingTogetherPath = "images/puttingAllTogether.jpg";
 
+    //practice problem images
+    public static String binPracticeProblemPath = “images/binPracticeProblemTitle.png";
+    public static String hintGraphicPath = “images/hintGraphic.gif";
+    
+
 
 	//Called when this applet is loaded into the browser.
 	public void init() 
