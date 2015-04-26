@@ -60,7 +60,6 @@ public class StartPage extends JPanel
 	{
     	submitButton = new JButton("Start Binary Kids");
     	submitButton.addActionListener(new submitButtonListener());
-    	
 	}
 	
 	
