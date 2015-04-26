@@ -1,0 +1,519 @@
+import java.awt.BorderLayout;
+import java.awt.CardLayout;
+import java.awt.Color;
+import java.awt.Dimension;
+import java.awt.Font;
+import java.awt.GridLayout;
+import java.awt.event.ActionEvent;
+import java.awt.event.ActionListener;
+import java.awt.image.BufferedImage;
+import java.util.ArrayList;
+import java.util.Random;
+
+import javax.swing.ImageIcon;
+import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.Timer;
+
+
+public class GamePage extends JPanel {
+	
+	private WelcomePage welcomePage;
+	
+	String TIME_REMAINING = "Time Remaining: ";
+	
+	boolean gamePlay = false;
+	ImageIcon[] myImages;
+	
+	JButton startGame;
+	JButton quitGame;
+	JButton instructions;
+	JButton pauseButton;
+	JButton submit;
+	JButton resume;
+	
+	JButton one;
+	JButton two;
+	JButton four;
+	JButton eight;
+	JButton sixteen;
+	JButton thirtytwo;
+	JButton sixtyfour;
+	
+	private Timer timer;
+	JLabel theTime;
+	
+	int counter;
+	int flagOne;
+	int flagTwo;
+	int flagFour;
+	int flagEight;
+	int flagSixteen;
+	int flagThirtyTwo;
+	int flagSixtyFour;
+	
+	int progress;
+	int lives;
+	int score;
+	
+	JLabel theInstructions;
+	JLabel theDigits;
+	JLabel remainingLives;
+	JLabel myQuestion;
+	JLabel correctAnswers;
+	JLabel text;
+	
+	ImageIcon zeroCard;
+	ImageIcon oneCard;
+	
+	JPanel buttonPanel;
+	JPanel instructionsPanel;
+	JPanel timerPanel;
+	JPanel mainPanel;
+	JPanel digitsPanel;
+	JPanel pause;
+	
+	ArrayList<String> questionArray;
+	ArrayList<String> answerArray;
+	Random rand;
+	private static final int MAX_BIN_SIZE = 63;
+	private static final int MIN_BIN_SIZE = 0;
+	
+	public GamePage(WelcomePage welcome) {
+		
+		welcomePage = welcome;
+		setBackground(Color.BLACK);
+		
+		buttonPanel = new JPanel();
+		buttonPanel.setLayout(new GridLayout(0, 1, 2, 2));
+		
+		instructionsPanel = new JPanel();
+		instructionsPanel.setBackground(Color.BLACK);
+		theInstructions = new JLabel("Instructions go here");
+		theInstructions.setForeground(Color.GREEN);
+		instructionsPanel.add(theInstructions);
+		
+		startGame = new JButton("Click to start playing!");
+		startGame.addActionListener(new startButtonListener());		
+		buttonPanel.add(startGame);
+		
+		instructions = new JButton("How to play");
+		instructions.addActionListener(new instructButtonListener());
+		buttonPanel.add(instructions);
+		
+		quitGame = new JButton("Quit");
+		quitGame.addActionListener(new quitButtonListener());
+		buttonPanel.add(quitGame);
+		
+		pause = new JPanel();
+		text = new JLabel("GAME IS PAUSED");
+		resume = new JButton("Resume Game");
+		
+		pause.add(text);
+		pause.add(resume);
+		pause.setVisible(false);
+		
+		add(buttonPanel, BorderLayout.CENTER);
+		add(instructionsPanel, BorderLayout.SOUTH);
+		instructionsPanel.setVisible(false);
+		
+	}
+
+	public void startGame()
+	{
+		flagOne = 0;
+		flagTwo = 0;
+		flagFour = 0;
+		flagEight = 0;
+		flagSixteen = 0;
+		flagThirtyTwo = 0;
+		flagSixtyFour = 0;
+		
+		progress = 0;
+		lives = 3;
+		score = 0;
+		
+		initializeQuestions();
+
+		zeroCard = new ImageIcon("C:\\Users\\Julia\\Desktop\\zero.png");
+		oneCard = new ImageIcon("C:\\Users\\Julia\\Desktop\\one.png");
+		
+		mainPanel = new JPanel();
+		mainPanel.setBackground(Color.BLACK);
+		
+		timerPanel = new JPanel();
+		timerPanel.setPreferredSize(new Dimension(200, 800));
+		
+		timerPanel.setBackground(Color.LIGHT_GRAY);
+		
+		digitsPanel = new JPanel();
+		digitsPanel.setBackground(Color.LIGHT_GRAY);
+		theDigits = new JLabel("2^0, 2^1, 2^2, ...");
+		digitsPanel.add(theDigits);
+		
+		theTime = new JLabel(TIME_REMAINING + "60");
+		counter = 60;
+		timer = new Timer(1000, new timeListener());
+		timerPanel.add(theTime);
+		
+		timer.start();
+		
+		remainingLives = new JLabel("LIVES: " + lives);
+		timerPanel.add(remainingLives);
+		
+		correctAnswers = new JLabel("SCORE: " + score);
+		timerPanel.add(correctAnswers);
+		
+		one = new JButton();
+		one.setIcon(zeroCard);
+		one.setPreferredSize(new Dimension(50, 50));
+		one.addActionListener(new changeDigitListener());
+		
+		two = new JButton();
+		two.setIcon(zeroCard);
+		two.setPreferredSize(new Dimension(50, 50));
+		two.addActionListener(new changeDigitListener());
+		
+		four = new JButton();
+		four.setIcon(zeroCard);
+		four.setPreferredSize(new Dimension(50, 50));
+		four.addActionListener(new changeDigitListener());
+		
+		eight = new JButton();
+		eight.setIcon(zeroCard);
+		eight.setPreferredSize(new Dimension(50, 50));
+		eight.addActionListener(new changeDigitListener());
+		
+		sixteen = new JButton();
+		sixteen.setIcon(zeroCard);
+		sixteen.setPreferredSize(new Dimension(50, 50));
+		sixteen.addActionListener(new changeDigitListener());
+		
+		thirtytwo = new JButton();
+		thirtytwo.setIcon(zeroCard);
+		thirtytwo.setPreferredSize(new Dimension(50, 50));
+		thirtytwo.addActionListener(new changeDigitListener());
+		
+		sixtyfour = new JButton();
+		sixtyfour.setIcon(zeroCard);
+		sixtyfour.setPreferredSize(new Dimension(50, 50));
+		sixtyfour.addActionListener(new changeDigitListener());
+		
+		submit = new JButton("Submit");
+		submit.addActionListener(new submitListener());
+		
+		pauseButton = new JButton("Pause");
+		pauseButton.addActionListener(new pauseListener());
+		timerPanel.add(pauseButton);
+		
+		myQuestion = new JLabel();
+		
+		mainPanel.add(one);
+		mainPanel.add(two);
+		
+		mainPanel.add(four);
+		mainPanel.add(eight);
+		mainPanel.add(sixteen);
+		mainPanel.add(thirtytwo);
+		mainPanel.add(sixtyfour);
+		mainPanel.add(submit);
+		
+		nextQuestion();
+		
+		add(timerPanel, BorderLayout.EAST);
+		add(mainPanel, BorderLayout.CENTER);
+		add(digitsPanel, BorderLayout.SOUTH);
+	}
+	
+	private void initializeQuestions() {
+		
+		questionArray = new ArrayList<String>();
+		answerArray = new ArrayList<String>();
+		
+		String convertAnswerBin;
+		
+		for (int i=0; i < 5; i++)
+		{
+			rand = new Random();
+			int randNum = rand.nextInt((MAX_BIN_SIZE - MIN_BIN_SIZE) + 1) + MIN_BIN_SIZE;
+			convertAnswerBin = convertToBin(randNum);
+			questionArray.add("QUESTION: What is " + randNum + " in binary?");
+			convertAnswerBin = padAnswer(convertAnswerBin);
+			answerArray.add(convertAnswerBin);
+		}
+	}
+	
+	private String padAnswer(String number) {
+		while (number.length() < 8)
+			number = "0" + number;
+		return number;
+	}
+	
+	private void nextQuestion() {
+		String currentQuestion = questionArray.get(progress);
+		myQuestion.setText(currentQuestion);
+		myQuestion.setForeground(Color.WHITE);
+		myQuestion.setFont(new Font("Geneva", Font.BOLD, 25));
+		timerPanel.add(myQuestion);	
+	}
+	
+	String convertToBin (int i) {
+		return Integer.toString(i, 2);
+	}
+	
+	class pauseListener implements ActionListener
+	{
+		
+		public void actionPerformed(ActionEvent e)
+		{
+			int currentCounter = counter;
+			timer.stop();
+			
+			mainPanel.setVisible(false);
+			timerPanel.setVisible(false);
+			digitsPanel.setVisible(false);
+			
+			viewPauseScreen(currentCounter);
+		}
+	}
+	
+	private void viewPauseScreen(int time) 
+	{
+		pause.setVisible(true);
+		
+		resume.addActionListener(new ActionListener() {
+			
+			public void actionPerformed(ActionEvent e) {
+				counter = time;
+				timer.start();
+		
+				pause.remove(text);
+				pause.remove(resume);
+				
+				mainPanel.setVisible(true);
+				timerPanel.setVisible(true);
+				digitsPanel.setVisible(true);
+			
+			}
+			
+		});
+		
+		pause.add(text);
+		pause.add(resume);
+		add(pause);
+	}
+	
+	class submitListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			boolean isCorrect;
+			isCorrect = checkAnswer();
+			
+			if (isCorrect == true) {
+				score++;
+		    	JOptionPane.showMessageDialog(new JFrame(), "Correct, good job!", "Right Answer", JOptionPane.YES_NO_OPTION);
+				correctAnswers.setText("SCORE: " + score);
+		    	nextQuestion();
+			}
+			else {
+				
+				lives--;
+				if (lives == 0)
+					endGame();
+				
+				else {
+					String wrongAnswer = "Wrong Answer! Try again";
+			    	JOptionPane.showMessageDialog(new JFrame(), wrongAnswer, "Wrong Answer", JOptionPane.YES_NO_OPTION);
+				}
+				
+				remainingLives.setText("LIVES: " + lives);
+			}
+				
+		}
+	}
+	
+	private boolean checkAnswer() {
+		
+		ArrayList<Character> digits = new ArrayList<Character>();
+		String finalAnswer = "0";
+		
+		if (flagOne == 1)
+			digits.add('1');
+		else if (flagOne == 0)
+			digits.add('0');
+		
+		if (flagTwo == 1)
+			digits.add('1');
+		else if (flagTwo == 0)
+			digits.add('0');
+
+		if (flagFour == 1)
+			digits.add('1');
+		else if (flagFour == 0)
+			digits.add('0');
+
+		if (flagEight == 1)
+			digits.add('1');
+		else if (flagEight == 0)
+			digits.add('0');
+
+		if (flagSixteen == 1)
+			digits.add('1');
+		else if (flagSixteen == 0)
+			digits.add('0');
+
+		if (flagThirtyTwo == 1)
+			digits.add('1');
+		else if (flagThirtyTwo == 0)
+			digits.add('0');
+		
+		if (flagSixtyFour == 1)
+			digits.add('1');
+		else if (flagSixtyFour == 0)
+			digits.add('0');
+		
+		for (int i=0; i < digits.size(); i++) {
+			finalAnswer += digits.get(i);
+		}
+
+		if (finalAnswer.equals(answerArray.get(progress))) {
+			progress++;
+			return true;
+		} else 
+			return false;
+		
+		
+	}
+	class timeListener implements ActionListener
+	{	
+		@Override
+		public void actionPerformed(ActionEvent e) 
+		{
+			counter--;
+			
+			if (counter == 0) {
+				timer.stop();
+				endGame();
+
+			}
+		
+			theTime.setText(TIME_REMAINING + String.valueOf(counter));
+		}
+	}
+	
+	private void endGame() {
+		
+		if (lives != 0) {
+			
+			String timeMessage = "You ran out of time! Want to try again?";
+			int choice = JOptionPane.showOptionDialog(null, timeMessage , "Game Over!", JOptionPane.YES_NO_OPTION, JOptionPane.QUESTION_MESSAGE, null, null, null);
+			
+			if (choice != JOptionPane.YES_OPTION)
+				displayHomeScreen();
+			else {
+				counter = 60;
+				lives--;
+				nextQuestion();
+			}
+		} else {
+			
+			String gameOver = "Out of lives! Game Over";
+	    	JOptionPane.showMessageDialog(this, gameOver, "Game Over!", JOptionPane.YES_NO_OPTION);
+			displayHomeScreen();
+		}	
+	}
+	
+	private void displayHomeScreen() {
+		mainPanel.setVisible(false);
+		timerPanel.setVisible(false);
+		digitsPanel.setVisible(false);
+		buttonPanel.setVisible(true);
+
+	}
+	
+	class changeDigitListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			Object src = e.getSource();
+
+			if (src == one) {
+				changeButton(one, flagOne);
+				flagOne = setFlag(flagOne);
+			} else if (src == two) {
+				changeButton(two, flagTwo);
+				flagTwo = setFlag(flagTwo);
+			} else if (src == four) {
+				changeButton(four, flagFour);
+				flagFour = setFlag(flagFour);
+			} else if (src == eight) {
+				changeButton(eight, flagEight);
+				flagEight = setFlag(flagEight);
+			} else if (src == sixteen) {
+				changeButton(sixteen, flagSixteen);
+				flagSixteen = setFlag(flagSixteen);
+			} else if (src == thirtytwo) {
+				changeButton(thirtytwo, flagThirtyTwo);
+				flagThirtyTwo = setFlag(flagThirtyTwo);
+			} else if (src == sixtyfour) {
+				changeButton(sixtyfour, flagSixtyFour);
+				flagSixtyFour = setFlag(flagSixtyFour);
+			}
+		}
+	}
+
+	private int setFlag(int flag) {
+		if (flag == 0)
+			flag = 1;
+		else if (flag == 1)
+			flag = 0;
+		
+		return flag;
+	}
+	private void changeButton(JButton myButton, int flag) {
+	
+		if (flag == 0) {
+			myButton.setIcon(oneCard);
+		} else if (flag == 1) {
+			myButton.setIcon(zeroCard);
+		}
+		
+		repaint();
+		
+	}
+	
+	class startButtonListener implements ActionListener 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			System.out.println("You clicked the start button");
+			buttonPanel.setVisible(false);
+			gamePlay = true;
+			startGame();
+			repaint();
+		}
+	}
+	
+	class quitButtonListener implements ActionListener 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			System.out.println("Go back somehow");
+		}
+	}
+	
+	class instructButtonListener implements ActionListener
+	{
+		public void actionPerformed(ActionEvent e)
+		{
+			System.out.println("A new page with info");
+			buttonPanel.setVisible(false);
+			instructionsPanel.setVisible(true);
+		}
+	}
+	
+}
