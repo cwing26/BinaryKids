@@ -13,68 +13,41 @@ public class DecToBinPage4 extends JPanel
 
 	WelcomePage welcomePage;
 	JButton submitButton; 
+	JButton tutorialButton;
 	
 	//Labels
 	JLabel DecToBinNumSquaresText;
 	JLabel DecToBinNumSquaresText2;
 	JLabel DecToBinNumSquaresText3;
 
-	final int DecToBinNumSquaresActual = 11;
 	final int startx = 200;
 	final int starty = 180;
 	int DecToBinNumSquaresInput;
 	
-	
-	//Panels
-	JPanel titlePanel;
-	JPanel textPanel;
+	String text1 = "11 in decimal is equivalent to 1011 in binary!";
+	String text2 = "Congratulations on making it through this tutorial. ";
+	String text3 = "Now you can complete some practice problems or ";
+	String text4 = "click tutorial to return to the tutorial menu screen.";
 
-	//formats the title panel
-	public void initTitlePanel(){
-		titlePanel = new JPanel();
-		titlePanel.setLayout(new BorderLayout());
-		titlePanel.setBackground(WelcomePage.backgroundColor);
-		JLabel titleLabel = new JLabel("Tutorial: Convert Decimal to Binary Complete!");
-		titleLabel.setFont(new Font("Verdana",1,20));
-		titlePanel.add(titleLabel, BorderLayout.CENTER);
+
+	class tutorialButtonListener implements ActionListener 
+	{
+		public void actionPerformed(ActionEvent le) {  
+			welcomePage.loadFourth();
+		} 
 	}
-
-	//formats the text panel layout
-	public void initTextPanel(){
-		textPanel = new JPanel();
-		textPanel.setLayout(new GridBagLayout());
-		textPanel.setBackground(WelcomePage.backgroundColor);
-		GridBagConstraints c = new GridBagConstraints();
-		c.anchor = GridBagConstraints.CENTER;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipadx = 20;
-		c.gridx = 0;
-		c.gridy = 0;
-		textPanel.add(DecToBinNumSquaresText, c);
-		c.gridy = 1;
-		textPanel.add(DecToBinNumSquaresText2, c);
-		c.gridy = 2;
-		textPanel.add(DecToBinNumSquaresText3, c);
-	}
-
-	//sets all the texts of all Jlabels
-	public void initJLabels(){
-		DecToBinNumSquaresText = new JLabel("11 in decimal is equivalent to 1011 in binary!");
-		DecToBinNumSquaresText2 = new JLabel("Congratulations on making it through this tutorial. Now you can complete some practice problems");
-		DecToBinNumSquaresText3 = new JLabel("or click tutorial to return to the tutorial menu screen.");
-	}
-
 
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
-
-
+			welcomePage.loadDecBinPracticeProblems();
 		} 
 	}
 	public void initButtons(){
-		submitButton = new JButton("Submit"); 
+		submitButton = new JButton("Practice Problems"); 
 		submitButton.addActionListener(new submitButtonListener());
+		tutorialButton = new JButton("Return to Tutorials"); 
+		tutorialButton.addActionListener(new tutorialButtonListener());
 	}
 
 	//constructor, param is the applet
@@ -82,22 +55,41 @@ public class DecToBinPage4 extends JPanel
 	{
 		setBackground(WelcomePage.backgroundColor);
 		welcomePage = welcome;
+		Insets insets = getInsets();
 
-		//initializations
-		initButtons();
-		initJLabels();
-		initTitlePanel();
-		initTextPanel();	
-
-		//add panels
-		add(titlePanel);
-		add(textPanel);
+		initButtons();	
+		
+		setLayout(null);
+		add(submitButton);
+		add(tutorialButton);
+		
+		Dimension buttonSize = submitButton.getPreferredSize();
+		submitButton.setBounds(260 + insets.left, 220 + insets.top,
+				2* buttonSize.width, buttonSize.height);
+		
+		buttonSize = tutorialButton.getPreferredSize();
+		tutorialButton.setBounds(260 + insets.left, 260 + insets.top,
+				2* buttonSize.width, buttonSize.height);
 
 	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
 		
+		g.drawImage(welcomePage.tutorialCompleteImg, 200, 20, this);
+		
+		
+		g.setFont(new Font("Geneva", Font.BOLD, 20));
+		g.setColor(WelcomePage.textColor);
+		int startTextX = 150;
+		int startTextY = 70;
+		int textYInc = 30;
+		
+		
+		g.drawString(text1, startTextX+30, startTextY+textYInc);
+		g.drawString(text2, startTextX, startTextY+2*textYInc);
+		g.drawString(text3, startTextX, startTextY+3*textYInc);
+		g.drawString(text4, startTextX, startTextY+4*textYInc);
 	}
 
 

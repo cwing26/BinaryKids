@@ -7,8 +7,12 @@ import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
+import tutorial.DecToBinPage4.submitButtonListener;
+import tutorial.DecToBinPage4.tutorialButtonListener;
 
 import java.awt.*; 
 
@@ -18,71 +22,83 @@ public class BinaryDecimalFour extends JPanel
 {	
 	WelcomePage welcomePage;
 
+	JButton tutorialButton;
 	JButton submitButton;
 	Image titleImage;
 	
-	String explanation = "We learned to convert from binary to decimal!";
-    String answer = "1101 in binary = 13 in decimal!";
+	String text1 = "13 in decimal is equivalent to 1101 in binary!";
+	String text2 = "Congratulations on making it through this tutorial. ";
+	String text3 = "Now you can complete some practice problems or ";
+	String text4 = "click tutorial to return to the tutorial menu screen.";
+
     		
     public BinaryDecimalFour(WelcomePage welcome)
     {
-    	welcomePage = welcome;
     	setBackground(WelcomePage.backgroundColor);
-    	
-    	initComponents();
-    	loadImages();
-    	
-    	setLayout(null);
-    	add(submitButton);
-    	
-    	Insets insets = getInsets();
+		welcomePage = welcome;
+		Insets insets = getInsets();
+
+		initButtons();	
+		
+		setLayout(null);
+		add(submitButton);
+		add(tutorialButton);
+		
 		Dimension buttonSize = submitButton.getPreferredSize();
-		submitButton.setBounds(270 + insets.left, 290 + insets.top, buttonSize.width, buttonSize.height);
+		submitButton.setBounds(260 + insets.left, 220 + insets.top,
+				2* buttonSize.width, buttonSize.height);
+		
+		buttonSize = tutorialButton.getPreferredSize();
+		tutorialButton.setBounds(260 + insets.left, 260 + insets.top,
+				2* buttonSize.width, buttonSize.height);
 
     	setVisible(true);
 
     }
     
-    public void initComponents()
-    {
-    	submitButton = new JButton("Let's do some practice problems!");
+    class tutorialButtonListener implements ActionListener 
+	{
+		public void actionPerformed(ActionEvent le) {  
+			welcomePage.loadFourth();
+		} 
+	}
 
-    	submitButton.addActionListener(new submitButtonListener());
-    }
-    
-    public void loadImages()
-    {
-    	titleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.puttingTogetherPath)); 
-		titleImage = titleImage.getScaledInstance(680, 60, Image.SCALE_SMOOTH);
-
-    }
+	class submitButtonListener implements ActionListener 
+	{
+		public void actionPerformed(ActionEvent le) {  
+			welcomePage.loadDecBinPracticeProblems();
+		} 
+	}
+	public void initButtons(){
+		submitButton = new JButton("Practice Problems"); 
+		submitButton.addActionListener(new submitButtonListener());
+		tutorialButton = new JButton("Return to Tutorials"); 
+		tutorialButton.addActionListener(new tutorialButtonListener());
+	}
     
     public void paint(Graphics g)
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, 50, 15, this);
-    	
-    	//strings and explanations
-    	g.setColor(Color.black);
-    	g.setFont(new Font("Geneva", 1, 30));
-    	g.drawString(explanation, 50, 200);
-    	g.drawString(answer, 150, 250);
+    	g.drawImage(welcomePage.tutorialCompleteImg, 200, 20, this);
+		
+		
+		g.setFont(new Font("Geneva", Font.BOLD, 20));
+		g.setColor(WelcomePage.textColor);
+		int startTextX = 150;
+		int startTextY = 70;
+		int textYInc = 30;
+		
+		
+		g.drawString(text1, startTextX+30, startTextY+textYInc);
+		g.drawString(text2, startTextX, startTextY+2*textYInc);
+		g.drawString(text3, startTextX, startTextY+3*textYInc);
+		g.drawString(text4, startTextX, startTextY+4*textYInc);
 
     
     }
     
-	class submitButtonListener implements ActionListener 
-	{
-		public void actionPerformed(ActionEvent e) 
-		{
-			welcomePage.loadBinDecPracticeProblems();
-			
-		} //end action performed
 		
-		
-	} //end button listener
 	
 	
 	
