@@ -1,12 +1,16 @@
 package tutorial;
 
 
+import game.GamePage2;
+
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
+import unused.GamePage;
 
 import java.awt.*; 
 import java.awt.event.*;
@@ -16,8 +20,6 @@ import java.awt.Image;
 import java.awt.Toolkit;
 import java.io.IOException;
 import java.net.URL;
-
-import game.GamePage;
 
 
 @SuppressWarnings("serial")
