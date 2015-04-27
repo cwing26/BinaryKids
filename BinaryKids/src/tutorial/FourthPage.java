@@ -37,6 +37,7 @@ public class FourthPage extends JPanel
 
 	}
 	
+	//
 	public void addComponentsToPanel() {
 		setLayout(null);
 		add(decBinButton);
@@ -46,6 +47,7 @@ public class FourthPage extends JPanel
 		
 	}
 
+	//this method initializes all swing components and adds listeners
 	public void initComponents(){
 		backgroundButton = new JButton("Background");
 		decBinButton = new JButton("Decimal to Binary");
@@ -57,6 +59,7 @@ public class FourthPage extends JPanel
 		gameButton.addActionListener(new gameButtonListener());
 	}
 	
+	//this method defines the formatting of the components on the panel
 	public void formatComponents(){
 		Insets insets = getInsets();
 		Dimension buttonSize = decBinButton.getPreferredSize();
@@ -71,6 +74,7 @@ public class FourthPage extends JPanel
 		gameButton.setVisible(false);
 	}
 	
+	//this method overrides the paint method
 	public void paint(Graphics g) 
 	{ 
 		super.paint(g);
@@ -85,17 +89,20 @@ public class FourthPage extends JPanel
 		}
 	}
 
-
+	//this class defines an action listener for the game button
 	class gameButtonListener implements ActionListener 
 	{
+		//method called when the game button is clicked
 		public void actionPerformed(ActionEvent e) 
 		{
 			welcomePage.loadGame();
 		}
 	}
-
+	
+	//this class defines an action listener for the tutorial buttons
 	class tutorialButtonListener implements ActionListener 
 	{
+		//handles when the tutorial method are clicked to load appropriate tutorial
 		public void actionPerformed(ActionEvent e) 
 		{
 			if(e.getSource() == decBinButton)
@@ -119,7 +126,7 @@ public class FourthPage extends JPanel
 		} //end action performed
 	} //end button listener
 
-} //end class thirdpage
+} //end class fourthpage
 
 
 
