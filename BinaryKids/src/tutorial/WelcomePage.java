@@ -83,6 +83,7 @@ public class WelcomePage extends JApplet
 	public static String lightOnImagePath = "images/lightOn.jpg";
 	public static String lightOffImagePath = "images/lightOff.jpg";
 	public static String binDecPg3TitleImagePath = "images/BinDecPg3Title.jpg";
+	public static String tutorialImgPath = "images/tutorials.jpg";
 	public Image titleImg;  //http://www.cs.colostate.edu/~boese/Geek/binaryCalculator.gif
 	public Image lightOnImg;
 	public Image lightOffImg;
@@ -93,7 +94,8 @@ public class WelcomePage extends JApplet
 	public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
 	public Image titleHeadline;
 	public Image binaryGraphic;
-
+	public Image tutorialHeadline;
+	
 	//num representation page images
 	public static String binaryImageLightPath = "images/binaryLight.jpg";
 	public static String binaryImageDarkPath = "images/binaryDark.jpg";
@@ -267,6 +269,10 @@ public class WelcomePage extends JApplet
 		titleHeadline = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.welcomeToBKPath)); 
 		titleHeadline = titleHeadline.getScaledInstance(586, 50, Image.SCALE_SMOOTH);
+		
+		tutorialHeadline = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(WelcomePage.tutorialImgPath)); 
+		tutorialHeadline = tutorialHeadline.getScaledInstance(280, 40, Image.SCALE_SMOOTH);
 
 		//try to load the image file
 		try {

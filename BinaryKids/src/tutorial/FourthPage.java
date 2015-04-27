@@ -58,23 +58,17 @@ public class FourthPage extends JPanel
     	welcomePage = welcome;
     	setLayout(new BorderLayout());
     	setBackground(WelcomePage.backgroundColor);
-    	JPanel titlePanel = new JPanel();
-    	JLabel titleLabel = new JLabel("What would you like to learn first??");
-    	titleLabel.setFont(new Font("Verdana",1,20));
-    	titlePanel.add(titleLabel);
-    	titlePanel.setBorder(new LineBorder(Color.BLACK));     	
-    	add(titlePanel, BorderLayout.NORTH);
 
     	
     	decBinButton = new JButton("Decimal to Binary");
     	binDecButton = new JButton("Binary to Decimal");
-    	binAddButton = new JButton("Binary Addition");
-    	binSubButton = new JButton("Binary Subtraction");
+    	//binAddButton = new JButton("Binary Addition");
+    	//binSubButton = new JButton("Binary Subtraction");
     	
     	decBinButton.addActionListener(new tutorialButtonListener());
     	binDecButton.addActionListener(new tutorialButtonListener());
-    	binAddButton.addActionListener(new tutorialButtonListener());
-    	binSubButton.addActionListener(new tutorialButtonListener());
+    	//binAddButton.addActionListener(new tutorialButtonListener());
+    	//binSubButton.addActionListener(new tutorialButtonListener());
     	
     	JPanel buttonPanel = new JPanel(new GridBagLayout());
     	buttonPanel.setBackground(WelcomePage.backgroundColor);
@@ -87,14 +81,19 @@ public class FourthPage extends JPanel
     	buttonPanel.add(decBinButton);
 		c.gridy = 1;
     	buttonPanel.add(binDecButton);
-    	c.gridy = 2;
-    	buttonPanel.add(binAddButton);
-    	c.gridy = 3;
-    	buttonPanel.add(binSubButton);
+//    	c.gridy = 2;
+//    	buttonPanel.add(binAddButton);
+//    	c.gridy = 3;
+//    	buttonPanel.add(binSubButton);
     	
     	add(buttonPanel, BorderLayout.CENTER);
     	setVisible(true);
 
+    }
+    public void paint(Graphics g) 
+    { 
+    	super.paint(g);
+    	g.drawImage(welcomePage.tutorialHeadline, 260, 50, this);
     }
     
     
