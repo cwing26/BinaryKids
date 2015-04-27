@@ -1,7 +1,5 @@
 package tutorial;
 
-import java.util.ArrayList;
-
 
 public interface PracticeProblem 
 {

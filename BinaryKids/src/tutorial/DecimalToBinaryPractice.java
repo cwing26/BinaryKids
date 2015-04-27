@@ -181,7 +181,7 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	{
 		titleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.decPracticeProblemPath)); 
-		titleImage = titleImage.getScaledInstance(790, 46, Image.SCALE_SMOOTH);
+		titleImage = titleImage.getScaledInstance(790, 40, Image.SCALE_SMOOTH);
 		
 		hintImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.hintGraphicPath)); 

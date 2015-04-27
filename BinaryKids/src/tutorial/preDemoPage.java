@@ -108,13 +108,13 @@ public class PreDemoPage extends JPanel implements ActionListener
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, 5, 5, this);
+    	g.drawImage(titleImage, 70, 10, this);
     	
     	//strings and explanations
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
-    	g.drawString(explanation1, 30, 100);
-    	g.drawString(explanation1cont, 30, 125);
+    	g.drawString(explanation1, 100, 100);
+    	g.drawString(explanation1cont, 100, 125);
     	
     	g.drawString(explanation2, 30, 440);
     	g.drawString(explanation2cont, 30, 465);
@@ -194,7 +194,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     {
     	titleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.decBasicsPath)); 
-		titleImage = titleImage.getScaledInstance(749, 50, Image.SCALE_SMOOTH);
+		titleImage = titleImage.getScaledInstance(650, 40, Image.SCALE_SMOOTH);
 		
 		
 		crossOutImage = Toolkit.getDefaultToolkit().getImage(

@@ -108,7 +108,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, 5, 5, this);
+    	g.drawImage(titleImage, 100, 10, this);
     	
     	//strings and explanations
     	g.setColor(Color.black);
@@ -195,7 +195,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     {
     	titleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binBasicsPath)); 
-		titleImage = titleImage.getScaledInstance(664, 60, Image.SCALE_SMOOTH);
+		titleImage = titleImage.getScaledInstance(600, 50, Image.SCALE_SMOOTH);
 		
 		
 		crossOutImage = Toolkit.getDefaultToolkit().getImage(
