@@ -30,14 +30,18 @@ Ambitious:
 drag drop for rectangles
 
 Game:
+NEEDS binary to decimal questions also.
+game needs a title, and maybe a theme 
+game instructions page???? losing should take you back to the game homepage or the instructions page
+is there an articulation (dialog box, label, whatever) that tells someone when they’ve moved to the next level??
 1. game stats, pause button, stop button, need to be in dedicated different color panel on the bottom or left of the screen
 2. make score progress and time progress bar longer
 3. questions should be on a different color panel background, right now they don’t stand out
+5. fix location of labels and places under buttons
+6. exponential scoring
+7. congrats you’re awesome page
+8. numerical representation of score and time left under progress bars
 4. for binary tetris, every 20 seconds, the current question could just turn into a long rectangle, move up screen, and a new question could appear to simulate tetris. 
 OR 
 the button panel itself could be slowly rising and then go back to bottom once question has been answered…this would probs be easier
-5. fix location of labels and places
-6. exponential scoring
-7. congrats you’re awesome page
-
 
