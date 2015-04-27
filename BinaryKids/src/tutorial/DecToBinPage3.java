@@ -315,7 +315,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		int textYInc = 20;
 		int indentTextX = 30;
 
-		g.drawImage(welcomePage.binDec3TitleImg, 75, 10, this);
+		g.drawImage(welcomePage.decBinHeadlineImg, 75, 10, this);
 
 		if (display1){
 			g.drawString(text3, startTextX, startTextY+textYInc);

@@ -14,20 +14,38 @@ import javax.swing.event.DocumentListener;
 @SuppressWarnings("serial")
 public class DecToBinPage2 extends JPanel implements ActionListener 
 {
-
+	//whether or not clicked start button
 	boolean startClicked = false;
 
+	//timer used for animation
 	private Timer timer;
 	private int DELAY = 2000;
 
+	//applet
 	WelcomePage welcomePage;
+	
+	//swing components
 	JButton submitButton; 
 	JButton startButton;
-	String DecToBinNumSquaresText = "How do we get the number 11? 11 = how many tens + how many ones? We will put the 11 squares";
-	String DecToBinNumSquaresText2 = "in the TENS and ONES boxes to review the decimal number system. We will do this first example";
-	String DecToBinNumSquaresText3 = "for you and then let you try! Click the start button to begin.";
+	final String instructions1 = "How do we get the number 11? 11 = how many tens + how many ones? We will put the 11 squares";
+	final String instructions2 = "in the TENS and ONES boxes to review the decimal number system. We will do this first example";
+	final String instructions3 = "for you and then let you try! Click the start button to begin.";
 	JTextField NumberTensField;
 	JTextField NumberOnesField;
+	
+	// The coordinates of the 10's rectangle and 1s rectangle 
+	final int box10x = 210, box10y = 300, box10width = 150, box10height = 210;
+	final int box1x = 400, box1y = 300, box1width = 150, box1height = 210;	
+	
+	//swing somponent coords
+	final int submitButtonX = box1x +box1width + 20;
+	final int submitButtonY = box1y+box1height+5;
+	final int startButtonX = 290;
+	final int startButtonY = 140;
+	final int tensFieldX = box10x +45;
+	final int tensFieldY = box10y+box10height+5;
+	final int onesFieldX = box1x + 45;
+	final int onesFieldY = box1y+box1height+5;
 
 	final int DecToBinNumSquaresActual = 11;
 	int DecToBinNumSquaresInput;
@@ -37,9 +55,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	final String numTensActual = "1";
 	final String numOnesActual = "1";
 
-	// The coordinates of the 10's rectangle and 1s rectangle 
-	final int box10x = 210, box10y = 300, box10width = 150, box10height = 210;
-	final int box1x = 400, box1y = 300, box1width = 150, box1height = 210;	
+
 
 	//flags to see which box and squares selected
 	boolean boxSelected10 = false;
@@ -48,10 +64,10 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	int rectSelectedNum = 0;
 
 	//width and height of sqare
-	final int rectUnit = 30;
+	final int squareUnit = 30;
 	//starting location to draw squares
-	final int startx = 180;
-	final int starty = 240;
+	final int startXSquare = 180;
+	final int startYSquare = 240;
 	//coordinate list for the squares
 	ArrayList<Integer> xCoordList =  new ArrayList<Integer>();
 	ArrayList<Integer> yCoordList =  new ArrayList<Integer>();
@@ -59,17 +75,17 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	private Rectangle rec;
 	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
 
-	int globalI = 0;
+	int recListIterator = 0;
 
-	String text3 = "Do we have enough squares to put ten squares in the TENS box? ";
-	String text4 = "Since we do; let's put ten red squares in the TENS box.";
-	String text5 = "Since we had enough squares, type 1 below the TENS box.";
-	String text6 = "Check how many squares are left remaining. Do we have enough";
-	String text61 = "to put one square in the ONES box?";
-	String text7 = "We have enough! Let's move the square to the ONES box.";
-	String text8 = "Since we had enough squares, type 1 below the ONES box.";
-	String text9 = "Since there are no squares left we are all done!";
-	String text10 = "When you finish, click submit to check your answer.";
+	final String text1 = "Do we have enough squares to put ten squares in the TENS box? ";
+	final String text2 = "Since we do; let's put ten red squares in the TENS box.";
+	final String text3 = "Since we had enough squares, type 1 below the TENS box.";
+	final String text4 = "Check how many squares are left remaining. Do we have enough";
+	final String text5 = "to put one square in the ONES box?";
+	final String text6 = "We have enough! Let's move the square to the ONES box.";
+	final String text7 = "Since we had enough squares, type 1 below the ONES box.";
+	final String text8 = "Since there are no squares left we are all done!";
+	final String text9 = "When you finish, click submit to check your answer.";
 
 	boolean displayStep1= false;
 	boolean displayStep2= false;
@@ -81,26 +97,40 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	boolean number10correct = false;
 	boolean number1correct = false;
 
-	public void moveTens(){
-		recList.get(globalI).setLocation(xCoordList.get(globalI), yCoordList.get(globalI));
-		globalI++;
+	//defines coordinates for help text
+	final int startTextX = 60;
+	final int startTextY = 85;
+	final int textYInc = 20;
+	final int stepTextY = 185;
+	final int indentTextX = 30;
+	
+	//constructor, param is the applet
+	public DecToBinPage2(WelcomePage welcome)
+	{
+		welcomePage = welcome;
+		setBackground(WelcomePage.backgroundColor);
+
+		initComponents();
+		addComponentsToPanel();
+		formatComponents();
+
+		setVisible(true);
 	}
-	public void moveOnes(){
-		recList.get(globalI).setLocation(xCoordList.get(globalI), yCoordList.get(globalI));
-		//globalI++;
-		timer.stop();
-	}
+	
+
+
 
 	boolean displayedStep2 = false;
 	boolean displayedStep3 = false;
 
+	//overriden method for timer action
 	@Override
 	public void actionPerformed(ActionEvent e) {
 
-		if (globalI < 10){
+		if (recListIterator < 10){
 			moveTens();
 		}
-		if (globalI == 10 && displayedStep2 == false){
+		if (recListIterator == 10 && displayedStep2 == false){
 			displayStep1 = false;
 			displayStep2 = true;
 		}
@@ -121,11 +151,11 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	//inits the coords of the rects that user will move
 	public void initRects(){
 		//starting locations
-		int startX = startx;
+		int x = startXSquare;
 		for (int i = 0; i < DecToBinNumSquaresActual; i++){
-			rec = new Rectangle(startX, starty, rectUnit,rectUnit);
+			rec = new Rectangle(x, startYSquare, squareUnit,squareUnit);
 			recList.add(rec);
-			startX+=40;
+			x+=40;
 		}
 
 		//locations to move during animations
@@ -133,22 +163,23 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		for (int i = 0; i < 5; i++){
 			xCoordList.add(220);
 			yCoordList.add(y);
-			y = y + 10 + rectUnit;
+			y = y + 10 + squareUnit;
 		}
 		y=box10y+10;
 		for (int i = 0; i < 5; i++){
 			xCoordList.add(260);
 			yCoordList.add(y);
-			y = y + 10 + rectUnit;
+			y = y + 10 + squareUnit;
 		}
 		xCoordList.add(box1x+10);
 		yCoordList.add(box1y+10);
 
 	}
 
-
+	//defines listener for submit button
 	class submitButtonListener implements ActionListener 
 	{
+		//checks input when button clicked
 		public void actionPerformed(ActionEvent le) {  
 			numTensInput = NumberTensField.getText();
 			numOnesInput = NumberOnesField.getText();
@@ -167,8 +198,10 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		} 
 	}
 
+	//defines listener for start button
 	class startButtonListener implements ActionListener 
 	{
+		//starts timer and updates text when clicked
 		public void actionPerformed(ActionEvent le) {  
 			startButton.setVisible(false);
 			timer.start();
@@ -177,7 +210,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		} 
 	}
 
-
+	//inits text fields and adds listeners
 	public void initTextFields(){
 		NumberTensField = new JTextField();
 		NumberOnesField = new JTextField();
@@ -240,7 +273,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	}
 
 
-
+	//inits button components
 	public void initButtons(){
 		submitButton = new JButton("Submit"); 
 		submitButton.addActionListener(new submitButtonListener());
@@ -248,49 +281,61 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		startButton.addActionListener(new startButtonListener());
 	}
 
-	//constructor, param is the applet
-	public DecToBinPage2(WelcomePage welcome)
-	{
+	//init swing components
+	public void initComponents(){
 		timer = new Timer(DELAY, this);
-		welcomePage = welcome;
-		setBackground(WelcomePage.backgroundColor);
-
-		//initializations
 		initButtons();
 		initTextFields();
 		initRects();
 
+	}
+	public void moveTens(){
+		recList.get(recListIterator).setLocation(xCoordList.get(recListIterator), yCoordList.get(recListIterator));
+		recListIterator++;
+	}
+
+
+	//this method adds the components to the panel
+	public void addComponentsToPanel() {
 		setLayout(null);
-		Insets insets = getInsets();
 
 		add(submitButton);
 		add(startButton);
 		add(NumberTensField);
 		add(NumberOnesField);
 
+	}
+
+	//this method defines the formatting of the components on the panel
+	public void formatComponents(){
+		Insets insets = getInsets();
+		
 		Dimension buttonSize = submitButton.getPreferredSize();
-		submitButton.setBounds(box1x +box1width + 20 + insets.left, box1y+box1height+5 + insets.top,
+		submitButton.setBounds(submitButtonX + insets.left, submitButtonY + insets.top,
 				buttonSize.width, buttonSize.height);
+		
 		buttonSize = startButton.getPreferredSize();
-		startButton.setBounds(290 + insets.left, 140 + insets.top,
+		startButton.setBounds(startButtonX + insets.left, startButtonY + insets.top,
 				buttonSize.width*2, buttonSize.height);
 
 		Dimension fieldSize = NumberTensField.getPreferredSize();
-		NumberTensField.setBounds(box10x +45 + insets.left, box10y+box10height+5 + insets.top,
+		NumberTensField.setBounds(tensFieldX + insets.left, tensFieldY + insets.top,
 				fieldSize.width, buttonSize.height);
-		NumberOnesField.setBounds(box1x +45 + insets.left, box1y+box1height+5 + insets.top,
+		NumberOnesField.setBounds(onesFieldX+ insets.left, onesFieldY + insets.top,
 				fieldSize.width, buttonSize.height);
-
-
-
-
 	}
 
+	public void moveOnes(){
+		recList.get(recListIterator).setLocation(xCoordList.get(recListIterator), yCoordList.get(recListIterator));
+		timer.stop();
+	}
+
+	//overridden paint method
 	public void paint(Graphics g) {
 		super.paint(g);
 
 		//draw title text
-		g.drawImage(welcomePage.binDec3TitleImg, 75, 10, this);
+		g.drawImage(welcomePage.decBinHeadlineImg, 75, 10, this);
 
 		//draw the boxes
 		g.setColor(WelcomePage.textColor);
@@ -300,7 +345,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		//draw the movable squares
 		g.setColor(WelcomePage.buttonPanelColor);
 		for (int i = 0;i < recList.size(); i++){
-			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
+			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), squareUnit, squareUnit );
 		}
 
 		//box labels
@@ -309,37 +354,35 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		g.drawString("TENS", box10x+45, box10y-4);
 		g.drawString("ONES", box1x+45, box1y-4);
 
+
+		//display instructions
 		g.setColor(WelcomePage.textColor);
 		g.setFont(new Font("Geneva", Font.BOLD, 14));
-		int startTextX = 60;
-		int startTextY = 85;
-		int textYInc = 20;
-
 		if (!startClicked){
-			g.drawString(DecToBinNumSquaresText, startTextX, startTextY);
-			g.drawString(DecToBinNumSquaresText2, startTextX, startTextY+=textYInc);
-			g.drawString(DecToBinNumSquaresText3, startTextX, startTextY+=textYInc);
+			g.drawString(instructions1, startTextX, startTextY);
+			g.drawString(instructions2, startTextX, startTextY+textYInc);
+			g.drawString(instructions3, startTextX, startTextY+textYInc);
 		}
 
+		
+		//display steps
 		g.setFont(new Font("Geneva", Font.BOLD, 18));
-		int stepTextY = startTextY+100;
-		int indentTextX = 30;
 		if (displayStep1){
-			g.drawString(text3, startTextX, stepTextY );
-			g.drawString(text4, startTextX+indentTextX, stepTextY+textYInc);
+			g.drawString(text1, startTextX, stepTextY );
+			g.drawString(text2, startTextX+indentTextX, stepTextY+textYInc);
 		}
 		if (displayStep2){
-			g.drawString(text5, startTextX, stepTextY);
+			g.drawString(text3, startTextX, stepTextY);
 		}
 		if (displayStep3){
-			g.drawString(text6, startTextX, stepTextY );
-			g.drawString(text61, startTextX+indentTextX, stepTextY+textYInc);
-			g.drawString(text7, startTextX, stepTextY+2*textYInc);
-			g.drawString(text8, startTextX, stepTextY+3*textYInc);
+			g.drawString(text4, startTextX, stepTextY );
+			g.drawString(text5, startTextX+indentTextX, stepTextY+textYInc);
+			g.drawString(text6, startTextX, stepTextY+2*textYInc);
+			g.drawString(text7, startTextX, stepTextY+3*textYInc);
 		}
 		if (displayStep7){
-			g.drawString(text9, startTextX, stepTextY);
-			g.drawString(text10, startTextX, stepTextY+textYInc);
+			g.drawString(text8, startTextX, stepTextY);
+			g.drawString(text9, startTextX, stepTextY+textYInc);
 		}
 
 	}
@@ -349,107 +392,3 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 
 
 } //end class
-
-//// This method will be called when the mouse has been clicked. 
-//public void mouseClicked (MouseEvent me) 
-//{
-//	// Save the coordinates of the click lke this.
-//	xpos = me.getX(); 
-//	ypos = me.getY();
-//
-//
-//	//select one of the rectangles first
-//	for (int i = 0; i < recList.size(); i++){
-//		int recx = (int) recList.get(i).getX();
-//		int recy = (int) recList.get(i).getY();
-//		if ((xpos >= recx) && (xpos <= (recx + rectUnit)) && (ypos >= recy) && (ypos <= (recy + rectUnit))){
-//			rectSelected = true;
-//			rectSelectedNum = i;
-//			break;
-//		} 
-//
-//
-//	}
-//
-//	if(rectSelected)
-//	{
-//		if((xpos >= box10x) && (xpos <= (box10x + box10width)) && (ypos >= box10y) && (ypos <= (box10y + box10height)))
-//		{
-//			boxSelected10 = true;
-//			boxSelected1 = false;
-//			recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-//
-//		}
-//		else if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
-//		{
-//			boxSelected1 = true;
-//			boxSelected10 = false;
-//			recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-//
-//		}
-//		else {
-//			boxSelected10 = false;
-//			boxSelected1 = false;
-//		}
-//
-//	}
-//
-//
-//	//show the results of the click 
-//	repaint();
-//
-//}
-
-//formats the text panel layout
-//	public void initTextPanel(){
-//		textPanel = new JPanel();
-//		textPanel.setLayout(new GridBagLayout());
-//		textPanel.setBackground(WelcomePage.backgroundColor);
-//		GridBagConstraints c = new GridBagConstraints();
-//		c.anchor = GridBagConstraints.CENTER;
-//		c.fill = GridBagConstraints.HORIZONTAL;
-//		c.ipadx = 20;
-//		c.gridx = 0;
-//		c.gridy = 0;
-//		textPanel.add(DecToBinNumSquaresText, c);
-//		c.gridy = 1;
-//		textPanel.add(DecToBinNumSquaresText2, c);
-//		c.gridy = 2;
-//		textPanel.add(DecToBinNumSquaresText3, c);
-//		c.gridy = 3;
-//		textPanel.add(startButton, c);
-//		
-//	}
-
-//	//formats the question panel layout
-//	public void initQuestionPanel(){
-//		questionPanel = new JPanel();
-//		questionPanel.setLayout(new GridBagLayout());
-//		questionPanel.setBackground(WelcomePage.backgroundColor);
-//		GridBagConstraints c2 = new GridBagConstraints();
-//		c2.anchor = GridBagConstraints.CENTER;
-//		c2.fill = GridBagConstraints.HORIZONTAL;
-//		c2.ipadx = 20;
-//		c2.gridx = 0;
-//		c2.gridy = 0;
-//		questionPanel.add(TextHowManyTens, c2);
-//		c2.gridx = 1;
-//		c2.gridy = 0;
-//		questionPanel.add(NumberTensField, c2);
-//		c2.gridx = 2;
-//		c2.gridy = 0;
-//		questionPanel.add(TextHowManyOnes, c2);
-//		c2.gridx = 3;
-//		c2.gridy = 0;
-//		questionPanel.add(NumberOnesField, c2);
-//		c2.gridx = 0;
-//		c2.gridy = 1;
-//		c2.gridwidth = 4;
-//		questionPanel.add(submitButton, c2);
-//		c2.gridy = 2;
-//		questionPanel.add(DecToBinNumSquaresText4, c2);
-//		c2.gridy = 3;
-//		questionPanel.add(DecToBinNumSquaresText5, c2);
-//		DecToBinNumSquaresText4.setVisible(false);
-//		DecToBinNumSquaresText5.setVisible(false);
-//	}

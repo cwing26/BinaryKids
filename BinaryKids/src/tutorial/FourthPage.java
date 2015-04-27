@@ -11,7 +11,7 @@ import javax.swing.JButton;
 
 import java.awt.*; 
 
-
+//this class defines the tutorial menu select screen
 @SuppressWarnings("serial")
 public class FourthPage extends JPanel
 {	
@@ -24,6 +24,7 @@ public class FourthPage extends JPanel
 	boolean completedDecBin = false;
 	boolean completedBinDec = false;
 
+	//constructor, param is the applet
 	public FourthPage(WelcomePage welcome)
 	{
 		welcomePage = welcome;
@@ -37,7 +38,7 @@ public class FourthPage extends JPanel
 
 	}
 	
-	//
+	//this method adds the components to the panel
 	public void addComponentsToPanel() {
 		setLayout(null);
 		add(decBinButton);

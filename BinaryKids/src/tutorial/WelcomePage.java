@@ -90,7 +90,7 @@ public class WelcomePage extends JApplet
 	public Image lightOnImg;
 	public Image lightOffImg;
 	public Image titleTextImg;
-	public Image binDec3TitleImg;
+	public Image decBinHeadlineImg;
 	public Image tutorialCompleteImg;
 	public static String tutorialCompleteImgPath = "images/tutorialComplete.jpg";
 	public Image checkmarkImg;
@@ -275,9 +275,9 @@ public class WelcomePage extends JApplet
 		titleTextImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.titlePath));
 		titleTextImg = titleTextImg.getScaledInstance(700, 40, Image.SCALE_SMOOTH);
-		binDec3TitleImg = Toolkit.getDefaultToolkit().getImage(
+		decBinHeadlineImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binDecPg3TitleImagePath));  
-		binDec3TitleImg = binDec3TitleImg.getScaledInstance(650, 50, Image.SCALE_SMOOTH);
+		decBinHeadlineImg = decBinHeadlineImg.getScaledInstance(650, 50, Image.SCALE_SMOOTH);
 
 		titleHeadline = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.welcomeToBKPath)); 
