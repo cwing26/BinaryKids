@@ -231,6 +231,10 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
     public void paint(Graphics g)
     {
     	super.paint(g);
+    	
+    	//draw title text
+    	g.drawImage(welcomePage.binDecImg, 90, 15, this);
+    	
     	g.setColor(Color.black);
     	if (boxSelected1)
 			g.setColor(Color.RED);
