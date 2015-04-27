@@ -86,8 +86,8 @@ public class GamePage2 extends JPanel {
 		
 		insets = getInsets();
 		
-		zeroCard = new ImageIcon("myZero.png");
-		oneCard = new ImageIcon("myOne.png");
+		zeroCard = new ImageIcon(“images/myZero.png");
+		oneCard = new ImageIcon(“images/myOne.png");
 		
 		initializeQuestions();
 		initBinButtons();
