@@ -58,10 +58,36 @@ public class TerceraPage extends JPanel implements ActionListener
     private final int titleImageX = 5;
     private final int titleImageY = 5;
     
+    private final int explanation1Y = 80;
+    private final int explanation1contY = 110;
+    private final int explanation2Y = 200;
+    
+    private final int explanation3Y = 420;
+    private final int explanation3contY = 445;
+    
+    private final int binaryImageX = 525;
+    private final int binaryImageY = 130;
+    
+    private final int bXcoord = 20;
+    private final int iXcoord1 = 60; 
+    private final int nXcoord = 90; 
+    private final int aXcoord = 140;
+    private final int rXcoord = 190;
+    private final int yXcoord = 230;
+    
+    private final int dXcoord = 320;
+    private final int iXcoord2 = 370;
+    private final int gXcoord = 400;
+    private final int iXcoord3 = 450;
+    private final int tXcoord = 475;
+    
+    private final int finalBXcoord = 140;
+    private final int finalIXcoord = 200;
+    private final int finalTXcoord = 230;
+    
     //constructor
     public TerceraPage()
     {
-
     	loadImages();
     	
     	timer = new Timer(DELAY, this);
@@ -69,7 +95,6 @@ public class TerceraPage extends JPanel implements ActionListener
     	setVisible(true);
     	
     	timer.start();
-
     }
     
     //displays different text and images on screen, allowing for animation
@@ -82,33 +107,32 @@ public class TerceraPage extends JPanel implements ActionListener
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
-    	g.drawString(explanation1, explanationX, 80);
-    	g.drawString(explanation1cont, explanationX, 110);
+    	g.drawString(explanation1, explanationX, explanation1Y);
+    	g.drawString(explanation1cont, explanationX, explanation1contY);
     	
+    	g.drawString(explanation2, explanationX, explanation2Y);
+    	g.drawImage(binaryDigitImage, binaryImageX, binaryImageY, this);
     	
-    	g.drawString(explanation2, explanationX, 200);
-    	g.drawImage(binaryDigitImage, 525, 130, this);
-    	
-    	g.drawString(explanation3, explanationX, 420);
-    	g.drawString(explanation3cont, explanationX, 445);
+    	g.drawString(explanation3, explanationX, explanation3Y);
+    	g.drawString(explanation3cont, explanationX, explanation3contY);
     	
     	//initially, binary digit is displayed
     	if(countAnimation ==0)
     	{
     		g.setFont(new Font("Geneva", 1, 60));
     		g.setColor(WelcomePage.textColor);
-    		g.drawString(b, 20, bitTextY);
-    		g.drawString(i, 60, bitTextY);
-    		g.drawString(n, 90, bitTextY);
-    		g.drawString(a, 140, bitTextY);
-    		g.drawString(r, 190, bitTextY);
-    		g.drawString(y, 230, bitTextY);
+    		g.drawString(b, bXcoord, bitTextY);
+    		g.drawString(i, iXcoord1, bitTextY);
+    		g.drawString(n, nXcoord, bitTextY);
+    		g.drawString(a, aXcoord, bitTextY);
+    		g.drawString(r, rXcoord, bitTextY);
+    		g.drawString(y, yXcoord, bitTextY);
     		
-    		g.drawString(d, 320, bitTextY);
-    		g.drawString(i, 370, bitTextY);
-    		g.drawString(letterG, 400, bitTextY);
-    		g.drawString(i, 450, bitTextY);
-    		g.drawString(t, 475, bitTextY);
+    		g.drawString(d, dXcoord, bitTextY);
+    		g.drawString(i, iXcoord2, bitTextY);
+    		g.drawString(letterG, gXcoord, bitTextY);
+    		g.drawString(i, iXcoord3, bitTextY);
+    		g.drawString(t, tXcoord, bitTextY);
     		
     	}
     	//then the requisite letters in the portmanteau are displayed 
@@ -116,22 +140,23 @@ public class TerceraPage extends JPanel implements ActionListener
     	{
     		g.setFont(new Font("Geneva", 1, 60));
     		g.setColor(Color.red);
-    		g.drawString(b, 20, bitTextY);
+    		g.drawString(b, bXcoord, bitTextY);
     		
     		g.setColor(WelcomePage.textColor);
-    		g.drawString(i, 60, bitTextY);
-    		g.drawString(n, 90, bitTextY);
-    		g.drawString(a, 140, bitTextY);
-    		g.drawString(r, 190, bitTextY);
-    		g.drawString(y, 230, bitTextY);
+    		g.drawString(i, iXcoord1, bitTextY);
+    		g.drawString(n, nXcoord, bitTextY);
+    		g.drawString(a, aXcoord, bitTextY);
+    		g.drawString(r, rXcoord, bitTextY);
+    		g.drawString(y, yXcoord, bitTextY);
     		
-    		g.drawString(d, 320, bitTextY);
-    		g.drawString(i, 370, bitTextY);
-    		g.drawString(letterG, 400, bitTextY);
+    		g.drawString(d, dXcoord, bitTextY);
+    		g.drawString(i, iXcoord2, bitTextY);
+    		g.drawString(letterG, gXcoord, bitTextY);
     		
     		g.setColor(Color.red);
-    		g.drawString(i, 450, bitTextY);
-    		g.drawString(t, 475, bitTextY);
+    		g.drawString(i, iXcoord3, bitTextY);
+    		g.drawString(t, tXcoord, bitTextY);
+    		
     		
     	}
     	//finally, the derivation of BIT from binary digit is completed
@@ -139,19 +164,19 @@ public class TerceraPage extends JPanel implements ActionListener
     	{
     		g.setFont(new Font("Geneva", 1, 60));
     		g.setColor(Color.red);
-    		g.drawString(b, 20, 320);    		
-    		g.drawString(i, 450, 320);
-    		g.drawString(t, 475, 320);
-
-    		
+    		g.drawString(b, bXcoord, bitTextY);
+    		g.drawString(i, iXcoord3, bitTextY);
+    		g.drawString(t, tXcoord, bitTextY);
+	
     	}
+    	//final animation that stays on screen
     	if(countAnimation >= 3)
     	{
     		g.setFont(new Font("Geneva", 1, 80));
     		g.setColor(WelcomePage.buttonPanelColor);
-    		g.drawString(b, 140, bitTextY);
-    		g.drawString(i, 200, bitTextY);
-    		g.drawString(t, 230, bitTextY);
+    		g.drawString(b, finalBXcoord, bitTextY);
+    		g.drawString(i, finalIXcoord, bitTextY);
+    		g.drawString(t, finalTXcoord, bitTextY);
     		
     		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 20));
@@ -161,6 +186,7 @@ public class TerceraPage extends JPanel implements ActionListener
     	
     		
     } //end paint
+    
     
     public void loadImages()
     {
