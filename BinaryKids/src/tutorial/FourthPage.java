@@ -28,9 +28,25 @@ public class FourthPage extends JPanel
 	{
 		welcomePage = welcome;
 		setBackground(WelcomePage.backgroundColor);
-		setLayout(null);
-		Insets insets = getInsets();
+		
+		initComponents();		
+		addComponentsToPanel();
+		formatComponents();
 
+		setVisible(true);
+
+	}
+	
+	public void addComponentsToPanel() {
+		setLayout(null);
+		add(decBinButton);
+		add(binDecButton);
+		add(backgroundButton);
+		add(gameButton);
+		
+	}
+
+	public void initComponents(){
 		backgroundButton = new JButton("Background");
 		decBinButton = new JButton("Decimal to Binary");
 		binDecButton = new JButton("Binary to Decimal");
@@ -39,11 +55,10 @@ public class FourthPage extends JPanel
 		binDecButton.addActionListener(new tutorialButtonListener());
 		backgroundButton.addActionListener(new tutorialButtonListener());
 		gameButton.addActionListener(new gameButtonListener());
-		add(decBinButton);
-		add(binDecButton);
-		add(backgroundButton);
-		add(gameButton);
-
+	}
+	
+	public void formatComponents(){
+		Insets insets = getInsets();
 		Dimension buttonSize = decBinButton.getPreferredSize();
 		decBinButton.setBounds(300 + insets.left, 250 + insets.top,
 				buttonSize.width, buttonSize.height);
@@ -53,11 +68,9 @@ public class FourthPage extends JPanel
 				buttonSize.width, buttonSize.height);
 		gameButton.setBounds(330 + insets.left, 350 + insets.top,
 				buttonSize.width, buttonSize.height);
-		gameButton.setVisible(true);  //here
-
-		setVisible(true);
-
+		gameButton.setVisible(false);
 	}
+	
 	public void paint(Graphics g) 
 	{ 
 		super.paint(g);
