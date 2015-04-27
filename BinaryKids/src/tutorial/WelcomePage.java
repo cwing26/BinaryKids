@@ -93,6 +93,8 @@ public class WelcomePage extends JApplet
 	public Image binDec3TitleImg;
 	public Image tutorialCompleteImg;
 	public static String tutorialCompleteImgPath = "images/tutorialComplete.jpg";
+	public Image checkmarkImg;
+	public static String checkmarkImgPath = "images/checkmark.png";
 	
 	//meghan's added images
 	public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
@@ -240,10 +242,9 @@ public class WelcomePage extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		cardLayout.show(cards, "BIN DEC PAGE 5");
+		cardLayout.show(cards, "FOURTH");
 		//cardLayout.show(cards, "START PAGE");  //here
 
-		//add(startPage, BorderLayout.CENTER);
 		//add buttonPanel to the top of game frame
 		add(buttonPanel, BorderLayout.NORTH);
 
@@ -293,6 +294,10 @@ public class WelcomePage extends JApplet
 		tutorialCompleteImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.tutorialCompleteImgPath)); 
 		tutorialCompleteImg = tutorialCompleteImg.getScaledInstance(400, 40, Image.SCALE_SMOOTH);
+		
+		checkmarkImg = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(WelcomePage.checkmarkImgPath)); 
+		checkmarkImg = checkmarkImg.getScaledInstance(400, 40, Image.SCALE_SMOOTH);
 
 		//try to load the image file
 		try {
@@ -555,6 +560,19 @@ public class WelcomePage extends JApplet
 		}
 	}
 
+	public void background(){
+		startPage = new StartPage(welcome);
+		notOnStartScreen = false;
+		inTutorial = false;
+		pageFlag = 0;
+		backButton.setVisible(false);
+		nextButton.setVisible(true);
+		cardLayout.show(cards, "START PAGE");
+		validate();
+		setVisible(true);
+		repaint();
+	}
+	
 	class backHomeButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 

@@ -2,13 +2,14 @@ package tutorial;
 
 
 import java.awt.Graphics;
+import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
+
 import java.awt.*; 
-import java.awt.BorderLayout;
-import java.awt.GridBagConstraints;
 
 
 @SuppressWarnings("serial")
@@ -16,36 +17,36 @@ public class FourthPage extends JPanel
 {	
 	WelcomePage welcomePage;
 	
+	JButton backgroundButton;
 	JButton decBinButton;
 	JButton binDecButton;
-	JButton binAddButton;
-	JButton binSubButton;
     
     public FourthPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
-    	setLayout(new BorderLayout());
     	setBackground(WelcomePage.backgroundColor);
+    	setLayout(null);
+		Insets insets = getInsets();
 
-    	
+    	backgroundButton = new JButton("Background");
     	decBinButton = new JButton("Decimal to Binary");
     	binDecButton = new JButton("Binary to Decimal");
     	decBinButton.addActionListener(new tutorialButtonListener());
     	binDecButton.addActionListener(new tutorialButtonListener());
+    	backgroundButton.addActionListener(new tutorialButtonListener());
+    	add(decBinButton);
+    	add(binDecButton);
+    	add(backgroundButton);
     	
-    	JPanel buttonPanel = new JPanel(new GridBagLayout());
-    	buttonPanel.setBackground(WelcomePage.backgroundColor);
-    	GridBagConstraints c = new GridBagConstraints();
-    	c.anchor = GridBagConstraints.LINE_START;
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipadx = 20;
-		c.gridx = 0;
-		c.gridy = 0;
-    	buttonPanel.add(decBinButton);
-		c.gridy = 1;
-    	buttonPanel.add(binDecButton);
+    	Dimension buttonSize = decBinButton.getPreferredSize();
+    	decBinButton.setBounds(250 + insets.left, 250 + insets.top,
+				buttonSize.width, buttonSize.height);
+    	binDecButton.setBounds(250 + insets.left, 300 + insets.top,
+				buttonSize.width, buttonSize.height);
+    	backgroundButton.setBounds(250 + insets.left, 200 + insets.top,
+				buttonSize.width, buttonSize.height);
     	
-    	add(buttonPanel, BorderLayout.CENTER);
+    	
     	setVisible(true);
 
     }
@@ -69,6 +70,9 @@ public class FourthPage extends JPanel
 			{
 				welcomePage.binToDecTutorial();
 				
+			}
+			else if (e.getSource() == backgroundButton){
+				welcomePage.background();
 			}
 			else
 			{
