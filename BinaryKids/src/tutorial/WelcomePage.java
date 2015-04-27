@@ -58,6 +58,8 @@ public class WelcomePage extends JApplet
 	private BinaryDecimalTwo bdTwo;
 	private BinaryDecimalThree bdThree;
 	private BinaryDecimalFour bdFour;
+	private BinaryToDecimalPractice binToDecPractice;
+	private DecimalToBinaryPractice decToBinPractice;
 	private GamePage gamePage;
 
 	//top panel commponents
@@ -199,6 +201,8 @@ public class WelcomePage extends JApplet
 		bdTwo = new BinaryDecimalTwo(this);
 		bdThree = new BinaryDecimalThree(this);
 		bdFour = new BinaryDecimalFour(this);
+		binToDecPractice = new BinaryToDecimalPractice(this);
+		decToBinPractice = new DecimalToBinaryPractice(this);
 		gamePage = new GamePage(this);
 
 
