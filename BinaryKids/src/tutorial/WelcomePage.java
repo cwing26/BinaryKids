@@ -60,7 +60,7 @@ public class WelcomePage extends JApplet
 	private BinaryDecimalThree bdThree;
 	private BinaryDecimalFour bdFour;
 	private BinaryToDecimalPractice bdPractice;
-	private GamePage gamePage;
+	private GamePage2 gamePage;
 
 	//top panel commponents
 	JPanel buttonPanel;
@@ -210,7 +210,7 @@ public class WelcomePage extends JApplet
 		bdThree = new BinaryDecimalThree(this);
 		bdFour = new BinaryDecimalFour(this);
 		bdPractice = new BinaryToDecimalPractice(this);
-		gamePage = new GamePage(this);
+		//gamePage = new GamePage2(this);
 
 
 		cards.add(startPage, "START PAGE");
@@ -234,7 +234,7 @@ public class WelcomePage extends JApplet
 		cards.add(bdThree, "BIN DEC PAGE 3");
 		cards.add(bdFour, "BIN DEC PAGE 4");
 		cards.add(bdPractice, "BIN DEC PAGE 5");
-		cards.add(gamePage, "GAME");
+		//cards.add(gamePage, "GAME");
 
 
 
@@ -600,6 +600,8 @@ public class WelcomePage extends JApplet
 	}
 
 	public void loadGame(){
+		gamePage = new GamePage2(welcome);
+		cards.add(gamePage, "GAME");
 		cardLayout.show(cards, "GAME");
 		validate();
 		setVisible(true);

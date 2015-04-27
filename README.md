@@ -21,6 +21,7 @@ TO DO APRIL 27 MORNING:
 -better way to present instructions for bin dec tutorials (font size must be 15 or larger, think about highlighting different parts of instructions like singh said)
 -fix card layouts in welcome so pre tutorial animations don’t start until their respective screen appears
 -fix inconsistent back/next buttons 
+-move pre tutorial image loading all into welcome page
 
 Semi ambitious:
 game = binary tetris, have screen getting higher to top
