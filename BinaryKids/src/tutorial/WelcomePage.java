@@ -242,8 +242,8 @@ public class WelcomePage extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		cardLayout.show(cards, "FOURTH");
-		//cardLayout.show(cards, "START PAGE");  //here
+		//cardLayout.show(cards, "FOURTH");
+		cardLayout.show(cards, "START PAGE");  //here
 
 		//add buttonPanel to the top of game frame
 		add(buttonPanel, BorderLayout.NORTH);
