@@ -32,7 +32,7 @@ public class WelcomePage extends JApplet
 	private int frameWidth = 800;
 	private int frameHeight = 620;
 
-	//new colors
+	//custom colors
 	public static Color backgroundColor = new Color(255, 255, 204);
 	public static Color buttonPanelColor = new Color(152, 46, 68);
 	public static Color textColor = new Color(0, 0, 0);
