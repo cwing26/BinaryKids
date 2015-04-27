@@ -97,6 +97,9 @@ public class WelcomePage extends JApplet
 	public Image titleHeadline;
 	public Image binaryGraphic;
 	public Image tutorialHeadline;
+	public Image binDecImg;
+	
+	public static String binDecImgPath = "images/BinToDec.jpg";
 
 	//num representation page images
 	public static String binaryImageLightPath = "images/binaryLight.jpg";
@@ -235,7 +238,8 @@ public class WelcomePage extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		cardLayout.show(cards, "START PAGE");
+		cardLayout.show(cards, "BIN DEC PAGE 1");
+		//cardLayout.show(cards, "START PAGE");  //here
 
 		//add(startPage, BorderLayout.CENTER);
 		//add buttonPanel to the top of game frame
@@ -279,6 +283,10 @@ public class WelcomePage extends JApplet
 		tutorialHeadline = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.tutorialImgPath)); 
 		tutorialHeadline = tutorialHeadline.getScaledInstance(280, 40, Image.SCALE_SMOOTH);
+		
+		binDecImg = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(WelcomePage.binDecImgPath)); 
+		binDecImg = binDecImg.getScaledInstance(280, 40, Image.SCALE_SMOOTH);
 
 		//try to load the image file
 		try {

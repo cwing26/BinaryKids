@@ -49,7 +49,6 @@ public class BinaryDecimalOne extends JPanel
     	welcomePage = welcome;
     
     	initComponents();
-    	initSubmitButton();
     	initTitlePanel();
     	initTextPanel();
     	initRects();
@@ -61,13 +60,6 @@ public class BinaryDecimalOne extends JPanel
     	setVisible(true);
 
     }
-    
-  //adds an action listener to the submit button to verify input is correct
-  	public void initSubmitButton()
-  	{
-  		submitButton = new JButton("Submit Answer");
-  		submitButton.addActionListener(new submitButtonListener()); 
-  	}
 
 
 
@@ -89,6 +81,8 @@ public class BinaryDecimalOne extends JPanel
 		questionLabel = new JLabel("How many squares are shown?");
 		answerField = new JTextField();
 		answerField.setColumns(5);
+  		submitButton = new JButton("Submit Answer");
+  		submitButton.addActionListener(new submitButtonListener()); 
 	}
 
 	//formats the text panel layout

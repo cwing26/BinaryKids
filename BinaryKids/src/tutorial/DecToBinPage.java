@@ -4,6 +4,7 @@ import javax.swing.*;
 import java.awt.*; 
 import java.awt.event.*; 
 import java.util.ArrayList;
+
 import javax.swing.JPanel;
 
 @SuppressWarnings("serial")
@@ -33,24 +34,23 @@ public class DecToBinPage extends JPanel
 	JPanel questionPanel;
 	JPanel boxLabelPanel;
 
-	//adds an action listener to the submit button to verify input is correct
-	public void initSubmitButtonListener(){
-		DecToBinSubmit.addActionListener(new ActionListener() {      
-			public void actionPerformed(ActionEvent le) {  
-				DecToBinNumSquaresInput = DecToBinNumSquaresField.getText();
-				if (DecToBinNumSquaresInput.equals(DecToBinNumSquaresActual)){
-					welcomePage.loadDecBin2();
-				}
-				else{
-					String errorMessage = "Wrong answer, try again!";
-					JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+	
+	class submitButtonListener implements ActionListener 
+	{
+		public void actionPerformed(ActionEvent le) {  
+			DecToBinNumSquaresInput = DecToBinNumSquaresField.getText();
+			if (DecToBinNumSquaresInput.equals(DecToBinNumSquaresActual)){
+				welcomePage.loadDecBin2();
+			}
+			else{
+				String errorMessage = "Wrong answer, try again!";
+				JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 
-					DecToBinNumSquaresField.setText("");
+				DecToBinNumSquaresField.setText("");
 
-				}
+			}
 
-			}      
-		}); 
+		} 
 	}
 
 	//init title panel format
@@ -89,7 +89,8 @@ public class DecToBinPage extends JPanel
 		DecToBinNumSquaresText = new JLabel("How many squares are shown?");
 		DecToBinNumSquaresField = new JTextField();
 		DecToBinNumSquaresField.setColumns(5);
-		DecToBinSubmit = new JButton("Submit"); 
+		DecToBinSubmit = new JButton("Submit");
+		DecToBinSubmit.addActionListener(new submitButtonListener());
 	}
 
 	//constructor, param is the applet
@@ -102,7 +103,6 @@ public class DecToBinPage extends JPanel
 		initComponents();
 		initTitlePanel();
 		initTextPanel();
-		initSubmitButtonListener();
 		initRects();
 
 		//add panels
