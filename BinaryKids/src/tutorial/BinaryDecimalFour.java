@@ -45,7 +45,7 @@ public class BinaryDecimalFour extends JPanel
     
     public void initComponents()
     {
-    	submitButton = new JButton("Do Some practice problems!");
+    	submitButton = new JButton("Let's do some practice problems!");
 
     	submitButton.addActionListener(new submitButtonListener());
     }
@@ -77,7 +77,7 @@ public class BinaryDecimalFour extends JPanel
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			//welcomePage.loadBinDecPracticeProblems();
+			welcomePage.loadBinDecPracticeProblems();
 			
 		} //end action performed
 		

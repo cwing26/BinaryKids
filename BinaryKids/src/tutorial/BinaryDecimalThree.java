@@ -59,7 +59,6 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 
 	//labels and text fields
 	JButton submitButton;
-	JTextField answerField1;
 	JTextField answerField2;
 	JTextField answerField3;
 
@@ -258,8 +257,7 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 		{
 			//get all text from text boxes, if correct then display dialog box
 			//then go to new page
-			
-			//String input1 =  answerField1.getText();
+
 			userAnswer2 =  answerField2.getText();
 			userAnswer3 =  answerField3.getText();		
 			
@@ -309,7 +307,6 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 		    	String errorMessage = "Wrong answer, try again!";
 		    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "worng answer", JOptionPane.YES_NO_OPTION);
 		    	
-		    	answerField1.setText("");
 		    	answerField2.setText("");
 		    	answerField3.setText("");
 		    	

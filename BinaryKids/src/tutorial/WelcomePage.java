@@ -68,7 +68,7 @@ public class WelcomePage extends JApplet
 	JButton closeButton;
 	JButton tutorialButton;
 	JButton debugButton;
-	JButton gameButton; //only become available once completed tutorials
+	JButton gameButton;
 	JButton backButton;
 	JButton backToHomeButton;
 
@@ -226,7 +226,7 @@ public class WelcomePage extends JApplet
 		cards.add(bdTwo, "BIN DEC PAGE 2");
 		cards.add(bdThree, "BIN DEC PAGE 3");
 		cards.add(bdFour, "BIN DEC PAGE 4");
-		cards.add(bdPractice, "DEC BIN PAGE 5");
+		cards.add(bdPractice, "BIN DEC PAGE 5");
 		cards.add(gamePage, "GAME");
 
 
@@ -477,27 +477,59 @@ public class WelcomePage extends JApplet
 		setVisible(true);
 		repaint();
 	}
+	
+	public void loadBinDecPracticeProblems(){
+		cardLayout.show(cards, "BIN DEC PAGE 5");
+		validate();
+		setVisible(true);
+		repaint();
+	}
 
 	public void loadNumRep1(){
 		cardLayout.show(cards, "NUM REP 1");
+		validate();
+		setVisible(true);
+		repaint();
 	}
 
 	public void loadNumRep2(){
 		cardLayout.show(cards, "NUM REP 2");
+		validate();
+		setVisible(true);
+		repaint();
 	}
 
 	public void loadNumRep3(){
 		cardLayout.show(cards, "NUM REP 3");
+		validate();
+		setVisible(true);
+		repaint();
 	}
 
 	public void loadSegundaPage(){
 		cardLayout.show(cards, "SEGUNDA");
+		validate();
+		setVisible(true);
+		repaint();
 	}
 
 	public void loadTerceraPage(){
 		cardLayout.show(cards, "TERCERA");
+		validate();
+		setVisible(true);
+		repaint();
 	}
 
+	public void loadCard(String page){
+		cardLayout.show(cards, page);
+		validate();
+		setVisible(true);
+		repaint();
+	}
+	
+	public void loadDecBinPracticeProblems(){
+		cardLayout.show(cards, "DEC BIN PAGE 5");
+	}
 
 	public void setUserName(String name)
 	{
@@ -525,19 +557,6 @@ public class WelcomePage extends JApplet
 		public void actionPerformed(ActionEvent e) 
 		{
 			cardLayout.show(fourthPage, "FOURTH");
-			//			contentPane.remove(firstPage);
-			//			contentPane.remove(fourthPage);
-			//			contentPane.remove(bdOne);
-			//			contentPane.remove(bdTwo);
-			//			contentPane.remove(bdThree);
-			//			contentPane.remove(bdFour);
-			//			contentPane.remove(decToBinPage);
-			//			contentPane.remove(decToBinPage2);
-			//			contentPane.remove(decToBinPage3);
-			//			contentPane.remove(decToBinPage4);
-			//			contentPane.remove(baOne);
-			//			contentPane.remove(demoPage);
-			//			contentPane.add(fourthPage);
 			validate();
 			setVisible(true);
 			repaint();	
@@ -548,24 +567,7 @@ public class WelcomePage extends JApplet
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			//			contentPane.remove(startPage);
-			//			contentPane.remove(firstPage);
-			//			contentPane.remove(secondPage);
-			//			contentPane.remove(thirdPage);
-			//			contentPane.remove(fourthPage);
-			//			contentPane.remove(bdOne);
-			//			contentPane.remove(bdTwo);
-			//			contentPane.remove(bdThree);
-			//			contentPane.remove(bdFour);
-			//			contentPane.remove(decToBinPage);
-			//			contentPane.remove(decToBinPage2);
-			//			contentPane.remove(decToBinPage3);
-			//			contentPane.remove(decToBinPage4);
-			//			contentPane.remove(baOne);
-			//			contentPane.remove(demoPage);
-
 			startPage = new StartPage(welcome);
-			//contentPane.add(startPage);
 			notOnStartScreen = false;
 			pageFlag = 0;
 			backButton.setVisible(false);
@@ -582,15 +584,6 @@ public class WelcomePage extends JApplet
 		public void actionPerformed(ActionEvent e) 
 		{
 			cardLayout.show(gamePage, "GAME");
-			//			contentPane.remove(thirdPage);
-			//			contentPane.remove(fourthPage);
-			//			contentPane.remove(bdOne);
-			//			contentPane.remove(bdTwo);
-			//			contentPane.remove(bdThree);
-			//			contentPane.remove(bdFour);
-			//			contentPane.remove(decToBinPage);
-			//			contentPane.remove(decToBinPage2);
-			//contentPane.add(gamePage);
 			validate();
 			setVisible(true);
 			repaint();	
