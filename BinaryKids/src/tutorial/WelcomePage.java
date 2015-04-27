@@ -389,6 +389,15 @@ public class WelcomePage extends JApplet
 //		repaint();
 //	}
 
+	public void loadFourth(){
+		fourthPage = new FourthPage(welcome);
+		cardLayout.show(cards, "FOURTH");
+		invalidate();
+		validate();
+		setVisible(true);
+		repaint();
+	}
+	
 	public void loadDecBin2()
 	{
 		decToBinPage2 = new DecToBinPage2(welcome);
@@ -649,81 +658,6 @@ public class WelcomePage extends JApplet
 			else{
 				backButton.setVisible(true);
 			}
-
-			/*
-			if(pageFlag == 0)
-			{
-				contentPane.remove(startPage);
-				firstPage = new FirstPage(welcome);
-				contentPane.add(firstPage, BorderLayout.CENTER);
-				pageFlag++;
-
-				validate();
-		        setVisible(true);
-		        repaint();
-
-			}
-			else if(pageFlag == 1)
-			{
-				contentPane.remove(firstPage);
-				secondPage = new SecondPage(welcome);
-				secondPage.userName = userName;
-				secondPage.answer = userAnswer;
-				contentPane.add(secondPage, BorderLayout.CENTER);
-				pageFlag++;
-
-				validate();
-		        setVisible(true);
-		        repaint();
-
-			}
-			 */
-			//			if(pageFlag == 0)
-			//			{
-			//				contentPane.remove(secondPage);
-			//				contentPane.add(thirdPage, BorderLayout.CENTER);
-			//				if(thirdPage.pageClickedOnce)
-			//				{
-			//					buttonPanel.add(page3GoBackButton);
-			//				}
-			//				pageFlag++;
-			//
-			//				validate();
-			//				setVisible(true);
-			//				repaint();
-			//			}
-			//			else if(pageFlag == 1)
-			//			{
-			//
-			//				contentPane.remove(thirdPage);
-			//				contentPane.add(demoPage, BorderLayout.CENTER);
-			//
-			//				pageFlag++;
-			//
-			//				validate();
-			//				setVisible(true);
-			//				repaint();
-			//			}
-			//			else if(pageFlag == 2)
-			//			{
-			//
-			//				contentPane.remove(demoPage);
-			//				buttonPanel.remove(nextButton);
-			//				buttonPanel.remove(page3GoBackButton);
-			//				buttonPanel.add(tutorialButton);
-			//				contentPane.add(fourthPage, BorderLayout.CENTER);
-			//
-			//				pageFlag++;
-			//
-			//				validate();
-			//				setVisible(true);
-			//				repaint();
-			//			}
-			//			else
-			//			{
-			//				//buttonPanel.add(gameButton);
-			//				//gameOver();
-			//			}
 
 		} //end action performed
 

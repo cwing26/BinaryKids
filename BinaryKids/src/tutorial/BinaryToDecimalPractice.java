@@ -1,79 +1,25 @@
 package tutorial;
 
-import java.awt.BorderLayout;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Frame;
 import java.awt.Graphics;
 import java.awt.Insets;
 import java.awt.Toolkit;
 import java.util.ArrayList;
 import java.util.Random;
-
-import javax.swing.JApplet;
 import javax.swing.JButton;
-import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.border.LineBorder;
-
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.TextField;
-import java.awt.event.ActionEvent;
-import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import javax.imageio.ImageIO;
-import javax.swing.BoxLayout;
-import javax.swing.ImageIcon;
-import javax.swing.JPanel;
-import javax.swing.JApplet;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.JTextField;
-import javax.swing.SwingUtilities;
-import javax.swing.border.LineBorder;
-
-import java.awt.*; 
-import java.applet.*;
-import java.awt.BorderLayout;
-import java.awt.event.*;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.EventQueue;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.RenderingHints;
-import java.awt.Image;
-import java.awt.TextField;
-import java.awt.Toolkit;
-import java.io.File;
-import java.io.IOException;
-import java.net.URL;
 
 
 
+@SuppressWarnings("serial")
 public class BinaryToDecimalPractice extends JPanel implements PracticeProblem 
 {
 	//a boolean to show whether the user got the answer correct
@@ -93,12 +39,14 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 	//page components
 	JButton submitAnswerButton;
 	JButton hintButton;
+	JButton tutorialButton;
 	boolean hintClicked = false;
 	JTextField answerField;
 	String question = "Convert the binary number below to decimal:";
 	String inputAnswer;
 
 	int questionIndex = 0;
+	int countCorrect = 0;
 	
 	String hint = "Remember, each digit represents a different power of 2.";
 	String hint2 = "Start with the ones place on this side!";
@@ -115,7 +63,7 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 	{
 		welcomePage = welcome;
 		
-		setBackground(welcomePage.backgroundColor);
+		setBackground(WelcomePage.backgroundColor);
 		
 		initComponents();
 		loadImages();
@@ -128,6 +76,7 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 		add(answerField);
 		add(submitAnswerButton);
 		add(hintButton);
+		add(tutorialButton);
 		
 
 		Insets insets = getInsets();
@@ -140,6 +89,10 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 		
 		Dimension hintButtonSize = hintButton.getPreferredSize();
 		hintButton.setBounds(350 + insets.left, 330 + insets.top, hintButtonSize.width, hintButtonSize.height);
+		
+		Dimension tutorialButtonSize = tutorialButton.getPreferredSize();
+		tutorialButton.setBounds(200 + insets.left, 380 + insets.top, tutorialButtonSize.width, tutorialButtonSize.height);
+		tutorialButton.setVisible(false);
 	}
 	
 	
@@ -150,13 +103,18 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 		
 		g.drawImage(titleImage, 5, 5, this);
     	
-    	g.setColor(welcomePage.textColor);
+    	g.setColor(WelcomePage.textColor);
     	g.setFont(new Font("Geneva", 1, 20));
     	g.drawString(question, 40, 135);
     	
     	g.setFont(new Font("Geneva", 1, 60));
-    	g.setColor(welcomePage.buttonPanelColor);
+    	g.setColor(WelcomePage.buttonPanelColor);
     	g.drawString(values.get(questionIndex), 180, 240);
+    	
+    	if (countCorrect >= 3){
+    		tutorialButton.setVisible(true);
+    	}
+    	
     	
     	if(hintClicked)
     	{
@@ -209,6 +167,9 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 		
 		hintButton = new JButton("Need a hint?");
 		hintButton.addActionListener(new hintButtonListener());
+		
+		tutorialButton = new JButton("Return to Tutorial Select");
+		tutorialButton.addActionListener(new tutorialButtonListener());
 		
 		answerField = new JTextField("");
 		answerField.setFont(new Font("Geneva", 1, 20));
@@ -308,7 +269,14 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 		} //end action performed
 	} //end button listener
 
+	class tutorialButtonListener implements ActionListener 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{			
+			welcomePage.loadFourth();
 
+		} //end action performed
+	} //end button listener
 
 }
 
