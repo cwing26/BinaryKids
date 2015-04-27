@@ -22,6 +22,7 @@ TO DO APRIL 27 MORNING:
 -fix card layouts in welcome so pre tutorial animations don’t start until their respective screen appears
 -fix inconsistent back/next buttons 
 -move pre tutorial image loading all into welcome page
+-conclusion page: quote about binary (10 kinds of people) and comic strip??
 
 Semi ambitious:
 game = binary tetris, have screen getting higher to top
