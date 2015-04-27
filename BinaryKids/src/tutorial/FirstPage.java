@@ -1,29 +1,66 @@
 package tutorial;
 
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
 import java.awt.Graphics;
+import java.awt.Graphics2D;
+import java.awt.RenderingHints;
+import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
 import java.awt.event.ItemEvent;
 import java.awt.event.KeyEvent;
+import java.awt.event.KeyListener;
+
+import javax.imageio.ImageIO;
+import javax.swing.ImageIcon;
 import javax.swing.JCheckBox;
 import javax.swing.JPanel;
+import javax.swing.JApplet;
 import javax.swing.JButton;
+import javax.swing.JFrame;
+import javax.swing.JLabel;
+import javax.swing.JOptionPane;
+import javax.swing.JPanel;
+import javax.swing.JScrollPane;
+import javax.swing.JTextArea;
+import javax.swing.SwingUtilities;
+import javax.swing.border.LineBorder;
+
 import java.awt.*; 
+import java.applet.*;
+import java.awt.BorderLayout;
 import java.awt.event.*;
+import java.awt.BorderLayout;
+import java.awt.Button;
+import java.awt.Checkbox;
+import java.awt.CheckboxGroup;
+import java.awt.EventQueue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
+import java.awt.Graphics;
+import java.awt.Graphics2D;
 import java.awt.Insets;
+import java.awt.RenderingHints;
 import java.awt.Image;
+import java.awt.TextField;
 import java.awt.Toolkit;
+import java.io.File;
+import java.io.IOException;
 
 
-
-@SuppressWarnings("serial")
 public class FirstPage extends JPanel
 {
+	
+	//text components of page
+	String explanation1 = "Binary numbers are important for computers and electronics";
+	String question = "How do you use technology?";
+	
+	//gui components of page
 	JButton submitButton;
-	JPanel checkPanel;
+	JPanel checkPanel; //panel to hold checkboxes
 	
 	//check boxes
 	JCheckBox skypeCheck;
@@ -34,7 +71,6 @@ public class FirstPage extends JPanel
 	JCheckBox instaCheck;
 	JCheckBox cellPhoneCheck;
 
-	
 	//booleans to indicate whether checks have been filled
 	boolean skype = false;
 	boolean game = false;
@@ -54,39 +90,91 @@ public class FirstPage extends JPanel
 	public Image cellImage;
 	public Image gameImage;
 	
+	//locations of components on screen
+	final int checkPanelX = 100;
+	final int checkPanelY = 150;
+	
+	final int submitButtonX = 90;
+	final int submitButtonY = 380;
+	
+	final int titleImageX = 5;
+	final int titleImageY = 5;
+	
+	final int explanationX = 30;
+	final int explanationY = 100;
+
+	final int questionX = 40;
+	final int questionY = 135;
+	
+	final int instaX = 255;
+	final int instaY = 155;
+	
+	final int fbX = 600;
+	final int fbY = 410;
+	
+	final int emailX = 600;
+	final int emailY = 125;
+	
+	final int youtubeX = 415;
+	final int youtubeY = 175;
+	
+	final int skypeX = 400;
+	final int skypeY = 380;
+	
+	final int cellX = 230;
+	final int cellY = 390;
+	
+	final int gameX = 600;
+	final int gameY = 250;
+	
 	private WelcomePage welcomePage; //to connect welcome page to individual pages 
     
-	String explanation1 = "Binary numbers are important for computers and electronics";
-	String question = "How do you use technology?";
-	
+	//constructor, param is the applet
     public FirstPage(WelcomePage welcome)
     {
     	welcomePage = welcome;
-    	setBackground(WelcomePage.backgroundColor);
+    	setBackground(welcomePage.backgroundColor);
     	
     	initComponents();
+    	addComponentsToPanel();
+    	formatComponents();
+  
     	loadImages();
     	
+    	setVisible(true);
+    	
+    }
+	
+    
+	public void addComponentsToPanel()
+	{
     	setLayout(null);
     	add(checkPanel);
     	add(submitButton);
-    	
-
+	}
+	
+	//positions gui components on screen
+	public void formatComponents()
+	{
     	Insets insets = getInsets();
+    	
 		Dimension checkPanelSize = checkPanel.getPreferredSize();
-		checkPanel.setBounds(100 + insets.left, 150 + insets.top,
+		checkPanel.setBounds(checkPanelX + insets.left, checkPanelY + insets.top,
 	            checkPanelSize.width, checkPanelSize.height);
 		
 		Dimension buttonSize = submitButton.getPreferredSize();
-		submitButton.setBounds(90 + insets.left, 380 + insets.top, buttonSize.width, buttonSize.height);
+		submitButton.setBounds(submitButtonX + insets.left, submitButtonY + insets.top, 
+				buttonSize.width, buttonSize.height);
 		
-
-    }
-    
+	}
+	
+	//initializes the swing components of the page: the button,
+	//checkboxes, and panel of checkboxes
     public void initComponents()
     {
     	submitButton = new JButton("Submit Answer");
-
+    	submitButton.addActionListener(new answerButtonListener());
+    	
         //Create the check boxes.
         skypeCheck = new JCheckBox("Skype");
         skypeCheck.setFont(new Font("Geneva", 1, 20));
@@ -133,6 +221,7 @@ public class FirstPage extends JPanel
         cellPhoneCheck.addItemListener(new useListener());
         emailCheck.addItemListener(new useListener());
         
+        //checkboxes are all housed in a subpanel
         checkPanel = new JPanel(new GridLayout(0, 1));
         checkPanel.setBackground(WelcomePage.backgroundColor);
         
@@ -144,52 +233,57 @@ public class FirstPage extends JPanel
         checkPanel.add(instaCheck);
         checkPanel.add(cellPhoneCheck);
 		
-    	submitButton.addActionListener(new answerButtonListener());
+    	
     }
     
+    
+    //paint is used to display the question on the screen,
+    //as well as the images that correspond to the checkboxes
+    //in checkpanel
     public void paint(Graphics g) 
     { 
     	super.paint(g);
     	
-    	g.drawImage(titleImage, 5, 5, this);
+    	g.drawImage(titleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
-    	g.drawString(explanation1, 30, 100);
-    	g.drawString(question, 40, 135);
+    	g.drawString(explanation1, explanationX, explanationY);
+    	g.drawString(question, questionX, questionY);
     	
     	if(instagram)
     	{
-    		g.drawImage(instagramImage, 255, 155, this);
+    		g.drawImage(instagramImage, instaX, instaY, this);
     	}
     	if(fb)
     	{
-    		g.drawImage(fbImage, 600, 410, this);
+    		g.drawImage(fbImage, fbX, fbY, this);
     	}
     	if(youtube)
     	{
-    		g.drawImage(youtubeImage, 415, 175, this);
+    		g.drawImage(youtubeImage, youtubeX, youtubeY, this);
     	}
     	if(email)
     	{
-    		g.drawImage(emailImage, 600, 125, this);
+    		g.drawImage(emailImage, emailX, emailY, this);
     	}
     	if(game)
     	{
-    		g.drawImage(gameImage, 600, 250, this);
+    		g.drawImage(gameImage, gameX, gameY, this);
     	}
     	if(cellPhone)
     	{
-    		g.drawImage(cellImage, 230, 390, this);
+    		g.drawImage(cellImage, cellX, cellY, this);
     	}
     	if(skype)
     	{
-    		g.drawImage(skypeImage, 400, 380, this);
+    		g.drawImage(skypeImage, skypeX, skypeY, this);
     	}
     	
 
     }
     
+    //MOVE TO WELCOME PAGE
     public void loadImages()
     {
     	titleImage = Toolkit.getDefaultToolkit().getImage(
@@ -228,6 +322,10 @@ public class FirstPage extends JPanel
 
     }
     
+    //this listener tells the paint method when a certain checkbox
+    //has been selected or deselected, and whether to paint the corresponding image
+    //it first determines the source of the action (which checkbox) and then determines
+    //whether the box has been selected or deselected 
     class useListener implements ItemListener
     {
     	@Override
@@ -289,6 +387,8 @@ public class FirstPage extends JPanel
 
     }
 	
+    //action listener for the submit button under the checkboxes.
+    //if clicked, it takes user to the next page
 	class answerButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent e) 
