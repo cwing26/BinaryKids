@@ -28,43 +28,44 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	String binarySix = "110";
 	
 	//positions of text, shapes, and images on screen
-	int titleImageX = 5;
-	int titleImageY = 10;
+	private final int titleImageX = 5;
+	private final int titleImageY = 10;
 	
-	int questionX = 40;
-	int questionY = 150;
+	private final int questionX = 40;
+	private final int questionY = 150;
 	
-	int objectCount = 6;
+	private final int objectCount = 6;
 	
-	int soccerBallX = 50;
-	int soccerBallY = 230;
+	private int soccerBallX = 50;
+	private final int soccerBallY = 230;
 	
-	int ovalSize = 50;
+	private final int ovalSize = 50;
 	
-	int rectSize = 25;
-	int rectX = 350;
-	int rectY = 310;
+	private final int rectSize = 25;
+	private int rectX = 350;
+	private final int rectY = 310;
 	
-	int decTitleImageX = 40;
-	int decTitleImageY = 100;
+	private final int decTitleImageX = 40;
+	private final int decTitleImageY = 100;
 	
-	int romanNumImageX = 40;
-	int romanNumImageY = 200;
+	private final int romanNumImageX = 40;
+	private final int romanNumImageY = 200;
 	
-	int shapesImageX = 40;
-	int shapesImageY = 300;
+	private final int shapesImageX = 40;
+	private final int shapesImageY = 300;
 	
-	int binaryImageX = 40;
-	int binaryImageY = 450;
+	private final int binaryImageX = 40;
+	private final int binaryImageY = 450;
 	
-	int sixX = 560;
-	int sixY = 140;
+	private final int sixX = 560;
+	private final int sixY = 140;
 	
-	int binarySixX = 535;
-	int binarySixY = 490;
+	private final int binarySixX = 535;
+	private final int binarySixY = 490;
 	
-	int vIX = 545;
-	int vIY = 240;
+	private final int vIX = 545;
+	private final int vIY = 240;
+	
 	
 	
 	//images used on screen
