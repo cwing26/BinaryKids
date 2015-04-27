@@ -12,9 +12,9 @@ public class DecToBinPage extends JPanel
 {
 
 	WelcomePage welcomePage;
-	JButton DecToBinSubmit; 
-	JLabel DecToBinNumSquaresText;
-	JTextField DecToBinNumSquaresField;
+	String questionText = "How many squares are shown?";
+	JButton submitButton;
+	JTextField answerField;
 
 	final String DecToBinNumSquaresActual = "11";
 	final int numSquares = 11;
@@ -28,17 +28,11 @@ public class DecToBinPage extends JPanel
 	private Rectangle rec;
 	ArrayList<Rectangle> recList = new ArrayList<>();
 
-	//Panels
-	JPanel titlePanel;
-	JPanel textPanel;
-	JPanel questionPanel;
-	JPanel boxLabelPanel;
-
 	
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
-			DecToBinNumSquaresInput = DecToBinNumSquaresField.getText();
+			DecToBinNumSquaresInput = answerField.getText();
 			if (DecToBinNumSquaresInput.equals(DecToBinNumSquaresActual)){
 				welcomePage.loadDecBin2();
 			}
@@ -46,51 +40,20 @@ public class DecToBinPage extends JPanel
 				String errorMessage = "Wrong answer, try again!";
 				JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 
-				DecToBinNumSquaresField.setText("");
+				answerField.setText("");
 
 			}
 
 		} 
 	}
 
-	//init title panel format
-	public void initTitlePanel(){
-		titlePanel = new JPanel();
-		titlePanel.setLayout(new BorderLayout());
-		titlePanel.setBackground(WelcomePage.backgroundColor);
-		JLabel titleLabel = new JLabel("Let's learn how to convert decimal to binary!");
-		titleLabel.setFont(new Font("Verdana",1,20));
-		titlePanel.add(titleLabel, BorderLayout.CENTER);
-		//titlePanel.setBorder(new LineBorder(Color.BLACK));
-	}
-
-	//formats the text panel layout
-	public void initTextPanel(){
-		textPanel = new JPanel();
-		textPanel.setBackground(WelcomePage.backgroundColor);
-		textPanel.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipady = 50;
-		c.gridx = 0;
-		c.gridy = 0;
-		textPanel.add(DecToBinNumSquaresText, c);
-		c.gridx = 1;
-		c.gridy = 0;
-		textPanel.add(DecToBinNumSquaresField);
-		c.gridx = 0;
-		c.gridy = 1;
-		c.gridwidth = 2;
-		textPanel.add(DecToBinSubmit);
-	}
 	
 	//init swing components
 	public void initComponents(){
-		DecToBinNumSquaresText = new JLabel("How many squares are shown?");
-		DecToBinNumSquaresField = new JTextField();
-		DecToBinNumSquaresField.setColumns(5);
-		DecToBinSubmit = new JButton("Submit");
-		DecToBinSubmit.addActionListener(new submitButtonListener());
+		answerField = new JTextField();
+		answerField.setColumns(5);
+		submitButton = new JButton("Submit");
+		submitButton.addActionListener(new submitButtonListener());
 	}
 
 	//constructor, param is the applet
@@ -98,16 +61,25 @@ public class DecToBinPage extends JPanel
 	{
 		welcomePage = welcome;
 		setBackground(WelcomePage.backgroundColor);
+		setLayout(null);
+		Insets insets = getInsets();
 		
 		//initializations
 		initComponents();
-		initTitlePanel();
-		initTextPanel();
 		initRects();
 
-		//add panels
-		add(titlePanel);
-		add(textPanel);
+		add(answerField);
+    	add(submitButton);
+    	
+    	Dimension buttonSize = submitButton.getPreferredSize();
+		submitButton.setBounds(400 + insets.left, 230 + insets.top,
+				buttonSize.width, buttonSize.height);
+		
+		Dimension answerSize = answerField.getPreferredSize();
+		answerField.setBounds(320 + insets.left, 230 + insets.top,
+				answerSize.width, buttonSize.height);
+		
+		setVisible(true);
 
 
 	}
@@ -123,6 +95,11 @@ public class DecToBinPage extends JPanel
 
 	public void paint(Graphics g) {
 		super.paint(g);
+		
+		//draw title text
+    	g.drawImage(welcomePage.binDec3TitleImg, 90, 15, this);
+		
+    	//draw squares
 		for (int i = 0;i < recList.size(); i++){
 			if (i%2 == 1){
 				g.setColor(new Color(153, 178, 191));
@@ -132,6 +109,11 @@ public class DecToBinPage extends JPanel
 			}
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 		}
+		
+		//question text
+    	g.setFont(new Font("Geneva",1,20));
+    	g.setColor(WelcomePage.textColor);
+    	g.drawString(questionText, 250, 200);
 	}
 
 

@@ -4,17 +4,21 @@ package tutorial;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
+
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JTextField;
 import javax.swing.border.LineBorder;
+
 import java.awt.BorderLayout;
 import java.awt.Color;
+import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.GridBagConstraints;
 import java.awt.GridBagLayout;
+import java.awt.Insets;
 import java.awt.Rectangle;
 import java.util.ArrayList;
 
@@ -23,11 +27,9 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 public class BinaryDecimalOne extends JPanel
 {	
-	WelcomePage welcomePage; //to connect with the applet
+	WelcomePage welcomePage;
 
-	JPanel titlePanel;
-	JPanel textPanel;
-	JLabel questionLabel;
+	String questionText = "How many squares are shown?";
 	JButton submitButton;
 	JTextField answerField;
 
@@ -35,7 +37,7 @@ public class BinaryDecimalOne extends JPanel
 	final String correctAnswerString = "13";
 	int inputAnswer = 0;
 	
-	int startx = 180;
+	int startx = 150;
 	int starty = 100;
 
 	final int rectUnit = 25;
@@ -43,67 +45,41 @@ public class BinaryDecimalOne extends JPanel
 	private Rectangle rec;
 	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
 
-    
+    //constructor
     public BinaryDecimalOne(WelcomePage welcome)
     {
     	welcomePage = welcome;
-    
+    	setBackground(WelcomePage.backgroundColor);
+    	setLayout(null);
+		Insets insets = getInsets();
+		
     	initComponents();
-    	initTitlePanel();
-    	initTextPanel();
     	initRects();
+    	add(answerField);
+    	add(submitButton);
     	
-    	add(titlePanel);
-    	add(textPanel);
+    	Dimension buttonSize = submitButton.getPreferredSize();
+		submitButton.setBounds(380 + insets.left, 230 + insets.top,
+				buttonSize.width, buttonSize.height);
+		
+		Dimension answerSize = answerField.getPreferredSize();
+		answerField.setBounds(300 + insets.left, 230 + insets.top,
+				answerSize.width, buttonSize.height);
 
-    	
     	setVisible(true);
 
     }
 
-
-
-
-	//init title panel format
-	public void initTitlePanel()
-	{
-		titlePanel = new JPanel();
-		titlePanel.setLayout(new BorderLayout());
-		JLabel titleLabel = new JLabel("Let's learn how to convert binary to decimal!");
-		titleLabel.setFont(new Font("Verdana",1,20));
-		titlePanel.add(titleLabel, BorderLayout.CENTER);
-		titlePanel.setBorder(new LineBorder(Color.BLACK));
-	}
 	
 	//init swing components
 	public void initComponents()
 	{
-		questionLabel = new JLabel("How many squares are shown?");
 		answerField = new JTextField();
 		answerField.setColumns(5);
   		submitButton = new JButton("Submit Answer");
   		submitButton.addActionListener(new submitButtonListener()); 
 	}
 
-	//formats the text panel layout
-	public void initTextPanel()
-	{
-		textPanel = new JPanel();
-		textPanel.setLayout(new GridBagLayout());
-		GridBagConstraints c = new GridBagConstraints();
-		c.fill = GridBagConstraints.HORIZONTAL;
-		c.ipady = 50;
-		c.gridx = 0;
-		c.gridy = 0;
-		textPanel.add(questionLabel, c);
-		c.gridx = 1;
-		c.gridy = 0;
-		textPanel.add(answerField);
-		c.gridx = 0;
-		c.gridy = 1;
-		c.gridwidth = 2;
-		textPanel.add(submitButton);
-	}
 	
 
 	//inits the coords of the rects that user will move
@@ -120,9 +96,11 @@ public class BinaryDecimalOne extends JPanel
     public void paint(Graphics g)
     {
     	super.paint(g);
+    	
+    	//draw title text
+    	g.drawImage(welcomePage.binDecImg, 90, 15, this);
 
     	//paint 13 rectangles
-    	
     	for (int i = 0;i < recList.size(); i++){
 			if (i%2 == 1)
 			{
@@ -134,6 +112,11 @@ public class BinaryDecimalOne extends JPanel
 			}
 			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
 		}
+    	
+    	//question text
+    	g.setFont(new Font("Geneva",1,20));
+    	g.setColor(WelcomePage.textColor);
+    	g.drawString(questionText, 250, 200);
     	
     }
     
@@ -148,10 +131,6 @@ public class BinaryDecimalOne extends JPanel
 			if(inputAnswer == correctAnswer)
 			{
 				welcomePage.loadBinToDec2();
-				
-				welcomePage.validate();
-		        welcomePage.setVisible(true);
-		        welcomePage.repaint();
 			}
 			else
 			{

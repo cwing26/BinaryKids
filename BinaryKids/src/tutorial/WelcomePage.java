@@ -23,7 +23,7 @@ import game.GamePage;
 @SuppressWarnings("serial")
 public class WelcomePage extends JApplet
 {
-
+	boolean inTutorial = false;
 	boolean notOnStartScreen = false;
 	WelcomePage welcome = this;
 
@@ -238,7 +238,7 @@ public class WelcomePage extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		cardLayout.show(cards, "BIN DEC PAGE 1");
+		cardLayout.show(cards, "DEC BIN PAGE 1");
 		//cardLayout.show(cards, "START PAGE");  //here
 
 		//add(startPage, BorderLayout.CENTER);
@@ -286,7 +286,7 @@ public class WelcomePage extends JApplet
 		
 		binDecImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binDecImgPath)); 
-		binDecImg = binDecImg.getScaledInstance(280, 40, Image.SCALE_SMOOTH);
+		binDecImg = binDecImg.getScaledInstance(600, 50, Image.SCALE_SMOOTH);
 
 		//try to load the image file
 		try {
@@ -339,6 +339,12 @@ public class WelcomePage extends JApplet
 	public void paint(Graphics g) 
 	{     	
 		super.paint(g);
+		
+		
+		if (inTutorial || pageFlag ==0 ){
+			backButton.setVisible(false);
+			nextButton.setVisible(false);
+		}
 
 	}
 
@@ -440,7 +446,7 @@ public class WelcomePage extends JApplet
 
 	public void decToBinTutorial()
 	{
-		
+		inTutorial = true;
 		decToBinPage = new DecToBinPage(welcome);
 		cardLayout.show(cards, "DEC BIN PAGE 1");
 		validate();
@@ -453,6 +459,7 @@ public class WelcomePage extends JApplet
 		
 		bdOne = new BinaryDecimalOne(welcome);
 		cardLayout.show(cards, "BIN DEC PAGE 1");
+		inTutorial = true;
 		validate();
 		setVisible(true);
 		repaint();
@@ -577,6 +584,7 @@ public class WelcomePage extends JApplet
 		{
 			startPage = new StartPage(welcome);
 			notOnStartScreen = false;
+			inTutorial = false;
 			pageFlag = 0;
 			backButton.setVisible(false);
 			nextButton.setVisible(true);
