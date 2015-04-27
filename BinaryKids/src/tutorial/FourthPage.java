@@ -16,52 +16,75 @@ import java.awt.*;
 public class FourthPage extends JPanel
 {	
 	WelcomePage welcomePage;
-	
+
 	JButton backgroundButton;
 	JButton decBinButton;
 	JButton binDecButton;
-    
-    public FourthPage(WelcomePage welcome)
-    {
-    	welcomePage = welcome;
-    	setBackground(WelcomePage.backgroundColor);
-    	setLayout(null);
+	JButton gameButton;
+	boolean completedDecBin = false;
+	boolean completedBinDec = false;
+
+	public FourthPage(WelcomePage welcome)
+	{
+		welcomePage = welcome;
+		setBackground(WelcomePage.backgroundColor);
+		setLayout(null);
 		Insets insets = getInsets();
 
-    	backgroundButton = new JButton("Background");
-    	decBinButton = new JButton("Decimal to Binary");
-    	binDecButton = new JButton("Binary to Decimal");
-    	decBinButton.addActionListener(new tutorialButtonListener());
-    	binDecButton.addActionListener(new tutorialButtonListener());
-    	backgroundButton.addActionListener(new tutorialButtonListener());
-    	add(decBinButton);
-    	add(binDecButton);
-    	add(backgroundButton);
-    	
-    	Dimension buttonSize = decBinButton.getPreferredSize();
-    	decBinButton.setBounds(250 + insets.left, 250 + insets.top,
-				buttonSize.width, buttonSize.height);
-    	binDecButton.setBounds(250 + insets.left, 300 + insets.top,
-				buttonSize.width, buttonSize.height);
-    	backgroundButton.setBounds(250 + insets.left, 200 + insets.top,
-				buttonSize.width, buttonSize.height);
-    	
-    	
-    	setVisible(true);
+		backgroundButton = new JButton("Background");
+		decBinButton = new JButton("Decimal to Binary");
+		binDecButton = new JButton("Binary to Decimal");
+		gameButton = new JButton("Play Game!");
+		decBinButton.addActionListener(new tutorialButtonListener());
+		binDecButton.addActionListener(new tutorialButtonListener());
+		backgroundButton.addActionListener(new tutorialButtonListener());
+		gameButton.addActionListener(new gameButtonListener());
+		add(decBinButton);
+		add(binDecButton);
+		add(backgroundButton);
+		add(gameButton);
 
-    }
-    public void paint(Graphics g) 
-    { 
-    	super.paint(g);
-    	g.drawImage(welcomePage.tutorialHeadline, 260, 50, this);
-    }
-    
-    
+		Dimension buttonSize = decBinButton.getPreferredSize();
+		decBinButton.setBounds(300 + insets.left, 250 + insets.top,
+				buttonSize.width, buttonSize.height);
+		binDecButton.setBounds(300 + insets.left, 300 + insets.top,
+				buttonSize.width, buttonSize.height);
+		backgroundButton.setBounds(300 + insets.left, 200 + insets.top,
+				buttonSize.width, buttonSize.height);
+		gameButton.setBounds(330 + insets.left, 350 + insets.top,
+				buttonSize.width, buttonSize.height);
+		gameButton.setVisible(true);  //here
+
+		setVisible(true);
+
+	}
+	public void paint(Graphics g) 
+	{ 
+		super.paint(g);
+		g.drawImage(welcomePage.tutorialHeadline, 260, 50, this);
+		g.drawImage(welcomePage.checkmarkImg, 450, 190, this);
+		if (completedDecBin)
+			g.drawImage(welcomePage.checkmarkImg, 450, 240, this);
+		if (completedBinDec)
+			g.drawImage(welcomePage.checkmarkImg, 450, 290, this);
+		if (completedBinDec && completedDecBin){
+			gameButton.setVisible(true);
+		}
+	}
+
+
+	class gameButtonListener implements ActionListener 
+	{
+		public void actionPerformed(ActionEvent e) 
+		{
+			welcomePage.loadGame();
+		}
+	}
+
 	class tutorialButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			//welcome.tutorialFlag = 1-4;
 			if(e.getSource() == decBinButton)
 			{
 				welcomePage.decToBinTutorial();
@@ -69,7 +92,7 @@ public class FourthPage extends JPanel
 			else if(e.getSource() == binDecButton)
 			{
 				welcomePage.binToDecTutorial();
-				
+
 			}
 			else if (e.getSource() == backgroundButton){
 				welcomePage.background();
@@ -78,8 +101,8 @@ public class FourthPage extends JPanel
 			{
 				welcomePage.gameOver();
 			}
-			
-				
+
+
 		} //end action performed
 	} //end button listener
 

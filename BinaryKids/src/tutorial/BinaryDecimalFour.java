@@ -52,7 +52,8 @@ public class BinaryDecimalFour extends JPanel
     
     class tutorialButtonListener implements ActionListener 
 	{
-		public void actionPerformed(ActionEvent le) {  
+		public void actionPerformed(ActionEvent le) {
+			welcomePage.setCompletedBinDec();
 			welcomePage.loadFourth();
 		} 
 	}
@@ -61,6 +62,7 @@ public class BinaryDecimalFour extends JPanel
 	{
 		public void actionPerformed(ActionEvent le) {  
 			welcomePage.loadBinDecPracticeProblems();
+			welcomePage.setCompletedBinDec();
 		} 
 	}
 	public void initButtons(){

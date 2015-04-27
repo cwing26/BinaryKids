@@ -297,7 +297,7 @@ public class WelcomePage extends JApplet
 		
 		checkmarkImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.checkmarkImgPath)); 
-		checkmarkImg = checkmarkImg.getScaledInstance(400, 40, Image.SCALE_SMOOTH);
+		checkmarkImg = checkmarkImg.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
 
 		//try to load the image file
 		try {
@@ -309,7 +309,16 @@ public class WelcomePage extends JApplet
 		};
 		binaryGraphic = binaryGraphic.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
 	}
-
+	public void setCompletedDecBin(){
+		fourthPage.completedDecBin = true;
+		repaint();
+	}
+	
+	public void setCompletedBinDec(){
+		fourthPage.completedBinDec = true;
+		repaint();
+	}
+	
 	public void createButtonPanel()
 	{
 		//creates a close button to allow user to exit whenever
@@ -322,8 +331,8 @@ public class WelcomePage extends JApplet
 		tutorialButton = new JButton("Tutorials");
 		tutorialButton.addActionListener(new tutorialButtonListener());
 
-		gameButton = new JButton("Play Game");
-		gameButton.addActionListener(new gameButtonListener());
+//		gameButton = new JButton("Play Game");
+//		gameButton.addActionListener(new gameButtonListener());
 
 		backButton = new JButton("BACK");
 		backButton.addActionListener(new backButtonListener());
@@ -386,7 +395,7 @@ public class WelcomePage extends JApplet
 
 
 	public void loadFourth(){
-		fourthPage = new FourthPage(welcome);
+		//fourthPage = new FourthPage(welcome);
 		cardLayout.show(cards, "FOURTH");
 		invalidate();
 		validate();
@@ -590,11 +599,18 @@ public class WelcomePage extends JApplet
 		}
 	}
 
+	public void loadGame(){
+		cardLayout.show(cards, "GAME");
+		validate();
+		setVisible(true);
+		repaint();	
+	}
+	
 	class gameButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			cardLayout.show(gamePage, "GAME");
+			cardLayout.show(cards, "GAME");
 			validate();
 			setVisible(true);
 			repaint();	

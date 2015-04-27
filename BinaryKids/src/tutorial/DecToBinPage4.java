@@ -33,7 +33,9 @@ public class DecToBinPage4 extends JPanel
 	class tutorialButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
+			welcomePage.setCompletedDecBin();
 			welcomePage.loadFourth();
+			
 		} 
 	}
 
@@ -41,6 +43,7 @@ public class DecToBinPage4 extends JPanel
 	{
 		public void actionPerformed(ActionEvent le) {  
 			welcomePage.loadDecBinPracticeProblems();
+			welcomePage.setCompletedDecBin();
 		} 
 	}
 	public void initButtons(){
