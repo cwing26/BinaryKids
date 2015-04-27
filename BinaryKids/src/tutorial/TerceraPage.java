@@ -3,7 +3,7 @@
 
 package tutorial;
 
-
+//imports
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -15,12 +15,14 @@ import java.awt.Image;
 import java.awt.Toolkit;
 
 
-//create a binary stream and bits and shit
-
+/* This class serves as the fifth view in the introductory learning module, 
+ * introducing the student to the basics of binary numbers and their relationship to computers
+ * with an animation about bits
+ */
 @SuppressWarnings("serial")
 public class TerceraPage extends JPanel implements ActionListener
 {
-    
+    //timer components to handle animations
 	private Timer timer;
 	private int DELAY = 2000;
 	int countAnimation = 0;
@@ -29,13 +31,14 @@ public class TerceraPage extends JPanel implements ActionListener
 	public Image titleImage;
 	public Image binaryDigitImage;
 	
-    
+    //text used on screen
     String explanation1 = "Combined, these numbers tell devices, like the computer you're on now,";
     String explanation1cont = "what to do and when to do it!";
     
     String explanation2 = "One binary digit is called a bit.";
     String explanation3 = "Computers have to store trillions of these bits to do all of the ";
     String explanation3cont = "cool things we love!";
+    String exampleBit = "Ex. 11010 is 5 bits long";
     
     String b = "B";
     String i = "I";
@@ -48,12 +51,14 @@ public class TerceraPage extends JPanel implements ActionListener
     String letterG = "G";
     String t = "T";
     
-    String decorativeBorder = "010101010111010010010010100010100101000101010100100011101010101001010";
+    //position of text on screen
+    private final int bitTextY = 320;
+    private final int explanationX = 30;
     
-    //activities: create a binary stream of numbers
-    //bit = binary digit (timer)
+    private final int titleImageX = 5;
+    private final int titleImageY = 5;
     
-    
+    //constructor
     public TerceraPage()
     {
 
@@ -67,65 +72,69 @@ public class TerceraPage extends JPanel implements ActionListener
 
     }
     
+    //displays different text and images on screen, allowing for animation
+    //of how binary digit-->bit
     public void paint(Graphics g)
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, 5, 5, this);
+    	g.drawImage(titleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
-    	g.drawString(explanation1, 30, 80);
-    	g.drawString(explanation1cont, 30, 110);
+    	g.drawString(explanation1, explanationX, 80);
+    	g.drawString(explanation1cont, explanationX, 110);
     	
-    	g.drawLine(0, 150, 0, 0);
     	
-    	g.drawString(explanation2, 30, 200);
+    	g.drawString(explanation2, explanationX, 200);
     	g.drawImage(binaryDigitImage, 525, 130, this);
     	
-    	g.drawString(explanation3, 30, 420);
-    	g.drawString(explanation3cont, 30, 445);
+    	g.drawString(explanation3, explanationX, 420);
+    	g.drawString(explanation3cont, explanationX, 445);
     	
+    	//initially, binary digit is displayed
     	if(countAnimation ==0)
     	{
     		g.setFont(new Font("Geneva", 1, 60));
     		g.setColor(WelcomePage.textColor);
-    		g.drawString(b, 20, 320);
-    		g.drawString(i, 60, 320);
-    		g.drawString(n, 90, 320);
-    		g.drawString(a, 140, 320);
-    		g.drawString(r, 190, 320);
-    		g.drawString(y, 230, 320);
+    		g.drawString(b, 20, bitTextY);
+    		g.drawString(i, 60, bitTextY);
+    		g.drawString(n, 90, bitTextY);
+    		g.drawString(a, 140, bitTextY);
+    		g.drawString(r, 190, bitTextY);
+    		g.drawString(y, 230, bitTextY);
     		
-    		g.drawString(d, 320, 320);
-    		g.drawString(i, 370, 320);
-    		g.drawString(letterG, 400, 320);
-    		g.drawString(i, 450, 320);
-    		g.drawString(t, 475, 320);
+    		g.drawString(d, 320, bitTextY);
+    		g.drawString(i, 370, bitTextY);
+    		g.drawString(letterG, 400, bitTextY);
+    		g.drawString(i, 450, bitTextY);
+    		g.drawString(t, 475, bitTextY);
     		
     	}
+    	//then the requisite letters in the portmanteau are displayed 
     	if(countAnimation == 1)
     	{
     		g.setFont(new Font("Geneva", 1, 60));
     		g.setColor(Color.red);
-    		g.drawString(b, 20, 320);
+    		g.drawString(b, 20, bitTextY);
     		
     		g.setColor(WelcomePage.textColor);
-    		g.drawString(i, 60, 320);
-    		g.drawString(n, 90, 320);
-    		g.drawString(a, 140, 320);
-    		g.drawString(r, 190, 320);
-    		g.drawString(y, 230, 320);
+    		g.drawString(i, 60, bitTextY);
+    		g.drawString(n, 90, bitTextY);
+    		g.drawString(a, 140, bitTextY);
+    		g.drawString(r, 190, bitTextY);
+    		g.drawString(y, 230, bitTextY);
     		
-    		g.drawString(d, 320, 320);
-    		g.drawString(i, 370, 320);
-    		g.drawString(letterG, 400, 320);
+    		g.drawString(d, 320, bitTextY);
+    		g.drawString(i, 370, bitTextY);
+    		g.drawString(letterG, 400, bitTextY);
     		
     		g.setColor(Color.red);
-    		g.drawString(i, 450, 320);
-    		g.drawString(t, 475, 320);
+    		g.drawString(i, 450, bitTextY);
+    		g.drawString(t, 475, bitTextY);
     		
     	}
+    	//finally, the derivation of BIT from binary digit is completed
     	if(countAnimation == 2)
     	{
     		g.setFont(new Font("Geneva", 1, 60));
@@ -140,18 +149,18 @@ public class TerceraPage extends JPanel implements ActionListener
     	{
     		g.setFont(new Font("Geneva", 1, 80));
     		g.setColor(WelcomePage.buttonPanelColor);
-    		g.drawString(b, 140, 320);
-    		g.drawString(i, 200, 320);
-    		g.drawString(t, 230, 320);
+    		g.drawString(b, 140, bitTextY);
+    		g.drawString(i, 200, bitTextY);
+    		g.drawString(t, 230, bitTextY);
     		
     		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 20));
-    		g.drawString("Ex. 11010 is 5 bits long", 30, 360);
+    		g.drawString(exampleBit, explanationX, 360);
     		
     	}
     	
     		
-    }
+    } //end paint
     
     public void loadImages()
     {
@@ -165,6 +174,8 @@ public class TerceraPage extends JPanel implements ActionListener
 
     }
     
+    //keeps track of the stage of animation to tell the 
+    //paint method what to display
 	@Override
     public void actionPerformed(ActionEvent e) 
 	{
