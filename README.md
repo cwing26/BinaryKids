@@ -8,3 +8,6 @@ fix names of all classes
 reorganize packages
 clean-up and comment code
 unit tests
+
+any other exception handling???
+meghan will comment pre tutorial learning pages tonight/tomorrow morning
