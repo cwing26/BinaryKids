@@ -28,6 +28,7 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 {
 	//a boolean to show whether the user got the answer correct
 	boolean correctAnswer = false;
+	int countCorrect = 0;
 	
 	//number of potentially different practice problems the user can have
 	int practiceValues = 200;
@@ -50,7 +51,7 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 	String inputAnswer;
 
 	int questionIndex = 0;
-	int countCorrect = 0;
+	
 	
 	String hint = "Remember, each digit represents a different power of 2.";
 	String hint2 = "Start with the ones place on this side!";
@@ -157,7 +158,7 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 		Random rand = new Random();
 		for(int count = 0; count < size; count++)
 		{
-			int randomNum = rand.nextInt(100);
+			int randomNum = rand.nextInt(65);
 			solutions.add(randomNum);
 		}
 	}
@@ -246,6 +247,7 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 			inputAnswer = answerField.getText();
 			if (checkAnswer(inputAnswer, questionIndex))
 			{
+				countCorrect++;
 				String congratsMessage = "Correct answer!";
 				JOptionPane.showMessageDialog(welcomePage, congratsMessage, "correct answer", JOptionPane.YES_NO_OPTION);
 				answerField.setText("");
@@ -269,6 +271,7 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 		public void actionPerformed(ActionEvent e) 
 		{			
 			hintClicked = true;
+			repaint();
 
 		} //end action performed
 	} //end button listener

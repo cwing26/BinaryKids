@@ -196,7 +196,7 @@ public class WelcomePage extends JApplet
 		preDemoPage = new PreDemoPage();
 		preDemoBinaryPage = new PreDemoBinaryPage();
 		demoPage = new DemoPage();
-		demoPage2 = new DemoPage2(this);
+		demoPage2 = new DemoPage2();
 		fourthPage = new FourthPage(this);
 		decToBinPage = new DecToBinPage(this);
 		decToBinPage2 = new DecToBinPage2(this);
@@ -240,7 +240,7 @@ public class WelcomePage extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		cardLayout.show(cards, "DEC BIN PAGE 4");
+		cardLayout.show(cards, "BIN DEC PAGE 5");
 		//cardLayout.show(cards, "START PAGE");  //here
 
 		//add(startPage, BorderLayout.CENTER);

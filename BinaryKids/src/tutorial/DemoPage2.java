@@ -1,47 +1,14 @@
 package tutorial;
 
 
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JApplet;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import javax.swing.border.LineBorder;
 
 import java.awt.*; 
-import java.applet.*;
-import java.awt.BorderLayout;
-import java.awt.event.*;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.EventQueue;
-import java.awt.Color;
-import java.awt.Dimension;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.Image;
-import java.awt.TextField;
-import java.awt.Toolkit;
 
 //explains the places/digits with an animation
 //decimal numbers can have many digits
@@ -50,6 +17,7 @@ import java.awt.Toolkit;
 //2. 100x1 = 100 under hundreds place, 100x1 on side of page
 
 
+@SuppressWarnings("serial")
 public class DemoPage2 extends JPanel implements ActionListener
 {
 
@@ -101,11 +69,9 @@ public class DemoPage2 extends JPanel implements ActionListener
 	int countAnimation = 0;
 	
     
-    private WelcomePage welcomePage;
-    
-    public DemoPage2(WelcomePage welcome)
+    public DemoPage2()
     {
-    	welcomePage = welcome;
+
     	timer = new Timer(DELAY, this);
     	setBackground(WelcomePage.backgroundColor);
     	
@@ -142,7 +108,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	if(countAnimation == 0)
     	{	
     		//101101
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 150));
         	g.drawString(binaryOne, 50, 330);
         	g.drawString(binaryZero, 170, 330);
@@ -151,7 +117,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(binaryZero, 530, 330);
         	g.drawString(binaryOne, 650, 330);
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	g.drawString(thirtyTwosPlace, 45, 370);
         	g.drawString(place, 50, 390);
@@ -166,7 +132,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	else if(countAnimation == 1)
     	{	
     		//101101
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 150));
         	g.drawString(binaryOne, 50, 330);
         	g.drawString(binaryZero, 170, 330);
@@ -176,7 +142,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(binaryOne, 650, 330);
         	
  
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	g.drawString(thirtyTwosPlace, 45, 370);
         	g.drawString(place, 50, 390);
@@ -192,12 +158,12 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawRect(50, 195, 110, 150);
 
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	
         	g.drawString(thirtyTwoMultiplication, 60, 425);
         	
-        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setColor(WelcomePage.buttonPanelColor);
         	g.setFont(new Font("Geneva", 1, 30));
         	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
 
@@ -205,7 +171,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	else if(countAnimation == 2)
     	{	
     		//101101
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 150));
         	g.drawString(binaryOne, 50, 330);
         	g.drawString(binaryZero, 170, 330);
@@ -215,7 +181,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(binaryOne, 650, 330);
         	
  
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	g.drawString(thirtyTwosPlace, 45, 370);
         	g.drawString(place, 50, 390);
@@ -231,7 +197,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawRect(170, 195, 110, 150);
 
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	
         	g.drawString(thirtyTwoMultiplication, 60, 425);
@@ -239,7 +205,7 @@ public class DemoPage2 extends JPanel implements ActionListener
 
         	
         	
-        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setColor(WelcomePage.buttonPanelColor);
         	g.setFont(new Font("Geneva", 1, 30));
         	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
         	g.drawString(sixteenMultiplicationAnswer, 195, 470);
@@ -249,7 +215,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	else if(countAnimation == 3)
     	{	
     		//101101
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 150));
         	g.drawString(binaryOne, 50, 330);
         	g.drawString(binaryZero, 170, 330);
@@ -259,7 +225,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(binaryOne, 650, 330);
         	
  
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	g.drawString(thirtyTwosPlace, 45, 370);
         	g.drawString(place, 50, 390);
@@ -275,7 +241,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawRect(290, 195, 110, 150);
 
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	
         	g.drawString(thirtyTwoMultiplication, 60, 425);
@@ -283,7 +249,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(eightMultiplication, 305, 425);
         	
         	
-        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setColor(WelcomePage.buttonPanelColor);
         	g.setFont(new Font("Geneva", 1, 30));
         	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
         	g.drawString(sixteenMultiplicationAnswer, 195, 470);
@@ -294,7 +260,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	else if (countAnimation == 4)
     	{
     		//101101
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 150));
         	g.drawString(binaryOne, 50, 330);
         	g.drawString(binaryZero, 170, 330);
@@ -304,7 +270,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(binaryOne, 650, 330);
         	
  
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	g.drawString(thirtyTwosPlace, 45, 370);
         	g.drawString(place, 50, 390);
@@ -320,7 +286,7 @@ public class DemoPage2 extends JPanel implements ActionListener
           	g.drawRect(410, 195, 110, 150);
 
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	
         	g.drawString(thirtyTwoMultiplication, 60, 425);
@@ -329,7 +295,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(fourMultiplication, 425, 425);
         	
         	
-        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setColor(WelcomePage.buttonPanelColor);
         	g.setFont(new Font("Geneva", 1, 30));
         	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
         	g.drawString(sixteenMultiplicationAnswer, 195, 470);
@@ -341,7 +307,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	else if(countAnimation ==5)
     	{
     		//101101
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 150));
         	g.drawString(binaryOne, 50, 330);
         	g.drawString(binaryZero, 170, 330);
@@ -351,7 +317,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(binaryOne, 650, 330);
         	
  
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	g.drawString(thirtyTwosPlace, 45, 370);
         	g.drawString(place, 50, 390);
@@ -366,7 +332,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.setColor(Color.red);
         	g.drawRect(530, 195, 110, 150);
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	
         	g.drawString(thirtyTwoMultiplication, 60, 425);
@@ -376,7 +342,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(twoMultiplication, 545, 425);
         	
         	
-        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setColor(WelcomePage.buttonPanelColor);
         	g.setFont(new Font("Geneva", 1, 30));
         	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
         	g.drawString(sixteenMultiplicationAnswer, 195, 470);
@@ -388,7 +354,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	else if(countAnimation == 6)
     	{
     		//101101
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 150));
         	g.drawString(binaryOne, 50, 330);
         	g.drawString(binaryZero, 170, 330);
@@ -398,7 +364,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(binaryOne, 650, 330);
         	
  
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	g.drawString(thirtyTwosPlace, 45, 370);
         	g.drawString(place, 50, 390);
@@ -413,7 +379,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.setColor(Color.red);
         	g.drawRect(650, 195, 110, 150);
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	
         	g.drawString(thirtyTwoMultiplication, 60, 425);
@@ -424,7 +390,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(oneMultiplication, 665, 425);
         	
         	
-        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setColor(WelcomePage.buttonPanelColor);
         	g.setFont(new Font("Geneva", 1, 30));
         	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
         	g.drawString(sixteenMultiplicationAnswer, 195, 470);
@@ -437,7 +403,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	else if(countAnimation == 7)
     	{
     		//101101
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 150));
         	g.drawString(binaryOne, 50, 330);
         	g.drawString(binaryZero, 170, 330);
@@ -447,7 +413,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(binaryOne, 650, 330);
         	
  
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	g.drawString(thirtyTwosPlace, 45, 370);
         	g.drawString(place, 50, 390);
@@ -458,7 +424,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(twosPlace, 530, 370);
         	g.drawString(onesPlace, 650, 370);
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	
         	g.drawString(thirtyTwoMultiplication, 60, 425);
@@ -469,7 +435,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(oneMultiplication, 665, 425);
         	
         	
-        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setColor(WelcomePage.buttonPanelColor);
         	g.setFont(new Font("Geneva", 1, 30));
         	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
         	g.drawString(sixteenMultiplicationAnswer, 195, 470);
@@ -479,7 +445,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(oneMultiplicationAnswer, 680, 470);
         	
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.drawString(plusSign, 150, 470);
         	g.drawString(plusSign, 270, 470);
         	g.drawString(plusSign, 390, 470);
@@ -490,7 +456,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	else if(countAnimation >=8)
     	{
     		//101101
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 150));
         	g.drawString(binaryOne, 50, 330);
         	g.drawString(binaryZero, 170, 330);
@@ -500,7 +466,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(binaryOne, 650, 330);
         	
  
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	g.drawString(thirtyTwosPlace, 45, 370);
         	g.drawString(place, 50, 390);
@@ -511,7 +477,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(twosPlace, 530, 370);
         	g.drawString(onesPlace, 650, 370);
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 20));
         	
         	g.drawString(thirtyTwoMultiplication, 60, 425);
@@ -522,7 +488,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(oneMultiplication, 665, 425);
         	
         	
-        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setColor(WelcomePage.buttonPanelColor);
         	g.setFont(new Font("Geneva", 1, 30));
         	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
         	g.drawString(sixteenMultiplicationAnswer, 195, 470);
@@ -532,7 +498,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	g.drawString(oneMultiplicationAnswer, 680, 470);
         	
         	
-        	g.setColor(welcomePage.textColor);
+        	g.setColor(WelcomePage.textColor);
         	g.drawString(plusSign, 150, 470);
         	g.drawString(plusSign, 270, 470);
         	g.drawString(plusSign, 390, 470);
@@ -541,7 +507,7 @@ public class DemoPage2 extends JPanel implements ActionListener
         	
         	g.drawString(equalSign, 620, 540);
         	
-        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setColor(WelcomePage.buttonPanelColor);
         	g.drawString("45", 650, 540);
         	
     	}

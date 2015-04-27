@@ -60,7 +60,7 @@ public class BinaryDecimalFour extends JPanel
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
-			welcomePage.loadDecBinPracticeProblems();
+			welcomePage.loadBinDecPracticeProblems();
 		} 
 	}
 	public void initButtons(){

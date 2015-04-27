@@ -45,25 +45,23 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	final int starty = 220;
 	int DecToBinNumSquaresInput;
 
-	//String text1 = "Now we are going to convert 11 from decimal to binary!"; // In decimal, we put 10 squares into the TENS box and";
-	String text2 = "";//1 square into the ONES box. Now we will put squares into the EIGHTS, FOURS, TWOS, and ONES boxes.";
-	String text3 = "Step 1: Do we have enough squares to put eight squares in the EIGHTS box?";
+	String text3 = "Do we have enough squares to put eight squares in the EIGHTS box?";
 	String text4 = "If yes, put eight squares in the EIGHTS box. Click on a red square and then"; 
 	String text45 = "click on the box to put the square inside.";
-	String text5 = "Step 2: Since we had enough squares, type 1 below the EIGHTS box.";
-	String text6 = "Step 3: Check how many squares are left remaining. Do we have enough";
+	String text5 = "Since we had enough squares, type 1 below the EIGHTS box.";
+	String text6 = "Check how many squares are left remaining. Do we have enough";
 	String text65 = "to put four squares in the FOURS box?";
-	String text7 = "Step 4: Since we don't have enough, type 0 below the FOURS box.";
-	String text8 = "Step 5: Keep assigning the remaining squares until none are left.";
-	String text9 = "Step 6: Remember: If you had enough squares to put in a box,";
+	String text7 = "Since we don't have enough, type 0 below the FOURS box.";
+	String text8 = "Keep assigning the remaining squares until none are left.";
+	String text9 = "Remember: If you had enough squares to put in a box,";
 	String text95 = "type 1, otherwise type 0.";
-	String text10 = "Step 7: When you finish, click submit to check your answer.";
+	String text10 = "When you finish, click submit to check your answer.";
 
 
 
 	// The X-coordinate and Y-coordinate of the last click. 
-	int xpos; 
-	int ypos;
+	int mouseX; 
+	int mouseY;
 
 	// The coordinates of the boxes
 	final int box8x = 150, box8y = 280, box8width = 100, box8height = 250;
@@ -231,23 +229,20 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	{
 		welcomePage = welcome;
 		setBackground(WelcomePage.backgroundColor);
-
+		Insets insets = getInsets();
 
 		//initializations
-		//initJLabels();
 		initTextFields();
 		initRects();
 		initButtons();
-		//	initTitlePanel();
 
 		setLayout(null);
-		//add(titlePanel);
 		add(NumberEightsField);
 		add(NumberFoursField);
 		add(NumberTwosField);
 		add(NumberOnesField);
 		add(submitButton);
-		Insets insets = getInsets();
+		
 
 		
 		Dimension buttonSize = submitButton.getPreferredSize();
@@ -318,24 +313,25 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		int startTextX = 40;
 		int startTextY = 100;
 		int textYInc = 20;
+		int indentTextX = 30;
 
 		g.drawImage(welcomePage.binDec3TitleImg, 75, 10, this);
 
 		if (display1){
 			g.drawString(text3, startTextX, startTextY+textYInc);
-			g.drawString(text4, startTextX+70, startTextY+2*textYInc);
-			g.drawString(text45, startTextX+70, startTextY+3*textYInc);
+			g.drawString(text4, startTextX+indentTextX, startTextY+2*textYInc);
+			g.drawString(text45, startTextX+indentTextX, startTextY+3*textYInc);
 			g.drawString(text5, startTextX, startTextY+4*textYInc);
 		}
 		if (display2){
 			g.drawString(text6, startTextX, startTextY+textYInc);
-			g.drawString(text65, startTextX+70, startTextY+2*textYInc);
+			g.drawString(text65, startTextX+indentTextX, startTextY+2*textYInc);
 			g.drawString(text7, startTextX, startTextY+3*textYInc);
 		}
 		if (display3){
 			g.drawString(text8, startTextX, startTextY+textYInc);
 			g.drawString(text9, startTextX, startTextY+2*textYInc);
-			g.drawString(text95, startTextX+70, startTextY+3*textYInc);
+			g.drawString(text95, startTextX+indentTextX, startTextY+3*textYInc);
 			g.drawString(text10, startTextX, startTextY+4*textYInc);
 		}
 
@@ -347,15 +343,15 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	{
 
 		// Save the coordinates of the click lke this.
-		xpos = me.getX(); 
-		ypos = me.getY();
+		mouseX = me.getX(); 
+		mouseY = me.getY();
 
 
 		//select one of the rectangles first
 		for (int i = 0; i < recList.size(); i++){
 			int recx = (int) recList.get(i).getX();
 			int recy = (int) recList.get(i).getY();
-			if ((xpos >= recx) && (xpos <= (recx + rectUnit)) && (ypos >= recy) && (ypos <= (recy + rectUnit))){
+			if ((mouseX >= recx) && (mouseX <= (recx + rectUnit)) && (mouseY >= recy) && (mouseY <= (recy + rectUnit))){
 				rectSelected = true;
 				rectSelectedNum = i;
 				break;
@@ -366,7 +362,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 		if(rectSelected)
 		{
-			if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
+			if((mouseX >= box1x) && (mouseX <= (box1x + box1width)) && (mouseY >= box1y) && (mouseY <= (box1y + box1height)))
 			{
 				boxSelected1 = true;
 				boxSelected2 = false;
@@ -375,7 +371,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
 			}
-			else if((xpos >= box2x) && (xpos <= (box2x + box2width)) && (ypos >= box2y) && (ypos <= (box2y + box2height)))
+			else if((mouseX >= box2x) && (mouseX <= (box2x + box2width)) && (mouseY >= box2y) && (mouseY <= (box2y + box2height)))
 			{
 				boxSelected1 = false;
 				boxSelected2 = true;
@@ -385,7 +381,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 			}
 
-			else if((xpos >= box4x) && (xpos <= (box4x + box1width)) && (ypos >= box4y) && (ypos <= (box4y + box4height)))
+			else if((mouseX >= box4x) && (mouseX <= (box4x + box1width)) && (mouseY >= box4y) && (mouseY <= (box4y + box4height)))
 			{
 				boxSelected1 = false;
 				boxSelected2 = false;
@@ -394,7 +390,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
 			}
-			else if((xpos >= box8x) && (xpos <= (box8x + box8width)) && (ypos >= box8y) && (ypos <= (box8y + box8height)))
+			else if((mouseX >= box8x) && (mouseX <= (box8x + box8width)) && (mouseY >= box8y) && (mouseY <= (box8y + box8height)))
 			{
 				boxSelected1 = false;
 				boxSelected2 = false;

@@ -37,10 +37,6 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	final String numTensActual = "1";
 	final String numOnesActual = "1";
 
-	// The X-coordinate and Y-coordinate of the last click. 
-	int xpos; 
-	int ypos;
-
 	// The coordinates of the 10's rectangle and 1s rectangle 
 	final int box10x = 210, box10y = 300, box10width = 150, box10height = 210;
 	final int box1x = 400, box1y = 300, box1width = 150, box1height = 210;	
@@ -65,15 +61,15 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 
 	int globalI = 0;
 
-	String text3 = "Step 1: Do we have enough squares to put ten squares in the TENS box? ";
+	String text3 = "Do we have enough squares to put ten squares in the TENS box? ";
 	String text4 = "Since we do; let's put ten red squares in the TENS box.";
-	String text5 = "Step 2: Since we had enough squares, type 1 below the TENS box.";
-	String text6 = "Step 3: Check how many squares are left remaining. Do we have enough";
+	String text5 = "Since we had enough squares, type 1 below the TENS box.";
+	String text6 = "Check how many squares are left remaining. Do we have enough";
 	String text61 = "to put one square in the ONES box?";
-	String text7 = "Step 4: We have enough! Let's move the square to the ONES box.";
-	String text8 = "Step 5: Since we had enough squares, type 1 below the ONES box.";
-	String text9 = "Step 6: Since there are no squares left we are all done!";
-	String text10 = "Step 7: When you finish, click submit to check your answer.";
+	String text7 = "We have enough! Let's move the square to the ONES box.";
+	String text8 = "Since we had enough squares, type 1 below the ONES box.";
+	String text9 = "Since there are no squares left we are all done!";
+	String text10 = "When you finish, click submit to check your answer.";
 
 	boolean displayStep1= false;
 	boolean displayStep2= false;
@@ -91,7 +87,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	}
 	public void moveOnes(){
 		recList.get(globalI).setLocation(xCoordList.get(globalI), yCoordList.get(globalI));
-		globalI++;
+		//globalI++;
 		timer.stop();
 	}
 
@@ -267,7 +263,6 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		setLayout(null);
 		Insets insets = getInsets();
 
-		//add(titlePanel);
 		add(submitButton);
 		add(startButton);
 		add(NumberTensField);
@@ -328,16 +323,17 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 
 		g.setFont(new Font("Geneva", Font.BOLD, 18));
 		int stepTextY = startTextY+100;
+		int indentTextX = 30;
 		if (displayStep1){
 			g.drawString(text3, startTextX, stepTextY );
-			g.drawString(text4, startTextX+70, stepTextY+textYInc);
+			g.drawString(text4, startTextX+indentTextX, stepTextY+textYInc);
 		}
 		if (displayStep2){
 			g.drawString(text5, startTextX, stepTextY);
 		}
 		if (displayStep3){
 			g.drawString(text6, startTextX, stepTextY );
-			g.drawString(text61, startTextX+70, stepTextY+textYInc);
+			g.drawString(text61, startTextX+indentTextX, stepTextY+textYInc);
 			g.drawString(text7, startTextX, stepTextY+2*textYInc);
 			g.drawString(text8, startTextX, stepTextY+3*textYInc);
 		}
