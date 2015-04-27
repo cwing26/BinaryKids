@@ -1,55 +1,18 @@
-
-
-
 package tutorial;
 
 
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-import java.awt.event.MouseEvent;
-
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JApplet;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import javax.swing.border.LineBorder;
-
-import java.awt.*; 
-import java.applet.*;
-import java.awt.BorderLayout;
-import java.awt.event.*;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.EventQueue;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.Insets;
-import java.awt.RenderingHints;
 import java.awt.Image;
-import java.awt.TextField;
 import java.awt.Toolkit;
 
 
+@SuppressWarnings("serial")
 public class PreDemoBinaryPage extends JPanel implements ActionListener
 {
     
@@ -60,8 +23,6 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
 	//images
 	public Image titleImage;
 	public Image crossOutImage;
-	
-    private WelcomePage welcomePage;
     
     String explanation1 = "The same goes for binary numbers!";
     String explanation1cont = "Binary numbers have digits that represent different places!";
@@ -83,20 +44,15 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     String baseTwo1 = "2";
     String baseTwo2 = "2x2";
     
-    public PreDemoBinaryPage(WelcomePage welcome)
+    public PreDemoBinaryPage()
     {
-    	welcomePage = welcome;
+    	setBackground(WelcomePage.backgroundColor);
     	setLayout(null);
     	
     	loadImages();
     	
     	timer = new Timer(DELAY, this);
-    	setBackground(WelcomePage.backgroundColor);
     	
-
-    	Insets insets = getInsets();
-		//Dimension labelSize = convertLabel.getPreferredSize();
-		//convertLabel.setBounds(440 + insets.left, 260 + insets.top, labelSize.width + 20, labelSize.height);
 		
 		timer.start();
 		
@@ -124,7 +80,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     	g.drawString(explanation3cont, 240, 545);
 	    	
     	g.setFont(new Font("Geneva", 1, 15));
-    	g.setColor(welcomePage.textColor);
+    	g.setColor(WelcomePage.textColor);
     	g.drawString(foursPlace, 100, 350);
     	g.drawString(twosPlace, 310, 350);
     	g.drawString(onesPlace, 510, 350);
@@ -140,7 +96,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     	if(countAnimation == 0)
     	{
         	g.setFont(new Font("Geneva", 1, 150));
-        	g.setColor(welcomePage.buttonPanelColor);
+        	g.setColor(WelcomePage.buttonPanelColor);
         	g.drawString(number1, 100, 300);
         	g.drawString(number0, 300, 300);
         	g.drawString(number0, 500, 300);
@@ -148,7 +104,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     	else if(countAnimation == 1)
     	{
 	    	g.setFont(new Font("Geneva", 1, 150));
-	    	g.setColor(welcomePage.buttonPanelColor);
+	    	g.setColor(WelcomePage.buttonPanelColor);
 	    	g.drawString(number1, 100, 300);
 	    	g.drawString(number0, 300, 300);
 	    	g.drawString("1", 500, 300);
@@ -158,7 +114,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     	{
 
 	    	g.setFont(new Font("Geneva", 1, 150));
-	    	g.setColor(welcomePage.buttonPanelColor);
+	    	g.setColor(WelcomePage.buttonPanelColor);
 	    	g.drawString(number1, 100, 300);
 	    	g.drawString(number0, 300, 300);
 	    	g.drawString("2", 500, 300);
@@ -168,7 +124,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     	{
 
 	    	g.setFont(new Font("Geneva", 1, 150));
-	    	g.setColor(welcomePage.buttonPanelColor);
+	    	g.setColor(WelcomePage.buttonPanelColor);
 	    	g.drawString(number1, 100, 300);
 	    	g.drawString(number0, 300, 300);
 	    	g.drawString("2", 500, 300);
@@ -180,7 +136,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     	else if(countAnimation >= 4)
     	{
 	    	g.setFont(new Font("Geneva", 1, 150));
-	    	g.setColor(welcomePage.buttonPanelColor);
+	    	g.setColor(WelcomePage.buttonPanelColor);
 	    	g.drawString(number1, 100, 300);
 	    	g.drawString("1", 300, 300);
 	    	g.drawString("0", 500, 300);

@@ -184,13 +184,13 @@ public class WelcomePage extends JApplet
 		startPage = new StartPage(this);
 
 		numRepresentationPage = new NumRepresentationPage(this);
-		numRepresentationPage2 = new NumRepresentationPage2(this);
+		numRepresentationPage2 = new NumRepresentationPage2();
 		firstPage = new FirstPage(this);
 		segundaPage = new SegundaPage();
 		terceraPage = new TerceraPage();
 		preDemoPage = new PreDemoPage();
-		preDemoBinaryPage = new PreDemoBinaryPage(this);
-		demoPage = new DemoPage(this);
+		preDemoBinaryPage = new PreDemoBinaryPage();
+		demoPage = new DemoPage();
 		demoPage2 = new DemoPage2(this);
 		fourthPage = new FourthPage(this);
 		decToBinPage = new DecToBinPage(this);

@@ -4,9 +4,7 @@ import javax.swing.*;
 import java.awt.*; 
 import java.awt.event.*; 
 import java.util.ArrayList;
-
 import javax.swing.JPanel;
-import javax.swing.border.LineBorder;
 
 @SuppressWarnings("serial")
 public class DecToBinPage extends JPanel

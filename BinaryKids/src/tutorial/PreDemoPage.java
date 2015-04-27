@@ -10,7 +10,6 @@ import javax.swing.Timer;
 
 import java.awt.Color;
 import java.awt.Font;
-import java.awt.Insets;
 import java.awt.Image;
 import java.awt.Toolkit;
 
@@ -56,11 +55,6 @@ public class PreDemoPage extends JPanel implements ActionListener
     	
     	timer = new Timer(DELAY, this);
     	setBackground(WelcomePage.backgroundColor);
-    	
-
-    	Insets insets = getInsets();
-		//Dimension labelSize = convertLabel.getPreferredSize();
-		//convertLabel.setBounds(440 + insets.left, 260 + insets.top, labelSize.width + 20, labelSize.height);
 		
 		timer.start();
 		
