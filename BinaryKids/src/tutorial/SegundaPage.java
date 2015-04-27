@@ -17,15 +17,13 @@ import java.awt.Insets;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-
+/* This class serves as the fourth view in the introductory learning module, 
+ * introducing the student to the basics of binary numbers and their relationship to computers
+ * with an on/off button and an example conversion
+ */
 @SuppressWarnings("serial")
-public class SegundaPage extends JPanel implements ActionListener
+public class SegundaPage extends JPanel
 {
-    
-	private Timer timer;
-	private int DELAY = 2000;
-	int countAnimation = 0;
-	
 	//images
 	public Image titleImage;
 	public Image instagramImage;
@@ -38,13 +36,14 @@ public class SegundaPage extends JPanel implements ActionListener
 	public Image lightOff;
 	public Image lightOn;
 
-    
+    //text on page
     String explanation1 = "Actually, none of these would exist without binary numbers!";
-    
     String explanation2 = "Electronics and technology use binary numbers, ";
     String explanation2cont = "streams of 1s and 0s, to operate.";
     String explanation3 = "At the most basic level,";
     String explanation4 = "1 means ON and 0 means OFF";
+    String buttonInstruction = "Click the buttons to see how binary numbers send signals!";
+    String labelInstruction = "Click number to convert!";
 
     //components for number conversion
 	String binaryNum = "110110";
@@ -58,78 +57,100 @@ public class SegundaPage extends JPanel implements ActionListener
 	JButton zeroButton;
 	boolean oneClicked = false;
 	
-    //clikc button to be on and off 
-    //example click button and have it change binary to decimal
-    
-    
+	//positions of components on screen
+	private final int titleImageX = 5;
+	private final int titleImageY = 5;
+	
+	private final int textX = 30;
+	private final int  ex1Y = 80;
+	
+	private final int  ex2Y = 220;
+	private final int  ex2contY = 250;
+	
+	private final int  ex3Y = 360;
+	private final int  ex4Y = 390;
+	
+	private final int labelInstructionX = 457;
+	private final int labelInstructionY = 324;
+	
+	private final int buttonInstructionY = 425;
+	
+	private final int thumbnailY = 100;
+	private final int instaX = 20;
+	private final int fbX = 125;
+	private final int youtubeX = 235;
+	private final int emailX = 335;
+	private final int cellX = 440;
+	private final int gameX = 545;
+	private final int skypeX = 650;
+	
+	private final int buttonX = 200;
+	private final int button0Y = 440;
+	private final int button1Y = 490;
+	
+	private final int labelX = 440;
+	private final int labelY = 260;
+	
+	private final int lightX = 460;
+	private final int lightY = 370;
+	
+	
+	//constructor
     public SegundaPage()
     {
-    	setLayout(null);
     	
     	loadImages();
-    	loadComponents();
+    	initComponents();
+    	addComponentsToPanel();
+    	formatComponents();
     	
-    	timer = new Timer(DELAY, this);
     	setBackground(WelcomePage.backgroundColor);
     	
-    	add(convertLabel);
-    	add(zeroButton);
-    	add(oneButton);
-    	
-    	Insets insets = getInsets();
-		Dimension labelSize = convertLabel.getPreferredSize();
-		convertLabel.setBounds(440 + insets.left, 260 + insets.top, labelSize.width + 20, labelSize.height);
-		
-		Dimension button0Size = zeroButton.getPreferredSize();
-		zeroButton.setBounds(200 + insets.left, 440 + insets.top, button0Size.width, button0Size.height);
-		
-		Dimension button1Size = oneButton.getPreferredSize();
-		oneButton.setBounds(200 + insets.left, 490 + insets.top, button1Size.width, button1Size.height);
-		
-		
     	setVisible(true);
 
     }
     
+    //displays various images and text on the screen, allowing
+    //for change based on user clicks 
     public void paint(Graphics g)
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, 5, 5, this);
+    	g.drawImage(titleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
-    	g.drawString(explanation1, 30, 80);
+    	g.drawString(explanation1, textX, ex1Y);
     	
-    	g.drawImage(instagramImage, 20, 100, this);
-    	g.drawImage(fbImage, 125, 100, this);
-    	g.drawImage(youtubeImage, 230, 100, this);
-    	g.drawImage(emailImage, 335, 100, this);
-    	g.drawImage(cellImage, 440, 100, this);
-    	g.drawImage(gameImage, 545, 100, this);
-    	g.drawImage(skypeImage, 650, 100, this);
+    	g.drawImage(instagramImage, instaX, thumbnailY, this);
+    	g.drawImage(fbImage, fbX, thumbnailY, this);
+    	g.drawImage(youtubeImage, youtubeX, thumbnailY, this);
+    	g.drawImage(emailImage, emailX, thumbnailY, this);
+    	g.drawImage(cellImage, cellX, thumbnailY, this);
+    	g.drawImage(gameImage, gameX, thumbnailY, this);
+    	g.drawImage(skypeImage, skypeX, thumbnailY, this);
     	
     	
     	g.setFont(new Font("Geneva", 1, 25));
-    	g.drawString(explanation2, 30, 220);
-    	g.drawString(explanation2cont, 30, 250);
+    	g.drawString(explanation2, textX, ex2Y);
+    	g.drawString(explanation2cont, textX, ex2contY);
     	
-    	g.drawString(explanation3, 30, 360);
-    	g.drawString(explanation4, 30, 390);
-    	
-    	g.setFont(new Font("Geneva", 1, 15));
-    	g.drawString("Click number to convert!", 457, 324);
+    	g.drawString(explanation3, textX, ex3Y);
+    	g.drawString(explanation4, textX, ex4Y);
     	
     	g.setFont(new Font("Geneva", 1, 15));
-    	g.drawString("Click the buttons to see how binary numbers send signals!", 30, 425);
+    	g.drawString(labelInstruction, labelInstructionX, labelInstructionY);
+    	
+    	g.setFont(new Font("Geneva", 1, 15));
+    	g.drawString(buttonInstruction, textX, buttonInstructionY);
     	
     	if(oneClicked)
 		{
-			g.drawImage(lightOn, 460, 370, this);
+			g.drawImage(lightOn, lightX, lightY, this);
 		}
 		else
 		{
-			g.drawImage(lightOff, 460, 370, this);
+			g.drawImage(lightOff, lightX, lightY, this);
 		}
     		
     }
@@ -176,12 +197,36 @@ public class SegundaPage extends JPanel implements ActionListener
 		lightOn = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.lightOnPath)); 
 		lightOn = lightOn.getScaledInstance(148, 200, Image.SCALE_SMOOTH);
-		
-		
+
 
     }
     
-    public void loadComponents()
+    //adds all swing components to the panel
+    public void addComponentsToPanel()
+    {
+    	setLayout(null);
+    	add(convertLabel);
+    	add(zeroButton);
+    	add(oneButton);
+    }
+    
+    
+    public void formatComponents()
+    {
+    	Insets insets = getInsets();
+		Dimension labelSize = convertLabel.getPreferredSize();
+		convertLabel.setBounds(labelX + insets.left, labelY + insets.top, labelSize.width, labelSize.height);
+		
+		Dimension button0Size = zeroButton.getPreferredSize();
+		zeroButton.setBounds(buttonX + insets.left, button0Y + insets.top, button0Size.width, button0Size.height);
+		
+		Dimension button1Size = oneButton.getPreferredSize();
+		oneButton.setBounds(buttonX + insets.left, button1Y + insets.top, button1Size.width, button1Size.height);
+    	
+    }
+    
+    //initializes and sets up all of the swing components on the screen
+    public void initComponents()
     {
 		convertLabel = new JLabel();
 		convertLabel.setBackground(WelcomePage.backgroundColor);
@@ -189,6 +234,8 @@ public class SegundaPage extends JPanel implements ActionListener
 		convertLabel.setForeground(WelcomePage.buttonPanelColor);
 		convertLabel.setText(binaryNum);
 		
+		//listener indicates to the label when to change the label's
+		//text to a binary number or a decimal number 
 		convertLabel.addMouseListener(new MouseListener() 
 		{      
 
@@ -236,7 +283,7 @@ public class SegundaPage extends JPanel implements ActionListener
 			}      
 		}); 
 		
-		
+		//listener indicates to paint when to change the lightbulb image
 		oneButton = new JButton("1");
     	oneButton.addActionListener(new ActionListener() 
 		{      
@@ -248,6 +295,7 @@ public class SegundaPage extends JPanel implements ActionListener
 			}      
 		}); 
     	
+    	//listener indicates to paint when to change the lightbulb image
     	zeroButton = new JButton("0");
     	zeroButton.addActionListener(new ActionListener() 
 		{      
@@ -263,21 +311,7 @@ public class SegundaPage extends JPanel implements ActionListener
     }
 	
 	
-    
-	@Override
-    public void actionPerformed(ActionEvent e) 
-	{
-		
-		if(countAnimation < 3)
-		{	
-			countAnimation++;
-		}
-		else
-			timer.stop();
-		
-        repaint();
-    }
 	
     
 
-}
+} //end class 
