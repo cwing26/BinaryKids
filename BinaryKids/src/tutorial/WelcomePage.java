@@ -7,8 +7,8 @@ import javax.swing.JButton;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
+
 import java.awt.*; 
-import java.awt.BorderLayout;
 import java.awt.event.*;
 import java.awt.Color;
 import java.awt.Graphics;
@@ -91,7 +91,9 @@ public class WelcomePage extends JApplet
 	public Image lightOffImg;
 	public Image titleTextImg;
 	public Image binDec3TitleImg;
-
+	public Image tutorialCompleteImg;
+	public static String tutorialCompleteImgPath = "images/tutorialComplete.jpg";
+	
 	//meghan's added images
 	public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
 	public Image titleHeadline;
@@ -238,7 +240,7 @@ public class WelcomePage extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		cardLayout.show(cards, "DEC BIN PAGE 1");
+		cardLayout.show(cards, "DEC BIN PAGE 4");
 		//cardLayout.show(cards, "START PAGE");  //here
 
 		//add(startPage, BorderLayout.CENTER);
@@ -287,6 +289,10 @@ public class WelcomePage extends JApplet
 		binDecImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binDecImgPath)); 
 		binDecImg = binDecImg.getScaledInstance(600, 50, Image.SCALE_SMOOTH);
+		
+		tutorialCompleteImg = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(WelcomePage.tutorialCompleteImgPath)); 
+		tutorialCompleteImg = tutorialCompleteImg.getScaledInstance(400, 40, Image.SCALE_SMOOTH);
 
 		//try to load the image file
 		try {
@@ -304,9 +310,6 @@ public class WelcomePage extends JApplet
 		//creates a close button to allow user to exit whenever
 		closeButton = new JButton("Close");
 		closeButton.addActionListener(new closeButtonListener());
-
-		debugButton = new JButton("Debug");
-		debugButton.addActionListener(new debugButtonListener());
 
 		nextButton = new JButton("NEXT");
 		nextButton.addActionListener(new nextButtonListener());
@@ -331,7 +334,7 @@ public class WelcomePage extends JApplet
 		buttonPanel.add(backButton);
 		backButton.setVisible(false);
 		buttonPanel.add(nextButton);
-		//buttonPanel.add(debugButton);
+
 
 	}
 
@@ -341,10 +344,10 @@ public class WelcomePage extends JApplet
 		super.paint(g);
 		
 		
-		if (inTutorial || pageFlag ==0 ){
-			backButton.setVisible(false);
-			nextButton.setVisible(false);
-		}
+//		if (inTutorial || pageFlag ==0 ){
+//			backButton.setVisible(false);
+//			nextButton.setVisible(false);
+//		}
 
 	}
 
@@ -376,32 +379,6 @@ public class WelcomePage extends JApplet
 		}
 	}
 
-
-//	public void loadNewTutorial(String tutorialType)
-//	{
-//		if (tutorialType.equals("DECBIN"))
-//		{
-//			decToBinPage = new DecToBinPage(this);
-//			cardLayout.show(cards, "DEC BIN PAGE 1");
-//			backButton.setVisible(false);
-//			nextButton.setVisible(false);
-//		}
-//		else if (tutorialType.equals("BINDEC"))
-//		{
-//			bdOne = new BinaryDecimalOne(this);
-//			cardLayout.show(cards, "BIN DEC PAGE 1");
-//			backButton.setVisible(false);
-//			nextButton.setVisible(false);
-//		}
-//		else {
-//			System.out.println("still need to implement other tutorial pages");
-//		}
-//
-//
-//		validate();
-//		setVisible(true);
-//		repaint();
-//	}
 
 	public void loadFourth(){
 		fourthPage = new FourthPage(welcome);
@@ -618,35 +595,6 @@ public class WelcomePage extends JApplet
 				backButton.setVisible(true);
 			}
 			cardLayout.previous(cards);
-			validate();
-			setVisible(true);
-			repaint();	
-		}
-	}
-
-	class debugButtonListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e) 
-		{
-			//			contentPane.remove(startPage);
-			//			contentPane.remove(firstPage);
-			//			contentPane.remove(secondPage);
-			//			contentPane.remove(thirdPage);
-			//			contentPane.remove(fourthPage);
-			//			contentPane.remove(bdOne);
-			//			contentPane.remove(bdTwo);
-			//			contentPane.remove(bdThree);
-			//			contentPane.remove(bdFour);
-			//			contentPane.remove(decToBinPage);
-			//			contentPane.remove(decToBinPage2);
-			//			contentPane.remove(decToBinPage3);
-			//			contentPane.remove(decToBinPage4);
-			//			contentPane.remove(baOne);
-			//			contentPane.remove(demoPage);
-			//
-			//
-			//			contentPane.add(new DecToBinPage2(welcome));
-
 			validate();
 			setVisible(true);
 			repaint();	

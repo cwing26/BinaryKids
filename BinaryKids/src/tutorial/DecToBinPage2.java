@@ -15,16 +15,17 @@ import javax.swing.event.DocumentListener;
 public class DecToBinPage2 extends JPanel implements ActionListener 
 {
 
-	boolean submitClicked = false;
+	boolean startClicked = false;
+
 	private Timer timer;
 	private int DELAY = 2000;
 
 	WelcomePage welcomePage;
 	JButton submitButton; 
 	JButton startButton;
-	String DecToBinNumSquaresText = "How do we get the number 11? 11 = how many tens + how many ones? We will put the 11 squares in the TENS and ONES";
-	String DecToBinNumSquaresText2 = "boxes to practice our understanding of the base 10, or decimal, number system. We will do this first example together";
-	String DecToBinNumSquaresText3 = "and then let you try! Click the start button to begin.";
+	String DecToBinNumSquaresText = "How do we get the number 11? 11 = how many tens + how many ones? We will put the 11 squares";
+	String DecToBinNumSquaresText2 = "in the TENS and ONES boxes to review the decimal number system. We will do this first example";
+	String DecToBinNumSquaresText3 = "for you and then let you try! Click the start button to begin.";
 	JTextField NumberTensField;
 	JTextField NumberOnesField;
 
@@ -64,10 +65,11 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 
 	int globalI = 0;
 
-	String text3 = "Step 1: Do we have enough squares to put ten squares in the TENS box? Since we do; let's put ten red squares in the TENS box.";
-	String text4 = ""; //           Click on a red square and then click on the box to put the square inside.
+	String text3 = "Step 1: Do we have enough squares to put ten squares in the TENS box? ";
+	String text4 = "Since we do; let's put ten red squares in the TENS box.";
 	String text5 = "Step 2: Since we had enough squares, type 1 below the TENS box.";
-	String text6 = "Step 3: Check how many squares are left remaining. Do we have enough to put one square in the ONES box?";
+	String text6 = "Step 3: Check how many squares are left remaining. Do we have enough";
+	String text61 = "to put one square in the ONES box?";
 	String text7 = "Step 4: We have enough! Let's move the square to the ONES box.";
 	String text8 = "Step 5: Since we had enough squares, type 1 below the ONES box.";
 	String text9 = "Step 6: Since there are no squares left we are all done!";
@@ -156,11 +158,6 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 			numOnesInput = NumberOnesField.getText();
 
 			if (numTensInput.equals(numTensActual) && numOnesInput.equals(numOnesActual)){
-				submitClicked = true;
-				remove(submitButton);
-				remove(startButton);
-				remove(NumberTensField);
-				remove(NumberOnesField);
 				welcomePage.loadDecBin3();
 			}
 			else{
@@ -180,6 +177,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 			startButton.setVisible(false);
 			timer.start();
 			displayStep1 = true;
+			startClicked = true;
 		} 
 	}
 
@@ -275,18 +273,20 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		add(NumberTensField);
 		add(NumberOnesField);
 
-		Dimension fieldSize = NumberTensField.getPreferredSize();
-		NumberTensField.setBounds(box10x +45 + insets.left, box10y+box10height+5 + insets.top,
-				fieldSize.width, fieldSize.height);
-		NumberOnesField.setBounds(box1x +45 + insets.left, box1y+box1height+5 + insets.top,
-				fieldSize.width, fieldSize.height);
-
 		Dimension buttonSize = submitButton.getPreferredSize();
 		submitButton.setBounds(box1x +box1width + 20 + insets.left, box1y+box1height+5 + insets.top,
 				buttonSize.width, buttonSize.height);
 		buttonSize = startButton.getPreferredSize();
-		startButton.setBounds(290 + insets.left, 120 + insets.top,
+		startButton.setBounds(290 + insets.left, 140 + insets.top,
 				buttonSize.width*2, buttonSize.height);
+
+		Dimension fieldSize = NumberTensField.getPreferredSize();
+		NumberTensField.setBounds(box10x +45 + insets.left, box10y+box10height+5 + insets.top,
+				fieldSize.width, buttonSize.height);
+		NumberOnesField.setBounds(box1x +45 + insets.left, box1y+box1height+5 + insets.top,
+				fieldSize.width, buttonSize.height);
+
+
 
 
 	}
@@ -315,27 +315,31 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		g.drawString("ONES", box1x+45, box1y-4);
 
 		g.setColor(WelcomePage.textColor);
-		g.setFont(new Font("Geneva", Font.BOLD, 12));
-		int startTextX = 50;
-		int startTextY = 75;
-		int textYInc = 18;
+		g.setFont(new Font("Geneva", Font.BOLD, 14));
+		int startTextX = 60;
+		int startTextY = 85;
+		int textYInc = 20;
 
-		g.drawString(DecToBinNumSquaresText, startTextX, startTextY);
-		g.drawString(DecToBinNumSquaresText2, startTextX, startTextY+=textYInc);
-		g.drawString(DecToBinNumSquaresText3, startTextX, startTextY+=textYInc);
+		if (!startClicked){
+			g.drawString(DecToBinNumSquaresText, startTextX, startTextY);
+			g.drawString(DecToBinNumSquaresText2, startTextX, startTextY+=textYInc);
+			g.drawString(DecToBinNumSquaresText3, startTextX, startTextY+=textYInc);
+		}
 
-		int stepTextY = startTextY+ 70;
+		g.setFont(new Font("Geneva", Font.BOLD, 18));
+		int stepTextY = startTextY+100;
 		if (displayStep1){
 			g.drawString(text3, startTextX, stepTextY );
-			g.drawString(text4, startTextX, stepTextY+textYInc);
+			g.drawString(text4, startTextX+70, stepTextY+textYInc);
 		}
 		if (displayStep2){
 			g.drawString(text5, startTextX, stepTextY);
 		}
 		if (displayStep3){
 			g.drawString(text6, startTextX, stepTextY );
-			g.drawString(text7, startTextX, stepTextY+textYInc);
-			g.drawString(text8, startTextX, stepTextY+2*textYInc);
+			g.drawString(text61, startTextX+70, stepTextY+textYInc);
+			g.drawString(text7, startTextX, stepTextY+2*textYInc);
+			g.drawString(text8, startTextX, stepTextY+3*textYInc);
 		}
 		if (displayStep7){
 			g.drawString(text9, startTextX, stepTextY);

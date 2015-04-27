@@ -7,11 +7,18 @@ import java.awt.event.*;
 import java.util.ArrayList;
 
 import javax.swing.*; 
+import javax.swing.event.DocumentEvent;
+import javax.swing.event.DocumentListener;
 
 @SuppressWarnings("serial")
 public class DecToBinPage3 extends JPanel implements MouseListener
 {
-
+	boolean display1 = true;
+	boolean display2 = false;
+	boolean display3 = false;
+	
+	
+	
 	WelcomePage welcomePage;
 	JButton submitButton; 
 
@@ -40,13 +47,16 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 	//String text1 = "Now we are going to convert 11 from decimal to binary!"; // In decimal, we put 10 squares into the TENS box and";
 	String text2 = "";//1 square into the ONES box. Now we will put squares into the EIGHTS, FOURS, TWOS, and ONES boxes.";
-	String text3 = "Step 1: Do we have enough squares to put eight squares in the EIGHTS box? If yes, put eight squares in the";
-	String text4 = "          EIGHTS box. Click on a red square and then click on the box to put the square inside.";
+	String text3 = "Step 1: Do we have enough squares to put eight squares in the EIGHTS box?";
+	String text4 = "If yes, put eight squares in the EIGHTS box. Click on a red square and then"; 
+	String text45 = "click on the box to put the square inside.";
 	String text5 = "Step 2: Since we had enough squares, type 1 below the EIGHTS box.";
-	String text6 = "Step 3: Check how many squares are left remaining. Do we have enough to put four squares in the FOURS box?";
+	String text6 = "Step 3: Check how many squares are left remaining. Do we have enough";
+	String text65 = "to put four squares in the FOURS box?";
 	String text7 = "Step 4: Since we don't have enough, type 0 below the FOURS box.";
 	String text8 = "Step 5: Keep assigning the remaining squares until none are left.";
-	String text9 = "Step 6: Remember: If you had enough squares to put in a box, type 1, otherwise type 0.";
+	String text9 = "Step 6: Remember: If you had enough squares to put in a box,";
+	String text95 = "type 1, otherwise type 0.";
 	String text10 = "Step 7: When you finish, click submit to check your answer.";
 
 
@@ -81,7 +91,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	JPanel questionPanel;
 
 
-
+	
 
 	//inits format of text field
 	public void initTextFields(){
@@ -93,6 +103,31 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		NumberFoursField.setColumns(5);
 		NumberTwosField.setColumns(5);
 		NumberOnesField.setColumns(5);
+		
+		
+		NumberEightsField.getDocument().addDocumentListener(new DocumentListener() {
+			public void changedUpdate(DocumentEvent e) {}
+			public void removeUpdate(DocumentEvent e) {}
+			public void insertUpdate(DocumentEvent e) {
+				display1 = false;
+				display2 = true;
+				display3 = false;
+				repaint();
+			}
+
+		});
+		
+		NumberFoursField.getDocument().addDocumentListener(new DocumentListener() {
+			public void changedUpdate(DocumentEvent e) {}
+			public void removeUpdate(DocumentEvent e) {}
+			public void insertUpdate(DocumentEvent e) {
+				display1 = false;
+				display2 = false;
+				display3 = true;
+				repaint();
+			}
+
+		});
 	}
 
 	//inits the coords of the rects that user will move
@@ -214,20 +249,22 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		add(submitButton);
 		Insets insets = getInsets();
 
-
-		Dimension size = NumberEightsField.getPreferredSize();
-		NumberEightsField.setBounds(box8x +25 + insets.left, box8y+box8height+5 + insets.top,
-				size.width, size.height);
-		NumberFoursField.setBounds(box4x +25 + insets.left, box4y+box8height+5 + insets.top,
-				size.width, size.height);
-		NumberTwosField.setBounds(box2x +25 + insets.left, box2y+box8height+5 + insets.top,
-				size.width, size.height);
-		NumberOnesField.setBounds(box1x +25 + insets.left, box1y+box8height+5 + insets.top,
-				size.width, size.height);
-
+		
 		Dimension buttonSize = submitButton.getPreferredSize();
 		submitButton.setBounds(box1x +box1width + 20 + insets.left, box1y+box1height+5 + insets.top,
 				buttonSize.width, buttonSize.height);
+
+		Dimension size = NumberEightsField.getPreferredSize();
+		NumberEightsField.setBounds(box8x +25 + insets.left, box8y+box8height+5 + insets.top,
+				size.width, buttonSize.height);
+		NumberFoursField.setBounds(box4x +25 + insets.left, box4y+box8height+5 + insets.top,
+				size.width, buttonSize.height);
+		NumberTwosField.setBounds(box2x +25 + insets.left, box2y+box8height+5 + insets.top,
+				size.width, buttonSize.height);
+		NumberOnesField.setBounds(box1x +25 + insets.left, box1y+box8height+5 + insets.top,
+				size.width, buttonSize.height);
+
+		
 
 		// Add the MouseListener to the applet 
 		addMouseListener(this); 
@@ -277,23 +314,30 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 
 		//instructions
-		g.setFont(new Font("Geneva", Font.BOLD, 12));
+		g.setFont(new Font("Geneva", Font.BOLD, 18));
 		int startTextX = 40;
-		int startTextY = 50;
-		int textYInc = 18;
+		int startTextY = 100;
+		int textYInc = 20;
 
 		g.drawImage(welcomePage.binDec3TitleImg, 75, 10, this);
 
-		//g.drawString(text1, startTextX, startTextY);
-		g.drawString(text2, startTextX, startTextY+=textYInc);
-		g.drawString(text3, startTextX, startTextY+=textYInc);
-		g.drawString(text4, startTextX, startTextY+=textYInc);
-		g.drawString(text5, startTextX, startTextY+=textYInc);
-		g.drawString(text6, startTextX, startTextY+=textYInc);
-		g.drawString(text7, startTextX, startTextY+=textYInc);
-		g.drawString(text8, startTextX, startTextY+=textYInc);
-		g.drawString(text9, startTextX, startTextY+=textYInc);
-		g.drawString(text10, startTextX, startTextY+=textYInc);
+		if (display1){
+			g.drawString(text3, startTextX, startTextY+textYInc);
+			g.drawString(text4, startTextX+70, startTextY+2*textYInc);
+			g.drawString(text45, startTextX+70, startTextY+3*textYInc);
+			g.drawString(text5, startTextX, startTextY+4*textYInc);
+		}
+		if (display2){
+			g.drawString(text6, startTextX, startTextY+textYInc);
+			g.drawString(text65, startTextX+70, startTextY+2*textYInc);
+			g.drawString(text7, startTextX, startTextY+3*textYInc);
+		}
+		if (display3){
+			g.drawString(text8, startTextX, startTextY+textYInc);
+			g.drawString(text9, startTextX, startTextY+2*textYInc);
+			g.drawString(text95, startTextX+70, startTextY+3*textYInc);
+			g.drawString(text10, startTextX, startTextY+4*textYInc);
+		}
 
 
 	}
