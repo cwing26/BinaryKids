@@ -1,55 +1,24 @@
-
-
-
 package tutorial;
 
 
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
 import java.awt.event.MouseEvent;
-
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JApplet;
 import javax.swing.JButton;
-import javax.swing.JFrame;
 import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import javax.swing.border.LineBorder;
-
-import java.awt.*; 
-import java.applet.*;
-import java.awt.BorderLayout;
 import java.awt.event.*;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.EventQueue;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
 import java.awt.Insets;
-import java.awt.RenderingHints;
 import java.awt.Image;
-import java.awt.TextField;
 import java.awt.Toolkit;
 
 
+@SuppressWarnings("serial")
 public class SegundaPage extends JPanel implements ActionListener
 {
     
@@ -68,8 +37,7 @@ public class SegundaPage extends JPanel implements ActionListener
 	public Image gameImage;
 	public Image lightOff;
 	public Image lightOn;
-	
-    private WelcomePage welcomePage;
+
     
     String explanation1 = "Actually, none of these would exist without binary numbers!";
     
@@ -94,9 +62,8 @@ public class SegundaPage extends JPanel implements ActionListener
     //example click button and have it change binary to decimal
     
     
-    public SegundaPage(WelcomePage welcome)
+    public SegundaPage()
     {
-    	welcomePage = welcome;
     	setLayout(null);
     	
     	loadImages();
@@ -217,9 +184,9 @@ public class SegundaPage extends JPanel implements ActionListener
     public void loadComponents()
     {
 		convertLabel = new JLabel();
-		convertLabel.setBackground(welcomePage.backgroundColor);
+		convertLabel.setBackground(WelcomePage.backgroundColor);
 		convertLabel.setFont(new Font("Monospaced", 1, 60));
-		convertLabel.setForeground(welcomePage.buttonPanelColor);
+		convertLabel.setForeground(WelcomePage.buttonPanelColor);
 		convertLabel.setText(binaryNum);
 		
 		convertLabel.addMouseListener(new MouseListener() 

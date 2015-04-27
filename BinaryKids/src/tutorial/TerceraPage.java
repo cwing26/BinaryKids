@@ -4,52 +4,20 @@
 package tutorial;
 
 
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
 import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
-import java.awt.TextField;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.event.KeyEvent;
-import java.awt.event.KeyListener;
-
-import javax.swing.BoxLayout;
 import javax.swing.JPanel;
-import javax.swing.JApplet;
-import javax.swing.JButton;
-import javax.swing.JFrame;
-import javax.swing.JLabel;
-import javax.swing.JOptionPane;
-import javax.swing.JPanel;
-import javax.swing.SwingUtilities;
 import javax.swing.Timer;
-import javax.swing.border.LineBorder;
-
-import java.awt.*; 
-import java.applet.*;
-import java.awt.BorderLayout;
-import java.awt.event.*;
-import java.awt.BorderLayout;
-import java.awt.Button;
-import java.awt.Checkbox;
-import java.awt.CheckboxGroup;
-import java.awt.EventQueue;
 import java.awt.Color;
-import java.awt.Dimension;
 import java.awt.Font;
-import java.awt.Graphics;
-import java.awt.Graphics2D;
-import java.awt.RenderingHints;
 import java.awt.Image;
-import java.awt.TextField;
 import java.awt.Toolkit;
 
 
 //create a binary stream and bits and shit
 
+@SuppressWarnings("serial")
 public class TerceraPage extends JPanel implements ActionListener
 {
     
@@ -61,7 +29,6 @@ public class TerceraPage extends JPanel implements ActionListener
 	public Image titleImage;
 	public Image binaryDigitImage;
 	
-    private WelcomePage welcomePage;
     
     String explanation1 = "Combined, these numbers tell devices, like the computer you're on now,";
     String explanation1cont = "what to do and when to do it!";
@@ -87,9 +54,8 @@ public class TerceraPage extends JPanel implements ActionListener
     //bit = binary digit (timer)
     
     
-    public TerceraPage(WelcomePage welcome)
+    public TerceraPage()
     {
-    	welcomePage = welcome;
 
     	loadImages();
     	
@@ -123,7 +89,7 @@ public class TerceraPage extends JPanel implements ActionListener
     	if(countAnimation ==0)
     	{
     		g.setFont(new Font("Geneva", 1, 60));
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.drawString(b, 20, 320);
     		g.drawString(i, 60, 320);
     		g.drawString(n, 90, 320);
@@ -144,7 +110,7 @@ public class TerceraPage extends JPanel implements ActionListener
     		g.setColor(Color.red);
     		g.drawString(b, 20, 320);
     		
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.drawString(i, 60, 320);
     		g.drawString(n, 90, 320);
     		g.drawString(a, 140, 320);
@@ -173,12 +139,12 @@ public class TerceraPage extends JPanel implements ActionListener
     	if(countAnimation >= 3)
     	{
     		g.setFont(new Font("Geneva", 1, 80));
-    		g.setColor(welcomePage.buttonPanelColor);
+    		g.setColor(WelcomePage.buttonPanelColor);
     		g.drawString(b, 140, 320);
     		g.drawString(i, 200, 320);
     		g.drawString(t, 230, 320);
     		
-    		g.setColor(welcomePage.textColor);
+    		g.setColor(WelcomePage.textColor);
     		g.setFont(new Font("Geneva", 1, 20));
     		g.drawString("Ex. 11010 is 5 bits long", 30, 360);
     		

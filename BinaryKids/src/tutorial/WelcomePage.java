@@ -186,9 +186,9 @@ public class WelcomePage extends JApplet
 		numRepresentationPage = new NumRepresentationPage(this);
 		numRepresentationPage2 = new NumRepresentationPage2(this);
 		firstPage = new FirstPage(this);
-		segundaPage = new SegundaPage(this);
-		terceraPage = new TerceraPage(this);
-		preDemoPage = new PreDemoPage(this);
+		segundaPage = new SegundaPage();
+		terceraPage = new TerceraPage();
+		preDemoPage = new PreDemoPage();
 		preDemoBinaryPage = new PreDemoBinaryPage(this);
 		demoPage = new DemoPage(this);
 		demoPage2 = new DemoPage2(this);
