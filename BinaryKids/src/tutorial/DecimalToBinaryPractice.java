@@ -36,17 +36,17 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	private final int practiceValues = 200;
 	
 	//to hold the test practice values (decimal)
-	private ArrayList <Integer> values = new ArrayList<Integer>();
+	public ArrayList <Integer> values = new ArrayList<Integer>();
 	
 	//to hold the solutions to the practice problems (binary)
-	private ArrayList <String> solutions = new ArrayList<String>();
+	public ArrayList <String> solutions = new ArrayList<String>();
 	
 	
 	//page components
 	private JButton submitAnswerButton;
 	private JButton hintButton;
 	private JButton tutorialButton;
-	private boolean hintClicked = false; //allows class to display graphic if hint button is clicked
+	public boolean hintClicked = false; //allows class to display graphic if hint button is clicked
 	private JTextField answerField;
 	private String question = "Convert the decimal number below to binary:";
 	private String inputAnswer; //stores user input
@@ -279,6 +279,28 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 		
 	} //end populate answer array
 
+
+	//conversion helper function for binary and decimal
+	public String binaryConversion(int num)
+	{
+		String binary = "";
+		int remainder = 0;
+		
+		if(num  == 0)
+			return "0";
+		else
+		{
+			while(num > 0)
+			{
+				remainder = num % 2;
+				binary = remainder + binary;
+				num = num / 2;
+			}
+			
+			return binary;
+		}
+		
+	}
 
 	//calls the checkAnswer() method to determine whether 
 	//user entered the correct answer. if answer is correct,

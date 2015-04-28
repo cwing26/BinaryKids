@@ -44,17 +44,17 @@ public class BinaryToDecimalPractice extends JPanel implements PracticeProblem
 		private final int practiceValues = 200;
 		
 		//to hold the test practice values (binary)
-		private ArrayList <String> values = new ArrayList<String>();
+		public ArrayList <String> values = new ArrayList<String>();
 		
 		//to hold the solutions to the practice problems (decimal)
-		private ArrayList <Integer> solutions = new ArrayList<Integer>();
+		public ArrayList <Integer> solutions = new ArrayList<Integer>();
 		
 		
 		//page components
 		private JButton submitAnswerButton;
 		private JButton hintButton;
 		private JButton tutorialButton;
-		private boolean hintClicked = false; //allows class to display graphic if hint button is clicked
+		public boolean hintClicked = false; //allows class to display graphic if hint button is clicked
 		private JTextField answerField;
 		private String question = "Convert the decimal number below to binary:";
 		private String inputAnswer; //stores user input
