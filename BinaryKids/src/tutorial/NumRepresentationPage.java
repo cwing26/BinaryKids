@@ -67,16 +67,6 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	private final int vIY = 240;
 	
 	
-	//images used on screen
-	private Image numRepTitleImage;
-	private Image decimalTitleImage;
-	private Image romanNumeralTitleImage;
-	private Image shapesTitleImage;
-	private Image binaryImageLight;
-	private Image binaryImageDark;
-	private Image soccerBall;
-	
-
 	
 	private WelcomePage welcomePage; //to connect welcome page to individual pages 
 	
@@ -91,8 +81,6 @@ public class NumRepresentationPage extends JPanel implements ActionListener
     	
     	welcomePage = welcome;
     	setBackground(WelcomePage.backgroundColor);
-    	
-    	loadImages();
 
     	setVisible(true);
     	
@@ -107,7 +95,7 @@ public class NumRepresentationPage extends JPanel implements ActionListener
     { 
     	super.paint(g);
     	
-    	g.drawImage(numRepTitleImage, titleImageX, titleImageY, this);
+    	g.drawImage(welcomePage.numRepTitleImage, titleImageX, titleImageY, this);
     	
     	//first iteration of animation only displays question
     	if(countAnimation == 1)
@@ -138,10 +126,10 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	    		
 	    	}
 	
-	    	g.drawImage(decimalTitleImage, decTitleImageX, decTitleImageY, this);
-	    	g.drawImage(romanNumeralTitleImage, romanNumImageX, romanNumImageY, this);
-	    	g.drawImage(shapesTitleImage, shapesImageX, shapesImageY, this);
-    		g.drawImage(binaryImageLight, binaryImageX, binaryImageY, this);
+	    	g.drawImage(welcomePage.decimalTitleImage, decTitleImageX, decTitleImageY, this);
+	    	g.drawImage(welcomePage.romanNumeralTitleImage, romanNumImageX, romanNumImageY, this);
+	    	g.drawImage(welcomePage.shapesTitleImage, shapesImageX, shapesImageY, this);
+    		g.drawImage(welcomePage.binaryImageLight, binaryImageX, binaryImageY, this);
 
 	    	g.setColor(WelcomePage.textColor);
 	    	g.setFont(new Font("Monospaced", 1, 60));
@@ -154,7 +142,7 @@ public class NumRepresentationPage extends JPanel implements ActionListener
     	//third iteration highlights binary number answer
   	    else if(countAnimation >= 3)
   	    {
-  	    	g.drawImage(binaryImageDark, binaryImageX, binaryImageY, this);
+  	    	g.drawImage(welcomePage.binaryImageDark, binaryImageX, binaryImageY, this);
   	    	g.setColor(WelcomePage.textColor);
   	    	g.drawRect(30, 435, 650, 80);
   	    	g.setFont(new Font("Monospaced", 1, 60));
@@ -171,9 +159,9 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	    		
 	    	}
 	
-	    	g.drawImage(decimalTitleImage, decTitleImageX, decTitleImageY, this);
-	    	g.drawImage(romanNumeralTitleImage, romanNumImageX, romanNumImageY, this);
-	    	g.drawImage(shapesTitleImage, shapesImageX, shapesImageY, this);
+	    	g.drawImage(welcomePage.decimalTitleImage, decTitleImageX, decTitleImageY, this);
+	    	g.drawImage(welcomePage.romanNumeralTitleImage, romanNumImageX, romanNumImageY, this);
+	    	g.drawImage(welcomePage.shapesTitleImage, shapesImageX, shapesImageY, this);
 
 	    	g.setColor(WelcomePage.textColor);
 	    	g.setFont(new Font("Monospaced", 1, 60));
@@ -185,41 +173,6 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	
     }
     
-    
-    //WILL BE TRANSFERRED TO welcomepage
-    public void loadImages()
-    {
-		
-		binaryImageLight = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.binaryImageLightPath)); 
-		binaryImageLight = binaryImageLight.getScaledInstance(354, 44, Image.SCALE_SMOOTH);
-		
-		binaryImageDark = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.binaryImageDarkPath)); 
-		binaryImageDark = binaryImageDark.getScaledInstance(354, 44, Image.SCALE_SMOOTH);
-		
-		numRepTitleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.numRepTitlePath)); 
-		numRepTitleImage = numRepTitleImage.getScaledInstance(780, 44, Image.SCALE_SMOOTH);
-		
-		decimalTitleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.decimalImagePath)); 
-		decimalTitleImage = decimalTitleImage.getScaledInstance(444, 40, Image.SCALE_SMOOTH);
-		
-		romanNumeralTitleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.romanNumeralImagePath)); 
-		romanNumeralTitleImage = romanNumeralTitleImage.getScaledInstance(435, 40, Image.SCALE_SMOOTH);
-		
-		shapesTitleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.shapesImagePath)); 
-		shapesTitleImage = shapesTitleImage.getScaledInstance(164, 48, Image.SCALE_SMOOTH);
-		
-		soccerBall = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.soccerBallPath)); 
-		soccerBall = soccerBall.getScaledInstance(150, 151, Image.SCALE_SMOOTH);
-		
-		
-    }
     
     
     //class implements actions listener to handle animation
