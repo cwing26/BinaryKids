@@ -39,6 +39,8 @@ import tutorial.Controller;
 @SuppressWarnings("serial")
 public class GamePage2 extends JPanel {
 	
+	int countCorrect = 0;
+	
 	private Controller controller;
 
 	//size of applet
@@ -444,14 +446,16 @@ public class GamePage2 extends JPanel {
 	
 	//function to update the score
 	private int updateScore() {
+		countCorrect++;
 		return score + 50;
+		
 	}
 	
 	//function to check current level
 	private void checkLevel() {
 		
 		//if they have answered 5 questions correctly before running out of time
-		if (score == 5) {
+		if (countCorrect == 5) {
 			//move to level 2
 			level = 2;
 			//alert user they have reached level 2
@@ -460,7 +464,7 @@ public class GamePage2 extends JPanel {
 			counter = 120;
 		}
 		//if they have answered 15 questions correctly before running out of time
-		else if (score == 15) {
+		else if (countCorrect == 15) {
 			//move to level 3
 			level = 3;
 			//alert user they have reached level 2
@@ -469,16 +473,16 @@ public class GamePage2 extends JPanel {
 			counter = 120;
 		} 
 		//if they have answered 25 questions correctly before running out of time
-		else if (score == 25) {
+		else if (countCorrect == 25) {
 			//update to level 4
 			level = 4;
 			//let user they have reached level 4
 			JOptionPane.showMessageDialog(new JFrame(), "On to level 4!", "Next Level", JOptionPane.YES_NO_OPTION);
 		} 
 		//if they have answered all questions
-		else if (score == 40) {
+		else if (countCorrect == 40) {
 			//alert user they have won the game
-			JOptionPane.showMessageDialog(new JFrame(), "Congrats! You won!", "Next Level", JOptionPane.YES_NO_OPTION);
+			JOptionPane.showMessageDialog(new JFrame(), "Congrats! You won!", "You Won!", JOptionPane.YES_NO_OPTION);
 			endGame(2);
 		}
 	}
