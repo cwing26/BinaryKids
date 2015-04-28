@@ -54,7 +54,7 @@ public class GamePage2 extends JPanel {
 	JProgressBar scoreBar;
 	
 	//timer
-	private Timer timer;
+	public Timer timer;
 	
 	//Array to hold questions and answers
 	public ArrayList<String> questionArray;
@@ -198,7 +198,7 @@ public class GamePage2 extends JPanel {
 		timer = new Timer(1000, new timeListener());
 
 		//start the timer
-		timer.start();
+		//timer.start();
 		
 		//create submit button
 		Dimension buttonSize = new Dimension(100, 100);

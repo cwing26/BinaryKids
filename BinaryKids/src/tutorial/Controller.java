@@ -682,6 +682,7 @@ public class Controller extends JApplet
 		}
 		else if (key.equals("GAME")){
 			gamePage = new GamePage2(welcome);
+			gamePage.timer.start();
 			cards.add(gamePage, "GAME");
 		}
 
