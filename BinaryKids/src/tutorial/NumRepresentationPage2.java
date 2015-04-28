@@ -15,11 +15,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class NumRepresentationPage2 extends JPanel
 {
-	//images
-	private Image titleImage;
-	private Image dogImage;
-	private Image bikeImage;
-	private Image binocImage;
+	private WelcomePage welcomePage;
 	
 	//text used on screen
 	private final String explanation1 = "Binary numbers are used to count things, just like normal numbers! ";
@@ -67,13 +63,10 @@ public class NumRepresentationPage2 extends JPanel
 			
     
 	//constructor simply sets the background color
-    public NumRepresentationPage2()
+    public NumRepresentationPage2(WelcomePage welcome)
     {
-
+    	welcomePage = welcome;
     	setBackground(WelcomePage.backgroundColor);
-    	
-    	loadImages();
-    	
     	
     	setVisible(true);
     }
@@ -83,7 +76,7 @@ public class NumRepresentationPage2 extends JPanel
     { 
     	super.paint(g);
     	
-    	g.drawImage(titleImage, titleImageX, titleImageY, this);
+    	g.drawImage(welcomePage.numRep2TitleImage, titleImageX, titleImageY, this);
     	
     	g.setFont(new Font("Geneva", 1, 20));
     	
@@ -99,35 +92,14 @@ public class NumRepresentationPage2 extends JPanel
     	g.drawString(binoculars, binocularsX, binocularsY);
     	g.drawString(binoculars2, binoculars1X, binoculars1Y);
     	
-    	g.drawImage(dogImage, dogImageX, dogImageY, this);
-    	g.drawImage(bikeImage, bikeImageX, bikeImageY, this );
-    	g.drawImage(binocImage, binocImageX, binocImageY, this );
+    	g.drawImage(welcomePage.dogImage, dogImageX, dogImageY, this);
+    	g.drawImage(welcomePage.bikeImage, bikeImageX, bikeImageY, this );
+    	g.drawImage(welcomePage.binocImage, binocImageX, binocImageY, this );
     	
 
 
     }
     
-    //TRANSFER TO MAIN
-    public void loadImages()
-    {
-		titleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.whatBinaryTitlePath)); 
-		titleImage = titleImage.getScaledInstance(673, 50, Image.SCALE_SMOOTH);
-		
-		dogImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.dogBinaryImagePath)); 
-		dogImage = dogImage.getScaledInstance(121, 224, Image.SCALE_SMOOTH);
-		
-		bikeImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.bikeImagePath)); 
-		bikeImage = bikeImage.getScaledInstance(192, 124, Image.SCALE_SMOOTH);
-		
-		binocImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.binocularsPath)); 
-		binocImage = binocImage.getScaledInstance(166, 159, Image.SCALE_SMOOTH);
-	
-		
-    }
 
 
 }

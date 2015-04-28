@@ -28,10 +28,6 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
 	private int DELAY = 3000;
 	private int countAnimation = 0;
 	
-	//images
-	private Image titleImage;
-	private Image crossOutImage;
-    
 	//text used on page
     private final String explanation1 = "The same goes for binary numbers!";
     private final String explanation1cont = "Binary numbers have digits that represent different places!";
@@ -96,16 +92,17 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     private final int baseTwo1X = 340;
     private final int baseTwo0X = 540;
     
-    
+    private WelcomePage welcomePage;
     
     //constructor
-    public PreDemoBinaryPage()
+    public PreDemoBinaryPage(WelcomePage welcome)
     {
+    	welcomePage = welcome;
+    	
     	setBackground(WelcomePage.backgroundColor);
     	setLayout(null);
     	
-    	loadImages();
-    	
+
     	timer = new Timer(DELAY, this);
     	
 		
@@ -121,7 +118,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, titleImageX, titleImageY, this);
+    	g.drawImage(welcomePage.preDemoBinaryTitleImage, titleImageX, titleImageY, this);
     	
     	//strings and explanations
     	g.setColor(Color.black);
@@ -185,7 +182,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
 	    	g.drawString(number2, thirdDisplayNumX, displayNumY);
 	    	
 	    	//draws an x over the 2 to signify that we can't count to 2
-	    	g.drawImage(crossOutImage, crossOutX, crossOutY, this);
+	    	g.drawImage(welcomePage.crossOutImage, crossOutX, crossOutY, this);
 	    	
     	}
     	else if(countAnimation >= 4)
@@ -201,20 +198,6 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
     } //end paint method
     
     
-    //loads images to display
-    public void loadImages()
-    {
-    	titleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.binBasicsPath)); 
-		titleImage = titleImage.getScaledInstance(600, 50, Image.SCALE_SMOOTH);
-		
-		
-		crossOutImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.crossOutPath)); 
-		crossOutImage = crossOutImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-		
-
-    }
     
 	
     //increments as the timer progresses to determine what stage

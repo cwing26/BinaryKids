@@ -164,7 +164,7 @@ public class WelcomePage extends JApplet
 	public Image soccerBall;
 	
 	//num rep 2 images
-	public Image titleImage;
+	public Image numRep2TitleImage;
 	public Image dogImage;
 	public Image bikeImage;
 	public Image binocImage;
@@ -308,14 +308,14 @@ public class WelcomePage extends JApplet
 		contentPane = getContentPane();
 		startPage = new StartPage(this);
 		numRepresentationPage = new NumRepresentationPage(this);
-		numRepresentationPage2 = new NumRepresentationPage2();
+		numRepresentationPage2 = new NumRepresentationPage2(this);
 		firstPage = new FirstPage(this);
-		segundaPage = new SegundaPage();
-		terceraPage = new TerceraPage();
-		preDemoPage = new PreDemoPage();
-		preDemoBinaryPage = new PreDemoBinaryPage();
-		demoPage = new DemoPage();
-		demoPage2 = new DemoPage2();
+		segundaPage = new SegundaPage(this);
+		terceraPage = new TerceraPage(this);
+		preDemoPage = new PreDemoPage(this);
+		preDemoBinaryPage = new PreDemoBinaryPage(this);
+		demoPage = new DemoPage(this);
+		demoPage2 = new DemoPage2(this);
 		fourthPage = new FourthPage(this);
 		decToBinPage = new DecToBinPage(this);
 		decToBinPage2 = new DecToBinPage2(this);
@@ -392,9 +392,9 @@ public class WelcomePage extends JApplet
 		soccerBall = soccerBall.getScaledInstance(150, 151, Image.SCALE_SMOOTH);
 		
 		//num rep 2 page
-		titleImage = Toolkit.getDefaultToolkit().getImage(
+		numRep2TitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.whatBinaryTitlePath)); 
-		titleImage = titleImage.getScaledInstance(673, 50, Image.SCALE_SMOOTH);
+		numRep2TitleImage = numRep2TitleImage.getScaledInstance(673, 50, Image.SCALE_SMOOTH);
 		
 		dogImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.dogBinaryImagePath)); 

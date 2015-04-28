@@ -59,10 +59,7 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	private final String hint2 = "Start by finding the largest power of two";
 	private final String hint2cont = "smaller than this one and subtract!";
 	
-	//images
-	private Image titleImage;
-	private Image hintImage;
-	
+
 	//to connect to the controller class
 	private WelcomePage welcomePage;
 	
@@ -101,7 +98,6 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 		initComponents();
 		addComponentsToPanel();
 		positionComponents();
-		loadImages();
 		
 		populateQuestionArrays(practiceValues);
 		populateAnswerArray(practiceValues);
@@ -152,7 +148,7 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	{
 		super.paint(g);
 		
-		g.drawImage(titleImage, titleImageX, titleImageY, this);
+		g.drawImage(welcomePage.practiceProblemTitleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(WelcomePage.textColor);
     	g.setFont(new Font("Geneva", 1, 20));
@@ -169,7 +165,7 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
     	
     	if(hintClicked)
     	{
-    		g.drawImage(hintImage, hintImageX, hintImageY, this);
+    		g.drawImage(welcomePage.hintImage, hintImageX, hintImageY, this);
     		g.setColor(WelcomePage.textColor);
         	g.setFont(new Font("Geneva", 1, 12));
         	g.drawString(hint, hintImageX, hintTextY);
@@ -184,19 +180,7 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	} //end paint
 	
 	
-	//loads images to be displayed on screen
-	@Override
-	public void loadImages()
-	{
-		titleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.decPracticeProblemPath)); 
-		titleImage = titleImage.getScaledInstance(790, 40, Image.SCALE_SMOOTH);
-		
-		hintImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.hintGraphicPath)); 
-		hintImage = hintImage.getScaledInstance(331,147, Image.SCALE_SMOOTH);
-		
-	}
+
 	
 	//generates random numbers of reasonable difficulty
 	//to be stored in the question array

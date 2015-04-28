@@ -28,9 +28,6 @@ public class DemoPage2 extends JPanel implements ActionListener
 	private Font labelFont = new Font("Geneva", 1, 15);
 	private Font subheadFont = new Font("Geneva", 1, 30);
    
-	//images
-	private Image titleImage;
-	
 	//text used on screen
 	private final String explanation1 = "Counting with decimal numbers and binary numbers is the same!";
 	private final String explanation1cont = "Just add the sum of all digits based on what place they are.";
@@ -134,15 +131,15 @@ public class DemoPage2 extends JPanel implements ActionListener
     
     private final int rectY = 195;
     
-    
+    private WelcomePage welcomePage;
     
     //constructor
-    public DemoPage2()
+    public DemoPage2(WelcomePage welcome)
     {
-
+    	welcomePage = welcome;
+    	
     	setBackground(WelcomePage.backgroundColor);
     	
-    	loadImages();
 
     	setVisible(true);
     	
@@ -152,15 +149,6 @@ public class DemoPage2 extends JPanel implements ActionListener
 
     }
     
-    
-    //loads images necessary for page
-    public void loadImages()
-    {
-    	titleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.puttingTogetherPath)); 
-		titleImage = titleImage.getScaledInstance(680, 60, Image.SCALE_SMOOTH);
-
-    }
     
     
     //displays all digits making up binary number through animation
@@ -403,7 +391,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, titleImageX, titleImageY, this);
+    	g.drawImage(welcomePage.demo2TitleImage, titleImageX, titleImageY, this);
     	
     	//numbers, place labels, and explanatory text
     	//displayed throughout animation

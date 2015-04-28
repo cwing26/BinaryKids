@@ -15,9 +15,6 @@ public interface PracticeProblem
 	//a text field, submit button, hint button
 	void initComponents();
 	
-	//loads requisite images for each practice problem, including
-	//a title and a hint graphic
-	void loadImages();
 	
 	//populated question arrays with either decimal
 	//or binary numbers

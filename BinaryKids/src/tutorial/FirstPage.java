@@ -80,15 +80,6 @@ public class FirstPage extends JPanel
 	private boolean instagram = false;
 	private boolean cellPhone = false;
 	
-	//images
-	private Image titleImage;
-	private Image instagramImage;
-	private Image fbImage;
-	private Image emailImage;
-	private Image youtubeImage;
-	private Image skypeImage;
-	private Image cellImage;
-	private Image gameImage;
 	
 	//locations of components on screen
 	private final int checkPanelX = 100;
@@ -138,8 +129,7 @@ public class FirstPage extends JPanel
     	initComponents();
     	addComponentsToPanel();
     	formatComponents();
-  
-    	loadImages();
+ 
     	
     	setVisible(true);
     	
@@ -244,7 +234,7 @@ public class FirstPage extends JPanel
     { 
     	super.paint(g);
     	
-    	g.drawImage(titleImage, titleImageX, titleImageY, this);
+    	g.drawImage(welcomePage.firstPageTitleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
@@ -253,74 +243,36 @@ public class FirstPage extends JPanel
     	
     	if(instagram)
     	{
-    		g.drawImage(instagramImage, instaX, instaY, this);
+    		g.drawImage(welcomePage.instagramImage, instaX, instaY, this);
     	}
     	if(fb)
     	{
-    		g.drawImage(fbImage, fbX, fbY, this);
+    		g.drawImage(welcomePage.fbImage, fbX, fbY, this);
     	}
     	if(youtube)
     	{
-    		g.drawImage(youtubeImage, youtubeX, youtubeY, this);
+    		g.drawImage(welcomePage.youtubeImage, youtubeX, youtubeY, this);
     	}
     	if(email)
     	{
-    		g.drawImage(emailImage, emailX, emailY, this);
+    		g.drawImage(welcomePage.emailImage, emailX, emailY, this);
     	}
     	if(game)
     	{
-    		g.drawImage(gameImage, gameX, gameY, this);
+    		g.drawImage(welcomePage.gameImage, gameX, gameY, this);
     	}
     	if(cellPhone)
     	{
-    		g.drawImage(cellImage, cellX, cellY, this);
+    		g.drawImage(welcomePage.cellImage, cellX, cellY, this);
     	}
     	if(skype)
     	{
-    		g.drawImage(skypeImage, skypeX, skypeY, this);
+    		g.drawImage(welcomePage.skypeImage, skypeX, skypeY, this);
     	}
     	
 
     }
     
-    //MOVE TO WELCOME PAGE
-    public void loadImages()
-    {
-    	titleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.whyBinaryImportantTitlePath)); 
-		titleImage = titleImage.getScaledInstance(790, 43, Image.SCALE_SMOOTH);
-		
-		
-		instagramImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.instagramPath)); 
-		instagramImage = instagramImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		
-		fbImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.fbPath)); 
-		fbImage = fbImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		
-		youtubeImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.youtubePath)); 
-		youtubeImage = youtubeImage.getScaledInstance(150, 160, Image.SCALE_SMOOTH);
-		
-		emailImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.emailPath)); 
-		emailImage = emailImage.getScaledInstance(160, 116, Image.SCALE_SMOOTH);
-		
-		cellImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.cellPath)); 
-		cellImage = cellImage.getScaledInstance(152, 152, Image.SCALE_SMOOTH);
-		
-		skypeImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.skypePath)); 
-		skypeImage = skypeImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		
-		gameImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.gamePath)); 
-		gameImage = gameImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		
-
-    }
     
     //this listener tells the paint method when a certain checkbox
     //has been selected or deselected, and whether to paint the corresponding image

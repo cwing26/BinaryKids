@@ -27,10 +27,6 @@ public class TerceraPage extends JPanel implements ActionListener
 	private int DELAY = 2000;
 	private int countAnimation = 0;
 	
-	//images
-	private Image titleImage;
-	private Image binaryDigitImage;
-	
     //text used on screen
     private final String explanation1 = "Combined, these numbers tell devices, like the computer you're on now,";
     private final String explanation1cont = "what to do and when to do it!";
@@ -85,10 +81,12 @@ public class TerceraPage extends JPanel implements ActionListener
     private final int finalIXcoord = 200;
     private final int finalTXcoord = 230;
     
+    private WelcomePage welcomePage;
+    
     //constructor
-    public TerceraPage()
+    public TerceraPage(WelcomePage welcome)
     {
-    	loadImages();
+    	welcomePage = welcome;
     	
     	timer = new Timer(DELAY, this);
     	setBackground(WelcomePage.backgroundColor);
@@ -103,7 +101,7 @@ public class TerceraPage extends JPanel implements ActionListener
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, titleImageX, titleImageY, this);
+    	g.drawImage(welcomePage.thirdPageTitleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
@@ -111,7 +109,7 @@ public class TerceraPage extends JPanel implements ActionListener
     	g.drawString(explanation1cont, explanationX, explanation1contY);
     	
     	g.drawString(explanation2, explanationX, explanation2Y);
-    	g.drawImage(binaryDigitImage, binaryImageX, binaryImageY, this);
+    	g.drawImage(welcomePage.binaryDigitImage, binaryImageX, binaryImageY, this);
     	
     	g.drawString(explanation3, explanationX, explanation3Y);
     	g.drawString(explanation3cont, explanationX, explanation3contY);
@@ -188,17 +186,6 @@ public class TerceraPage extends JPanel implements ActionListener
     } //end paint
     
     
-    public void loadImages()
-    {
-    	titleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.whyBinaryImportantTitlePath)); 
-		titleImage = titleImage.getScaledInstance(790, 43, Image.SCALE_SMOOTH);
-	
-		binaryDigitImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.binaryDigitPath)); 
-		binaryDigitImage = binaryDigitImage.getScaledInstance(150, 157, Image.SCALE_SMOOTH);
-
-    }
     
     //keeps track of the stage of animation to tell the 
     //paint method what to display

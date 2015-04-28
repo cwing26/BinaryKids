@@ -31,11 +31,6 @@ public class PreDemoPage extends JPanel implements ActionListener
 	private int DELAY = 3000;
 	private int countAnimation = 0;
 	
-	//images
-	private Image titleImage;
-	private Image crossOutImage;
-    
-    
 	//text used on screen and in animation
 	private final String explanation1 = "Decimal numbers have digits that represent different places!";
     private final String explanation1cont = "Each digit represents a power of 10, from small to large";
@@ -100,12 +95,12 @@ public class PreDemoPage extends JPanel implements ActionListener
     private final int crossOutX = 500;
     private final int crossOutY = 150;
     
+    private WelcomePage welcomePage;
     //constructor
-    public PreDemoPage()
+    public PreDemoPage(WelcomePage welcome)
     {
-
-    	loadImages();
-
+    	welcomePage = welcome;
+    	
     	setBackground(WelcomePage.backgroundColor);
     	
     	timer = new Timer(DELAY, this);
@@ -121,7 +116,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, titleImageX, titleImageY, this);
+    	g.drawImage(welcomePage.preDemoTitleImage, titleImageX, titleImageY, this);
     	
     	//strings and explanations
     	g.setColor(Color.black);
@@ -186,7 +181,7 @@ public class PreDemoPage extends JPanel implements ActionListener
 	    	g.drawString(number10, thirdDisplayNumX, displayNumY);
 	    	
 	    	//draws an x over the 10 to signify that we can't count to 10
-	    	g.drawImage(crossOutImage, crossOutX, crossOutY, this);
+	    	g.drawImage(welcomePage.crossOutImage, crossOutX, crossOutY, this);
 	    	
     	}
     	//final number count
@@ -202,21 +197,7 @@ public class PreDemoPage extends JPanel implements ActionListener
 
     } //end paint method
     
-    //loads images to display
-    public void loadImages()
-    {
-    	titleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.decBasicsPath)); 
-		titleImage = titleImage.getScaledInstance(650, 40, Image.SCALE_SMOOTH);
-		
-		
-		crossOutImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.crossOutPath)); 
-		crossOutImage = crossOutImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-
-    }
     
-	
     //increments as the timer progresses to determine what stage
     //of animation the page is in
 	@Override

@@ -23,17 +23,6 @@ import java.awt.Toolkit;
 @SuppressWarnings("serial")
 public class SegundaPage extends JPanel
 {
-	//images
-	private Image titleImage;
-	private Image instagramImage;
-	private Image fbImage;
-	private Image emailImage;
-	private Image youtubeImage;
-	private Image skypeImage;
-	private Image cellImage;
-	private Image gameImage;
-	private Image lightOff;
-	private Image lightOn;
 
     //text on page
     private final String explanation1 = "Actually, none of these would exist without binary numbers!";
@@ -93,12 +82,13 @@ public class SegundaPage extends JPanel
 	private final int lightX = 460;
 	private final int lightY = 370;
 	
+	WelcomePage welcomePage;
 	
 	//constructor
-    public SegundaPage()
+    public SegundaPage(WelcomePage welcome)
     {
+    	welcomePage = welcome;
     	
-    	loadImages();
     	initComponents();
     	addComponentsToPanel();
     	formatComponents();
@@ -115,19 +105,19 @@ public class SegundaPage extends JPanel
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, titleImageX, titleImageY, this);
+    	g.drawImage(welcomePage.titleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
     	g.drawString(explanation1, textX, ex1Y);
     	
-    	g.drawImage(instagramImage, instaX, thumbnailY, this);
-    	g.drawImage(fbImage, fbX, thumbnailY, this);
-    	g.drawImage(youtubeImage, youtubeX, thumbnailY, this);
-    	g.drawImage(emailImage, emailX, thumbnailY, this);
-    	g.drawImage(cellImage, cellX, thumbnailY, this);
-    	g.drawImage(gameImage, gameX, thumbnailY, this);
-    	g.drawImage(skypeImage, skypeX, thumbnailY, this);
+    	g.drawImage(welcomePage.instagramImage, instaX, thumbnailY, this);
+    	g.drawImage(welcomePage.fbImage, fbX, thumbnailY, this);
+    	g.drawImage(welcomePage.youtubeImage, youtubeX, thumbnailY, this);
+    	g.drawImage(welcomePage.emailImage, emailX, thumbnailY, this);
+    	g.drawImage(welcomePage.cellImage, cellX, thumbnailY, this);
+    	g.drawImage(welcomePage.gameImage, gameX, thumbnailY, this);
+    	g.drawImage(welcomePage.skypeImage, skypeX, thumbnailY, this);
     	
     	
     	g.setFont(new Font("Geneva", 1, 25));
@@ -145,60 +135,15 @@ public class SegundaPage extends JPanel
     	
     	if(oneClicked)
 		{
-			g.drawImage(lightOn, lightX, lightY, this);
+			g.drawImage(welcomePage.lightOn, lightX, lightY, this);
 		}
 		else
 		{
-			g.drawImage(lightOff, lightX, lightY, this);
+			g.drawImage(welcomePage.lightOff, lightX, lightY, this);
 		}
     		
     }
     
-    public void loadImages()
-    {
-    	titleImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.whyBinaryImportantTitlePath)); 
-		titleImage = titleImage.getScaledInstance(790, 43, Image.SCALE_SMOOTH);
-		
-		
-		instagramImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.instagramPath)); 
-		instagramImage = instagramImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
-		
-		fbImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.fbPath)); 
-		fbImage = fbImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
-		
-		youtubeImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.youtubePath)); 
-		youtubeImage = youtubeImage.getScaledInstance(95, 96, Image.SCALE_SMOOTH);
-		
-		emailImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.emailPath)); 
-		emailImage = emailImage.getScaledInstance(95, 69, Image.SCALE_SMOOTH);
-		
-		cellImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.cellPath)); 
-		cellImage = cellImage.getScaledInstance(92, 92, Image.SCALE_SMOOTH);
-		
-		skypeImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.skypePath)); 
-		skypeImage = skypeImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
-		
-		gameImage = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.gamePath)); 
-		gameImage = gameImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
-		
-		lightOff = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.lightOffPath)); 
-		lightOff = lightOff.getScaledInstance(145, 200, Image.SCALE_SMOOTH);
-		
-		lightOn = Toolkit.getDefaultToolkit().getImage(
-				getClass().getClassLoader().getResource(WelcomePage.lightOnPath)); 
-		lightOn = lightOn.getScaledInstance(148, 200, Image.SCALE_SMOOTH);
-
-
-    }
     
     //adds all swing components to the panel
     public void addComponentsToPanel()
