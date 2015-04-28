@@ -683,6 +683,7 @@ public class Controller extends JApplet
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
+			pageFlag = 0;
 			startPage = new StartPage(welcome);
 			notOnStartScreen = false;
 			inTutorial = false;
@@ -740,6 +741,10 @@ public class Controller extends JApplet
 			else{
 				backButton.setVisible(true);
 			}
+
+
+			//animation pages need to be added to the card layout
+			//here if they haven’t been already. 
 
 		} //end action performed
 
