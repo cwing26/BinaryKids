@@ -347,7 +347,7 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	{
 		public void actionPerformed(ActionEvent e) 
 		{			
-			welcomePage.loadFourth();
+			welcomePage.loadCard("FOURTH");
 
 		} //end action performed
 	} //end button listener

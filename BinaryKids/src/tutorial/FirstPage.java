@@ -393,7 +393,7 @@ public class FirstPage extends JPanel
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			welcomePage.loadSegundaPage();
+			welcomePage.loadCard("SEGUNDA");
 			repaint();
 		}
 	}

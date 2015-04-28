@@ -122,7 +122,7 @@ public class DecToBinPage extends JPanel
 			//verify input against correct answer, if correct load next page
 			DecToBinNumSquaresInput = answerField.getText();
 			if (DecToBinNumSquaresInput.equals(DecToBinNumSquaresActual)){
-				welcomePage.loadDecBin2();
+				welcomePage.loadCard("DEC BIN PAGE 2");
 			}
 			//if incorrect, display error message and reset textfield
 			else{

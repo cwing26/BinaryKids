@@ -85,7 +85,7 @@ public class BinaryDecimalFour extends JPanel
 	{
 		public void actionPerformed(ActionEvent le) {
 			welcomePage.setCompletedBinDec();
-			welcomePage.loadFourth();
+			welcomePage.loadCard("FOURTH");
 		} 
 	}
 
@@ -93,7 +93,7 @@ public class BinaryDecimalFour extends JPanel
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
-			welcomePage.loadBinDecPracticeProblems();
+			welcomePage.loadCard("BIN DEC PAGE 5");
 			welcomePage.setCompletedBinDec();
 		} 
 	}

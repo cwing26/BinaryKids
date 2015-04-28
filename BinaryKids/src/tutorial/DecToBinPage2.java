@@ -176,7 +176,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 			numOnesInput = NumberOnesField.getText();
 
 			if (numTensInput.equals(numTensActual) && numOnesInput.equals(numOnesActual)){
-				welcomePage.loadDecBin3();
+				welcomePage.loadCard("DEC BIN PAGE 3");
 			}
 			else{
 				String errorMessage = "Wrong answer, try again!";

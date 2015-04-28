@@ -40,7 +40,7 @@ public class DecToBinPage4 extends JPanel
 	{
 		public void actionPerformed(ActionEvent le) {  
 			welcomePage.setCompletedDecBin();
-			welcomePage.loadFourth();
+			welcomePage.loadCard("FOURTH");
 
 		} 
 	}

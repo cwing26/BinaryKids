@@ -108,11 +108,11 @@ public class FourthPage extends JPanel
 		{
 			if(e.getSource() == decBinButton)
 			{
-				welcomePage.decToBinTutorial();
+				welcomePage.loadCard("DEC BIN PAGE 1");
 			}
 			else if(e.getSource() == binDecButton)
 			{
-				welcomePage.binToDecTutorial();
+				welcomePage.loadCard("BIN DEC PAGE 1");
 
 			}
 			else if (e.getSource() == backgroundButton){

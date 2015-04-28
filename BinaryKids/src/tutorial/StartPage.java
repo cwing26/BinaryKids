@@ -79,7 +79,7 @@ public class StartPage extends JPanel
 			//nameEntered = true;
 			welcomePage.pageFlag++;
 			welcomePage.backButton.setVisible(true);
-			welcomePage.loadNumRep1();
+			welcomePage.loadCard("NUM REP 1");
 			repaint();
 			
 		}

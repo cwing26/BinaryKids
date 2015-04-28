@@ -79,7 +79,6 @@ public class WelcomePage extends JApplet
 
 	Container contentPane;
 
-	private String userName = "";
 	private String userAnswer = "";
 
 	public static String titlePath = "images/titleTextImage.jpg";
@@ -186,35 +185,35 @@ public class WelcomePage extends JApplet
 		createButtonPanel();
 
 		//initializaing all of the components of the tutorial
-		cards = new JPanel(new CardLayout());
-		contentPane = getContentPane();
+		initComponents();
+		
+		//adds components
+		addComponents();
 
+		//Create and set up the content pane.
+		setupLayout();
+		
+		setVisible(true);
 
-		startPage = new StartPage(this);
+	}  
+	
+	public void setupLayout(){
+		setLayout(new BorderLayout()); 
+		add(cards, BorderLayout.CENTER);
+		cardLayout = (CardLayout)(cards.getLayout());
+		//cardLayout.show(cards, "FOURTH");
+		cardLayout.show(cards, "START PAGE");  //here
 
-		numRepresentationPage = new NumRepresentationPage(this);
-		numRepresentationPage2 = new NumRepresentationPage2();
-		firstPage = new FirstPage(this);
-		segundaPage = new SegundaPage();
-		terceraPage = new TerceraPage();
-		preDemoPage = new PreDemoPage();
-		preDemoBinaryPage = new PreDemoBinaryPage();
-		demoPage = new DemoPage();
-		demoPage2 = new DemoPage2();
-		fourthPage = new FourthPage(this);
-		decToBinPage = new DecToBinPage(this);
-		decToBinPage2 = new DecToBinPage2(this);
-		decToBinPage3 = new DecToBinPage3(this);
-		decToBinPage4 = new DecToBinPage4(this);
-		decToBinPractice = new DecimalToBinaryPractice(this);
-		bdOne = new BinaryDecimalOne(this);
-		bdTwo = new BinaryDecimalTwo(this);
-		bdThree = new BinaryDecimalThree(this);
-		bdFour = new BinaryDecimalFour(this);
-		bdPractice = new BinaryToDecimalPractice(this);
-		//gamePage = new GamePage2(this);
+		//add buttonPanel to the top of game frame
+		add(buttonPanel, BorderLayout.NORTH);
 
-
+		// Setup the applet
+		getContentPane().setBackground(backgroundColor);
+		setName("BinaryKids");
+		setSize(frameWidth, frameHeight);
+	}
+	
+	public void addComponents(){
 		cards.add(startPage, "START PAGE");
 		cards.add(numRepresentationPage, "NUM REP 1");
 		cards.add(numRepresentationPage2, "NUM REP 2");
@@ -237,29 +236,34 @@ public class WelcomePage extends JApplet
 		cards.add(bdFour, "BIN DEC PAGE 4");
 		cards.add(bdPractice, "BIN DEC PAGE 5");
 		//cards.add(gamePage, "GAME");
-
-
-
-		//Create and set up the content pane.
-		setLayout(new BorderLayout()); 
-		add(cards, BorderLayout.CENTER);
-		cardLayout = (CardLayout)(cards.getLayout());
-		//cardLayout.show(cards, "FOURTH");
-		cardLayout.show(cards, "START PAGE");  //here
-
-		//add buttonPanel to the top of game frame
-		add(buttonPanel, BorderLayout.NORTH);
-
-
-
-
-		// Setup the applet
-		getContentPane().setBackground(backgroundColor);
-		setName("BinaryKids");
-		setSize(frameWidth, frameHeight);
-		setVisible(true);
-
-	}  
+	}
+	
+	public void initComponents(){
+		cards = new JPanel(new CardLayout());
+		contentPane = getContentPane();
+		startPage = new StartPage(this);
+		numRepresentationPage = new NumRepresentationPage(this);
+		numRepresentationPage2 = new NumRepresentationPage2();
+		firstPage = new FirstPage(this);
+		segundaPage = new SegundaPage();
+		terceraPage = new TerceraPage();
+		preDemoPage = new PreDemoPage();
+		preDemoBinaryPage = new PreDemoBinaryPage();
+		demoPage = new DemoPage();
+		demoPage2 = new DemoPage2();
+		fourthPage = new FourthPage(this);
+		decToBinPage = new DecToBinPage(this);
+		decToBinPage2 = new DecToBinPage2(this);
+		decToBinPage3 = new DecToBinPage3(this);
+		decToBinPage4 = new DecToBinPage4(this);
+		decToBinPractice = new DecimalToBinaryPractice(this);
+		bdOne = new BinaryDecimalOne(this);
+		bdTwo = new BinaryDecimalTwo(this);
+		bdThree = new BinaryDecimalThree(this);
+		bdFour = new BinaryDecimalFour(this);
+		bdPractice = new BinaryToDecimalPractice(this);
+		//gamePage = new GamePage2(this);
+	}
 
 	public void loadImages(){
 
@@ -311,6 +315,7 @@ public class WelcomePage extends JApplet
 		};
 		binaryGraphic = binaryGraphic.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
 	}
+	
 	public void setCompletedDecBin(){
 		fourthPage.completedDecBin = true;
 		repaint();
@@ -333,16 +338,13 @@ public class WelcomePage extends JApplet
 		tutorialButton = new JButton("Tutorials");
 		tutorialButton.addActionListener(new tutorialButtonListener());
 
-//		gameButton = new JButton("Play Game");
-//		gameButton.addActionListener(new gameButtonListener());
-
 		backButton = new JButton("BACK");
 		backButton.addActionListener(new backButtonListener());
 
 		backToHomeButton = new JButton("Back to Home");
 		backToHomeButton.addActionListener(new backHomeButtonListener());
 
-		//buttons panel that holds close button
+		//add buttons to a panel
 		buttonPanel = new JPanel();
 		buttonPanel.setBackground(WelcomePage.buttonPanelColor);
 		buttonPanel.add(backToHomeButton);
@@ -358,12 +360,6 @@ public class WelcomePage extends JApplet
 	public void paint(Graphics g) 
 	{     	
 		super.paint(g);
-		
-		
-//		if (inTutorial || pageFlag ==0 ){
-//			backButton.setVisible(false);
-//			nextButton.setVisible(false);
-//		}
 
 	}
 
@@ -395,68 +391,35 @@ public class WelcomePage extends JApplet
 		}
 	}
 
-
-	public void loadFourth(){
-		//fourthPage = new FourthPage(welcome);
-		cardLayout.show(cards, "FOURTH");
-		invalidate();
-		validate();
-		setVisible(true);
-		repaint();
-	}
-	
-	public void loadDecBin2()
-	{
-		decToBinPage2 = new DecToBinPage2(welcome);
-		cardLayout.show(cards, "DEC BIN PAGE 2");
-		invalidate();
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-	public void loadDecBin3()
-	{
-		decToBinPage3 = new DecToBinPage3(welcome);
-		cardLayout.show(cards, "DEC BIN PAGE 3");
-		invalidate();
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-	public void loadDecBin4()
-	{
-		contentPane.remove(decToBinPage3);
-		decToBinPage4 = new DecToBinPage4(welcome);
-		cardLayout.show(cards, "DEC BIN PAGE 4");
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-
-
-	public void decToBinTutorial()
-	{
-		inTutorial = true;
-		decToBinPage = new DecToBinPage(welcome);
-		cardLayout.show(cards, "DEC BIN PAGE 1");
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-	public void binToDecTutorial()
-	{
+	public void loadCard(String key){
+		if (key.equals("DEC BIN PAGE 1")){
+			decToBinPage = new DecToBinPage(welcome);
+		}
+		else if (key.equals("DEC BIN PAGE 2")){
+			decToBinPage2 = new DecToBinPage2(welcome);
+		}
+		else if (key.equals("DEC BIN PAGE 3")){
+			decToBinPage3 = new DecToBinPage3(welcome);
+		}
+		else if (key.equals("DEC BIN PAGE 4")){
+			decToBinPage4 = new DecToBinPage4(welcome);
+		}
+		else if (key.equals("BIN DEC PAGE 1")){
+			bdOne = new BinaryDecimalOne(welcome);
+		}
+		else if (key.equals("BIN DEC PAGE 2")){
+			bdTwo = new BinaryDecimalTwo(welcome);
+		}
 		
-		bdOne = new BinaryDecimalOne(welcome);
-		cardLayout.show(cards, "BIN DEC PAGE 1");
-		inTutorial = true;
+		cardLayout.show(cards, key);
+		invalidate();
 		validate();
 		setVisible(true);
 		repaint();
 	}
+
+
+
 
 	public void loadBinToDec2()
 	{
@@ -485,68 +448,10 @@ public class WelcomePage extends JApplet
 		setVisible(true);
 		repaint();
 	}
-	
-	public void loadBinDecPracticeProblems(){
-		cardLayout.show(cards, "BIN DEC PAGE 5");
-		validate();
-		setVisible(true);
-		repaint();
-	}
 
-	public void loadNumRep1(){
-		cardLayout.show(cards, "NUM REP 1");
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-	public void loadNumRep2(){
-		cardLayout.show(cards, "NUM REP 2");
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-	public void loadNumRep3(){
-		cardLayout.show(cards, "NUM REP 3");
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-	public void loadSegundaPage(){
-		cardLayout.show(cards, "SEGUNDA");
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-	public void loadTerceraPage(){
-		cardLayout.show(cards, "TERCERA");
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-	public void loadCard(String page){
-		cardLayout.show(cards, page);
-		validate();
-		setVisible(true);
-		repaint();
-	}
 	
 	public void loadDecBinPracticeProblems(){
 		cardLayout.show(cards, "DEC BIN PAGE 5");
-	}
-
-	public void setUserName(String name)
-	{
-		userName = name;
-	}
-
-	public String getUserName()
-	{
-		return userName;
 	}
 
 
