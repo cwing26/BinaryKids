@@ -23,7 +23,7 @@ import java.awt.Toolkit;
 public class TerceraPage extends JPanel implements ActionListener
 {
     //timer components to handle animations
-	private Timer timer;
+	public Timer timer;
 	private int DELAY = 2000;
 	private int countAnimation = 0;
 	

@@ -24,7 +24,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
 	private Font labelFont = new Font("Geneva", 1, 15);
 	
 	//timer handles animation and delay
-	private Timer timer;
+	public Timer timer;
 	private int DELAY = 3000;
 	private int countAnimation = 0;
 	

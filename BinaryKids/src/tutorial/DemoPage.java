@@ -53,7 +53,7 @@ public class DemoPage extends JPanel implements ActionListener
     
     
     //timer handles animation and delay
-	private Timer timer;
+	public Timer timer;
 	private int DELAY = 3000;
 	private int countAnimation = 0;
 	

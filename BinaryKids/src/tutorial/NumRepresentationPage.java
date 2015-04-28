@@ -71,7 +71,7 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	private Controller controller; //to connect welcome page to individual pages 
 	
 	//handles animation on a 3 second delay
-	private Timer timer;
+	public Timer timer;
 	private int DELAY = 3000;
 	int countAnimation = 0;
 
