@@ -134,8 +134,8 @@ public class GameWelcomePage extends JPanel {
 		super.paint(g);
 		
 		//draw top banner (two images) to jpanel
-		g.drawImage(controller.binaryBlastImage, 50, 50, this);
-		g.drawImage(controller.rocketshipImage, 550, 50, this);
+		g.drawImage(controller.binaryBlastImage, 130, 50, this);
+		g.drawImage(controller.rocketshipImage, 630, 50, this);
 	}
 	
 	

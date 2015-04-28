@@ -152,7 +152,7 @@ public class Controller extends JApplet
 	public static String gameInstructionsPath = "images/instructButton.png";
 	public static String gamePlayPath = "images/playButton.png";
 	public static String gameRocketPath = "images/rocketship.jpg";
-	public static String binaryBlastPath = “images/binaryblast.jpg”;
+	public static String binaryBlastPath = "images/binaryblast.jpg";
 
 	//chris images
 	public Image titleImg;  //http://www.cs.colostate.edu/~boese/Geek/binaryCalculator.gif
@@ -569,7 +569,7 @@ public class Controller extends JApplet
 
 		binaryBlastImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.binaryBlastPath)); 
-		binaryBlasImage  = binaryBlastImage.getScaledInstance(485,73, Image.SCALE_SMOOTH);
+		binaryBlastImage  = binaryBlastImage.getScaledInstance(485,73, Image.SCALE_SMOOTH);
 
 
 
