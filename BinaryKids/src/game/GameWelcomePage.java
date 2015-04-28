@@ -1,26 +1,14 @@
 package game;
 
 import java.awt.Color;
-import java.awt.Container;
 import java.awt.Dimension;
 import java.awt.Graphics;
-import java.awt.GridLayout;
-import java.awt.Image;
 import java.awt.Insets;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-import java.awt.image.BufferedImage;
-import java.io.File;
-import java.io.IOException;
-
-import javax.imageio.ImageIO;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
-
-
-
-
 import tutorial.Controller;
 
 @SuppressWarnings("serial")
@@ -87,7 +75,7 @@ public class GameWelcomePage extends JPanel {
 		//create start button
 		startButton = new JButton("Play!");
 		//add image to start button
-		startButton.setIcon(controller.playButtonImage);
+		startButton.setIcon(new ImageIcon(controller.playButtonImage));
 		
 		//re-format button so only image is visible
 		hideButton(startButton);
@@ -97,13 +85,14 @@ public class GameWelcomePage extends JPanel {
 		
 		//add start button to panel at specified location
 		startButton.setBounds(x-size.width/2 + insets.left, (y*2) + insets.top, size.width, size.height);
+		
 		//add listener for start button
 		startButton.addActionListener(new startButtonListener());		
 		
 		//create instructions button
 		instructButton = new JButton("How to play");
 		//set image for instructions button
-		instructButton.setIcon(controller.gameInstructionsButtonImage);
+		instructButton.setIcon(new ImageIcon(controller.gameInstructionsButtonImage));
 		//add instructions button to jpanel at specified location
 		instructButton.setBounds(x-size.width/2 + insets.left, (y*4)+ insets.top, size.width, size.height);
 		//add listener for instructions button
@@ -143,7 +132,6 @@ public class GameWelcomePage extends JPanel {
 		public void actionPerformed(ActionEvent e) 
 		{
 			//if start button is clicked, start the game
-			controller.loadGame();
 			controller.loadCard("GAME");
 		}
 	}

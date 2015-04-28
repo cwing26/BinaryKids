@@ -186,9 +186,9 @@ public class GamePage2 extends JPanel {
 	
 	public void loadImages() 
 	{
-		zeroCard = new ImageIcon("C:\\Users\\Julia\\Desktop\\myZero.png");
-		oneCard = new ImageIcon("C:\\Users\\Julia\\Desktop\\myOne.png");
-		submitPic = new ImageIcon("C:\\Users\\Julia\\Desktop\\submitalso.png");
+		zeroCard = new ImageIcon(controller.game0ButtonImage);
+		oneCard = new ImageIcon(controller.game1ButtonImage);
+		submitPic = new ImageIcon(controller.submitButtonImage);
 	}
 	
 	//initialize variables to starting values

@@ -231,8 +231,6 @@ public class Controller extends JApplet
 	public Image playButtonImage;
 	public Image submitButtonImage;
 	public Image rocketshipImage;
-	
-
 
 	//Called when this applet is loaded into the browser.
 	public void init() 
@@ -285,8 +283,8 @@ public class Controller extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		//cardLayout.show(cards, "FOURTH");
-		cardLayout.show(cards, "START PAGE");  //here
+		cardLayout.show(cards, "FOURTH");
+		//cardLayout.show(cards, "START PAGE");  //here
 
 		//add buttonPanel to the top of game frame
 		add(buttonPanel, BorderLayout.NORTH);
@@ -358,9 +356,6 @@ public class Controller extends JApplet
 				getClass().getClassLoader().getResource(Controller.titleImagePath));
 		titleImg = titleImg.getScaledInstance(550, 300, Image.SCALE_SMOOTH);
 
-//		titleTextImg = Toolkit.getDefaultToolkit().getImage(
-//				getClass().getClassLoader().getResource(Controller.titleImagePath));  //here
-//		titleTextImg = titleTextImg.getScaledInstance(700, 40, Image.SCALE_SMOOTH);
 		decBinHeadlineImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.binDecPg3TitleImagePath));  
 		decBinHeadlineImg = decBinHeadlineImg.getScaledInstance(650, 50, Image.SCALE_SMOOTH);
@@ -565,6 +560,7 @@ public class Controller extends JApplet
 		rocketshipImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.gameRocketPath)); 
 		rocketshipImage  = rocketshipImage.getScaledInstance(50,50, Image.SCALE_SMOOTH);
+
 
 
 		//try to load the image file
