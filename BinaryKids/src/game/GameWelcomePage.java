@@ -14,9 +14,11 @@ import java.io.File;
 import java.io.IOException;
 
 import javax.imageio.ImageIO;
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
+
 
 
 
@@ -87,7 +89,7 @@ public class GameWelcomePage extends JPanel {
 		//create start button
 		startButton = new JButton("Play!");
 		//add image to start button
-		startButton.setIcon(controller.playButtonImage);
+		startButton.setIcon((Icon) controller.playButtonImage);
 		
 		//re-format button so only image is visible
 		hideButton(startButton);
@@ -103,7 +105,7 @@ public class GameWelcomePage extends JPanel {
 		//create instructions button
 		instructButton = new JButton("How to play");
 		//set image for instructions button
-		instructButton.setIcon(controller.gameInstructionsButtonImage);
+		instructButton.setIcon((Icon) controller.gameInstructionsButtonImage);
 		//add instructions button to jpanel at specified location
 		instructButton.setBounds(x-size.width/2 + insets.left, (y*4)+ insets.top, size.width, size.height);
 		//add listener for instructions button
