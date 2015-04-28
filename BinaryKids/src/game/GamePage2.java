@@ -69,10 +69,10 @@ public class GamePage2 extends JPanel {
 	JButton thirtytwo;
 	JButton sixtyfour;
 	
-	//images to set as background for buttons
-	ImageIcon zeroCard;
-	ImageIcon oneCard;
-	ImageIcon submitPic;
+//	//images to set as background for buttons
+//	ImageIcon zeroCard;
+//	ImageIcon oneCard;
+//	ImageIcon submitPic;
 	
 	//button to submit answer for review
 	JButton submitButton;
@@ -179,13 +179,13 @@ public class GamePage2 extends JPanel {
 		
 	}
 	
-
-	public void loadImages() 
-	{
-		zeroCard = new ImageIcon(controller.game0ButtonImage);
-		oneCard = new ImageIcon(controller.game1ButtonImage);
-		submitPic = new ImageIcon(controller.submitButtonImage);
-	}
+//
+//	public void loadImages() 
+//	{
+//		zeroCard = new ImageIcon(controller.game0ButtonImage);
+//		oneCard = new ImageIcon(controller.game1ButtonImage);
+//		submitPic = new ImageIcon(controller.submitButtonImage);
+//	}
 
 	
 	//initialize variables to starting values
@@ -216,7 +216,7 @@ public class GamePage2 extends JPanel {
 		//create submit button
 		Dimension buttonSize = new Dimension(100, 100);
 		submitButton = new JButton("Submit");
-		submitButton.setIcon((Icon) controller.submitButtonImage);
+		submitButton.setIcon(new ImageIcon( controller.submitButtonImage));
 		submitButton.setBorderPainted(false);
 		submitButton.setContentAreaFilled(false);
 	
@@ -661,13 +661,13 @@ public class GamePage2 extends JPanel {
 	private void setButtonIconFlag() {
 		
 		//initialize background image of all buttons to digit 0
-		one.setIcon((Icon) controller.game0ButtonImage);
-		two.setIcon((Icon) controller.game0ButtonImage);
-		four.setIcon((Icon) controller.game0ButtonImage);
-		eight.setIcon((Icon) controller.game0ButtonImage);
-		sixteen.setIcon((Icon) controller.game0ButtonImage);
-		thirtytwo.setIcon((Icon) controller.game0ButtonImage);
-		sixtyfour.setIcon((Icon) controller.game0ButtonImage);
+		one.setIcon(new ImageIcon( controller.game0ButtonImage));
+		two.setIcon(new ImageIcon( controller.game0ButtonImage));
+		four.setIcon(new ImageIcon( controller.game0ButtonImage));
+		eight.setIcon(new ImageIcon( controller.game0ButtonImage));
+		sixteen.setIcon(new ImageIcon( controller.game0ButtonImage));
+		thirtytwo.setIcon(new ImageIcon( controller.game0ButtonImage));
+		sixtyfour.setIcon(new ImageIcon(controller.game0ButtonImage));
 		
 		//set flag to corresponding integer 0
 		flagOne = 0;
@@ -732,9 +732,9 @@ public class GamePage2 extends JPanel {
 		//set to opposite of whatever it currently is
 		//as determined by current flag value
 		if (flag == 0) {
-			myButton.setIcon((Icon) controller.game1ButtonImage);
+			myButton.setIcon(new ImageIcon( controller.game1ButtonImage));
 		} else if (flag == 1) {
-			myButton.setIcon((Icon) controller.game0ButtonImage);
+			myButton.setIcon(new ImageIcon( controller.game0ButtonImage));
 		}
 		
 		repaint();

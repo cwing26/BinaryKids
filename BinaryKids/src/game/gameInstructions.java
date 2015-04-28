@@ -56,12 +56,12 @@ public class gameInstructions extends JPanel {
 	
 		zero = new JButton();
 		zero.setPreferredSize(buttonSize);
-		zero.setIcon((Icon) controller.game0ButtonImage);
+		zero.setIcon(new ImageIcon( controller.game0ButtonImage));
 		zero.setBounds(235-buttonSize.width/2 + insets.left, 300 + insets.top, buttonSize.width, buttonSize.height);
 		
 		one = new JButton();
 		one.setPreferredSize(buttonSize);
-		one.setIcon((Icon) controller.game1ButtonImage);
+		one.setIcon(new ImageIcon( controller.game1ButtonImage));
 		one.setBounds(395-buttonSize.width/2 + insets.left, 500 + insets.top, buttonSize.width, buttonSize.height);
 		
 	}
