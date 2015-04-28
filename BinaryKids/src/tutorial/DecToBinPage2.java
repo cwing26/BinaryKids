@@ -19,7 +19,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 
 	//timer used for animation
 	private Timer timer;
-	private int DELAY = 2000;
+	private int DELAY = 1000;
 
 	//applet
 	WelcomePage welcomePage;
@@ -287,8 +287,8 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		initButtons();
 		initTextFields();
 		initRects();
-
 	}
+	
 	public void moveTens(){
 		recList.get(recListIterator).setLocation(xCoordList.get(recListIterator), yCoordList.get(recListIterator));
 		recListIterator++;

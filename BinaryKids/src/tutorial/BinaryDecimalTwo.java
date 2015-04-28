@@ -1,7 +1,7 @@
+//this class is the second page in the binary to decimal tutorial
+
+
 package tutorial;
-
-
-
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -34,14 +34,14 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 	boolean display7 = false;
 	
 	boolean startClicked = false;
-	int globalI = 0;
+	int sqListIterator = 0;
 	
 	boolean displayedStep2 = false;
 	boolean displayedStep3 = false;
 	boolean displayedStep4 = false;
 
 	private Timer timer;
-	private int DELAY = 2000;
+	private int DELAY = 1000;
 
 	WelcomePage welcomePage;
 
@@ -59,10 +59,10 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 	final int BinToDecNumSquaresActual = 13;
 
 	//actual values
-	final String numEightsActual = "1";
-	final String numFoursActual = "1";
-	final String numTwosActual = "0";
-	final String numOnesActual = "1";
+	private final String numEightsActual = "1";
+	private final String numFoursActual = "1";
+	private final String numTwosActual = "0";
+	private final String numOnesActual = "1";
 
 	//user input
 	String numEightsInput;
@@ -85,47 +85,82 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 	boolean rectSelected = false;
 	int rectSelectedNum = 0;
 
-	//rectangles
-	final int rectUnit = 30;
-	final int startx = 155;
-	final int starty = 220;
-	private Rectangle rec;
-	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
+	//colored squares
+	private final int squareUnit = 30;
+	private final int startXSquare = 155;
+	private final int startYSquare = 220;
+	private Rectangle square;
+	private ArrayList<Rectangle> squareList = new ArrayList<Rectangle>();
 	//coordinate list for the squares
-	ArrayList<Integer> xCoordList =  new ArrayList<Integer>();
-	ArrayList<Integer> yCoordList =  new ArrayList<Integer>();
+	private ArrayList<Integer> xCoordList =  new ArrayList<Integer>();
+	private ArrayList<Integer> yCoordList =  new ArrayList<Integer>();
 	
-	String instructions1 = "How do we get the number 13? 13 = how many eights + how many fours + how many twos + how ";
-	String instructions2 = "many ones? We will put the 13 squares in the below boxes to review the binary number system.";
-	String instructions3 = "We will do this first example for you and then let you try! Click the start button to begin.";
+	private final String instructions1 = "How do we get the number 13? 13 = how many eights + how many fours + how many twos + how ";
+	private final String instructions2 = "many ones? We will put the 13 squares in the below boxes to review the binary number system.";
+	private final String instructions3 = "We will do this first example for you and then let you try! Click the start button to begin.";
 
-	String text1 = "Do we have enough squares to put eight squares in the EIGHTS box?";
-	String text2 = "Since we do; let's put eight red squares in the EIGHTS box."; 
-	String text3 = "Since we had enough squares, type 1 below the EIGHTS box.";
-	String text4 = "Check how many squares are left remaining. Do we have enough";
-	String text5 = "to put four squares in the FOURS box?";
-	String text6 = "Since we do; let's put four red squares in the FOURS box.";
-	String text7 = "Since we had enough squares, type 1 below the FOURS box.";
-	String text8 = "Check how many squares are left remaining. Do we have enough";
-	String text9 = "to put two squares in the TWOS box?";
-	String text10 = "Since we don't have enough, type 0 below the TWOS box.";
-	String text11 = "Do we have enough to put one square in the ONES box?";
-	String text12 = "Since we do; let's put one red squares in the ONES box.";
-	String text13 = "Since we had enough squares, type 1 below the ONES box.";
-	String text14 = "Since there are no squares left we are all done!";
-	String text15 = "When you finish, click submit to check your answer.";
+	private final String text1 = "Do we have enough squares to put eight squares in the EIGHTS box?";
+	private final String text2 = "Since we do; let's put eight red squares in the EIGHTS box."; 
+	private final String text3 = "Since we had enough squares, type 1 below the EIGHTS box.";
+	private final String text4 = "Check how many squares are left remaining. Do we have enough";
+	private final String text5 = "to put four squares in the FOURS box?";
+	private final String text6 = "Since we do; let's put four red squares in the FOURS box.";
+	private final String text7 = "Since we had enough squares, type 1 below the FOURS box.";
+	private final String text8 = "Check how many squares are left remaining. Do we have enough";
+	private final String text9 = "to put two squares in the TWOS box?";
+	private final String text10 = "Since we don't have enough, type 0 below the TWOS box.";
+	private final String text11 = "Do we have enough to put one square in the ONES box?";
+	private final String text12 = "Since we do; let's put one red squares in the ONES box.";
+	private final String text13 = "Since we had enough squares, type 1 below the ONES box.";
+	private final String text14 = "Since there are no squares left we are all done!";
+	private final String text15 = "When you finish, click submit to check your answer.";
+	
+	final int submitButtonX = box1x +box1width + 20;
+	final int submitButtonY = box1y+box1height+5;
+	final int startButtonX = 290;
+	final int startButtonY = 140;
+	final int eightsFieldX = box8x + 25;
+	final int eightsFieldY = box8y+box8height+5;
+	final int foursFieldX = box4x + 25;
+	final int foursFieldY = box4y+box8height+5;
+	final int twosFieldX = box2x + 25;
+	final int twosFieldY = box2y+box8height+5;
+	final int onesFieldX = box1x + 25;
+	final int onesFieldY = box1y+box8height+5;
+	
+	
+	final int headerX = 100;
+	final int headerY = 15;
+	
+	final int startTextX = 60;
+	final int startTextY = 85;
+	final int textYInc = 20;
 
-	public BinaryDecimalTwo(WelcomePage welcome)
-	{
-		timer = new Timer(DELAY, this);
-		welcomePage = welcome;
-		setBackground(WelcomePage.backgroundColor);
+	//this method defines the formatting of the components on the panel
+	public void formatComponents(){
 		Insets insets = getInsets();
 
-		initTextFields();
-		initRects();
-		initButtons();
+		Dimension buttonSize = submitButton.getPreferredSize();
+		submitButton.setBounds(submitButtonX + insets.left, submitButtonY + insets.top,
+				buttonSize.width, buttonSize.height);
+		
+		buttonSize = startButton.getPreferredSize();
+		startButton.setBounds(startButtonX + insets.left, startButtonY + insets.top,
+				buttonSize.width*2, buttonSize.height);
 
+		Dimension size = NumberEightsField.getPreferredSize();
+		NumberEightsField.setBounds(eightsFieldX + insets.left, eightsFieldY + insets.top,
+				size.width, buttonSize.height);
+		NumberFoursField.setBounds(foursFieldX + insets.left, foursFieldY + insets.top,
+				size.width, buttonSize.height);
+		NumberTwosField.setBounds(twosFieldX + insets.left, twosFieldY + insets.top,
+				size.width, buttonSize.height);
+		NumberOnesField.setBounds(onesFieldX + insets.left, onesFieldY + insets.top,
+				size.width, buttonSize.height);
+	}
+	
+	//this method adds the components to the panel
+	public void addComponentsToPanel() {
 		setLayout(null);
 		add(NumberEightsField);
 		add(NumberFoursField);
@@ -133,60 +168,65 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 		add(NumberOnesField);
 		add(submitButton);
 		add(startButton);
-
-		Dimension buttonSize = submitButton.getPreferredSize();
-		submitButton.setBounds(box1x +box1width + 20 + insets.left, box1y+box1height+5 + insets.top,
-				buttonSize.width, buttonSize.height);
-		buttonSize = startButton.getPreferredSize();
-		startButton.setBounds(290 + insets.left, 140 + insets.top,
-				buttonSize.width*2, buttonSize.height);
-
-		Dimension size = NumberEightsField.getPreferredSize();
-		NumberEightsField.setBounds(box8x + 25 + insets.left, box8y+box8height+5 + insets.top,
-				size.width, buttonSize.height);
-		NumberFoursField.setBounds(box4x + 25 + insets.left, box4y+box8height+5 + insets.top,
-				size.width, buttonSize.height);
-		NumberTwosField.setBounds(box2x + 25 + insets.left, box2y+box8height+5 + insets.top,
-				size.width, buttonSize.height);
-		NumberOnesField.setBounds(box1x + 25 + insets.left, box1y+box8height+5 + insets.top,
-				size.width, buttonSize.height);
-
+	}
+	
+	//init swing components
+	public void initComponents(){
+		timer = new Timer(DELAY, this);
+		initTextFields();
+		initRects();
+		initButtons();
+	}
+	
+	//constructor, param is applet
+	public BinaryDecimalTwo(WelcomePage welcome)
+	{
+		welcomePage = welcome;
+		setBackground(WelcomePage.backgroundColor);
+		initComponents();
+		addComponentsToPanel();
 		setVisible(true);
 
 	}
 	
+	//move the squares into the eights box
 	public void moveEights(){
-		recList.get(globalI).setLocation(xCoordList.get(globalI), yCoordList.get(globalI));
-		globalI++;
+		squareList.get(sqListIterator).setLocation(xCoordList.get(sqListIterator), yCoordList.get(sqListIterator));
+		sqListIterator++;
 	}
+	
+	//move the squares into the fours box
 	public void moveFours(){
-		recList.get(globalI).setLocation(xCoordList.get(globalI), yCoordList.get(globalI));
-		globalI++;
+		squareList.get(sqListIterator).setLocation(xCoordList.get(sqListIterator), yCoordList.get(sqListIterator));
+		sqListIterator++;
 	}
+	
+	//move the squares into the ones box
 	public void moveOnes(){
-		recList.get(globalI).setLocation(xCoordList.get(globalI), yCoordList.get(globalI));
+		squareList.get(sqListIterator).setLocation(xCoordList.get(sqListIterator), yCoordList.get(sqListIterator));
 		timer.stop();
 	}
 
+	//timer event
 	@Override
 	public void actionPerformed(ActionEvent e) {
-		if (globalI < 8){
+		if (sqListIterator < 8){
 			moveEights();
 		}
-		if (globalI == 8 && displayedStep2 == false){
+		if (sqListIterator == 8 && displayedStep2 == false){
 			display1 = false;
 			display2 = true;
 		}
-		if (globalI >= 8 && display3){
+		if (sqListIterator >= 8 && display3){
 			moveFours();
 		}
-		if (globalI == 12 && displayedStep3 == false){
+		if (sqListIterator == 12 && displayedStep3 == false){
 			display1 = false;
 			display2 = false;
 			display3 = false;
 			display4 = true;
 		}
-		if (globalI >= 12 && display6){
+		if (sqListIterator >= 12 && display6){
 			moveOnes();
 		}
 		
@@ -195,6 +235,7 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 		repaint();
 	}
 	
+	//action listener for start button
 	class startButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
@@ -340,12 +381,12 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 	//inits the coords of the rects that user will move
 	public void initRects()
 	{
-		int startX = startx;
+		int x = startXSquare;
 		for (int i = 0; i < BinToDecNumSquaresActual; i++)
 		{
-			rec = new Rectangle(startX, starty, rectUnit,rectUnit);
-			recList.add(rec);
-			startX+=40;
+			square = new Rectangle(x, startYSquare, squareUnit,squareUnit);
+			squareList.add(square);
+			x+=40;
 		}
 		
 		
@@ -355,26 +396,26 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 		for (int i = 0; i < 4; i++){
 			xCoordList.add(box8x+10);
 			yCoordList.add(y);
-			y = y + 10 + rectUnit;
+			y = y + 10 + squareUnit;
 		}
 		y=box8y+10;
 		for (int i = 0; i < 4; i++){
-			xCoordList.add(box8x+20+rectUnit);
+			xCoordList.add(box8x+20+squareUnit);
 			yCoordList.add(y);
-			y = y + 10 + rectUnit;
+			y = y + 10 + squareUnit;
 		}
 		//FOURS
 		y=box4y+10;
 		for (int i = 0; i < 2; i++){
 			xCoordList.add(box4x+10);
 			yCoordList.add(y);
-			y = y + 10 + rectUnit;
+			y = y + 10 + squareUnit;
 		}
 		y=box4y+10;
 		for (int i = 0; i < 2; i++){
-			xCoordList.add(box4x+20+rectUnit);
+			xCoordList.add(box4x+20+squareUnit);
 			yCoordList.add(y);
-			y = y + 10 + rectUnit;
+			y = y + 10 + squareUnit;
 		}
 		//ONES
 		xCoordList.add(box1x+10);
@@ -383,6 +424,7 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 		
 	}
 
+	//initialize buttons
 	public void initButtons()
 	{
 		submitButton = new JButton("Submit");
@@ -391,13 +433,13 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 		startButton.addActionListener(new startButtonListener());
 	}
 
-
+	//override paint method
 	public void paint(Graphics g)
 	{
 		super.paint(g);
 
 		//draw title text
-		g.drawImage(welcomePage.binDecImg, 100, 15, this);
+		g.drawImage(welcomePage.binDecImg, headerX, headerY, this);
 
 
 		g.setColor(Color.black);
@@ -424,8 +466,8 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 
 		//draw the squares
 		g.setColor(WelcomePage.buttonPanelColor);
-		for (int i = 0;i < recList.size(); i++){
-			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
+		for (int i = 0;i < squareList.size(); i++){
+			g.fillRect((int)squareList.get(i).getX(),(int)squareList.get(i).getY(), squareUnit, squareUnit );
 		}
 
 		//box labels
@@ -438,9 +480,7 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 
 		g.setColor(WelcomePage.textColor);
 		g.setFont(new Font("Geneva", Font.BOLD, 14));
-		int startTextX = 60;
-		int startTextY = 85;
-		int textYInc = 20;
+
 
 		if (!startClicked){
 			g.drawString(instructions1, startTextX, startTextY);
@@ -483,7 +523,7 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 	} //end paint
 
 
-
+	//action listener for submit button
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent e) 
@@ -495,60 +535,6 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 			numFoursInput = NumberFoursField.getText();
 			numTwosInput = NumberTwosField.getText();
 			numOnesInput = NumberOnesField.getText();
-
-//			int countEights = 0;
-//			int countFours = 0;
-//			int countTwos = 0;
-//			int countOnes = 0;
-//
-//			for(int i = 0; i < recList.size(); i++)
-//			{
-//				int x = (int) recList.get(i).getX();
-//				int y = (int) recList.get(i).getY();
-//
-//
-//				if((x >= box8x) && (x <= (box8x + box8width)) && (y >= box8y) && (y <= (box8y + box8height)))
-//				{
-//					countEights++; //if the rect is in the eights box, add 1
-//				}
-//				else if((x >= box4x) && (x <= (box4x + box4width)) && (y >= box4y) && (y <= (box4y + box4height)))
-//				{
-//					//if the rect is in the fours box
-//					countFours++;
-//				}
-//				else if((x >= box2x) && (x <= (box2x + box2width)) && (y >= box2y) && (y <= (box2y + box2height)))
-//				{
-//					//if the rect is in the twos box
-//					countTwos++;
-//				}
-//				else if((x >= box1x) && (x <= (box1x + box1width)) && (y >= box1y) && (y <= (box1y + box1height)))
-//				{
-//					//if the rect is in the ones box
-//					countOnes++;
-//				}
-//				else
-//				{
-//
-//				}
-//
-//			}
-//
-//
-//			if (countEights == 8
-//					&& countFours == 4
-//					&& countTwos == 0
-//					&& countOnes == 1){
-//
-//			}
-//			else{
-//				String errorMessage = "The squares are not in the correct boxes, try again!";
-//				JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
-//				NumberEightsField.setText("");
-//				NumberTwosField.setText("");
-//				NumberFoursField.setText("");
-//				NumberOnesField.setText("");
-//				return;
-//			}
 
 
 			if (numEightsInput.equals(numEightsActual)
@@ -575,94 +561,3 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 
 
 } //end class thirdpage
-
-//This method will be called when the mouse has been clicked. 
-//	public void mouseClicked (MouseEvent me) 
-//	{
-//
-//		// Save the coordinates of the click lke this.
-//		xpos = me.getX(); 
-//		ypos = me.getY();
-//
-//
-//		//select one of the rectangles first
-//		for (int i = 0; i < recList.size(); i++){
-//			int recx = (int) recList.get(i).getX();
-//			int recy = (int) recList.get(i).getY();
-//			if ((xpos >= recx) && (xpos <= (recx + rectUnit)) && (ypos >= recy) && (ypos <= (recy + rectUnit))){
-//				rectSelected = true;
-//				rectSelectedNum = i;
-//				break;
-//			} 
-//
-//
-//		}
-//
-//		if(rectSelected)
-//		{
-//
-//			if((xpos >= box8x) && (xpos <= (box8x + box8width)) && (ypos >= box8y) && (ypos <= (box8y + box8height)))
-//			{
-//				boxSelected8 = true;
-//				boxSelected4 = false;
-//				boxSelected2 = false;
-//				boxSelected1 = false;
-//				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-//
-//			}
-//			else if((xpos >= box4x) && (xpos <= (box4x + box4width)) && (ypos >= box4y) && (ypos <= (box4y + box4height)))
-//			{
-//				boxSelected4 = true;
-//				boxSelected8 = false;
-//				boxSelected2 = false;
-//				boxSelected1 = false;
-//				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-//
-//			}
-//			else if((xpos >= box2x) && (xpos <= (box2x + box2width)) && (ypos >= box2y) && (ypos <= (box2y + box2height)))
-//			{
-//				boxSelected2 = true;
-//				boxSelected4 = false;
-//				boxSelected8 = false;
-//				boxSelected1 = false;
-//				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-//
-//			}
-//			else if((xpos >= box1x) && (xpos <= (box1x + box1width)) && (ypos >= box1y) && (ypos <= (box1y + box1height)))
-//			{
-//				boxSelected1 = true;
-//				boxSelected4 = false;
-//				boxSelected2 = false;
-//				boxSelected8 = false;
-//				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-//
-//			}
-//			else {
-//
-//			}
-//
-//		}
-//
-//
-//
-//
-//		//show the results of the click 
-//		repaint();
-//
-//	} //end mouse click listener
-//
-//
-//	// When it has been released 
-//	// note that a click also calls these Mouse-Pressed and Released. 
-//	// since they are empty nothing hapens here. 
-//	public void mouseReleased (MouseEvent me) {} 
-//
-//	// This is called when the mous has been pressed 
-//	public void mousePressed (MouseEvent me) {}
-//
-//	// This is executed when the mouse enters the applet. it will only 
-//	// be executed again when the mouse has left and then re-entered. 
-//	public void mouseEntered (MouseEvent me) {}
-//
-//	// When the Mouse leaves the applet. 
-//	public void mouseExited (MouseEvent me) {} 

@@ -1,5 +1,7 @@
-package tutorial;
+//this class is the fifth page in the decimal to binary tutorial
+//has practice probelsm from decimal to binary
 
+package tutorial;
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -15,7 +17,6 @@ import javax.swing.JTextField;
 import java.awt.Image;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
-
 
 
 @SuppressWarnings("serial")
@@ -42,14 +43,14 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	JButton tutorialButton;
 	boolean hintClicked = false;
 	JTextField answerField;
-	String question = "Convert the decimal number below to binary:";
+	final String question = "Convert the decimal number below to binary:";
 	String inputAnswer;
 
 	int questionIndex = 0;
 	
-	String hint = "Remember, each binary digit represents a different power of 2.";
-	String hint2 = "Start by finding the largest power of two";
-	String hint2cont = "smaller than this one and subtract!";
+	final String hint = "Remember, each binary digit represents a different power of 2.";
+	final String hint2 = "Start by finding the largest power of two";
+	final String hint2cont = "smaller than this one and subtract!";
 	
 	//images
 	Image titleImage;

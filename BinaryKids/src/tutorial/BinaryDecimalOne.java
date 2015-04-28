@@ -1,3 +1,5 @@
+//this class is the first page in the binary to decimal tutorial
+
 package tutorial;
 
 
@@ -30,13 +32,19 @@ public class BinaryDecimalOne extends JPanel
 	final String correctAnswerString = "13";
 	int inputAnswer = 0;
 	
-	int startx = 150;
-	int starty = 100;
+	final int startXSquare = 150;
+	final int startYSquare = 100;
 
-	final int rectUnit = 25;
+	final int squareUnit = 25;
 	
-	private Rectangle rec;
-	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
+	final int questionTextX = 250;
+	final int questionTextY = 200;
+	
+	final int headerX = 90;
+	final int headerY = 15;
+	
+	private Rectangle square;
+	ArrayList<Rectangle> squareList = new ArrayList<Rectangle>();
 
     //constructor
     public BinaryDecimalOne(WelcomePage welcome)
@@ -47,7 +55,7 @@ public class BinaryDecimalOne extends JPanel
 		Insets insets = getInsets();
 		
     	initComponents();
-    	initRects();
+    	initSquares();
     	add(answerField);
     	add(submitButton);
     	
@@ -76,25 +84,27 @@ public class BinaryDecimalOne extends JPanel
 	
 
 	//inits the coords of the rects that user will move
-	public void initRects()
+	public void initSquares()
 	{
+		int startx = startXSquare;
 		for (int i = 0; i < correctAnswer; i++)
 		{
-			rec = new Rectangle(startx, starty, rectUnit,rectUnit);
-			recList.add(rec);
+			square = new Rectangle(startx, startYSquare, squareUnit ,squareUnit);
+			squareList.add(square);
 			startx+=40;
 		}
 	}
   	
+	//overriden paint method
     public void paint(Graphics g)
     {
     	super.paint(g);
     	
     	//draw title text
-    	g.drawImage(welcomePage.binDecImg, 90, 15, this);
+    	g.drawImage(welcomePage.binDecImg, headerX, headerY, this);
 
     	//paint 13 rectangles
-    	for (int i = 0;i < recList.size(); i++){
+    	for (int i = 0;i < squareList.size(); i++){
 			if (i%2 == 1)
 			{
 				g.setColor(Color.YELLOW);
@@ -103,16 +113,18 @@ public class BinaryDecimalOne extends JPanel
 			{
 				g.setColor(Color.MAGENTA);
 			}
-			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
+			g.fillRect((int)squareList.get(i).getX(),(int)squareList.get(i).getY(), squareUnit, squareUnit );
 		}
     	
+
     	//question text
     	g.setFont(new Font("Geneva",1,20));
     	g.setColor(WelcomePage.textColor);
-    	g.drawString(questionText, 250, 200);
+    	g.drawString(questionText, questionTextX, questionTextY);
     	
     }
     
+    //action listener for submit button
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent e) 
@@ -120,23 +132,20 @@ public class BinaryDecimalOne extends JPanel
 			String input =  answerField.getText();
 			inputAnswer = Integer.parseInt(input);
 			
-
+			//if correct answer load the next page
 			if(inputAnswer == correctAnswer)
 			{
 				welcomePage.loadBinToDec2();
 			}
 			else
 			{
-				//dialog box welcomes user to game and gives them brief instructions
+				//resets answer field
 		    	String errorMessage = "Wrong answer, try again!";
 		    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 				
 		    	answerField.setText("");
 			}
-			
-			
-			//check if answer is right before allowing to proceed to next page
-			//if not, then reset text of textfield and say try again, maybe display diaglog box 
+		 
 			
 		} //end action performed
 		

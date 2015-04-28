@@ -1,3 +1,5 @@
+//this class is the third page in the binary to decimal tutorial
+
 package tutorial;
 
 
@@ -17,7 +19,6 @@ import javax.swing.event.DocumentEvent;
 import javax.swing.event.DocumentListener;
 
 import java.util.ArrayList;
-
 
 
 @SuppressWarnings("serial")
@@ -52,58 +53,82 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 
 	//rectangle data
 	//width and height of sqare
-	final int rectUnit = 30;
-	private Rectangle rec;
-	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
-	final int startX = 130;
-	final int startY = 240;
+	final int squareUnit = 30;
+	private Rectangle square;
+	ArrayList<Rectangle> squareList = new ArrayList<Rectangle>();
+	final int startXSquare = 130;
+	final int startYSquare = 240;
 
 	//labels and text fields
 	JButton submitButton;
 	JTextField NumberTensField;
 	JTextField NumberOnesField;
-	
-	String text3 = "Do we have enough squares to put ten squares in the TENS box?";
-	String text4 = "If yes, put ten squares in the TENS box. Click on a red square and then"; 
-	String text45 = "click on the box to put the square inside.";
-	String text5 = "Since we had enough squares, type 1 below the TENS box.";
-	String text6 = "Check how many squares are left remaining. Do we have enough";
-	String text7 = "to put squares in the ONES box?";
-	String text8 = "Keep assigning the remaining squares until none are left.";
-	String text9 = "Type the number of squares you put in the ONES box.";
-	String text10 = "When you finish, click submit to check your answer.";
+
+	final String text3 = "Do we have enough squares to put ten squares in the TENS box?";
+	final String text4 = "If yes, put ten squares in the TENS box. Click on a red square and then"; 
+	final String text45 = "click on the box to put the square inside.";
+	final String text5 = "Since we had enough squares, type 1 below the TENS box.";
+	final String text6 = "Check how many squares are left remaining. Do we have enough";
+	final String text7 = "to put squares in the ONES box?";
+	final String text8 = "Keep assigning the remaining squares until none are left.";
+	final String text9 = "Type the number of squares you put in the ONES box.";
+	final String text10 = "When you finish, click submit to check your answer.";
+
+	final int submitButtonX = box1x +box1width + 20;
+	final int submitButtonY = box1y+box1height+5;
+	final int tensFieldX = box10x + 45;
+	final int tensFieldY = box10y+box10height+5;
+	final int onesFieldX = box1x + 45;
+	final int onesFieldY = box1y+box1height+5;
+	final int headerX = 90;
+	final int headerY = 15;
+
+	final int startTextX = 40;
+	final int startTextY = 100;
+	final int textYInc = 20;
+	final int indentTextX = 30;
 
 	public BinaryDecimalThree(WelcomePage welcome)
 	{
 		welcomePage = welcome;
 		setBackground(WelcomePage.backgroundColor);
-		setLayout(null);
+
+		initComponents();
+		addComponentsToPanel();
+		formatComponents();
+		setVisible(true);
+	}
+
+
+	//this method defines the formatting of the components on the panel
+	public void formatComponents(){
 		Insets insets = getInsets();
-
-		initRects();
-		initButton();
-		initTextFields();
-
-
-		add(submitButton);
-		add(NumberTensField);
-		add(NumberOnesField);
-
 		Dimension buttonSize = submitButton.getPreferredSize();
-		submitButton.setBounds(box1x +box1width + 20 + insets.left, box1y+box1height+5 + insets.top,
+		submitButton.setBounds(submitButtonX+ insets.left, submitButtonY + insets.top,
 				buttonSize.width, buttonSize.height);
 
 		Dimension fieldSize = NumberTensField.getPreferredSize();
-		NumberTensField.setBounds(box10x +45 + insets.left, box10y+box10height+5 + insets.top,
+		NumberTensField.setBounds(tensFieldX + insets.left, tensFieldY + insets.top,
 				fieldSize.width, buttonSize.height);
-		NumberOnesField.setBounds(box1x +45 + insets.left, box1y+box1height+5 + insets.top,
+		NumberOnesField.setBounds(onesFieldX + insets.left, onesFieldY + insets.top,
 				fieldSize.width, buttonSize.height);
-
-		addMouseListener(this); 
-		setVisible(true);
-
 	}
 
+	//init swing components
+	public void initComponents(){
+		initRects();
+		initButton();
+		initTextFields();
+	}
+
+	//this method adds the components to the panel
+	public void addComponentsToPanel() {
+		setLayout(null);
+		add(submitButton);
+		add(NumberTensField);
+		add(NumberOnesField);
+		addMouseListener(this);
+	}
 
 	public void initButton()
 	{
@@ -114,10 +139,10 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 	//inits the coords of the rects that user will move
 	public void initRects()
 	{
-		int startx = startX;
+		int startx = startXSquare;
 		for (int i = 0; i < BinToDecNumSquaresActual; i++){
-			rec = new Rectangle(startx, startY, rectUnit,rectUnit);
-			recList.add(rec);
+			square = new Rectangle(startx, startYSquare, squareUnit,squareUnit);
+			squareList.add(square);
 			startx+=40;
 		}
 	}
@@ -128,7 +153,7 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 		NumberOnesField = new JTextField();
 		NumberTensField.setColumns(5);
 		NumberOnesField.setColumns(5);
-		
+
 		NumberTensField.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {}
 			public void removeUpdate(DocumentEvent e) {}
@@ -140,7 +165,7 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			}
 
 		});
-		
+
 		NumberOnesField.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {}
 			public void removeUpdate(DocumentEvent e) {}
@@ -152,18 +177,21 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			}
 
 		});
-		
-		
+
+
 	} //end init text fields
 
-
+//override paint method
 	public void paint(Graphics g)
 	{
 		super.paint(g);
 
-		//draw title text
-		g.drawImage(welcomePage.binDecImg, 90, 15, this);
 
+
+		//draw title text
+		g.drawImage(welcomePage.binDecImg, headerX, headerY, this);
+
+		//draw boxes
 		g.setColor(Color.black);
 		if (boxSelected1)
 			g.setColor(Color.RED);
@@ -173,14 +201,11 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			g.setColor(Color.RED);
 		g.drawRect(box10x,box10y,box10width,box10height);
 
-		g.setColor(Color.blue);
-
-
 		//draw the movable squares
 		g.setColor(WelcomePage.buttonPanelColor);
-		for (int i = 0;i < recList.size(); i++)
+		for (int i = 0;i < squareList.size(); i++)
 		{
-			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
+			g.fillRect((int)squareList.get(i).getX(),(int)squareList.get(i).getY(), squareUnit, squareUnit );
 		}
 
 		//box labels
@@ -191,11 +216,6 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 
 		//instructions
 		g.setFont(new Font("Geneva", Font.BOLD, 18));
-		int startTextX = 40;
-		int startTextY = 100;
-		int textYInc = 20;
-		int indentTextX = 30;
-
 		if (display1){
 			g.drawString(text3, startTextX, startTextY+textYInc);
 			g.drawString(text4, startTextX+indentTextX, startTextY+2*textYInc);
@@ -214,6 +234,7 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 
 	}
 
+	//action listener for submit button
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent e) 
@@ -225,23 +246,23 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			numOnesInput =  NumberOnesField.getText();		
 
 			//second part of correct answer: determine 
-			//whether correct number of rects are in each box
+			//whether correct number of squares are in each box
 			int countTens = 0;
 			int countOnes = 0;
 
-			for(int i = 0; i < recList.size(); i++)
+			for(int i = 0; i < squareList.size(); i++)
 			{
-				int x = (int) recList.get(i).getX();
-				int y = (int) recList.get(i).getY();
+				int x = (int) squareList.get(i).getX();
+				int y = (int) squareList.get(i).getY();
 
 
 				if((x >= box10x) && (x <= (box10x + box10width)) && (y >= box10y) && (y <= (box10y + box10height)))
 				{
-					countTens++; //if the rect is in the tens box, add 1
+					countTens++; //if the square is in the tens box, add 1
 				}
 				else if((x >= box1x) && (x <= (box1x + box1width)) && (y >= box1y) && (y <= (box1y + box1height)))
 				{
-					//if the rect is in the ones box
+					//if the square is in the ones box
 					countOnes++;
 				}
 				else
@@ -262,21 +283,21 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			}
 			else
 			{
-				//dialog box welcomes user to game and gives them brief instructions
+
 				String errorMessage = "Wrong answer, try again!";
 				JOptionPane.showMessageDialog(welcomePage, errorMessage, "Wrong Answer", JOptionPane.YES_NO_OPTION);
 
 				NumberTensField.setText("");
 				NumberOnesField.setText("");
 
-				int startx = startX;
-				int starty = startY;
+				int startx = startXSquare;
+				int starty = startYSquare;
 				display1 = true;
 				display3 = false;
 
-				for (int i = 0; i < recList.size(); i++)
+				for (int i = 0; i < squareList.size(); i++)
 				{
-					recList.get(i).setLocation(startx, starty);
+					squareList.get(i).setLocation(startx, starty);
 					startx+=40;
 				}
 				repaint();
@@ -301,10 +322,10 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 
 
 		//select one of the rectangles first
-		for (int i = 0; i < recList.size(); i++){
-			int recx = (int) recList.get(i).getX();
-			int recy = (int) recList.get(i).getY();
-			if ((mouseX >= recx) && (mouseX <= (recx + rectUnit)) && (mouseY >= recy) && (mouseY <= (recy + rectUnit))){
+		for (int i = 0; i < squareList.size(); i++){
+			int recx = (int) squareList.get(i).getX();
+			int recy = (int) squareList.get(i).getY();
+			if ((mouseX >= recx) && (mouseX <= (recx + squareUnit)) && (mouseY >= recy) && (mouseY <= (recy + squareUnit))){
 				rectSelected = true;
 				rectSelectedNum = i;
 				break;
@@ -319,15 +340,14 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			{
 				boxSelected10 = true;
 				boxSelected1 = false;
-				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
-				//imgList.get(rectSelectedNum).
+				squareList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
 			}
 			else if((mouseX >= box1x) && (mouseX <= (box1x + box1width)) && (mouseY >= box1y) && (mouseY <= (box1y + box1height)))
 			{
 				boxSelected1 = true;
 				boxSelected10 = false;
-				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+				squareList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
 			}
 			else {
@@ -335,9 +355,6 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			}
 
 		}
-
-
-
 
 		//show the results of the click 
 		repaint();
