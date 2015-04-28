@@ -32,6 +32,13 @@ public interface PracticeProblem
 	
 	//checks whether the user answer provided is correct
 	boolean checkAnswer(String userAnswer, int index);
+	
+	//positions GUI components correctly on screen
+	void positionComponents();
+	
+	//adds GUI components to panel
+	void addComponentsToPanel();
+	
 
 	
 }
