@@ -56,7 +56,7 @@ public class GameWelcomePage extends JPanel {
 	
 	boolean gameInProgress;
 	
-	GameWelcomePage(Controller _controller) {
+	public GameWelcomePage(Controller _controller) {
 	
 		controller = _controller;
 		setLayout(null);

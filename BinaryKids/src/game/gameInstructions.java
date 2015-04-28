@@ -1,3 +1,5 @@
+package game;
+
 import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
@@ -8,10 +10,12 @@ import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
 
+import tutorial.Controller;
 
-public class GameInstructions extends JPanel {
+
+public class gameInstructions extends JPanel {
 	
-	WelcomePage welcomePage;
+	Controller controller;
 	
 	public static Color backgroundColor = new Color(255, 255, 204);
 	public static Color buttonPanelColor = new Color(152, 46, 68);
@@ -27,9 +31,9 @@ public class GameInstructions extends JPanel {
 	JButton zero;
 	JButton one;
 	
-	GameInstructions(WelcomePage welcome)
+	public gameInstructions(Controller _controller)
 	{
-		welcomePage = welcome;
+		controller = _controller;
 		
 		setBackground(backgroundColor);
 		

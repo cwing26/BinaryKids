@@ -2,6 +2,8 @@ package tutorial;
 
 
 import game.GamePage2;
+import game.GameWelcomePage;
+import game.gameInstructions;
 
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
@@ -317,7 +319,7 @@ public class Controller extends JApplet
 		cards.add(bdThree, "BIN DEC PAGE 3");
 		cards.add(bdFour, "BIN DEC PAGE 4");
 		cards.add(bdPractice, "BIN DEC PAGE 5");
-		cards.add(gameWelcomePage, "GAME WELCOME”);
+		cards.add(gameWelcomePage, "GAME WELCOME");
 	}
 
 	public void initComponents(){
@@ -356,7 +358,9 @@ public class Controller extends JApplet
 				getClass().getClassLoader().getResource(Controller.titleImagePath));
 		titleImg = titleImg.getScaledInstance(550, 300, Image.SCALE_SMOOTH);
 
-		titleTextImg = titleTextImg.getScaledInstance(700, 40, Image.SCALE_SMOOTH);
+//		titleTextImg = Toolkit.getDefaultToolkit().getImage(
+//				getClass().getClassLoader().getResource(Controller.titleImagePath));  //here
+//		titleTextImg = titleTextImg.getScaledInstance(700, 40, Image.SCALE_SMOOTH);
 		decBinHeadlineImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.binDecPg3TitleImagePath));  
 		decBinHeadlineImg = decBinHeadlineImg.getScaledInstance(650, 50, Image.SCALE_SMOOTH);
