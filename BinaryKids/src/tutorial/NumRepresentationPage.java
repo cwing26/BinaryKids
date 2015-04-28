@@ -22,10 +22,10 @@ import java.awt.Toolkit;
 public class NumRepresentationPage extends JPanel implements ActionListener
 {
 	//text elements on screen
-	String question = "How many soccer balls are there?";
-	String VI = "VI";
-	String six = "6";
-	String binarySix = "110";
+	private final String question = "How many soccer balls are there?";
+	private final String VI = "VI";
+	private final String six = "6";
+	private final String binarySix = "110";
 	
 	//positions of text, shapes, and images on screen
 	private final int titleImageX = 5;
@@ -67,15 +67,14 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	private final int vIY = 240;
 	
 	
-	
 	//images used on screen
-	public Image numRepTitleImage;
-	public Image decimalTitleImage;
-	public Image romanNumeralTitleImage;
-	public Image shapesTitleImage;
-	public Image binaryImageLight;
-	public Image binaryImageDark;
-	public Image soccerBall;
+	private Image numRepTitleImage;
+	private Image decimalTitleImage;
+	private Image romanNumeralTitleImage;
+	private Image shapesTitleImage;
+	private Image binaryImageLight;
+	private Image binaryImageDark;
+	private Image soccerBall;
 	
 
 	

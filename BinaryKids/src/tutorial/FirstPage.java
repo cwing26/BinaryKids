@@ -55,77 +55,77 @@ public class FirstPage extends JPanel
 {
 	
 	//text components of page
-	String explanation1 = "Binary numbers are important for computers and electronics";
-	String question = "How do you use technology?";
+	private final String explanation1 = "Binary numbers are important for computers and electronics";
+	private final String question = "How do you use technology?";
 	
 	//gui components of page
-	JButton submitButton;
-	JPanel checkPanel; //panel to hold checkboxes
+	private JButton submitButton;
+	private JPanel checkPanel; //panel to hold checkboxes
 	
 	//check boxes
-	JCheckBox skypeCheck;
-	JCheckBox gameCheck;
-	JCheckBox emailCheck;
-	JCheckBox youtubeCheck;
-	JCheckBox fbCheck;
-	JCheckBox instaCheck;
-	JCheckBox cellPhoneCheck;
+	private JCheckBox skypeCheck;
+	private JCheckBox gameCheck;
+	private JCheckBox emailCheck;
+	private JCheckBox youtubeCheck;
+	private JCheckBox fbCheck;
+	private JCheckBox instaCheck;
+	private JCheckBox cellPhoneCheck;
 
 	//booleans to indicate whether checks have been filled
-	boolean skype = false;
-	boolean game = false;
-	boolean email = false;
-	boolean youtube = false;
-	boolean fb = false;
-	boolean instagram = false;
-	boolean cellPhone = false;
+	private boolean skype = false;
+	private boolean game = false;
+	private boolean email = false;
+	private boolean youtube = false;
+	private boolean fb = false;
+	private boolean instagram = false;
+	private boolean cellPhone = false;
 	
 	//images
-	public Image titleImage;
-	public Image instagramImage;
-	public Image fbImage;
-	public Image emailImage;
-	public Image youtubeImage;
-	public Image skypeImage;
-	public Image cellImage;
-	public Image gameImage;
+	private Image titleImage;
+	private Image instagramImage;
+	private Image fbImage;
+	private Image emailImage;
+	private Image youtubeImage;
+	private Image skypeImage;
+	private Image cellImage;
+	private Image gameImage;
 	
 	//locations of components on screen
-	final int checkPanelX = 100;
-	final int checkPanelY = 150;
+	private final int checkPanelX = 100;
+	private final int checkPanelY = 150;
 	
-	final int submitButtonX = 90;
-	final int submitButtonY = 380;
+	private final int submitButtonX = 90;
+	private final int submitButtonY = 380;
 	
-	final int titleImageX = 5;
-	final int titleImageY = 5;
+	private final int titleImageX = 5;
+	private final int titleImageY = 5;
 	
-	final int explanationX = 30;
-	final int explanationY = 100;
+	private final int explanationX = 30;
+	private final int explanationY = 100;
 
-	final int questionX = 40;
-	final int questionY = 135;
+	private final int questionX = 40;
+	private final int questionY = 135;
 	
-	final int instaX = 255;
-	final int instaY = 155;
+	private final int instaX = 255;
+	private final int instaY = 155;
 	
-	final int fbX = 600;
-	final int fbY = 410;
+	private final int fbX = 600;
+	private final int fbY = 410;
 	
-	final int emailX = 600;
-	final int emailY = 125;
+	private final int emailX = 600;
+	private final int emailY = 125;
 	
-	final int youtubeX = 415;
-	final int youtubeY = 175;
+	private final int youtubeX = 415;
+	private final int youtubeY = 175;
 	
-	final int skypeX = 400;
-	final int skypeY = 380;
+	private final int skypeX = 400;
+	private final int skypeY = 380;
 	
-	final int cellX = 230;
-	final int cellY = 390;
+	private final int cellX = 230;
+	private final int cellY = 390;
 	
-	final int gameX = 600;
-	final int gameY = 250;
+	private final int gameX = 600;
+	private final int gameY = 250;
 	
 	private WelcomePage welcomePage; //to connect welcome page to individual pages 
     

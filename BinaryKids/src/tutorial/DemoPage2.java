@@ -23,59 +23,59 @@ public class DemoPage2 extends JPanel implements ActionListener
 {
 
 	//fonts used
-	Font displayFont = new Font("Geneva", 1, 150);
-	Font textFont = new Font("Geneva", 1, 20);
-	Font labelFont = new Font("Geneva", 1, 15);
-	Font subheadFont = new Font("Geneva", 1, 30);
+	private Font displayFont = new Font("Geneva", 1, 150);
+	private Font textFont = new Font("Geneva", 1, 20);
+	private Font labelFont = new Font("Geneva", 1, 15);
+	private Font subheadFont = new Font("Geneva", 1, 30);
    
 	//images
 	private Image titleImage;
 	
 	//text used on screen
-	String explanation1 = "Counting with decimal numbers and binary numbers is the same!";
-	String explanation1cont = "Just add the sum of all digits based on what place they are.";
+	private final String explanation1 = "Counting with decimal numbers and binary numbers is the same!";
+	private final String explanation1cont = "Just add the sum of all digits based on what place they are.";
 	
-	String explanation2 = "Let's do an example where we count to 45 in decimal and binary:";
+	private final String explanation2 = "Let's do an example where we count to 45 in decimal and binary:";
 	
-    String plusSign = "+";
-    String equalSign = "=";
+    private final String plusSign = "+";
+    private final String equalSign = "=";
     
     //components of second binary animation
     //45 in binary is 101101
-    String binaryOne = "1";
-    String binaryZero = "0";
-    String fortyFive = "45";
+    private final String binaryOne = "1";
+    private final String binaryZero = "0";
+    private final String fortyFive = "45";
     
-    String thirtyTwosPlace = "Thirty-Twos";
-    String sixteensPlace = "Sixteens";
-    String place = "place";
-    String eightsPlace = "Eights place";
-    String foursPlace = "Fours place";
-    String twosPlace = "Twos place";
-    String onesPlace = "Ones Place";
+    private final String thirtyTwosPlace = "Thirty-Twos";
+    private final String sixteensPlace = "Sixteens";
+    private final String place = "place";
+    private final String eightsPlace = "Eights place";
+    private final String foursPlace = "Fours place";
+    private final String twosPlace = "Twos place";
+    private final String onesPlace = "Ones Place";
      
-    String thirtyTwoMultiplication = "32 x 1";
-    String thirtyTwoMultiplicationAnswer = "32";
+    private final String thirtyTwoMultiplication = "32 x 1";
+    private final String thirtyTwoMultiplicationAnswer = "32";
     
-    String sixteenMultiplication = "16 x 0";
-    String sixteenMultiplicationAnswer = "0";
+    private final String sixteenMultiplication = "16 x 0";
+    private final String sixteenMultiplicationAnswer = "0";
     
-    String eightMultiplication = "8 x 1";
-    String eightMultiplicationAnswer = "8";
+    private final String eightMultiplication = "8 x 1";
+    private final String eightMultiplicationAnswer = "8";
     
-    String fourMultiplication = "4 x 1";
-    String fourMultiplicationAnswer = "4";
+    private final String fourMultiplication = "4 x 1";
+    private final String fourMultiplicationAnswer = "4";
     
-    String twoMultiplication = "2 x 0";
-    String twoMultiplicationAnswer = "0";
+    private final String twoMultiplication = "2 x 0";
+    private final String twoMultiplicationAnswer = "0";
     
-    String oneMultiplication = "1 x 1";
-    String oneMultiplicationAnswer = "1";
+    private final String oneMultiplication = "1 x 1";
+    private final String oneMultiplicationAnswer = "1";
     
     //timer handles animation and delay
 	private Timer timer;
 	private int DELAY = 3000;
-	int countAnimation = 0;
+	private int countAnimation = 0;
 	
 	//coordinates of screen components
 	private final int titleImageX = 50;

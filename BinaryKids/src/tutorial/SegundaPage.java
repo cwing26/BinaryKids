@@ -8,7 +8,6 @@ import java.awt.event.MouseEvent;
 import javax.swing.JPanel;
 import javax.swing.JButton;
 import javax.swing.JLabel;
-import javax.swing.Timer;
 import java.awt.event.*;
 import java.awt.Color;
 import java.awt.Dimension;
@@ -25,37 +24,37 @@ import java.awt.Toolkit;
 public class SegundaPage extends JPanel
 {
 	//images
-	public Image titleImage;
-	public Image instagramImage;
-	public Image fbImage;
-	public Image emailImage;
-	public Image youtubeImage;
-	public Image skypeImage;
-	public Image cellImage;
-	public Image gameImage;
-	public Image lightOff;
-	public Image lightOn;
+	private Image titleImage;
+	private Image instagramImage;
+	private Image fbImage;
+	private Image emailImage;
+	private Image youtubeImage;
+	private Image skypeImage;
+	private Image cellImage;
+	private Image gameImage;
+	private Image lightOff;
+	private Image lightOn;
 
     //text on page
-    String explanation1 = "Actually, none of these would exist without binary numbers!";
-    String explanation2 = "Electronics and technology use binary numbers, ";
-    String explanation2cont = "streams of 1s and 0s, to operate.";
-    String explanation3 = "At the most basic level,";
-    String explanation4 = "1 means ON and 0 means OFF";
-    String buttonInstruction = "Click the buttons to see how binary numbers send signals!";
-    String labelInstruction = "Click number to convert!";
+    private final String explanation1 = "Actually, none of these would exist without binary numbers!";
+    private final String explanation2 = "Electronics and technology use binary numbers, ";
+    private final String explanation2cont = "streams of 1s and 0s, to operate.";
+    private final String explanation3 = "At the most basic level,";
+    private final String explanation4 = "1 means ON and 0 means OFF";
+    private final String buttonInstruction = "Click the buttons to see how binary numbers send signals!";
+    private final String labelInstruction = "Click number to convert!";
 
     //components for number conversion
-	String binaryNum = "110110";
-	String decimalNum = " 54 ";
-	String displayNum = "54";
-	boolean decimal = false;
-	JLabel convertLabel;
+	private final String binaryNum = "110110";
+	private final String decimalNum = " 54 ";
+	private final String displayNum = "54";
+	private boolean decimal = false;
+	private JLabel convertLabel;
 	
 	//components for on off switch
-	JButton oneButton;
-	JButton zeroButton;
-	boolean oneClicked = false;
+	private JButton oneButton;
+	private JButton zeroButton;
+	private boolean oneClicked = false;
 	
 	//positions of components on screen
 	private final int titleImageX = 5;

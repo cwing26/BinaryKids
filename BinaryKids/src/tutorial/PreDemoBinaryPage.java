@@ -19,40 +19,40 @@ import java.awt.Toolkit;
 public class PreDemoBinaryPage extends JPanel implements ActionListener
 {
     //fonts used on page
-	Font displayFont = new Font("Geneva", 1, 150);
-	Font textFont = new Font("Geneva", 1, 20);
-	Font labelFont = new Font("Geneva", 1, 15);
+	private Font displayFont = new Font("Geneva", 1, 150);
+	private Font textFont = new Font("Geneva", 1, 20);
+	private Font labelFont = new Font("Geneva", 1, 15);
 	
 	//timer handles animation and delay
 	private Timer timer;
 	private int DELAY = 3000;
-	int countAnimation = 0;
+	private int countAnimation = 0;
 	
 	//images
-	public Image titleImage;
-	public Image crossOutImage;
+	private Image titleImage;
+	private Image crossOutImage;
     
 	//text used on page
-    String explanation1 = "The same goes for binary numbers!";
-    String explanation1cont = "Binary numbers have digits that represent different places!";
-    String explanation1cont2 = "Each digit represents a power of 2, from small to large";
-    String explanation2 = "Binary numbers are written in base 2. ";
-    String explanation2cont = "This means that they can have digits from 0-1";
-    String explanation3 = "If a digit goes above 1, then instead of adding 2 there, ";
-    String explanation3cont = "1 is added to the place directly larger than it.";
+    private final String explanation1 = "The same goes for binary numbers!";
+    private final String explanation1cont = "Binary numbers have digits that represent different places!";
+    private final String explanation1cont2 = "Each digit represents a power of 2, from small to large";
+    private final String explanation2 = "Binary numbers are written in base 2. ";
+    private final String explanation2cont = "This means that they can have digits from 0-1";
+    private final String explanation3 = "If a digit goes above 1, then instead of adding 2 there, ";
+    private final String explanation3cont = "1 is added to the place directly larger than it.";
     
     
-    String number1 = "1";
-    String number0 = "0";
-    String number2 = "2";
+    private final String number1 = "1";
+    private final String number0 = "0";
+    private final String number2 = "2";
     
-    String foursPlace = "Fours Place";
-    String twosPlace = "Twos Place";
-    String onesPlace = "Ones Place";
+    private final String foursPlace = "Fours Place";
+    private final String twosPlace = "Twos Place";
+    private final String onesPlace = "Ones Place";
     
-    String baseTwo0 = "1";
-    String baseTwo1 = "2";
-    String baseTwo2 = "2x2";
+    private final String baseTwo0 = "1";
+    private final String baseTwo1 = "2";
+    private final String baseTwo2 = "2x2";
     
     //coordinates for screen elements
     private final int titleImageX = 100;

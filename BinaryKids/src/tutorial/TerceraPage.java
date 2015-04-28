@@ -25,31 +25,31 @@ public class TerceraPage extends JPanel implements ActionListener
     //timer components to handle animations
 	private Timer timer;
 	private int DELAY = 2000;
-	int countAnimation = 0;
+	private int countAnimation = 0;
 	
 	//images
-	public Image titleImage;
-	public Image binaryDigitImage;
+	private Image titleImage;
+	private Image binaryDigitImage;
 	
     //text used on screen
-    String explanation1 = "Combined, these numbers tell devices, like the computer you're on now,";
-    String explanation1cont = "what to do and when to do it!";
+    private final String explanation1 = "Combined, these numbers tell devices, like the computer you're on now,";
+    private final String explanation1cont = "what to do and when to do it!";
     
-    String explanation2 = "One binary digit is called a bit.";
-    String explanation3 = "Computers have to store trillions of these bits to do all of the ";
-    String explanation3cont = "cool things we love!";
-    String exampleBit = "Ex. 11010 is 5 bits long";
+    private final String explanation2 = "One binary digit is called a bit.";
+    private final String explanation3 = "Computers have to store trillions of these bits to do all of the ";
+    private final String explanation3cont = "cool things we love!";
+    private final String exampleBit = "Ex. 11010 is 5 bits long";
     
-    String b = "B";
-    String i = "I";
-    String n = "N";
-    String a = "A";
-    String r = "R";
-    String y = "Y";
+    private final String b = "B";
+    private final String i = "I";
+    private final String n = "N";
+    private final String a = "A";
+    private final String r = "R";
+    private final String y = "Y";
     
-    String d = "D";
-    String letterG = "G";
-    String t = "T";
+    private final String d = "D";
+    private final String letterG = "G";
+    private final String t = "T";
     
     //position of text on screen
     private final int bitTextY = 320;

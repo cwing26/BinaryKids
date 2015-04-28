@@ -22,42 +22,42 @@ import java.awt.Toolkit;
 public class PreDemoPage extends JPanel implements ActionListener
 {
     //fonts used on page
-	Font displayFont = new Font("Geneva", 1, 150);
-	Font textFont = new Font("Geneva", 1, 20);
-	Font labelFont = new Font("Geneva", 1, 15);
+	private Font displayFont = new Font("Geneva", 1, 150);
+	private Font textFont = new Font("Geneva", 1, 20);
+	private Font labelFont = new Font("Geneva", 1, 15);
 	
 	//timer handles animation and delay
 	private Timer timer;
 	private int DELAY = 3000;
-	int countAnimation = 0;
+	private int countAnimation = 0;
 	
 	//images
-	public Image titleImage;
-	public Image crossOutImage;
+	private Image titleImage;
+	private Image crossOutImage;
     
     
 	//text used on screen and in animation
-	String explanation1 = "Decimal numbers have digits that represent different places!";
-    String explanation1cont = "Each digit represents a power of 10, from small to large";
-    String explanation2 = "Decimal numbers are written in base 10. ";
-    String explanation2cont = "This means that they can have digits from 0-9";
-    String explanation3 = "If a digit goes above 9, then instead of adding 10 there, ";
-    String explanation3cont = "1 is added to the place directly larger than it.";
+	private final String explanation1 = "Decimal numbers have digits that represent different places!";
+    private final String explanation1cont = "Each digit represents a power of 10, from small to large";
+    private final String explanation2 = "Decimal numbers are written in base 10. ";
+    private final String explanation2cont = "This means that they can have digits from 0-9";
+    private final String explanation3 = "If a digit goes above 9, then instead of adding 10 there, ";
+    private final String explanation3cont = "1 is added to the place directly larger than it.";
     
-    String number4 = "4";
-    String number3 = "3";
-    String number8 = "8";
-    String number9 = "9";
-    String number10 = "10";
-    String number0 = "0";
+    private final String number4 = "4";
+    private final String number3 = "3";
+    private final String number8 = "8";
+    private final String number9 = "9";
+    private final String number10 = "10";
+    private final String number0 = "0";
     
-    String hundredsPlace = "Hundreds Place";
-    String tensPlace = "Tens Place";
-    String onesPlace = "Ones Place";
+    private final String hundredsPlace = "Hundreds Place";
+    private final String tensPlace = "Tens Place";
+    private final String onesPlace = "Ones Place";
     
-    String baseTen0 = "1";
-    String baseTen1 = "10";
-    String baseTen2 = "10x10";
+    private final String baseTen0 = "1";
+    private final String baseTen1 = "10";
+    private final String baseTen2 = "10x10";
     
     //coordinates for screen elements
     private final int titleImageX = 70;

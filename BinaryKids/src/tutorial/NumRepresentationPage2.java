@@ -16,20 +16,20 @@ import javax.swing.JPanel;
 public class NumRepresentationPage2 extends JPanel
 {
 	//images
-	public Image titleImage;
-	public Image dogImage;
-	public Image bikeImage;
-	public Image binocImage;
+	private Image titleImage;
+	private Image dogImage;
+	private Image bikeImage;
+	private Image binocImage;
 	
 	//text used on screen
-	String explanation1 = "Binary numbers are used to count things, just like normal numbers! ";
-	String explanation2 = "But binary numbers are made up of only 0s or 1s";
-	String explanation3 = "The word 'Binary' comes from the root 'bi-' meaning 2.";
+	private final String explanation1 = "Binary numbers are used to count things, just like normal numbers! ";
+	private final String explanation2 = "But binary numbers are made up of only 0s or 1s";
+	private final String explanation3 = "The word 'Binary' comes from the root 'bi-' meaning 2.";
 	
-	String bike = "Bicycle";
-	String bike1 = "(2 wheels)";
-	String binoculars = "Binoculars";
-	String binoculars2 = "(2 eyes)";
+	private final String bike = "Bicycle";
+	private final String bike1 = "(2 wheels)";
+	private final String binoculars = "Binoculars";
+	private final String binoculars2 = "(2 eyes)";
 	
 	//positions of various text and image components
 	private final int ex1X = 40;

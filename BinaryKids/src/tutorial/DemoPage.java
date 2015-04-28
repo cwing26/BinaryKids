@@ -23,42 +23,42 @@ public class DemoPage extends JPanel implements ActionListener
 {
 	
 	//fonts used
-	Font displayFont = new Font("Geneva", 1, 150);
-	Font textFont = new Font("Geneva", 1, 20);
-	Font labelFont = new Font("Geneva", 1, 15);
-	Font subheadFont = new Font("Geneva", 1, 30);
+	private Font displayFont = new Font("Geneva", 1, 150);
+	private Font textFont = new Font("Geneva", 1, 20);
+	private Font labelFont = new Font("Geneva", 1, 15);
+	private Font subheadFont = new Font("Geneva", 1, 30);
    
 	//images
 	private Image titleImage;
 	
-	String explanation1 = "Counting with decimal numbers and binary numbers is the same!";
-	String explanation1cont = "Just add the sum of all digits based on what place they are.";
+	private final String explanation1 = "Counting with decimal numbers and binary numbers is the same!";
+	private final String explanation1cont = "Just add the sum of all digits based on what place they are.";
 	
-	String explanation2 = "Let's do an example where we count to 45 in decimal and binary:";
+	private final String explanation2 = "Let's do an example where we count to 45 in decimal and binary:";
 	
 	
 	//text used on page
-	String four = "4";
-    String five = "5";
-    String fortyFive = "45";
+	private final String four = "4";
+    private final String five = "5";
+    private final String fortyFive = "45";
     
-    String tensPlace = "Tens Place";
-    String onesPlace = "Ones Place";
+    private final String tensPlace = "Tens Place";
+    private final String onesPlace = "Ones Place";
     
-    String tensMultiplication = "10 x 4";
-    String tensMultiplicationAnswer = "40";
+    private final String tensMultiplication = "10 x 4";
+    private final String tensMultiplicationAnswer = "40";
     
-    String onesMultiplication = "1 x 5";
-    String onesMultiplicationAnswer = "5";
+    private final String onesMultiplication = "1 x 5";
+    private final String onesMultiplicationAnswer = "5";
     
-    String plusSign = "+";
-    String equalSign = "=";
+    private final String plusSign = "+";
+    private final String equalSign = "=";
     
     
     //timer handles animation and delay
 	private Timer timer;
 	private int DELAY = 3000;
-	int countAnimation = 0;
+	private int countAnimation = 0;
 	
 	
 	//coordinates of screen components
