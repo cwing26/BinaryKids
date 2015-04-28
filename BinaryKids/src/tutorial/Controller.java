@@ -798,8 +798,32 @@ public class Controller extends JApplet
 			}
 
 
-			//animation pages need to be added to the card layout
-			//here if they haven’t been already. 
+			//handling animation
+			if(pageFlag == 1)
+			{
+				numRepresentationPage.timer.start();
+			}
+			else if(pageFlag == 5)
+			{
+				terceraPage.timer.start();
+			}
+			else if(pageFlag == 6)
+			{
+				preDemoPage.timer.start();
+			}
+			else if(pageFlag == 7)
+			{
+				preDemoBinaryPage.timer.start();
+			}
+			else if(pageFlag == 8)
+			{
+				demoPage.timer.start();
+			}
+			else if(pageFlag == 9)
+			{
+				demoPage2.timer.start();
+			}
+
 
 		} //end action performed
 
