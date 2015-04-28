@@ -41,7 +41,7 @@ public class StartPage extends JPanel
     	setBackground(Controller.backgroundColor);
     	initComponents();
     	setLayout(null);
-    	add(submitButton);
+    	//add(submitButton);
     	Insets insets = getInsets();
     	Dimension size = submitButton.getPreferredSize();
     	submitButton.setBounds(330-size.width/2 + insets.left, 200 + insets.top,
@@ -73,7 +73,7 @@ public class StartPage extends JPanel
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			controller.pageFlag=1;
+			controller.pageFlag++;
 			controller.backButton.setVisible(true);
 			controller.loadCard("NUM REP 1");
 			repaint();
