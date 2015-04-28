@@ -442,9 +442,9 @@ public class GamePage2 extends JPanel {
 		}
 	}
 	
-	//function to update the score exponentially
+	//function to update the score
 	private int updateScore() {
-		return (int) Math.pow(2, score);
+		return score + 50;
 	}
 	
 	//function to check current level
