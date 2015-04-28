@@ -86,7 +86,6 @@ public class NumRepresentationPage extends JPanel implements ActionListener
     	
     	//creates timer and starts animation
     	timer = new Timer(DELAY, this);
-    	timer.start();
     }
     
     //used to draw all components of screen in proper position, 

@@ -104,7 +104,6 @@ public class PreDemoPage extends JPanel implements ActionListener
     	setBackground(Controller.backgroundColor);
     	
     	timer = new Timer(DELAY, this);
-		timer.start();
 		
     	setVisible(true);
 

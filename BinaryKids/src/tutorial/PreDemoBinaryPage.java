@@ -105,8 +105,7 @@ public class PreDemoBinaryPage extends JPanel implements ActionListener
 
     	timer = new Timer(DELAY, this);
     	
-		
-		timer.start();
+
 		
     	setVisible(true);
 

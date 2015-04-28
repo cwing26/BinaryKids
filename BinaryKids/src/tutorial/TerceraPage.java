@@ -92,7 +92,7 @@ public class TerceraPage extends JPanel implements ActionListener
     	setBackground(Controller.backgroundColor);
     	setVisible(true);
     	
-    	timer.start();
+ 
     }
     
     //displays different text and images on screen, allowing for animation

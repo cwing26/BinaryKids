@@ -144,7 +144,6 @@ public class DemoPage2 extends JPanel implements ActionListener
     	setVisible(true);
     	
     	timer = new Timer(DELAY, this);
-    	timer.start();
     	
 
     }
