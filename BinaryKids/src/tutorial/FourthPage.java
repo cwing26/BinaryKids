@@ -96,7 +96,7 @@ public class FourthPage extends JPanel
 		//method called when the game button is clicked
 		public void actionPerformed(ActionEvent e) 
 		{
-			welcomePage.loadGame();
+			welcomePage.loadCard("GAME");
 		}
 	}
 	

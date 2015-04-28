@@ -49,7 +49,7 @@ public class DecToBinPage4 extends JPanel
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
-			welcomePage.loadDecBinPracticeProblems();
+			welcomePage.loadCard("DEC BIN PAGE 5");
 			welcomePage.setCompletedDecBin();
 		} 
 	}

@@ -135,7 +135,7 @@ public class BinaryDecimalOne extends JPanel
 			//if correct answer load the next page
 			if(inputAnswer == correctAnswer)
 			{
-				welcomePage.loadBinToDec2();
+				welcomePage.loadCard("BIN DEC PAGE 2");
 			}
 			else
 			{

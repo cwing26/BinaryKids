@@ -541,7 +541,7 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 					&& numFoursInput.equals(numFoursActual)
 					&& numTwosInput.equals(numTwosActual)
 					&& numOnesInput.equals(numOnesActual)   ){
-				welcomePage.loadBinToDec3();
+				welcomePage.loadCard("BIN DEC PAGE 3");
 			}
 			else{
 				String errorMessage = "Wrong answer, try again!";

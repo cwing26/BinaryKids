@@ -279,7 +279,7 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 			{
 				String congratsMessage = "Good job!";
 				JOptionPane.showMessageDialog(welcomePage, congratsMessage, "good job", JOptionPane.YES_NO_OPTION);
-				welcomePage.loadBinToDec4(); 
+				welcomePage.loadCard("BIN DEC PAGE 4"); 
 			}
 			else
 			{

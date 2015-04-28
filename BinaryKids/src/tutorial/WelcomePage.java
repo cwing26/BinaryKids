@@ -410,6 +410,17 @@ public class WelcomePage extends JApplet
 		else if (key.equals("BIN DEC PAGE 2")){
 			bdTwo = new BinaryDecimalTwo(welcome);
 		}
+		else if (key.equals("BIN DEC PAGE 3")){
+			bdThree = new BinaryDecimalThree(welcome);
+		}
+		else if (key.equals("BIN DEC PAGE 4")){
+			bdFour = new BinaryDecimalFour(welcome);
+		}
+		else if (key.equals("GAME")){
+			gamePage = new GamePage2(welcome);
+			cards.add(gamePage, "GAME");
+		}
+		
 		
 		cardLayout.show(cards, key);
 		invalidate();
@@ -419,41 +430,7 @@ public class WelcomePage extends JApplet
 	}
 
 
-
-
-	public void loadBinToDec2()
-	{
-		bdTwo = new BinaryDecimalTwo(welcome);
-		cardLayout.show(cards, "BIN DEC PAGE 2");
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-	public void loadBinToDec3()
-	{
-		bdThree = new BinaryDecimalThree(welcome);
-		cardLayout.show(cards, "BIN DEC PAGE 3");
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
-	public void loadBinToDec4()
-	{
-		
-		bdFour = new BinaryDecimalFour(welcome);
-		cardLayout.show(cards, "BIN DEC PAGE 4");
-		validate();
-		setVisible(true);
-		repaint();
-	}
-
 	
-	public void loadDecBinPracticeProblems(){
-		cardLayout.show(cards, "DEC BIN PAGE 5");
-	}
-
 
 	public void setUserAnswer(String answer)
 	{
@@ -506,14 +483,6 @@ public class WelcomePage extends JApplet
 		}
 	}
 
-	public void loadGame(){
-		gamePage = new GamePage2(welcome);
-		cards.add(gamePage, "GAME");
-		cardLayout.show(cards, "GAME");
-		validate();
-		setVisible(true);
-		repaint();	
-	}
 	
 	class gameButtonListener implements ActionListener
 	{
