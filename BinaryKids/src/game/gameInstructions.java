@@ -6,6 +6,7 @@ import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.Insets;
 
+import javax.swing.Icon;
 import javax.swing.ImageIcon;
 import javax.swing.JButton;
 import javax.swing.JPanel;
@@ -31,6 +32,10 @@ public class gameInstructions extends JPanel {
 	JButton zero;
 	JButton one;
 	
+	//text displayed on screen
+	private final String howToPlay = "HOW TO PLAY";
+	
+	
 	public gameInstructions(Controller _controller)
 	{
 		controller = _controller;
@@ -39,27 +44,24 @@ public class gameInstructions extends JPanel {
 		
 		insets = getInsets();
 		
-		loadImages();
+		initComponents();
 				
 		add(zero);
 		add(one);
 		
 	}
 	
-	private void loadImages() {
+	private void initComponents() {
 		
-		
-		zeroCard = new ImageIcon("C:\\Users\\Julia\\Desktop\\myZero.png");
-		oneCard = new ImageIcon("C:\\Users\\Julia\\Desktop\\myOne.png");
-		
+	
 		zero = new JButton();
 		zero.setPreferredSize(buttonSize);
-		zero.setIcon(zeroCard);
+		zero.setIcon((Icon) controller.game0ButtonImage);
 		zero.setBounds(235-buttonSize.width/2 + insets.left, 300 + insets.top, buttonSize.width, buttonSize.height);
 		
 		one = new JButton();
 		one.setPreferredSize(buttonSize);
-		one.setIcon(oneCard);
+		one.setIcon((Icon) controller.game1ButtonImage);
 		one.setBounds(395-buttonSize.width/2 + insets.left, 500 + insets.top, buttonSize.width, buttonSize.height);
 		
 	}
@@ -77,7 +79,7 @@ public class gameInstructions extends JPanel {
 		
 		g.setColor(Color.WHITE);
 		g.setFont(new Font("Geneva", Font.BOLD , 25));
-		g.drawString("HOW TO PLAY", 300, 50);
+		g.drawString(howToPlay, 300, 50);
 	
 	}
 	
