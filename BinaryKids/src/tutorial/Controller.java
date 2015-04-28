@@ -8,6 +8,7 @@ import game.gameInstructions;
 import javax.swing.ImageIcon;
 import javax.swing.JApplet;
 import javax.swing.JButton;
+import javax.swing.JLabel;
 import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
@@ -66,7 +67,9 @@ public class Controller extends JApplet
 	private gameInstructions gameInstructionsPage;
 	private GamePage2 gamePage;
 
-	//top panel commponents
+	JPanel topPanel;
+	
+	//bottom panel commponents
 	JPanel buttonPanel;
 	JButton nextButton;
 	JButton closeButton;
@@ -283,11 +286,13 @@ public class Controller extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		cardLayout.show(cards, "FOURTH");
-		//cardLayout.show(cards, "START PAGE");  //here
+		//cardLayout.show(cards, "SEGUNDA");
+		cardLayout.show(cards, "START PAGE"); //here
 
 		//add buttonPanel to the top of game frame
-		add(buttonPanel, BorderLayout.NORTH);
+		add(buttonPanel, BorderLayout.SOUTH);  //here
+		add(topPanel, BorderLayout.NORTH);
+		
 
 		// Setup the applet
 		getContentPane().setBackground(backgroundColor);
@@ -424,7 +429,7 @@ public class Controller extends JApplet
 
 		binocImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.binocularsPath)); 
-		binocImage = binocImage.getScaledInstance(166, 159, Image.SCALE_SMOOTH);
+		binocImage = binocImage.getScaledInstance(140, 140, Image.SCALE_SMOOTH);
 
 		//first page
 		firstPageTitleImage = Toolkit.getDefaultToolkit().getImage(
@@ -433,31 +438,31 @@ public class Controller extends JApplet
 
 		instagramImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.instagramPath)); 
-		instagramImage = instagramImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		instagramImage = instagramImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 
 		fbImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.fbPath)); 
-		fbImage = fbImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		fbImage = fbImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 
 		youtubeImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.youtubePath)); 
-		youtubeImage = youtubeImage.getScaledInstance(150, 160, Image.SCALE_SMOOTH);
+		youtubeImage = youtubeImage.getScaledInstance(100, 105, Image.SCALE_SMOOTH);
 
 		emailImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.emailPath)); 
-		emailImage = emailImage.getScaledInstance(160, 116, Image.SCALE_SMOOTH);
+		emailImage = emailImage.getScaledInstance(120, 100, Image.SCALE_SMOOTH);
 
 		cellImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.cellPath)); 
-		cellImage = cellImage.getScaledInstance(152, 152, Image.SCALE_SMOOTH);
+		cellImage = cellImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
 
 		skypeImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.skypePath)); 
-		skypeImage = skypeImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		skypeImage = skypeImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 
 		gameImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.gamePath)); 
-		gameImage = gameImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
+		gameImage = gameImage.getScaledInstance(100, 100, Image.SCALE_SMOOTH);
 
 		//second page images
 		secondPageTitleImage = Toolkit.getDefaultToolkit().getImage(
@@ -481,11 +486,11 @@ public class Controller extends JApplet
 
 		lightOff = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.lightOffPath)); 
-		lightOff = lightOff.getScaledInstance(145, 200, Image.SCALE_SMOOTH);
+		lightOff = lightOff.getScaledInstance(140, 180, Image.SCALE_SMOOTH);
 
 		lightOn = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.lightOnPath)); 
-		lightOn = lightOn.getScaledInstance(148, 200, Image.SCALE_SMOOTH);
+		lightOn = lightOn.getScaledInstance(140, 180, Image.SCALE_SMOOTH);
 
 		//third page images
 		thirdPageTitleImage = Toolkit.getDefaultToolkit().getImage(
@@ -617,6 +622,12 @@ public class Controller extends JApplet
 		backButton.setVisible(false);
 		buttonPanel.add(nextButton);
 
+		topPanel = new JPanel();
+		topPanel.setBackground(Controller.buttonPanelColor);
+		JLabel text = new JLabel("Binary Kids");
+		text.setFont(new Font("Geneva", Font.PLAIN, 8));
+		text.setForeground(Controller.buttonPanelColor);
+		topPanel.add(text);
 
 	}
 
@@ -624,7 +635,6 @@ public class Controller extends JApplet
 	public void paint(Graphics g) 
 	{     	
 		super.paint(g);
-
 	}
 
 
