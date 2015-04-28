@@ -495,24 +495,40 @@ public class GamePage2 extends JPanel {
 		//if game is ending because time has run out
 		if (reason == 0) {
 			message = "You ran out of time! Game over.";
+			//display goodbye message
+			JOptionPane.showMessageDialog(this, message, "Game Over!", JOptionPane.YES_NO_OPTION);	
+		
+			controller.loadCard("GAME WELCOME");
 		}
 		//if game is ending because lives have run out
 		else if (reason == 1) {
 			timer.stop();
 			message = "Out of lives! Game Over.";
+			//display goodbye message
+			JOptionPane.showMessageDialog(this, message, "Game Over!", JOptionPane.YES_NO_OPTION);	
+		
+			controller.loadCard("GAME WELCOME");
 		}
 		//if game is ending because user quits and/or beats the game
 		else if (reason == 2) {
 			timer.stop();
 			message = "Goodbye! Come back soon!";
+					
+			//display goodbye message
+			JOptionPane.showMessageDialog(this, message, "Game Over!", JOptionPane.YES_NO_OPTION);	
+		
 			controller.loadCard("GAME WELCOME");
 		}
+		else if (reason == 2 && countCorrect >=1 ) { 
+			timer.stop();
+			message = “You’re awesome! Congrats on learning binary!!”;
+					
+			//display goodbye message
+			JOptionPane.showMessageDialog(this, message, "Game Over!", JOptionPane.YES_NO_OPTION);	
 		
-		//display goodbye message
-		JOptionPane.showMessageDialog(this, message, "Game Over!", JOptionPane.YES_NO_OPTION);	
-		
-		//return to gameWelcomePage screen
-//		controller.returnGameWelcome();
+			controller.loadCard("GAME WELCOME");
+		}
+
 	}
 	
 	//check submitted answer
