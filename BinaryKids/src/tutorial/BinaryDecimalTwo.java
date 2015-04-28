@@ -185,6 +185,7 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 		setBackground(Controller.backgroundColor);
 		initComponents();
 		addComponentsToPanel();
+		formatComponents();
 		setVisible(true);
 
 	}
