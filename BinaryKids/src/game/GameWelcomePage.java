@@ -24,19 +24,8 @@ import tutorial.WelcomePage;
 public class GameWelcomePage extends JPanel {
 
 	//pages
-	private WelcomePage welcomePage;
+	private Controller controller;
 	private GamePage2 gamePage;
-	
-	//image icons for top banner
-	ImageIcon welcomeText;
-	ImageIcon rocketShip;
-	//images for top banner
-	private Image textImage;
-	private Image rocketShipImage;
-	
-	//image icons for buttons
-	ImageIcon playMe;
-	ImageIcon instructMe;
 	
 	Insets insets;
 	
@@ -47,15 +36,15 @@ public class GameWelcomePage extends JPanel {
 	//background color
 	public static Color backgroundColor = new Color(255, 255, 204);
 	
-	//
+	//coordinates
 	private static int x = 400;
 	private static int y = 100;
 	
 	boolean gameInProgress;
 	
-	GameWelcomePage(WelcomePage welcome) {
+	GameWelcomePage(Controller control) {
 	
-		welcomePage = welcome;
+		controller = control;
 		setLayout(null);
 
 		setBackground(backgroundColor);
@@ -63,9 +52,6 @@ public class GameWelcomePage extends JPanel {
 	
 		insets = getInsets();
 		
-		//load images and create necessary images/image icons
-		loadImages();
-	
 		
 		//function to initialize variables
 		initVariables();
@@ -79,28 +65,7 @@ public class GameWelcomePage extends JPanel {
 			
 	}
 
-	/**
-	 * load images and create icons to display on JPanel
-	 */
-	private void loadImages() {
-		
-		try {
-			welcomeText = new ImageIcon(ImageIO.read(new File("C:\\Users\\Julia\\Desktop\\binaryblast.jpg")));
-			rocketShip = new ImageIcon(ImageIO.read(new File("C:\\Users\\Julia\\Desktop\\rocketship.jpg")));
-		} catch (IOException ex) {
-			System.out.println("File not found");
-		}
-		
-		textImage = welcomeText.getImage();
-		textImage.getScaledInstance(400, 300, Image.SCALE_SMOOTH);
-		
-		rocketShipImage = rocketShip.getImage();
-		rocketShipImage.getScaledInstance(50, 50, Image.SCALE_SMOOTH);
-	
-		playMe = new ImageIcon("C:\\Users\\Julia\\Desktop\\playButton.png");
-		instructMe = new ImageIcon("C:\\Users\\Julia\\Desktop\\instructButton.png");
-	
-	}
+
 
 	/**
 	 * set gameInProgress = false when on this page
@@ -118,7 +83,7 @@ public class GameWelcomePage extends JPanel {
 		//create start button
 		startButton = new JButton("Play!");
 		//add image to start button
-		startButton.setIcon(playMe);
+		startButton.setIcon(controller.playButtonImage);
 		
 		//re-format button so only image is visible
 		hideButton(startButton);
@@ -134,7 +99,7 @@ public class GameWelcomePage extends JPanel {
 		//create instructions button
 		instructButton = new JButton("How to play");
 		//set image for instructions button
-		instructButton.setIcon(instructMe);
+		instructButton.setIcon(controller.gameInstructionsButtonImage);
 		//add instructions button to jpanel at specified location
 		instructButton.setBounds(x-size.width/2 + insets.left, (y*4)+ insets.top, size.width, size.height);
 		//add listener for instructions button
@@ -164,8 +129,8 @@ public class GameWelcomePage extends JPanel {
 		super.paint(g);
 		
 		//draw top banner (two images) to jpanel
-		g.drawImage(textImage, 50, 50, this);
-		g.drawImage(rocketShipImage, 550, 50, this);
+		g.drawImage(controller.gameTitleImage, 50, 50, this);
+		g.drawImage(controller.rocketshipImage, 550, 50, this);
 	}
 	
 	
@@ -174,7 +139,7 @@ public class GameWelcomePage extends JPanel {
 		public void actionPerformed(ActionEvent e) 
 		{
 			//if start button is clicked, start the game
-			welcomePage.loadGame();
+			controller.loadGame();
 		}
 	}
 
