@@ -505,6 +505,7 @@ public class GamePage2 extends JPanel {
 		else if (reason == 2) {
 			timer.stop();
 			message = "Goodbye! Come back soon!";
+			controller.loadCard("GAME WELCOME");
 		}
 		
 		//display goodbye message

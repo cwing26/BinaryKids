@@ -21,7 +21,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 
 	//timer used for animation
 	private Timer timer;
-	private int DELAY = 000;
+	private int DELAY = 1000;
 
 	//applet
 	private Controller controller;
