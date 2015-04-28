@@ -1,6 +1,7 @@
 package tutorial;
 
-
+//imports
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -10,20 +11,27 @@ import javax.swing.Timer;
 
 import java.awt.*; 
 
-//explains the places/digits with an animation
-//decimal numbers can have many digits
-//show: 132 (3 different strings)
-//1. hundreds place: light up, rectangle around it, label with hundreds place
-//2. 100x1 = 100 under hundreds place, 100x1 on side of page
 
-
+/* This class serves as the tenth view in the introductory learning module, 
+ * introducing the student to the conversion of binary and decimal numbers by
+ * looking at the sum of their digits/places with an animation. This page builds
+ * off the previous demonstration page to apply the same logic to understanding 
+ * binary numbers: calculating the product and sum of their different digits
+ */
 @SuppressWarnings("serial")
 public class DemoPage2 extends JPanel implements ActionListener
 {
 
-    //images
+	//fonts used
+	Font displayFont = new Font("Geneva", 1, 150);
+	Font textFont = new Font("Geneva", 1, 20);
+	Font labelFont = new Font("Geneva", 1, 15);
+	Font subheadFont = new Font("Geneva", 1, 30);
+   
+	//images
 	private Image titleImage;
 	
+	//text used on screen
 	String explanation1 = "Counting with decimal numbers and binary numbers is the same!";
 	String explanation1cont = "Just add the sum of all digits based on what place they are.";
 	
@@ -36,6 +44,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     //45 in binary is 101101
     String binaryOne = "1";
     String binaryZero = "0";
+    String fortyFive = "45";
     
     String thirtyTwosPlace = "Thirty-Twos";
     String sixteensPlace = "Sixteens";
@@ -63,457 +72,391 @@ public class DemoPage2 extends JPanel implements ActionListener
     String oneMultiplication = "1 x 1";
     String oneMultiplicationAnswer = "1";
     
-    
+    //timer handles animation and delay
 	private Timer timer;
 	private int DELAY = 3000;
 	int countAnimation = 0;
 	
+	//coordinates of screen components
+	private final int titleImageX = 50;
+	private final int titleImageY = 5;
+	
+	private final int explanationX = 20;
+    private final int explanation1Y = 100;
+    private final int explanation1contY = 125;
+    private final int explanation2Y = 160;
     
+    private final int multiplicationAnswerY = 470;
+    private final int multiplicationY = 420;
+    
+    private final int plus1X = 150;
+    private final int plus2X = 270;
+    private final int plus3X = 390;
+    private final int plus4X = 510;
+    private final int plus5X = 630;
+    
+    private final int displayNumY = 330;
+    private final int placesY = 370;
+    private final int placesYoverflow = 390;
+    
+    private final int binary1X = 50;
+    private final int binary2X = 170;
+    private final int binary3X = 290;
+    private final int binary4X = 410;
+    private final int binary5X = 530;
+    private final int binary6X = 650;
+    
+    private final int place32X = 45;
+    private final int place32Xoverflow = 50;
+    private final int place16X = 175;
+    private final int place16Xoverflow = 180;
+    private final int place8X = 285;
+    private final int place4X = 410;
+    private final int place2X = 530;
+    private final int place1X = 650;
+    
+    private final int multip32X = 60;
+    private final int multip16X = 180;
+    private final int multip8X = 305;
+    private final int multip4X = 425;
+    private final int multip2X = 545;
+    private final int multip1X = 665;
+    
+    private final int multip32answerX = 70;
+    private final int multip16answerX = 195;
+    private final int multip8answerX = 320;
+    private final int multip4answerX = 440;
+    private final int multip2answerX = 560;
+    private final int multip1answerX = 680;
+    
+    private final int rectWidth = 110;
+    private final int rectHeight = 150;
+    
+    private final int rectY = 195;
+    
+    
+    
+    //constructor
     public DemoPage2()
     {
 
-    	timer = new Timer(DELAY, this);
     	setBackground(WelcomePage.backgroundColor);
     	
     	loadImages();
 
     	setVisible(true);
     	
+    	timer = new Timer(DELAY, this);
     	timer.start();
     	
 
     }
     
+    
+    //loads images necessary for page
     public void loadImages()
     {
     	titleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.puttingTogetherPath)); 
 		titleImage = titleImage.getScaledInstance(680, 60, Image.SCALE_SMOOTH);
-		
-		
+
     }
     
+    
+    //displays all digits making up binary number through animation
+    public void displayBinaryNums(Graphics m)
+    {
+    	m.setColor(WelcomePage.textColor);
+		m.setFont(displayFont);
+    	m.drawString(binaryOne, binary1X, displayNumY);
+    	m.drawString(binaryZero, binary2X, displayNumY);
+    	m.drawString(binaryOne, binary3X, displayNumY);
+    	m.drawString(binaryOne, binary4X, displayNumY);
+    	m.drawString(binaryZero, binary5X, displayNumY);
+    	m.drawString(binaryOne, binary6X, displayNumY);
+    }
+    
+  //displays all binary places under binary number through animation
+    public void displayBinaryPlaces(Graphics m)
+    {
+    	m.setColor(WelcomePage.textColor);
+    	m.setFont(textFont);
+    	m.drawString(thirtyTwosPlace, place32X, placesY);
+    	m.drawString(place, place32Xoverflow, placesYoverflow);
+    	m.drawString(sixteensPlace, place16X, placesY);
+    	m.drawString(place, place16Xoverflow, placesYoverflow);
+    	m.drawString(eightsPlace, place8X, placesY);
+    	m.drawString(foursPlace, place4X, placesY);
+    	m.drawString(twosPlace, place2X, placesY);
+    	m.drawString(onesPlace, place1X, placesY);
+    }
+    
+    //displays all explanatory text through animation
+    public void displayText(Graphics m)
+    {
+    	m.setColor(WelcomePage.textColor);
+    	m.setFont(textFont);
+    	m.drawString(explanation1, explanationX, explanation1Y);
+    	m.drawString(explanation1cont, explanationX, explanation1contY);
+    	
+    	m.drawString(explanation2, explanationX, explanation2Y);
+    }
+    
+    //displays plus signs at last two animation stages to illustrate
+    //summing of digits
+    public void displayPlusSign(Graphics g)
+    {
+    	g.setColor(WelcomePage.textColor);
+    	g.drawString(plusSign, plus1X, multiplicationAnswerY);
+    	g.drawString(plusSign, plus2X, multiplicationAnswerY);
+    	g.drawString(plusSign, plus3X, multiplicationAnswerY);
+    	g.drawString(plusSign, plus4X, multiplicationAnswerY);
+    	g.drawString(plusSign, plus5X, multiplicationAnswerY);
+    	
+    }
+    
+    //displays multiplication formulas for each binary place at
+    //last two stages of animation
+    public void displayMultiplication(Graphics g)
+    {
+    	g.setColor(WelcomePage.textColor);
+    	g.setFont(textFont);
+    	
+    	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
+    	g.drawString(sixteenMultiplication, multip16X, multiplicationY);
+    	g.drawString(eightMultiplication, multip8X, multiplicationY);
+    	g.drawString(fourMultiplication, multip4X, multiplicationY);
+    	g.drawString(twoMultiplication, multip2X, multiplicationY);
+    	g.drawString(oneMultiplication, multip1X, multiplicationY);
+    	
+    }
+    
+    //displays multiplication answers to above formulas for each binary place at
+    //last two stages of animation
+    public void displayMultiplicationAnswer(Graphics g)
+    {
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setFont(subheadFont);
+    	
+    	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
+    	g.drawString(sixteenMultiplicationAnswer, multip16answerX, multiplicationAnswerY);
+    	g.drawString(eightMultiplicationAnswer, multip8answerX, multiplicationAnswerY);
+    	g.drawString(fourMultiplicationAnswer, multip4answerX, multiplicationAnswerY);
+    	g.drawString(twoMultiplicationAnswer, multip2answerX, multiplicationAnswerY);
+    	g.drawString(oneMultiplicationAnswer, multip1answerX, multiplicationAnswerY);
+    	
+    }
+    
+    //focus on 32s place, displaying multiplication formula and answer
+    public void displayAnimationStage1(Graphics g)
+    {
+    	g.setColor(Color.red);
+    	g.drawRect(binary1X, rectY, rectWidth, rectHeight);
+
+    	g.setColor(WelcomePage.textColor);
+    	g.setFont(textFont);
+    	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
+    	
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setFont(subheadFont);
+    	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
+
+    }
+    
+  //focus on 16s place, displaying multiplication formula and answer
+    public void displayAnimationStage2(Graphics g)
+    {
+    	g.setColor(Color.red);
+    	g.drawRect(binary2X, rectY, rectWidth, rectHeight);
+
+    	
+    	g.setColor(WelcomePage.textColor);
+    	g.setFont(textFont);
+    	
+    	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
+    	g.drawString(sixteenMultiplication, multip16X, multiplicationY);
+
+
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setFont(subheadFont);
+    	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
+    	g.drawString(sixteenMultiplicationAnswer, multip16answerX, multiplicationAnswerY);
+    	
+    }
+    
+  //focus on 8s place, displaying multiplication formula and answer
+    public void displayAnimationStage3(Graphics g)
+    {
+
+    	g.setColor(Color.red);
+    	g.drawRect(binary3X, rectY, rectWidth, rectHeight);
+
+    	
+    	g.setColor(WelcomePage.textColor);
+    	g.setFont(textFont);
+    	
+    	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
+    	g.drawString(sixteenMultiplication, multip16X, multiplicationY);
+    	g.drawString(eightMultiplication, multip8X, multiplicationY);
+    	
+    	
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setFont(subheadFont);
+    	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
+    	g.drawString(sixteenMultiplicationAnswer, multip16answerX, multiplicationAnswerY);
+    	g.drawString(eightMultiplicationAnswer, multip8answerX, multiplicationAnswerY);
+    	
+    }
+    
+  //focus on 4s place, displaying multiplication formula and answer
+    public void displayAnimationStage4(Graphics g)
+    {
+    	
+    	g.setColor(Color.red);
+      	g.drawRect(binary4X, rectY, rectWidth, rectHeight);
+
+    	
+    	g.setColor(WelcomePage.textColor);
+    	g.setFont(textFont);
+    	
+    	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
+    	g.drawString(sixteenMultiplication, multip16X, multiplicationY);
+    	g.drawString(eightMultiplication, multip8X, multiplicationY);
+    	g.drawString(fourMultiplication, multip4X, multiplicationY);
+    	
+    	
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setFont(subheadFont);
+    	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
+    	g.drawString(sixteenMultiplicationAnswer, multip16answerX, multiplicationAnswerY);
+    	g.drawString(eightMultiplicationAnswer, multip8answerX, multiplicationAnswerY);
+    	g.drawString(fourMultiplicationAnswer, multip4answerX, multiplicationAnswerY);
+    	
+    	
+    }
+    
+  //focus on 2s place, displaying multiplication formula and answer
+    public void displayAnimationStage5(Graphics g)
+    {
+    	g.setColor(Color.red);
+    	g.drawRect(binary5X, rectY, rectWidth, rectHeight);
+    	
+    	g.setColor(WelcomePage.textColor);
+    	g.setFont(textFont);
+    	
+    	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
+    	g.drawString(sixteenMultiplication, multip16X, multiplicationY);
+    	g.drawString(eightMultiplication, multip8X, multiplicationY);
+    	g.drawString(fourMultiplication, multip4X, multiplicationY);
+    	g.drawString(twoMultiplication, multip2X, multiplicationY);
+
+    	
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setFont(subheadFont);
+    	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
+    	g.drawString(sixteenMultiplicationAnswer, multip16answerX, multiplicationAnswerY);
+    	g.drawString(eightMultiplicationAnswer, multip8answerX, multiplicationAnswerY);
+    	g.drawString(fourMultiplicationAnswer, multip4answerX, multiplicationAnswerY);
+    	g.drawString(twoMultiplicationAnswer, multip2answerX, multiplicationAnswerY);
+    	
+    }
+    
+  //focus on 1s place, displaying multiplication formula and answer
+    public void displayAnimationStage6(Graphics g)
+    {
+    	g.setColor(Color.red);
+    	g.drawRect(binary6X, rectY, rectWidth, rectHeight);
+    	
+    	displayMultiplication(g);
+    	displayMultiplicationAnswer(g);
+    	
+    }
+    
+    //summary of all multiplication formulas and their answers with illustration
+    //that we must sum multiplications answers up to get final answer
+    public void displayAnimationStage7(Graphics g)
+    {
+		displayMultiplication(g);
+    	displayMultiplicationAnswer(g);
+    	displayPlusSign(g);
+    	
+    }
+    
+    //displays summing of multiplication answers to arrive at final
+    //answer of 45
+    public void displayAnimationStage8(Graphics g)
+    {
+  		displayMultiplication(g);
+    	displayMultiplicationAnswer(g);
+    	displayPlusSign(g);
+
+    	g.drawString(equalSign, 620, 540);
+    	
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.drawString(fortyFive, 650, 540);
+    	
+    }
+    
+    //displays the various components of the page and animation on screen,
+    //changing the display based on the state of animation
     public void paint(Graphics g)
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, 50, 5, this);
+    	g.drawImage(titleImage, titleImageX, titleImageY, this);
     	
-    	g.setFont(new Font("Geneva", 1, 20));
-    	g.drawString(explanation1, 20, 100);
-    	g.drawString(explanation1cont, 20, 125);
+    	//numbers, place labels, and explanatory text
+    	//displayed throughout animation
+    	displayText(g);
+    	displayBinaryNums(g);
+    	displayBinaryPlaces(g);
     	
-    	g.drawString(explanation2, 20, 160);
-    	
-    	if(countAnimation == 0)
+    	//32s place
+    	if(countAnimation == 1)
     	{	
-    		//101101
-    		g.setColor(WelcomePage.textColor);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(binaryOne, 50, 330);
-        	g.drawString(binaryZero, 170, 330);
-        	g.drawString(binaryOne, 290, 330);
-        	g.drawString(binaryOne, 410, 330);
-        	g.drawString(binaryZero, 530, 330);
-        	g.drawString(binaryOne, 650, 330);
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(thirtyTwosPlace, 45, 370);
-        	g.drawString(place, 50, 390);
-        	g.drawString(sixteensPlace, 175, 370);
-        	g.drawString(place, 180, 390);
-        	g.drawString(eightsPlace, 285, 370);
-        	g.drawString(foursPlace, 410, 370);
-        	g.drawString(twosPlace, 530, 370);
-        	g.drawString(onesPlace, 650, 370);
-        	
+    		displayAnimationStage1(g);
     	}
-    	else if(countAnimation == 1)
-    	{	
-    		//101101
-    		g.setColor(WelcomePage.textColor);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(binaryOne, 50, 330);
-        	g.drawString(binaryZero, 170, 330);
-        	g.drawString(binaryOne, 290, 330);
-        	g.drawString(binaryOne, 410, 330);
-        	g.drawString(binaryZero, 530, 330);
-        	g.drawString(binaryOne, 650, 330);
-        	
- 
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(thirtyTwosPlace, 45, 370);
-        	g.drawString(place, 50, 390);
-        	g.drawString(sixteensPlace, 175, 370);
-        	g.drawString(place, 180, 390);
-        	g.drawString(eightsPlace, 285, 370);
-        	g.drawString(foursPlace, 410, 370);
-        	g.drawString(twosPlace, 530, 370);
-        	g.drawString(onesPlace, 650, 370);
-        	
-        	
-        	g.setColor(Color.red);
-        	g.drawRect(50, 195, 110, 150);
-
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	
-        	g.drawString(thirtyTwoMultiplication, 60, 425);
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
-
-    	}
+    	//16s place
     	else if(countAnimation == 2)
     	{	
-    		//101101
-    		g.setColor(WelcomePage.textColor);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(binaryOne, 50, 330);
-        	g.drawString(binaryZero, 170, 330);
-        	g.drawString(binaryOne, 290, 330);
-        	g.drawString(binaryOne, 410, 330);
-        	g.drawString(binaryZero, 530, 330);
-        	g.drawString(binaryOne, 650, 330);
-        	
- 
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(thirtyTwosPlace, 45, 370);
-        	g.drawString(place, 50, 390);
-        	g.drawString(sixteensPlace, 175, 370);
-        	g.drawString(place, 180, 390);
-        	g.drawString(eightsPlace, 285, 370);
-        	g.drawString(foursPlace, 410, 370);
-        	g.drawString(twosPlace, 530, 370);
-        	g.drawString(onesPlace, 650, 370);
-        	
-        	
-        	g.setColor(Color.red);
-        	g.drawRect(170, 195, 110, 150);
-
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	
-        	g.drawString(thirtyTwoMultiplication, 60, 425);
-        	g.drawString(sixteenMultiplication, 180, 425);
-
-        	
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
-        	g.drawString(sixteenMultiplicationAnswer, 195, 470);
-        	
+    		displayAnimationStage2(g);
         	
     	}
+    	//8s place
     	else if(countAnimation == 3)
     	{	
-    		//101101
-    		g.setColor(WelcomePage.textColor);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(binaryOne, 50, 330);
-        	g.drawString(binaryZero, 170, 330);
-        	g.drawString(binaryOne, 290, 330);
-        	g.drawString(binaryOne, 410, 330);
-        	g.drawString(binaryZero, 530, 330);
-        	g.drawString(binaryOne, 650, 330);
-        	
- 
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(thirtyTwosPlace, 45, 370);
-        	g.drawString(place, 50, 390);
-        	g.drawString(sixteensPlace, 175, 370);
-        	g.drawString(place, 180, 390);
-        	g.drawString(eightsPlace, 285, 370);
-        	g.drawString(foursPlace, 410, 370);
-        	g.drawString(twosPlace, 530, 370);
-        	g.drawString(onesPlace, 650, 370);
-        	
-        	
-        	g.setColor(Color.red);
-        	g.drawRect(290, 195, 110, 150);
-
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	
-        	g.drawString(thirtyTwoMultiplication, 60, 425);
-        	g.drawString(sixteenMultiplication, 180, 425);
-        	g.drawString(eightMultiplication, 305, 425);
-        	
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
-        	g.drawString(sixteenMultiplicationAnswer, 195, 470);
-        	g.drawString(eightMultiplicationAnswer, 320, 470);
-        	
+    		displayAnimationStage3(g);
     	}
-    	
+    	//4s place
     	else if (countAnimation == 4)
     	{
-    		//101101
-    		g.setColor(WelcomePage.textColor);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(binaryOne, 50, 330);
-        	g.drawString(binaryZero, 170, 330);
-        	g.drawString(binaryOne, 290, 330);
-        	g.drawString(binaryOne, 410, 330);
-        	g.drawString(binaryZero, 530, 330);
-        	g.drawString(binaryOne, 650, 330);
-        	
- 
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(thirtyTwosPlace, 45, 370);
-        	g.drawString(place, 50, 390);
-        	g.drawString(sixteensPlace, 175, 370);
-        	g.drawString(place, 180, 390);
-        	g.drawString(eightsPlace, 285, 370);
-        	g.drawString(foursPlace, 410, 370);
-        	g.drawString(twosPlace, 530, 370);
-        	g.drawString(onesPlace, 650, 370);
-        	
-        	
-        	g.setColor(Color.red);
-          	g.drawRect(410, 195, 110, 150);
-
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	
-        	g.drawString(thirtyTwoMultiplication, 60, 425);
-        	g.drawString(sixteenMultiplication, 180, 425);
-        	g.drawString(eightMultiplication, 305, 425);
-        	g.drawString(fourMultiplication, 425, 425);
-        	
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
-        	g.drawString(sixteenMultiplicationAnswer, 195, 470);
-        	g.drawString(eightMultiplicationAnswer, 320, 470);
-        	g.drawString(fourMultiplicationAnswer, 440, 470);
-        	
-        	
+    		displayAnimationStage4(g);
     	}
+    	//2s place
     	else if(countAnimation ==5)
     	{
-    		//101101
-    		g.setColor(WelcomePage.textColor);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(binaryOne, 50, 330);
-        	g.drawString(binaryZero, 170, 330);
-        	g.drawString(binaryOne, 290, 330);
-        	g.drawString(binaryOne, 410, 330);
-        	g.drawString(binaryZero, 530, 330);
-        	g.drawString(binaryOne, 650, 330);
-        	
- 
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(thirtyTwosPlace, 45, 370);
-        	g.drawString(place, 50, 390);
-        	g.drawString(sixteensPlace, 175, 370);
-        	g.drawString(place, 180, 390);
-        	g.drawString(eightsPlace, 285, 370);
-        	g.drawString(foursPlace, 410, 370);
-        	g.drawString(twosPlace, 530, 370);
-        	g.drawString(onesPlace, 650, 370);
-        	
-        	
-        	g.setColor(Color.red);
-        	g.drawRect(530, 195, 110, 150);
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	
-        	g.drawString(thirtyTwoMultiplication, 60, 425);
-        	g.drawString(sixteenMultiplication, 180, 425);
-        	g.drawString(eightMultiplication, 305, 425);
-        	g.drawString(fourMultiplication, 425, 425);
-        	g.drawString(twoMultiplication, 545, 425);
-        	
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
-        	g.drawString(sixteenMultiplicationAnswer, 195, 470);
-        	g.drawString(eightMultiplicationAnswer, 320, 470);
-        	g.drawString(fourMultiplicationAnswer, 440, 470);
-        	g.drawString(twoMultiplicationAnswer, 560, 470);
-        	
+    		displayAnimationStage5(g);
     	}
+    	//1s place
     	else if(countAnimation == 6)
     	{
-    		//101101
-    		g.setColor(WelcomePage.textColor);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(binaryOne, 50, 330);
-        	g.drawString(binaryZero, 170, 330);
-        	g.drawString(binaryOne, 290, 330);
-        	g.drawString(binaryOne, 410, 330);
-        	g.drawString(binaryZero, 530, 330);
-        	g.drawString(binaryOne, 650, 330);
-        	
- 
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(thirtyTwosPlace, 45, 370);
-        	g.drawString(place, 50, 390);
-        	g.drawString(sixteensPlace, 175, 370);
-        	g.drawString(place, 180, 390);
-        	g.drawString(eightsPlace, 285, 370);
-        	g.drawString(foursPlace, 410, 370);
-        	g.drawString(twosPlace, 530, 370);
-        	g.drawString(onesPlace, 650, 370);
-        	
-        	
-        	g.setColor(Color.red);
-        	g.drawRect(650, 195, 110, 150);
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	
-        	g.drawString(thirtyTwoMultiplication, 60, 425);
-        	g.drawString(sixteenMultiplication, 180, 425);
-        	g.drawString(eightMultiplication, 305, 425);
-        	g.drawString(fourMultiplication, 425, 425);
-        	g.drawString(twoMultiplication, 545, 425);
-        	g.drawString(oneMultiplication, 665, 425);
-        	
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
-        	g.drawString(sixteenMultiplicationAnswer, 195, 470);
-        	g.drawString(eightMultiplicationAnswer, 320, 470);
-        	g.drawString(fourMultiplicationAnswer, 440, 470);
-        	g.drawString(twoMultiplicationAnswer, 560, 470);
-        	g.drawString(oneMultiplicationAnswer, 680, 470);
-        	
+    		displayAnimationStage6(g);
     	}
+    	//sum of answers
     	else if(countAnimation == 7)
     	{
-    		//101101
-    		g.setColor(WelcomePage.textColor);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(binaryOne, 50, 330);
-        	g.drawString(binaryZero, 170, 330);
-        	g.drawString(binaryOne, 290, 330);
-        	g.drawString(binaryOne, 410, 330);
-        	g.drawString(binaryZero, 530, 330);
-        	g.drawString(binaryOne, 650, 330);
-        	
- 
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(thirtyTwosPlace, 45, 370);
-        	g.drawString(place, 50, 390);
-        	g.drawString(sixteensPlace, 175, 370);
-        	g.drawString(place, 180, 390);
-        	g.drawString(eightsPlace, 285, 370);
-        	g.drawString(foursPlace, 410, 370);
-        	g.drawString(twosPlace, 530, 370);
-        	g.drawString(onesPlace, 650, 370);
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	
-        	g.drawString(thirtyTwoMultiplication, 60, 425);
-        	g.drawString(sixteenMultiplication, 180, 425);
-        	g.drawString(eightMultiplication, 305, 425);
-        	g.drawString(fourMultiplication, 425, 425);
-        	g.drawString(twoMultiplication, 545, 425);
-        	g.drawString(oneMultiplication, 665, 425);
-        	
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
-        	g.drawString(sixteenMultiplicationAnswer, 195, 470);
-        	g.drawString(eightMultiplicationAnswer, 320, 470);
-        	g.drawString(fourMultiplicationAnswer, 440, 470);
-        	g.drawString(twoMultiplicationAnswer, 560, 470);
-        	g.drawString(oneMultiplicationAnswer, 680, 470);
-        	
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.drawString(plusSign, 150, 470);
-        	g.drawString(plusSign, 270, 470);
-        	g.drawString(plusSign, 390, 470);
-        	g.drawString(plusSign, 510, 470);
-        	g.drawString(plusSign, 630, 470);
-        	
+    		displayAnimationStage7(g);
     	}
+    	//final answer stage
     	else if(countAnimation >=8)
     	{
-    		//101101
-    		g.setColor(WelcomePage.textColor);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(binaryOne, 50, 330);
-        	g.drawString(binaryZero, 170, 330);
-        	g.drawString(binaryOne, 290, 330);
-        	g.drawString(binaryOne, 410, 330);
-        	g.drawString(binaryZero, 530, 330);
-        	g.drawString(binaryOne, 650, 330);
-        	
- 
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(thirtyTwosPlace, 45, 370);
-        	g.drawString(place, 50, 390);
-        	g.drawString(sixteensPlace, 175, 370);
-        	g.drawString(place, 180, 390);
-        	g.drawString(eightsPlace, 285, 370);
-        	g.drawString(foursPlace, 410, 370);
-        	g.drawString(twosPlace, 530, 370);
-        	g.drawString(onesPlace, 650, 370);
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	
-        	g.drawString(thirtyTwoMultiplication, 60, 425);
-        	g.drawString(sixteenMultiplication, 180, 425);
-        	g.drawString(eightMultiplication, 305, 425);
-        	g.drawString(fourMultiplication, 425, 425);
-        	g.drawString(twoMultiplication, 545, 425);
-        	g.drawString(oneMultiplication, 665, 425);
-        	
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(thirtyTwoMultiplicationAnswer, 70, 470);
-        	g.drawString(sixteenMultiplicationAnswer, 195, 470);
-        	g.drawString(eightMultiplicationAnswer, 320, 470);
-        	g.drawString(fourMultiplicationAnswer, 440, 470);
-        	g.drawString(twoMultiplicationAnswer, 560, 470);
-        	g.drawString(oneMultiplicationAnswer, 680, 470);
-        	
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.drawString(plusSign, 150, 470);
-        	g.drawString(plusSign, 270, 470);
-        	g.drawString(plusSign, 390, 470);
-        	g.drawString(plusSign, 510, 470);
-        	g.drawString(plusSign, 630, 470);
-        	
-        	g.drawString(equalSign, 620, 540);
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.drawString("45", 650, 540);
-        	
+    		displayAnimationStage8(g);
     	}
     	
-    }
+    } //end paint
     
+    //increments as the timer progresses to determine what stage
+    //of animation the page is in
 	@Override
     public void actionPerformed(ActionEvent e) 
 	{
