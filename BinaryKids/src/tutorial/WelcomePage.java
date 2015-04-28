@@ -10,8 +10,6 @@ import javax.swing.JOptionPane;
 import javax.swing.JPanel;
 import javax.swing.SwingUtilities;
 
-import unused.GamePage;
-
 import java.awt.*; 
 import java.awt.event.*;
 import java.awt.Color;
@@ -82,7 +80,7 @@ public class WelcomePage extends JApplet
 	private String userAnswer = "";
 
 
-	
+
 	//image paths
 	public static String titlePath = "images/titleTextImage.jpg";
 	public static String titleImagePath = "images/titleImage.jpg";
@@ -90,10 +88,10 @@ public class WelcomePage extends JApplet
 	public static String lightOffImagePath = "images/lightOff.jpg";
 	public static String binDecPg3TitleImagePath = "images/BinDecPg3Title.jpg";
 	public static String tutorialImgPath = "images/tutorials.jpg";
-	
+
 	public static String tutorialCompleteImgPath = "images/tutorialComplete.jpg";
 	public static String checkmarkImgPath = "images/checkmark.png";
-	
+
 	//meghan's added images
 	public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
 	public static String binDecImgPath = "images/BinToDec.jpg";
@@ -139,7 +137,7 @@ public class WelcomePage extends JApplet
 	public static String hintGraphicPath = "images/hintGraphic.gif";
 	public static String decPracticeProblemPath = "images/decPracticeProblemsTitle.jpg";
 
-	
+
 	//chris images
 	public Image titleImg;  //http://www.cs.colostate.edu/~boese/Geek/binaryCalculator.gif
 	public Image lightOnImg;
@@ -148,12 +146,12 @@ public class WelcomePage extends JApplet
 	public Image decBinHeadlineImg;
 	public Image tutorialCompleteImg;
 	public Image checkmarkImg;
-	
+
 	public Image titleHeadline;
 	public Image binaryGraphic;
 	public Image tutorialHeadline;
 	public Image binDecImg;
-	
+
 	//num rep page images
 	public Image numRepTitleImage;
 	public Image decimalTitleImage;
@@ -162,13 +160,13 @@ public class WelcomePage extends JApplet
 	public Image binaryImageLight;
 	public Image binaryImageDark;
 	public Image soccerBall;
-	
+
 	//num rep 2 images
 	public Image numRep2TitleImage;
 	public Image dogImage;
 	public Image bikeImage;
 	public Image binocImage;
-	
+
 	//first page images
 	public Image firstPageTitleImage;
 	public Image instagramImage;
@@ -178,7 +176,7 @@ public class WelcomePage extends JApplet
 	public Image skypeImage;
 	public Image cellImage;
 	public Image gameImage;
-	
+
 	//second page images
 	public Image secondPageTitleImage;
 	public Image instagramImage2;
@@ -190,24 +188,24 @@ public class WelcomePage extends JApplet
 	public Image gameImage2;
 	public Image lightOff;
 	public Image lightOn;
-	
+
 	//third page images
 	public Image thirdPageTitleImage;
 	public Image binaryDigitImage;
-	
+
 	//pre-demo binary images
 	public Image preDemoBinaryTitleImage;
 	public Image crossOutImage;
-    
+
 	//pre demo images
 	public Image preDemoTitleImage;
-	
+
 	//demo page image
 	public Image demoTitleImage;
-	
+
 	//demo page 2
 	public Image demo2TitleImage;
-	
+
 	//practice problem images
 	public Image practiceProblemTitleImage;
 	public Image hintImage;
@@ -251,17 +249,17 @@ public class WelcomePage extends JApplet
 
 		//initializaing all of the components of the tutorial
 		initComponents();
-		
+
 		//adds components
 		addComponents();
 
 		//Create and set up the content pane.
 		setupLayout();
-		
+
 		setVisible(true);
 
 	}  
-	
+
 	public void setupLayout(){
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
@@ -277,7 +275,7 @@ public class WelcomePage extends JApplet
 		setName("BinaryKids");
 		setSize(frameWidth, frameHeight);
 	}
-	
+
 	public void addComponents(){
 		cards.add(startPage, "START PAGE");
 		cards.add(numRepresentationPage, "NUM REP 1");
@@ -302,7 +300,7 @@ public class WelcomePage extends JApplet
 		cards.add(bdPractice, "BIN DEC PAGE 5");
 		//cards.add(gamePage, "GAME");
 	}
-	
+
 	public void initComponents(){
 		cards = new JPanel(new CardLayout());
 		contentPane = getContentPane();
@@ -349,15 +347,15 @@ public class WelcomePage extends JApplet
 		tutorialHeadline = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.tutorialImgPath)); 
 		tutorialHeadline = tutorialHeadline.getScaledInstance(280, 40, Image.SCALE_SMOOTH);
-		
+
 		binDecImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binDecImgPath)); 
 		binDecImg = binDecImg.getScaledInstance(600, 50, Image.SCALE_SMOOTH);
-		
+
 		tutorialCompleteImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.tutorialCompleteImgPath)); 
 		tutorialCompleteImg = tutorialCompleteImg.getScaledInstance(400, 40, Image.SCALE_SMOOTH);
-		
+
 		checkmarkImg = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.checkmarkImgPath)); 
 		checkmarkImg = checkmarkImg.getScaledInstance(40, 40, Image.SCALE_SMOOTH);
@@ -366,154 +364,154 @@ public class WelcomePage extends JApplet
 		binaryImageLight = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binaryImageLightPath)); 
 		binaryImageLight = binaryImageLight.getScaledInstance(354, 44, Image.SCALE_SMOOTH);
-		
+
 		binaryImageDark = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binaryImageDarkPath)); 
 		binaryImageDark = binaryImageDark.getScaledInstance(354, 44, Image.SCALE_SMOOTH);
-		
+
 		numRepTitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.numRepTitlePath)); 
 		numRepTitleImage = numRepTitleImage.getScaledInstance(780, 44, Image.SCALE_SMOOTH);
-		
+
 		decimalTitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.decimalImagePath)); 
 		decimalTitleImage = decimalTitleImage.getScaledInstance(444, 40, Image.SCALE_SMOOTH);
-		
+
 		romanNumeralTitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.romanNumeralImagePath)); 
 		romanNumeralTitleImage = romanNumeralTitleImage.getScaledInstance(435, 40, Image.SCALE_SMOOTH);
-		
+
 		shapesTitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.shapesImagePath)); 
 		shapesTitleImage = shapesTitleImage.getScaledInstance(164, 48, Image.SCALE_SMOOTH);
-		
+
 		soccerBall = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.soccerBallPath)); 
 		soccerBall = soccerBall.getScaledInstance(150, 151, Image.SCALE_SMOOTH);
-		
+
 		//num rep 2 page
 		numRep2TitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.whatBinaryTitlePath)); 
 		numRep2TitleImage = numRep2TitleImage.getScaledInstance(673, 50, Image.SCALE_SMOOTH);
-		
+
 		dogImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.dogBinaryImagePath)); 
 		dogImage = dogImage.getScaledInstance(121, 224, Image.SCALE_SMOOTH);
-		
+
 		bikeImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.bikeImagePath)); 
 		bikeImage = bikeImage.getScaledInstance(192, 124, Image.SCALE_SMOOTH);
-		
+
 		binocImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binocularsPath)); 
 		binocImage = binocImage.getScaledInstance(166, 159, Image.SCALE_SMOOTH);
-	
+
 		//first page
-    		firstPageTitleImage = Toolkit.getDefaultToolkit().getImage(
+		firstPageTitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.whyBinaryImportantTitlePath)); 
-    		firstPageTitleImage = firstPageTitleImage.getScaledInstance(790, 43, Image.SCALE_SMOOTH);
-		
+		firstPageTitleImage = firstPageTitleImage.getScaledInstance(790, 43, Image.SCALE_SMOOTH);
+
 		instagramImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.instagramPath)); 
 		instagramImage = instagramImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		
+
 		fbImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.fbPath)); 
 		fbImage = fbImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		
+
 		youtubeImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.youtubePath)); 
 		youtubeImage = youtubeImage.getScaledInstance(150, 160, Image.SCALE_SMOOTH);
-		
+
 		emailImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.emailPath)); 
 		emailImage = emailImage.getScaledInstance(160, 116, Image.SCALE_SMOOTH);
-		
+
 		cellImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.cellPath)); 
 		cellImage = cellImage.getScaledInstance(152, 152, Image.SCALE_SMOOTH);
-		
+
 		skypeImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.skypePath)); 
 		skypeImage = skypeImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		
+
 		gameImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.gamePath)); 
 		gameImage = gameImage.getScaledInstance(150, 150, Image.SCALE_SMOOTH);
-		
+
 		//second page images
 		secondPageTitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.whyBinaryImportantTitlePath)); 
 		secondPageTitleImage  = secondPageTitleImage .getScaledInstance(790, 43, Image.SCALE_SMOOTH);
-		
-		 
+
+
 		instagramImage2 = instagramImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
-		
+
 		fbImage2 = fbImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
-		
+
 		youtubeImage2 = youtubeImage.getScaledInstance(95, 96, Image.SCALE_SMOOTH);
-		
+
 		emailImage2 = emailImage.getScaledInstance(95, 69, Image.SCALE_SMOOTH);
-		
+
 		cellImage2 = cellImage.getScaledInstance(92, 92, Image.SCALE_SMOOTH);
-		
+
 		skypeImage2 = skypeImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
-		
+
 		gameImage2 = gameImage.getScaledInstance(90, 90, Image.SCALE_SMOOTH);
-		
+
 		lightOff = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.lightOffPath)); 
 		lightOff = lightOff.getScaledInstance(145, 200, Image.SCALE_SMOOTH);
-		
+
 		lightOn = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.lightOnPath)); 
 		lightOn = lightOn.getScaledInstance(148, 200, Image.SCALE_SMOOTH);
-		
+
 		//third page images
-    		thirdPageTitleImage = Toolkit.getDefaultToolkit().getImage(
+		thirdPageTitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.whyBinaryImportantTitlePath)); 
-    		thirdPageTitleImage = thirdPageTitleImage.getScaledInstance(790, 43, Image.SCALE_SMOOTH);
-	
+		thirdPageTitleImage = thirdPageTitleImage.getScaledInstance(790, 43, Image.SCALE_SMOOTH);
+
 		binaryDigitImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binaryDigitPath)); 
 		binaryDigitImage = binaryDigitImage.getScaledInstance(150, 157, Image.SCALE_SMOOTH);
 
-		
+
 		//pre demo binary images
-    		preDemoBinaryTitleImage = Toolkit.getDefaultToolkit().getImage(
+		preDemoBinaryTitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.binBasicsPath)); 
-    		preDemoBinaryTitleImage = preDemoBinaryTitleImage.getScaledInstance(600, 50, Image.SCALE_SMOOTH);
-		
+		preDemoBinaryTitleImage = preDemoBinaryTitleImage.getScaledInstance(600, 50, Image.SCALE_SMOOTH);
+
 		crossOutImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.crossOutPath)); 
 		crossOutImage = crossOutImage.getScaledInstance(200, 200, Image.SCALE_SMOOTH);
-		
+
 		//pre demo images
-	   	preDemoTitleImage = Toolkit.getDefaultToolkit().getImage(
-					getClass().getClassLoader().getResource(WelcomePage.decBasicsPath)); 
+		preDemoTitleImage = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(WelcomePage.decBasicsPath)); 
 		preDemoTitleImage = preDemoTitleImage.getScaledInstance(650, 40, Image.SCALE_SMOOTH);
-			
+
 		//demo title image
 		demoTitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.puttingTogetherPath)); 
 		demoTitleImage = demoTitleImage.getScaledInstance(680, 60, Image.SCALE_SMOOTH);
-		
-		 //demo 2
-    		demo2TitleImage = Toolkit.getDefaultToolkit().getImage(
+
+		//demo 2
+		demo2TitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.puttingTogetherPath)); 
 		demo2TitleImage = demo2TitleImage.getScaledInstance(680, 60, Image.SCALE_SMOOTH);
 
-		
+
 		//practice problem images
 		practiceProblemTitleImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.decPracticeProblemPath)); 
 		practiceProblemTitleImage = practiceProblemTitleImage.getScaledInstance(790, 40, Image.SCALE_SMOOTH);
-		
+
 		hintImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(WelcomePage.hintGraphicPath)); 
 		hintImage = hintImage.getScaledInstance(331,147, Image.SCALE_SMOOTH);
-		
-		
+
+
 		//try to load the image file
 		try {
 			binaryGraphic = new ImageIcon(new URL("http://media.giphy.com/media/nlJF31X6I1LW/giphy.gif")).getImage();
@@ -525,22 +523,22 @@ public class WelcomePage extends JApplet
 			binaryGraphic = binaryGraphic.getScaledInstance(600, 280, Image.SCALE_SMOOTH);
 			e.printStackTrace();
 		};
-		
-		
+
+
 	}
 
 
-	
+
 	public void setCompletedDecBin(){
 		fourthPage.completedDecBin = true;
 		repaint();
 	}
-	
+
 	public void setCompletedBinDec(){
 		fourthPage.completedBinDec = true;
 		repaint();
 	}
-	
+
 	public void createButtonPanel()
 	{
 		//creates a close button to allow user to exit whenever
@@ -635,8 +633,8 @@ public class WelcomePage extends JApplet
 			gamePage = new GamePage2(welcome);
 			cards.add(gamePage, "GAME");
 		}
-		
-		
+
+
 		cardLayout.show(cards, key);
 		invalidate();
 		validate();
@@ -645,7 +643,7 @@ public class WelcomePage extends JApplet
 	}
 
 
-	
+
 
 	public void setUserAnswer(String answer)
 	{
@@ -680,7 +678,7 @@ public class WelcomePage extends JApplet
 		setVisible(true);
 		repaint();
 	}
-	
+
 	class backHomeButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
@@ -698,7 +696,7 @@ public class WelcomePage extends JApplet
 		}
 	}
 
-	
+
 	class gameButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 

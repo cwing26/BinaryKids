@@ -13,8 +13,6 @@ import java.awt.Color;
 import java.awt.Dimension;
 import java.awt.Font;
 import java.awt.Insets;
-import java.awt.Image;
-import java.awt.Toolkit;
 
 /* This class serves as the fourth view in the introductory learning module, 
  * introducing the student to the basics of binary numbers and their relationship to computers
@@ -36,7 +34,6 @@ public class SegundaPage extends JPanel
     //components for number conversion
 	private final String binaryNum = "110110";
 	private final String decimalNum = " 54 ";
-	private final String displayNum = "54";
 	private boolean decimal = false;
 	private JLabel convertLabel;
 	
@@ -105,7 +102,7 @@ public class SegundaPage extends JPanel
     {
     	super.paint(g);
     	
-    	g.drawImage(welcomePage.titleImage, titleImageX, titleImageY, this);
+    	g.drawImage(welcomePage.secondPageTitleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));

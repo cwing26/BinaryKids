@@ -27,6 +27,7 @@ import javax.swing.Timer;
 
 import tutorial.WelcomePage;
 
+@SuppressWarnings("serial")
 public class GamePage2 extends JPanel {
 	
 	private WelcomePage welcomePage;
