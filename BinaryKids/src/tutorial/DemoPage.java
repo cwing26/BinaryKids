@@ -122,6 +122,8 @@ public class DemoPage extends JPanel implements ActionListener
 		
     }
     
+    //displays the large number 45 on screen through
+    //all animation
     public void displayDecimalNums(Graphics m)
     {
 		m.setColor(WelcomePage.textColor);
@@ -130,6 +132,7 @@ public class DemoPage extends JPanel implements ActionListener
     	m.drawString(five, secondDisplayNumX, displayNumY);
     }
     
+    //displays the places (tens, ones) labels on screen
     public void displayDecimalPlaces(Graphics m)
     {
     	m.setColor(WelcomePage.textColor);
@@ -138,6 +141,7 @@ public class DemoPage extends JPanel implements ActionListener
     	m.drawString(onesPlace, placeOneX, placesY);
     }
     
+    //displays all text on screen through all animation
     public void displayText(Graphics m)
     {
     	m.setColor(WelcomePage.textColor);
@@ -149,6 +153,8 @@ public class DemoPage extends JPanel implements ActionListener
     	
     }
     
+    
+    //first step of animation, tens place focus
     public void displayAnimationStage1(Graphics g)
     {
     	g.setColor(Color.red);
@@ -156,9 +162,6 @@ public class DemoPage extends JPanel implements ActionListener
     	
     	g.setColor(WelcomePage.textColor);
     	g.setFont(textFont);
-    	g.drawString(tensPlace, placeTenX, placesY);
-    	g.drawString(onesPlace, placeOneX, placesY);
-    	
     	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
     	
     	g.setColor(WelcomePage.buttonPanelColor);
@@ -167,21 +170,14 @@ public class DemoPage extends JPanel implements ActionListener
     		
     }
     
+    //second step of animation, ones place focus
     public void displayAnimationStage2(Graphics g)
     {
-		g.setColor(Color.black);
-		g.setFont(displayFont);
-    	g.drawString(four, firstDisplayNumX, displayNumY);
-    	g.drawString(five, secondDisplayNumX, displayNumY);
-    	
     	g.setColor(Color.red);
     	g.drawRect(rect2X, rectY, rectWidth, rectHeight);
     	
     	g.setColor(WelcomePage.textColor);
     	g.setFont(textFont);
-    	g.drawString(tensPlace, placeTenX, placesY);
-    	g.drawString(onesPlace, placeOneX, placesY);
-    	
     	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
     	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
     	
@@ -192,20 +188,12 @@ public class DemoPage extends JPanel implements ActionListener
     
     }
     
+    //third stage of animation, sum up places
     public void displayAnimationStage3(Graphics g)
     {
-		g.setColor(Color.black);
-		g.setFont(displayFont);
-    	g.drawString(four, firstDisplayNumX, displayNumY);
-    	g.drawString(five, secondDisplayNumX, displayNumY);
-    	
-    	
+
     	g.setColor(WelcomePage.textColor);
     	g.setFont(textFont);
-    	g.drawString(tensPlace, placeTenX, placesY);
-    	g.drawString(onesPlace, placeOneX, placesY);
-    	
-    	
     	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
     	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
     	
@@ -213,7 +201,6 @@ public class DemoPage extends JPanel implements ActionListener
     	g.setFont(subheadFont);
     	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
     	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
-    	
     	
     	g.setColor(WelcomePage.textColor);
     	g.drawString(plusSign, plusSignX, multiplicationAnswerY);
@@ -221,19 +208,11 @@ public class DemoPage extends JPanel implements ActionListener
     	
     }
     
+    //fourth stage of animation, summary
     public void displayAnimationStage4(Graphics g)
     {
-		g.setColor(Color.black);
-		g.setFont(displayFont);
-    	g.drawString(four, firstDisplayNumX, displayNumY);
-    	g.drawString(five, secondDisplayNumX, displayNumY);
-    	
-    	
     	g.setColor(WelcomePage.textColor);
     	g.setFont(textFont);
-    	g.drawString(tensPlace, placeTenX, placesY);
-    	g.drawString(onesPlace, placeOneX, placesY);
-    	
     	
     	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
     	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
@@ -254,12 +233,14 @@ public class DemoPage extends JPanel implements ActionListener
     	
     }
     
+    
   //displays the various components of the page and animation on screen,
     //changing the display based on the state of animation
     public void paint(Graphics g)
     {
     	super.paint(g);
     	
+    	//first step of animation, basic numbers and labels displayed
     	g.drawImage(titleImage, titleImageX, titleImageY, this);
     	
     	displayText(g);
