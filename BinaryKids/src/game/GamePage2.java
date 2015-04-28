@@ -403,6 +403,24 @@ public class GamePage2 extends JPanel {
 				checkLevel();
 				//load the next question
 				nextQuestion();
+				
+				one.setIcon(new ImageIcon( controller.game0ButtonImage));
+				two.setIcon(new ImageIcon( controller.game0ButtonImage));
+				four.setIcon(new ImageIcon( controller.game0ButtonImage));
+				eight.setIcon(new ImageIcon( controller.game0ButtonImage));
+				sixteen.setIcon(new ImageIcon( controller.game0ButtonImage));
+				thirtytwo.setIcon(new ImageIcon( controller.game0ButtonImage));
+				sixtyfour.setIcon(new ImageIcon(controller.game0ButtonImage));
+				
+				//set flag to corresponding integer 0
+				flagOne = 0;
+				flagTwo = 0;
+				flagFour = 0;
+				flagEight = 0;
+				flagSixteen = 0;
+				flagThirtyTwo = 0;
+				flagSixtyFour = 0;
+				
 			}
 			//if the answer was wrong
 			else {

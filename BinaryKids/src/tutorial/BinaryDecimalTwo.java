@@ -53,7 +53,7 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 
 	//buttons
 	JButton submitButton;
-	JButton startButton;
+	private JButton startButton;
 
 	//13 in binary is 1101
 	final int BinToDecNumSquaresActual = 13;

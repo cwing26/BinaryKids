@@ -286,11 +286,11 @@ public class Controller extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		//cardLayout.show(cards, "SEGUNDA");
-		cardLayout.show(cards, "START PAGE"); //here
+		cardLayout.show(cards, "FOURTH");
+		//cardLayout.show(cards, "START PAGE"); //here
 
-		//add buttonPanel to the top of game frame
-		add(buttonPanel, BorderLayout.SOUTH);  //here
+		//add buttonPanel to game frame
+		add(buttonPanel, BorderLayout.SOUTH); 
 		add(topPanel, BorderLayout.NORTH);
 		
 
@@ -668,27 +668,39 @@ public class Controller extends JApplet
 	public void loadCard(String key){
 		if (key.equals("DEC BIN PAGE 1")){
 			decToBinPage = new DecToBinPage(welcome);
+			nextButton.setVisible(false);
 		}
 		else if (key.equals("DEC BIN PAGE 2")){
 			decToBinPage2 = new DecToBinPage2(welcome);
+			nextButton.setVisible(false);
 		}
 		else if (key.equals("DEC BIN PAGE 3")){
 			decToBinPage3 = new DecToBinPage3(welcome);
+			nextButton.setVisible(false);
 		}
 		else if (key.equals("DEC BIN PAGE 4")){
 			decToBinPage4 = new DecToBinPage4(welcome);
+			nextButton.setVisible(false);
 		}
 		else if (key.equals("BIN DEC PAGE 1")){
 			bdOne = new BinaryDecimalOne(welcome);
+			nextButton.setVisible(false);
 		}
 		else if (key.equals("BIN DEC PAGE 2")){
 			bdTwo = new BinaryDecimalTwo(welcome);
+			nextButton.setVisible(false);
 		}
 		else if (key.equals("BIN DEC PAGE 3")){
 			bdThree = new BinaryDecimalThree(welcome);
+			nextButton.setVisible(false);
 		}
 		else if (key.equals("BIN DEC PAGE 4")){
 			bdFour = new BinaryDecimalFour(welcome);
+			nextButton.setVisible(false);
+		}
+		else if (key.equals("FOURTH")){
+			nextButton.setVisible(false);
+			backButton.setVisible(false);
 		}
 		else if (key.equals("GAME")){
 			gamePage = new GamePage2(welcome);

@@ -352,7 +352,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		if (!startClicked){
 			g.drawString(instructions1, startTextX, startTextY);
 			g.drawString(instructions2, startTextX, startTextY+textYInc);
-			g.drawString(instructions3, startTextX, startTextY+textYInc);
+			g.drawString(instructions3, startTextX, startTextY+2*textYInc);
 		}
 
 		
