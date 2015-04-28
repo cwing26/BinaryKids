@@ -734,7 +734,6 @@ public class Controller extends JApplet
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			pageFlag = 0;
 			startPage = new StartPage(welcome);
 			notOnStartScreen = false;
 			inTutorial = false;
@@ -830,6 +829,16 @@ public class Controller extends JApplet
 			if(pageFlag > 10)
 			{
 				backButton.setVisible(false);
+			}
+
+			//handling next button visibility
+			if(pageFlag == 3)
+			{
+				nextButton.setVisible(false);
+			}
+			else
+			{
+				nextButton.setVisible(true);
 			}
 			repaint();
 
