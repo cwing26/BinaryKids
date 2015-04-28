@@ -282,8 +282,8 @@ public class Controller extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		//cardLayout.show(cards, "FOURTH");
-		cardLayout.show(cards, "START PAGE"); //here
+		cardLayout.show(cards, "FOURTH");
+		//cardLayout.show(cards, "START PAGE"); //here
 
 		//add buttonPanel to game frame
 		add(buttonPanel, BorderLayout.SOUTH); 
@@ -637,6 +637,12 @@ public class Controller extends JApplet
 	public void paint(Graphics g) 
 	{     	
 		super.paint(g);
+		if (pageFlag > 10){
+			nextButton.setVisible(false);
+			backButton.setVisible(false);
+		}
+			
+		
 	}
 
 

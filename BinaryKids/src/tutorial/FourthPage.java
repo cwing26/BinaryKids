@@ -93,7 +93,7 @@ public class FourthPage extends JPanel
 				buttonSize.width, buttonSize.height);
 		gameButton.setBounds(gameButtonX + insets.left, gameButtonY + insets.top,
 				buttonSize.width, buttonSize.height);
-		gameButton.setVisible(true); //here
+		gameButton.setVisible(false); //here
 	}
 	
 	//this method overrides the paint method
