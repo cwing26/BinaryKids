@@ -1,3 +1,5 @@
+//this class is the second page in the decimal to binary tutorial
+
 package tutorial;
 
 //http://stackoverflow.com/questions/3953208/value-change-listener-to-jtextfield
@@ -15,94 +17,84 @@ import javax.swing.event.DocumentListener;
 public class DecToBinPage2 extends JPanel implements ActionListener 
 {
 	//whether or not clicked start button
-	boolean startClicked = false;
+	private boolean startClicked = false;
 
 	//timer used for animation
 	private Timer timer;
-	private int DELAY = 1000;
+	private int DELAY = 000;
 
 	//applet
-	WelcomePage welcomePage;
+	private WelcomePage welcomePage;
 	
 	//swing components
-	JButton submitButton; 
-	JButton startButton;
-	final String instructions1 = "How do we get the number 11? 11 = how many tens + how many ones? We will put the 11 squares";
-	final String instructions2 = "in the TENS and ONES boxes to review the decimal number system. We will do this first example";
-	final String instructions3 = "for you and then let you try! Click the start button to begin.";
-	JTextField NumberTensField;
-	JTextField NumberOnesField;
+	private JButton submitButton; 
+	private JButton startButton;
+	private final String instructions1 = "How do we get the number 11? 11 = how many tens + how many ones? We will put the 11 squares";
+	private final String instructions2 = "in the TENS and ONES boxes to review the decimal number system. We will do this first example";
+	private final String instructions3 = "for you and then let you try! Click the start button to begin.";
+	private JTextField NumberTensField;
+	private JTextField NumberOnesField;
 	
 	// The coordinates of the 10's rectangle and 1s rectangle 
-	final int box10x = 210, box10y = 300, box10width = 150, box10height = 210;
-	final int box1x = 400, box1y = 300, box1width = 150, box1height = 210;	
+	private final int box10x = 210, box10y = 300, box10width = 150, box10height = 210;
+	private final int box1x = 400, box1y = 300, box1width = 150, box1height = 210;	
 	
 	//swing somponent coords
-	final int submitButtonX = box1x +box1width + 20;
-	final int submitButtonY = box1y+box1height+5;
-	final int startButtonX = 290;
-	final int startButtonY = 140;
-	final int tensFieldX = box10x +45;
-	final int tensFieldY = box10y+box10height+5;
-	final int onesFieldX = box1x + 45;
-	final int onesFieldY = box1y+box1height+5;
+	private final int submitButtonX = box1x +box1width + 20;
+	private final int submitButtonY = box1y+box1height+5;
+	private final int startButtonX = 290;
+	private final int startButtonY = 140;
+	private final int tensFieldX = box10x +45;
+	private final int tensFieldY = box10y+box10height+5;
+	private final int onesFieldX = box1x + 45;
+	private final int onesFieldY = box1y+box1height+5;
 
-	final int DecToBinNumSquaresActual = 11;
-	int DecToBinNumSquaresInput;
+	private final int DecToBinNumSquaresActual = 11;
 
-	String numTensInput;
-	String numOnesInput;
-	final String numTensActual = "1";
-	final String numOnesActual = "1";
-
-
-
-	//flags to see which box and squares selected
-	boolean boxSelected10 = false;
-	boolean boxSelected1 = false;
-	boolean rectSelected = false;
-	int rectSelectedNum = 0;
+	private String numTensInput;
+	private String numOnesInput;
+	private final String numTensActual = "1";
+	private final String numOnesActual = "1";
 
 	//width and height of sqare
-	final int squareUnit = 30;
+	private final int squareUnit = 30;
 	//starting location to draw squares
 	final int startXSquare = 180;
 	final int startYSquare = 240;
 	//coordinate list for the squares
-	ArrayList<Integer> xCoordList =  new ArrayList<Integer>();
-	ArrayList<Integer> yCoordList =  new ArrayList<Integer>();
+	private ArrayList<Integer> xCoordList =  new ArrayList<Integer>();
+	private ArrayList<Integer> yCoordList =  new ArrayList<Integer>();
 
-	private Rectangle rec;
-	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
+	private Rectangle square;
+	private ArrayList<Rectangle> squareList = new ArrayList<Rectangle>();
 
-	int recListIterator = 0;
+	private final String text1 = "Do we have enough squares to put ten squares in the TENS box? ";
+	private final String text2 = "Since we do; let's put ten red squares in the TENS box.";
+	private final String text3 = "Since we had enough squares, type 1 below the TENS box.";
+	private final String text4 = "Check how many squares are left remaining. Do we have enough";
+	private final String text5 = "to put one square in the ONES box?";
+	private final String text6 = "We have enough! Let's move the square to the ONES box.";
+	private final String text7 = "Since we had enough squares, type 1 below the ONES box.";
+	private final String text8 = "Since there are no squares left we are all done!";
+	private final String text9 = "When you finish, click submit to check your answer.";
 
-	final String text1 = "Do we have enough squares to put ten squares in the TENS box? ";
-	final String text2 = "Since we do; let's put ten red squares in the TENS box.";
-	final String text3 = "Since we had enough squares, type 1 below the TENS box.";
-	final String text4 = "Check how many squares are left remaining. Do we have enough";
-	final String text5 = "to put one square in the ONES box?";
-	final String text6 = "We have enough! Let's move the square to the ONES box.";
-	final String text7 = "Since we had enough squares, type 1 below the ONES box.";
-	final String text8 = "Since there are no squares left we are all done!";
-	final String text9 = "When you finish, click submit to check your answer.";
-
-	boolean displayStep1= false;
-	boolean displayStep2= false;
-	boolean displayStep3= false;
-	boolean displayStep4= false;
-	boolean displayStep7= false;
-
-
+	//flags used in animating
+	private int recListIterator = 0;
+	private boolean displayStep1= false;
+	private boolean displayStep2= false;
+	private boolean displayStep3= false;
+	private boolean displayStep4= false;
+	boolean displayedStep2 = false;
+	boolean displayedStep3 = false;
 	boolean number10correct = false;
 	boolean number1correct = false;
 
 	//defines coordinates for help text
-	final int startTextX = 60;
-	final int startTextY = 85;
-	final int textYInc = 20;
-	final int stepTextY = 185;
-	final int indentTextX = 30;
+	private final int startTextX = 60;
+	private final int startTextY = 85;
+	private final int textYInc = 20;
+	private final int stepTextY = 185;
+	private final int indentTextX = 30;
 	
 	//constructor, param is the applet
 	public DecToBinPage2(WelcomePage welcome)
@@ -120,8 +112,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 
 
 
-	boolean displayedStep2 = false;
-	boolean displayedStep3 = false;
+
 
 	//overriden method for timer action
 	@Override
@@ -138,7 +129,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 			moveOnes();
 		}
 
-		if (displayStep7){
+		if (displayStep4){
 			timer.stop();
 		}
 		validate();
@@ -153,21 +144,21 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		//starting locations
 		int x = startXSquare;
 		for (int i = 0; i < DecToBinNumSquaresActual; i++){
-			rec = new Rectangle(x, startYSquare, squareUnit,squareUnit);
-			recList.add(rec);
+			square = new Rectangle(x, startYSquare, squareUnit,squareUnit);
+			squareList.add(square);
 			x+=40;
 		}
 
 		//locations to move during animations
 		int y = box10y+10;
 		for (int i = 0; i < 5; i++){
-			xCoordList.add(220);
+			xCoordList.add(box10x + 10);
 			yCoordList.add(y);
 			y = y + 10 + squareUnit;
 		}
 		y=box10y+10;
 		for (int i = 0; i < 5; i++){
-			xCoordList.add(260);
+			xCoordList.add(box10x + 50);
 			yCoordList.add(y);
 			y = y + 10 + squareUnit;
 		}
@@ -264,7 +255,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 					number1correct = true;
 					displayStep3 = false;
 					displayedStep3 = true;
-					displayStep7 = true;
+					displayStep4 = true;
 					repaint();
 				}
 			}
@@ -290,7 +281,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	}
 	
 	public void moveTens(){
-		recList.get(recListIterator).setLocation(xCoordList.get(recListIterator), yCoordList.get(recListIterator));
+		squareList.get(recListIterator).setLocation(xCoordList.get(recListIterator), yCoordList.get(recListIterator));
 		recListIterator++;
 	}
 
@@ -326,7 +317,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	}
 
 	public void moveOnes(){
-		recList.get(recListIterator).setLocation(xCoordList.get(recListIterator), yCoordList.get(recListIterator));
+		squareList.get(recListIterator).setLocation(xCoordList.get(recListIterator), yCoordList.get(recListIterator));
 		timer.stop();
 	}
 
@@ -344,8 +335,8 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 
 		//draw the movable squares
 		g.setColor(WelcomePage.buttonPanelColor);
-		for (int i = 0;i < recList.size(); i++){
-			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), squareUnit, squareUnit );
+		for (int i = 0;i < squareList.size(); i++){
+			g.fillRect((int)squareList.get(i).getX(),(int)squareList.get(i).getY(), squareUnit, squareUnit );
 		}
 
 		//box labels
@@ -380,7 +371,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 			g.drawString(text6, startTextX, stepTextY+2*textYInc);
 			g.drawString(text7, startTextX, stepTextY+3*textYInc);
 		}
-		if (displayStep7){
+		if (displayStep4){
 			g.drawString(text8, startTextX, stepTextY);
 			g.drawString(text9, startTextX, stepTextY+textYInc);
 		}

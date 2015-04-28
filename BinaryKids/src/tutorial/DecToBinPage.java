@@ -1,3 +1,5 @@
+//this class is the first page in the decimal to binary tutorial
+
 package tutorial;
 import javax.swing.*; 
 
@@ -11,29 +13,30 @@ import javax.swing.JPanel;
 public class DecToBinPage extends JPanel
 {
 	//applet
-	WelcomePage welcomePage;
-	
+	private WelcomePage welcomePage;
+
 	//headline coords
-	final int headlineX = 90, headlineY = 15;
-	
+	private final int headlineX = 90, headlineY = 15;
+
 	//this panel's components
-	final String questionText = "How many squares are shown?";
-	final int questionTextX = 250, questionTextY = 200;
-	JButton submitButton;
-	final int submitButtonX = 400, submitButtonY = 230;
-	JTextField answerField;
-	final int answerFieldX = 320, answerFieldY = 230;
+	private final String questionText = "How many squares are shown?";
+	private final int questionTextX = 250, questionTextY = 200;
+	private JButton submitButton;
+	private final int submitButtonX = 400, submitButtonY = 230;
+	private JTextField answerField;
+	private final int answerFieldX = 320, answerFieldY = 230;
 
 	//variables relating to the drawn squares
-	final String DecToBinNumSquaresActual = "11";
-	final int numSquares = 11;
-	String DecToBinNumSquaresInput;
-	final int startXSquare = 180;
-	final int startYSquare = 100;
+	private final String DecToBinNumSquaresActual = "11";
+	private final int numSquares = 11;
+	private String DecToBinNumSquaresInput;
+	private final int startXSquare = 180;
+	private final int startYSquare = 100;
+
 	//width and height of square
-	final int squareUnit = 30;
+	private final int squareUnit = 30;
 	private Rectangle rec;
-	ArrayList<Rectangle> squareList = new ArrayList<>();
+	private ArrayList<Rectangle> squareList = new ArrayList<>();
 
 	//constructor, param is the applet
 	public DecToBinPage(WelcomePage welcome)
@@ -47,17 +50,15 @@ public class DecToBinPage extends JPanel
 
 		setVisible(true);
 	}
-	
+
 	//init swing components
 	public void initComponents(){
-		initRects();
+		initSquares();
 		answerField = new JTextField();
 		answerField.setColumns(5);
 		submitButton = new JButton("Submit");
 		submitButton.addActionListener(new submitButtonListener());
 	}
-
-	
 
 	//this method adds the components to the panel
 	public void addComponentsToPanel() {
@@ -67,20 +68,20 @@ public class DecToBinPage extends JPanel
 	}
 
 	//this method defines the formatting of the components on the panel
-		public void formatComponents(){
-			Insets insets = getInsets();
+	public void formatComponents(){
+		Insets insets = getInsets();
 
-			Dimension buttonSize = submitButton.getPreferredSize();
-			submitButton.setBounds(submitButtonX + insets.left, submitButtonY + insets.top,
-					buttonSize.width, buttonSize.height);
+		Dimension buttonSize = submitButton.getPreferredSize();
+		submitButton.setBounds(submitButtonX + insets.left, submitButtonY + insets.top,
+				buttonSize.width, buttonSize.height);
 
-			Dimension answerSize = answerField.getPreferredSize();
-			answerField.setBounds(answerFieldX + insets.left, answerFieldY + insets.top,
-					answerSize.width, buttonSize.height);
-		}
-	
+		Dimension answerSize = answerField.getPreferredSize();
+		answerField.setBounds(answerFieldX + insets.left, answerFieldY + insets.top,
+				answerSize.width, buttonSize.height);
+	}
+
 	//inits the coords of the rects that user will move
-	public void initRects(){
+	public void initSquares(){
 		int startx = startXSquare;
 		for (int i = 0; i < numSquares; i++){
 			rec = new Rectangle(startx, startYSquare, squareUnit,squareUnit);
@@ -89,7 +90,7 @@ public class DecToBinPage extends JPanel
 		}
 	}
 
-	
+	//override paint method
 	public void paint(Graphics g) {
 		super.paint(g);
 

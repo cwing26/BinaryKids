@@ -1,3 +1,5 @@
+//this class is the third page in the decimal to binary tutorial
+
 package tutorial;
 
 
@@ -13,83 +15,92 @@ import javax.swing.event.DocumentListener;
 @SuppressWarnings("serial")
 public class DecToBinPage3 extends JPanel implements MouseListener
 {
-	boolean display1 = true;
-	boolean display2 = false;
-	boolean display3 = false;
-	
-	
-	
-	WelcomePage welcomePage;
-	JButton submitButton; 
+	//flags for displaying text
+	private boolean display1 = true;
+	private boolean display2 = false;
+	private boolean display3 = false;
+
+	private WelcomePage welcomePage;
+	private JButton submitButton; 
 
 	//TextFields
-	JTextField NumberEightsField;
-	JTextField NumberFoursField;
-	JTextField NumberTwosField;
-	JTextField NumberOnesField;
+	private JTextField NumberEightsField;
+	private JTextField NumberFoursField;
+	private JTextField NumberTwosField;
+	private JTextField NumberOnesField;
 
 	//user input
-	String numEightsInput;
-	String numFoursInput;
-	String numTwosInput;
-	String numOnesInput;
+	private String numEightsInput;
+	private String numFoursInput;
+	private String numTwosInput;
+	private String numOnesInput;
 
 	//actual values
-	final String numEightsActual = "1";
-	final String numFoursActual = "0";
-	final String numTwosActual = "1";
-	final String numOnesActual = "1";
+	private final String numEightsActual = "1";
+	private final String numFoursActual = "0";
+	private final String numTwosActual = "1";
+	private final String numOnesActual = "1";
+	private final int DecToBinNumSquaresActual = 11;
 
-	final int DecToBinNumSquaresActual = 11;
-	final int startx = 200;
-	final int starty = 220;
-	int DecToBinNumSquaresInput;
+	//starting coords to draw squares
+	private final int startXSquare = 200;
+	private final int startYSquare = 220;
 
-	String text3 = "Do we have enough squares to put eight squares in the EIGHTS box?";
-	String text4 = "If yes, put eight squares in the EIGHTS box. Click on a red square and then"; 
-	String text45 = "click on the box to put the square inside.";
-	String text5 = "Since we had enough squares, type 1 below the EIGHTS box.";
-	String text6 = "Check how many squares are left remaining. Do we have enough";
-	String text65 = "to put four squares in the FOURS box?";
-	String text7 = "Since we don't have enough, type 0 below the FOURS box.";
-	String text8 = "Keep assigning the remaining squares until none are left.";
-	String text9 = "Remember: If you had enough squares to put in a box,";
-	String text95 = "type 1, otherwise type 0.";
-	String text10 = "When you finish, click submit to check your answer.";
-
+	//text to explain how to navigate the tutorial
+	private final String text3 = "Do we have enough squares to put eight squares in the EIGHTS box?";
+	private final String text4 = "If yes, put eight squares in the EIGHTS box. Click on a red square and then"; 
+	private final String text45 = "click on the box to put the square inside.";
+	private final String text5 = "Since we had enough squares, type 1 below the EIGHTS box.";
+	private final String text6 = "Check how many squares are left remaining. Do we have enough";
+	private final String text65 = "to put four squares in the FOURS box?";
+	private final String text7 = "Since we don't have enough, type 0 below the FOURS box.";
+	private final String text8 = "Keep assigning the remaining squares until none are left.";
+	private final String text9 = "Remember: If you had enough squares to put in a box,";
+	private final String text95 = "type 1, otherwise type 0.";
+	private final String text10 = "When you finish, click submit to check your answer.";
 
 
 	// The X-coordinate and Y-coordinate of the last click. 
-	int mouseX; 
-	int mouseY;
+	private int mouseX; 
+	private int mouseY;
 
 	// The coordinates of the boxes
-	final int box8x = 150, box8y = 280, box8width = 100, box8height = 250;
-	final int box4x = 290, box4y = 280, box4width = 100, box4height = 250;
-	final int box2x = 430, box2y = 280, box2width = 100, box2height = 250;
-	final int box1x = 570, box1y = 280, box1width = 100, box1height = 250;
+	private final int box8x = 150, box8y = 280, box8width = 100, box8height = 250;
+	private final int box4x = 290, box4y = 280, box4width = 100, box4height = 250;
+	private final int box2x = 430, box2y = 280, box2width = 100, box2height = 250;
+	private final int box1x = 570, box1y = 280, box1width = 100, box1height = 250;
 
 
 	//flags for boxes and rectangles
-	boolean boxSelected8 = false;
-	boolean boxSelected4 = false;
-	boolean boxSelected2 = false;
-	boolean boxSelected1 = false;
-	boolean rectSelected = false;
-	int rectSelectedNum = 0;
+	private boolean boxSelected8 = false;
+	private boolean boxSelected4 = false;
+	private boolean boxSelected2 = false;
+	private boolean boxSelected1 = false;
+	private boolean rectSelected = false;
+	private int rectSelectedNum = 0;
 
 	//rectangle width and height
-	final int rectUnit = 30;
-	private Rectangle rec;
-	ArrayList<Rectangle> recList = new ArrayList<Rectangle>();
+	private final int squareUnit = 30;
+	private Rectangle square;
+	private ArrayList<Rectangle> squareList = new ArrayList<Rectangle>();
 
-	//Panels
-	JPanel titlePanel;
-	JPanel textPanel;
-	JPanel questionPanel;
+	//box labels coordinates
+	private final int eightsX = box8x+10;
+	private final int eightsY = box8y-4;
+	private final int foursX = box4x+15;
+	private final int foursY = box4y-4;
+	private final int twosX = box2x+20;
+	private final int twosY = box2y-4;
+	private final int onesX = box1x+20;
+	private final int onesY = box1y-4;
 
-
-	
+	//instructions coordinates
+	private final int startTextX = 40;
+	private final int startTextY = 100;
+	private final int textYInc = 20;
+	private final int indentTextX = 30;
+	private final int headerX = 75;
+	private final int headerY = 10;
 
 	//inits format of text field
 	public void initTextFields(){
@@ -101,8 +112,8 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		NumberFoursField.setColumns(5);
 		NumberTwosField.setColumns(5);
 		NumberOnesField.setColumns(5);
-		
-		
+
+
 		NumberEightsField.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {}
 			public void removeUpdate(DocumentEvent e) {}
@@ -114,7 +125,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 			}
 
 		});
-		
+
 		NumberFoursField.getDocument().addDocumentListener(new DocumentListener() {
 			public void changedUpdate(DocumentEvent e) {}
 			public void removeUpdate(DocumentEvent e) {}
@@ -130,11 +141,11 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 	//inits the coords of the rects that user will move
 	public void initRects(){
-		int startX = startx;
+		int x = startXSquare;
 		for (int i = 0; i < DecToBinNumSquaresActual; i++){
-			rec = new Rectangle(startX, starty, rectUnit,rectUnit);
-			recList.add(rec);
-			startX+=40;
+			square = new Rectangle(x, startYSquare, squareUnit,squareUnit);
+			squareList.add(square);
+			x+=40;
 		}
 	}
 
@@ -151,10 +162,10 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 			int countTwos = 0;
 			int countOnes = 0;
 
-			for(int i = 0; i < recList.size(); i++)
+			for(int i = 0; i < squareList.size(); i++)
 			{
-				int x = (int) recList.get(i).getX();
-				int y = (int) recList.get(i).getY();
+				int x = (int) squareList.get(i).getX();
+				int y = (int) squareList.get(i).getY();
 
 
 				if((x >= box8x) && (x <= (box8x + box8width)) && (y >= box8y) && (y <= (box8y + box8height)))
@@ -224,27 +235,28 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		submitButton.addActionListener(new submitButtonListener());
 	}
 
-	//constructor, param is the applet
-	public DecToBinPage3(WelcomePage welcome)
-	{
-		welcomePage = welcome;
-		setBackground(WelcomePage.backgroundColor);
-		Insets insets = getInsets();
 
-		//initializations
+	//init swing components
+	public void initComponents(){
 		initTextFields();
 		initRects();
 		initButtons();
+	}
 
+	//this method adds the components to the panel
+	public void addComponentsToPanel() {
 		setLayout(null);
 		add(NumberEightsField);
 		add(NumberFoursField);
 		add(NumberTwosField);
 		add(NumberOnesField);
 		add(submitButton);
-		
+		addMouseListener(this); 
+	}
 
-		
+	//this method defines the formatting of the components on the panel
+	public void formatComponents(){
+		Insets insets = getInsets();
 		Dimension buttonSize = submitButton.getPreferredSize();
 		submitButton.setBounds(box1x +box1width + 20 + insets.left, box1y+box1height+5 + insets.top,
 				buttonSize.width, buttonSize.height);
@@ -258,17 +270,20 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 				size.width, buttonSize.height);
 		NumberOnesField.setBounds(box1x +25 + insets.left, box1y+box8height+5 + insets.top,
 				size.width, buttonSize.height);
-
-		
-
-		// Add the MouseListener to the applet 
-		addMouseListener(this); 
-
-		setVisible(true);
-		repaint();
-
 	}
 
+	//constructor, param is the applet
+	public DecToBinPage3(WelcomePage welcome)
+	{
+		welcomePage = welcome;
+		setBackground(WelcomePage.backgroundColor);
+		initComponents();
+		addComponentsToPanel();
+		formatComponents();
+		setVisible(true);
+	}
+
+	//override paint method
 	public void paint(Graphics g) {
 		super.paint(g);
 
@@ -295,28 +310,24 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 		//draw the squares
 		g.setColor(WelcomePage.buttonPanelColor);
-		for (int i = 0;i < recList.size(); i++){
-			g.fillRect((int)recList.get(i).getX(),(int)recList.get(i).getY(), rectUnit, rectUnit );
+		for (int i = 0;i < squareList.size(); i++){
+			g.fillRect((int)squareList.get(i).getX(),(int)squareList.get(i).getY(), squareUnit, squareUnit );
 		}
 
 		//box labels
 		g.setColor(WelcomePage.textColor);
 		g.setFont(new Font("Verdana", 1, 20));
-		g.drawString("EIGHTS", box8x+10, box8y-4);
-		g.drawString("FOURS", box4x+15, box4y-4);
-		g.drawString("TWOS", box2x+20, box2y-4);
-		g.drawString("ONES", box1x+20, box1y-4);
+		g.drawString("EIGHTS", eightsX, eightsY);
+		g.drawString("FOURS", foursX, foursY);
+		g.drawString("TWOS", twosX, twosY);
+		g.drawString("ONES", onesX, onesY);
+
+		//title
+		g.drawImage(welcomePage.decBinHeadlineImg, headerX, headerY, this);
 
 
 		//instructions
 		g.setFont(new Font("Geneva", Font.BOLD, 18));
-		int startTextX = 40;
-		int startTextY = 100;
-		int textYInc = 20;
-		int indentTextX = 30;
-
-		g.drawImage(welcomePage.decBinHeadlineImg, 75, 10, this);
-
 		if (display1){
 			g.drawString(text3, startTextX, startTextY+textYInc);
 			g.drawString(text4, startTextX+indentTextX, startTextY+2*textYInc);
@@ -348,10 +359,10 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 
 
 		//select one of the rectangles first
-		for (int i = 0; i < recList.size(); i++){
-			int recx = (int) recList.get(i).getX();
-			int recy = (int) recList.get(i).getY();
-			if ((mouseX >= recx) && (mouseX <= (recx + rectUnit)) && (mouseY >= recy) && (mouseY <= (recy + rectUnit))){
+		for (int i = 0; i < squareList.size(); i++){
+			int recx = (int) squareList.get(i).getX();
+			int recy = (int) squareList.get(i).getY();
+			if ((mouseX >= recx) && (mouseX <= (recx + squareUnit)) && (mouseY >= recy) && (mouseY <= (recy + squareUnit))){
 				rectSelected = true;
 				rectSelectedNum = i;
 				break;
@@ -368,7 +379,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 				boxSelected2 = false;
 				boxSelected4 = false;
 				boxSelected8 = false;
-				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+				squareList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
 			}
 			else if((mouseX >= box2x) && (mouseX <= (box2x + box2width)) && (mouseY >= box2y) && (mouseY <= (box2y + box2height)))
@@ -377,7 +388,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 				boxSelected2 = true;
 				boxSelected4 = false;
 				boxSelected8 = false;
-				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+				squareList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
 			}
 
@@ -387,7 +398,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 				boxSelected2 = false;
 				boxSelected4 = true;
 				boxSelected8 = false;
-				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+				squareList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
 			}
 			else if((mouseX >= box8x) && (mouseX <= (box8x + box8width)) && (mouseY >= box8y) && (mouseY <= (box8y + box8height)))
@@ -396,7 +407,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 				boxSelected2 = false;
 				boxSelected4 = false;
 				boxSelected8 = true;
-				recList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
+				squareList.get(rectSelectedNum).setLocation(me.getX(), me.getY());
 
 			}
 			else {

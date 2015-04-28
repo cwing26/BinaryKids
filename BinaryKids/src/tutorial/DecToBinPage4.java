@@ -1,3 +1,5 @@
+//this class is the fourth page in the decimal to binary tutorial
+
 package tutorial;
 
 import javax.swing.*; 
@@ -11,34 +13,39 @@ import javax.swing.JPanel;
 public class DecToBinPage4 extends JPanel
 {
 
-	WelcomePage welcomePage;
-	JButton submitButton; 
-	JButton tutorialButton;
+	private WelcomePage welcomePage;
+	private JButton submitButton; 
+	private JButton tutorialButton;
+
+	private final String text1 = "11 in decimal is equivalent to 1011 in binary!";
+	private final String text2 = "Congratulations on making it through this tutorial. ";
+	private final String text3 = "Now you can complete some practice problems or ";
+	private final String text4 = "click tutorial to return to the tutorial menu screen.";
+
+	//text coords
+	private final int headerX = 200;
+	private final int headerY = 20;
+	private final int startTextX = 150;
+	private final int startTextY = 70;
+	private final int textYInc = 30;
 	
-	//Labels
-	JLabel DecToBinNumSquaresText;
-	JLabel DecToBinNumSquaresText2;
-	JLabel DecToBinNumSquaresText3;
+	//button coords
+	private final int submitButtonX = 260;
+	private final int submitButtonY = 220;
+	private final int tutButtonX = 260;
+	private final int tutButtonY = 260;
 
-	final int startx = 200;
-	final int starty = 180;
-	int DecToBinNumSquaresInput;
-	
-	String text1 = "11 in decimal is equivalent to 1011 in binary!";
-	String text2 = "Congratulations on making it through this tutorial. ";
-	String text3 = "Now you can complete some practice problems or ";
-	String text4 = "click tutorial to return to the tutorial menu screen.";
-
-
+	//action listener for tutorial button
 	class tutorialButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
 			welcomePage.setCompletedDecBin();
 			welcomePage.loadFourth();
-			
+
 		} 
 	}
 
+	//action listener for submit button
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
@@ -46,6 +53,8 @@ public class DecToBinPage4 extends JPanel
 			welcomePage.setCompletedDecBin();
 		} 
 	}
+
+	//inits all the buttons in the panel
 	public void initButtons(){
 		submitButton = new JButton("Practice Problems"); 
 		submitButton.addActionListener(new submitButtonListener());
@@ -53,42 +62,55 @@ public class DecToBinPage4 extends JPanel
 		tutorialButton.addActionListener(new tutorialButtonListener());
 	}
 
+	//init swing components
+	public void initComponents(){
+		initButtons();
+	}
+
+	//this method adds the components to the panel
+	public void addComponentsToPanel() {
+		setLayout(null);
+		add(submitButton);
+		add(tutorialButton);
+	}
+
+	//this method defines the formatting of the components on the panel
+	public void formatComponents(){
+		Insets insets = getInsets();
+		Dimension buttonSize = submitButton.getPreferredSize();
+		submitButton.setBounds(submitButtonX + insets.left, submitButtonY + insets.top,
+				2* buttonSize.width, buttonSize.height);
+
+		buttonSize = tutorialButton.getPreferredSize();
+		tutorialButton.setBounds(tutButtonX + insets.left, tutButtonY + insets.top,
+				2* buttonSize.width, buttonSize.height);
+	}
+	
+
+
 	//constructor, param is the applet
 	public DecToBinPage4(WelcomePage welcome)
 	{
 		setBackground(WelcomePage.backgroundColor);
 		welcomePage = welcome;
-		Insets insets = getInsets();
-
-		initButtons();	
-		
-		setLayout(null);
-		add(submitButton);
-		add(tutorialButton);
-		
-		Dimension buttonSize = submitButton.getPreferredSize();
-		submitButton.setBounds(260 + insets.left, 220 + insets.top,
-				2* buttonSize.width, buttonSize.height);
-		
-		buttonSize = tutorialButton.getPreferredSize();
-		tutorialButton.setBounds(260 + insets.left, 260 + insets.top,
-				2* buttonSize.width, buttonSize.height);
-
+		initComponents();
+		addComponentsToPanel();
+		formatComponents();
+		setVisible(true);
 	}
 
 	public void paint(Graphics g) {
 		super.paint(g);
-		
-		g.drawImage(welcomePage.tutorialCompleteImg, 200, 20, this);
-		
-		
+
+
+		g.drawImage(welcomePage.tutorialCompleteImg, headerX, headerY, this);
+
+
 		g.setFont(new Font("Geneva", Font.BOLD, 20));
 		g.setColor(WelcomePage.textColor);
-		int startTextX = 150;
-		int startTextY = 70;
-		int textYInc = 30;
-		
-		
+
+
+
 		g.drawString(text1, startTextX+30, startTextY+textYInc);
 		g.drawString(text2, startTextX, startTextY+2*textYInc);
 		g.drawString(text3, startTextX, startTextY+3*textYInc);
