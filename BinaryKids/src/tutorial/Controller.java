@@ -152,7 +152,7 @@ public class Controller extends JApplet
 	public static String gameInstructionsPath = "images/instructButton.png";
 	public static String gamePlayPath = "images/playButton.png";
 	public static String gameRocketPath = "images/rocketship.jpg";
-	
+	public static String binaryBlastPath = “images/binaryblast.jpg”;
 
 	//chris images
 	public Image titleImg;  //http://www.cs.colostate.edu/~boese/Geek/binaryCalculator.gif
@@ -234,6 +234,7 @@ public class Controller extends JApplet
 	public Image playButtonImage;
 	public Image submitButtonImage;
 	public Image rocketshipImage;
+	public Image binaryBlastImage;
 
 	//Called when this applet is loaded into the browser.
 	public void init() 
@@ -565,6 +566,10 @@ public class Controller extends JApplet
 		rocketshipImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.gameRocketPath)); 
 		rocketshipImage  = rocketshipImage.getScaledInstance(50,50, Image.SCALE_SMOOTH);
+
+		binaryBlastImage = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(Controller.binaryBlastPath)); 
+		binaryBlasImage  = binaryBlastImage.getScaledInstance(485,73, Image.SCALE_SMOOTH);
 
 
 
