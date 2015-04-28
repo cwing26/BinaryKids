@@ -56,7 +56,7 @@ public class SegundaPage extends JPanel
 	private final int  ex4Y = 390;
 	
 	private final int labelInstructionX = 457;
-	private final int labelInstructionY = 324;
+	private final int labelInstructionY = 335;
 	
 	private final int buttonInstructionY = 425;
 	
@@ -65,13 +65,13 @@ public class SegundaPage extends JPanel
 	private final int fbX = 125;
 	private final int youtubeX = 235;
 	private final int emailX = 335;
-	private final int cellX = 440;
-	private final int gameX = 545;
-	private final int skypeX = 650;
+	private final int cellX = 460;
+	private final int gameX = 555;
+	private final int skypeX = 660;
 	
 	private final int buttonX = 200;
-	private final int button0Y = 440;
-	private final int button1Y = 490;
+	private final int button1Y = 440;
+	private final int button0Y = 490;
 	
 	private final int labelX = 440;
 	private final int labelY = 260;

@@ -52,8 +52,7 @@ public class StartPage extends JPanel
     public void paint(Graphics g) 
     { 
     	super.paint(g);
-//    	g.drawImage(welcomePage.titleTextImg, 50 , 50, this);
-//    	g.drawImage(welcomePage.titleImg, 100, 100, this);
+    	//title text
     	g.drawImage(controller.titleHeadline, 100, 50, this);
     	
     	//directions 
@@ -74,10 +73,7 @@ public class StartPage extends JPanel
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			
-			//welcomePage.setUserName(nameField.getText());
-			//nameEntered = true;
-			controller.pageFlag++;
+			controller.pageFlag=1;
 			controller.backButton.setVisible(true);
 			controller.loadCard("NUM REP 1");
 			repaint();
