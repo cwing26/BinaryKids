@@ -83,10 +83,6 @@ public class Controller extends JApplet
 
 	Container contentPane;
 
-	private String userAnswer = "";
-
-
-
 	//image paths
 	public static String titlePath = "images/titleTextImage.jpg";
 	public static String titleImagePath = "images/titleImage.jpg";
@@ -825,7 +821,7 @@ public class Controller extends JApplet
 
 			//back button
 			//if flag greater than 10, means user is in tutorial
-			//or game pages with no need for back button
+			//or game pages with no need for back or button
 			if(pageFlag > 10)
 			{
 				backButton.setVisible(false);
