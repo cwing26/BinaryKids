@@ -19,8 +19,11 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 
-import tutorial.WelcomePage;
 
+
+import tutorial.Controller;
+
+@SuppressWarnings("serial")
 public class GameWelcomePage extends JPanel {
 
 	//pages
@@ -42,9 +45,10 @@ public class GameWelcomePage extends JPanel {
 	
 	boolean gameInProgress;
 	
-	GameWelcomePage(Controller control) {
+	GameWelcomePage(Controller _controller) {
 	
-		controller = control;
+		controller = _controller;
+
 		setLayout(null);
 
 		setBackground(backgroundColor);
@@ -140,6 +144,7 @@ public class GameWelcomePage extends JPanel {
 		{
 			//if start button is clicked, start the game
 			controller.loadGame();
+			controller.loadCard("GAME");
 		}
 	}
 

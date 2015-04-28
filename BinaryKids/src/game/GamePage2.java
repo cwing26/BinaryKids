@@ -29,10 +29,12 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
+import tutorial.Controller;
+
 
 public class GamePage2 extends JPanel {
 	
-	private WelcomePage welcomePage;
+	private Controller controller;
 
 	//size of applet
 	private static int frameWidth = 800;
@@ -140,9 +142,9 @@ public class GamePage2 extends JPanel {
 	
 	public static int STAT_TEXT_X_COORD = 40;
 	
-	GamePage2(WelcomePage welcome) {
+	public GamePage2(Controller _controller) {
 		
-		welcomePage = welcome;
+		controller = _controller;
 
 		setLayout(null);
 		setBackground(Color.BLACK);
@@ -501,7 +503,7 @@ public class GamePage2 extends JPanel {
 		JOptionPane.showMessageDialog(this, message, "Game Over!", JOptionPane.YES_NO_OPTION);	
 		
 		//return to gameWelcomePage screen
-		welcomePage.returnGameWelcome();
+		controller.returnGameWelcome();
 	}
 	
 	//check submitted answer

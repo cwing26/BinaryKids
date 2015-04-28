@@ -748,6 +748,10 @@ public class Controller extends JApplet
 		}
 	}
 
+	
+	public void returnGameWelcome(){
+		
+	}
 
 	class gameButtonListener implements ActionListener
 	{
