@@ -11,7 +11,10 @@ import java.awt.Font;
 import java.awt.Image;
 import java.awt.Toolkit;
 
-
+/* This class serves as the eighth view in the introductory learning module, 
+ * introducing the student to the derivation of digits/places for binary numbers 
+ * with an animation
+ */
 @SuppressWarnings("serial")
 public class PreDemoBinaryPage extends JPanel implements ActionListener
 {
