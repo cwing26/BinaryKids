@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 public class DecToBinPage extends JPanel
 {
 	//applet
-	private WelcomePage welcomePage;
+	private Controller controller;
 
 	//headline coords
 	private final int headlineX = 90, headlineY = 15;
@@ -39,10 +39,10 @@ public class DecToBinPage extends JPanel
 	private ArrayList<Rectangle> squareList = new ArrayList<>();
 
 	//constructor, param is the applet
-	public DecToBinPage(WelcomePage welcome)
+	public DecToBinPage(Controller welcome)
 	{
-		welcomePage = welcome;
-		setBackground(WelcomePage.backgroundColor);
+		controller = welcome;
+		setBackground(Controller.backgroundColor);
 
 		initComponents();	
 		addComponentsToPanel();
@@ -95,7 +95,7 @@ public class DecToBinPage extends JPanel
 		super.paint(g);
 
 		//draw title text
-		g.drawImage(welcomePage.decBinHeadlineImg, headlineX, headlineY, this);
+		g.drawImage(controller.decBinHeadlineImg, headlineX, headlineY, this);
 
 		//draw squares alternating colors
 		for (int i = 0;i < squareList.size(); i++){
@@ -110,7 +110,7 @@ public class DecToBinPage extends JPanel
 
 		//question text
 		g.setFont(new Font("Geneva",1,20));
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		g.drawString(questionText, questionTextX, questionTextY);
 	}
 
@@ -122,12 +122,12 @@ public class DecToBinPage extends JPanel
 			//verify input against correct answer, if correct load next page
 			DecToBinNumSquaresInput = answerField.getText();
 			if (DecToBinNumSquaresInput.equals(DecToBinNumSquaresActual)){
-				welcomePage.loadCard("DEC BIN PAGE 2");
+				controller.loadCard("DEC BIN PAGE 2");
 			}
 			//if incorrect, display error message and reset textfield
 			else{
 				String errorMessage = "Wrong answer, try again!";
-				JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+				JOptionPane.showMessageDialog(controller, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 
 				answerField.setText("");
 

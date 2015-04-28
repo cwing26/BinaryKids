@@ -61,7 +61,7 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	
 
 	//to connect to the controller class
-	private WelcomePage welcomePage;
+	private Controller controller;
 	
 	//coordinates of components on screen
 	private final int universalLeftBound = 200;
@@ -89,11 +89,11 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	private final int hint2contY = 240;
 	
 	//constructor
-	public DecimalToBinaryPractice(WelcomePage welcome)
+	public DecimalToBinaryPractice(Controller welcome)
 	{
-		welcomePage = welcome;
+		controller = welcome;
 		
-		setBackground(WelcomePage.backgroundColor);
+		setBackground(Controller.backgroundColor);
 		
 		initComponents();
 		addComponentsToPanel();
@@ -148,14 +148,14 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	{
 		super.paint(g);
 		
-		g.drawImage(welcomePage.practiceProblemTitleImage, titleImageX, titleImageY, this);
+		g.drawImage(controller.practiceProblemTitleImage, titleImageX, titleImageY, this);
     	
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(new Font("Geneva", 1, 20));
     	g.drawString(question, questionX, questionY);
     	
     	g.setFont(new Font("Geneva", 1, 60));
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.drawString(values.get(questionIndex).toString(), questionNumX, questionNumY);
     	
     	if (countCorrect >= 3)
@@ -165,8 +165,8 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
     	
     	if(hintClicked)
     	{
-    		g.drawImage(welcomePage.hintImage, hintImageX, hintImageY, this);
-    		g.setColor(WelcomePage.textColor);
+    		g.drawImage(controller.hintImage, hintImageX, hintImageY, this);
+    		g.setColor(Controller.textColor);
         	g.setFont(new Font("Geneva", 1, 12));
         	g.drawString(hint, hintImageX, hintTextY);
         	
@@ -294,7 +294,7 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 			if (checkAnswer(inputAnswer, questionIndex))
 			{
 				String congratsMessage = "Correct answer!";
-				JOptionPane.showMessageDialog(welcomePage, congratsMessage, "correct answer", JOptionPane.YES_NO_OPTION);
+				JOptionPane.showMessageDialog(controller, congratsMessage, "correct answer", JOptionPane.YES_NO_OPTION);
 				answerField.setText("");
 				questionIndex = setQuestion();
 				countCorrect++;
@@ -302,7 +302,7 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 			}
 			else{
 				String errorMessage = "Wrong answer, try again!";
-				JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+				JOptionPane.showMessageDialog(controller, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 				answerField.setText("");
 				repaint();
 			}
@@ -331,7 +331,7 @@ public class DecimalToBinaryPractice extends JPanel implements PracticeProblem
 	{
 		public void actionPerformed(ActionEvent e) 
 		{			
-			welcomePage.loadCard("FOURTH");
+			controller.loadCard("FOURTH");
 
 		} //end action performed
 	} //end button listener

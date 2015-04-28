@@ -25,12 +25,12 @@ import javax.swing.JPanel;
 import javax.swing.JProgressBar;
 import javax.swing.Timer;
 
-import tutorial.WelcomePage;
+import tutorial.Controller;
 
 @SuppressWarnings("serial")
 public class GamePage2 extends JPanel {
 	
-	private WelcomePage welcomePage;
+	private Controller controller;
 	
 	Insets insets;
 	
@@ -79,8 +79,8 @@ public class GamePage2 extends JPanel {
 	public static String DIGIT_GUIDE = "        64    " + "         32    " + "       16    " + "         8    " + "         4    " + "          2    " + "          1    ";
 	public static String DIGIT_GUIDE_TEXT = "    place   " + "    place   " + "   place   " + "     place  " + "     place  " + "      place  " + "      place   ";
  	
-	public GamePage2(WelcomePage welcome) {
-		welcomePage = welcome;
+	public GamePage2(Controller welcome) {
+		controller = welcome;
 		
 		setLayout(null);
 		setBackground(Color.BLACK);

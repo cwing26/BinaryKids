@@ -22,7 +22,7 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 public class BinaryDecimalOne extends JPanel
 {	
-	WelcomePage welcomePage;
+	Controller controller;
 
 	String questionText = "How many squares are shown?";
 	JButton submitButton;
@@ -47,10 +47,10 @@ public class BinaryDecimalOne extends JPanel
 	ArrayList<Rectangle> squareList = new ArrayList<Rectangle>();
 
     //constructor
-    public BinaryDecimalOne(WelcomePage welcome)
+    public BinaryDecimalOne(Controller welcome)
     {
-    	welcomePage = welcome;
-    	setBackground(WelcomePage.backgroundColor);
+    	controller = welcome;
+    	setBackground(Controller.backgroundColor);
     	setLayout(null);
 		Insets insets = getInsets();
 		
@@ -101,7 +101,7 @@ public class BinaryDecimalOne extends JPanel
     	super.paint(g);
     	
     	//draw title text
-    	g.drawImage(welcomePage.binDecImg, headerX, headerY, this);
+    	g.drawImage(controller.binDecImg, headerX, headerY, this);
 
     	//paint 13 rectangles
     	for (int i = 0;i < squareList.size(); i++){
@@ -119,7 +119,7 @@ public class BinaryDecimalOne extends JPanel
 
     	//question text
     	g.setFont(new Font("Geneva",1,20));
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.drawString(questionText, questionTextX, questionTextY);
     	
     }
@@ -135,13 +135,13 @@ public class BinaryDecimalOne extends JPanel
 			//if correct answer load the next page
 			if(inputAnswer == correctAnswer)
 			{
-				welcomePage.loadCard("BIN DEC PAGE 2");
+				controller.loadCard("BIN DEC PAGE 2");
 			}
 			else
 			{
 				//resets answer field
 		    	String errorMessage = "Wrong answer, try again!";
-		    	JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+		    	JOptionPane.showMessageDialog(controller, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 				
 		    	answerField.setText("");
 			}

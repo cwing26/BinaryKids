@@ -93,13 +93,13 @@ public class DemoPage extends JPanel implements ActionListener
     private final int equalSignX = 480;
     private final int finalAnswerX = 510;
     
-    private WelcomePage welcomePage;
+    private Controller controller;
     
 	//constructor
-    public DemoPage(WelcomePage welcome)
+    public DemoPage(Controller welcome)
     {
-    	welcomePage = welcome;
-    	setBackground(WelcomePage.backgroundColor);
+    	controller = welcome;
+    	setBackground(Controller.backgroundColor);
     	
 
     	setVisible(true);
@@ -115,7 +115,7 @@ public class DemoPage extends JPanel implements ActionListener
     //all animation
     public void displayDecimalNums(Graphics m)
     {
-		m.setColor(WelcomePage.textColor);
+		m.setColor(Controller.textColor);
 		m.setFont(displayFont);
     	m.drawString(four, firstDisplayNumX, displayNumY);
     	m.drawString(five, secondDisplayNumX, displayNumY);
@@ -124,7 +124,7 @@ public class DemoPage extends JPanel implements ActionListener
     //displays the places (tens, ones) labels on screen
     public void displayDecimalPlaces(Graphics m)
     {
-    	m.setColor(WelcomePage.textColor);
+    	m.setColor(Controller.textColor);
     	m.setFont(textFont);
     	m.drawString(tensPlace, placeTenX, placesY);
     	m.drawString(onesPlace, placeOneX, placesY);
@@ -133,7 +133,7 @@ public class DemoPage extends JPanel implements ActionListener
     //displays all text on screen through all animation
     public void displayText(Graphics m)
     {
-    	m.setColor(WelcomePage.textColor);
+    	m.setColor(Controller.textColor);
     	m.setFont(textFont);
     	m.drawString(explanation1, explanationX, explanation1Y);
     	m.drawString(explanation1cont, explanationX, explanation1contY);
@@ -149,11 +149,11 @@ public class DemoPage extends JPanel implements ActionListener
     	g.setColor(Color.red);
     	g.drawRect(rect1X, rectY, rectWidth, rectHeight);
     	
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(textFont);
     	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(subheadFont);
     	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
     		
@@ -165,12 +165,12 @@ public class DemoPage extends JPanel implements ActionListener
     	g.setColor(Color.red);
     	g.drawRect(rect2X, rectY, rectWidth, rectHeight);
     	
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(textFont);
     	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
     	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(subheadFont);
     	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
     	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
@@ -181,17 +181,17 @@ public class DemoPage extends JPanel implements ActionListener
     public void displayAnimationStage3(Graphics g)
     {
 
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(textFont);
     	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
     	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(subheadFont);
     	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
     	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
     	
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.drawString(plusSign, plusSignX, multiplicationAnswerY);
 
     	
@@ -200,24 +200,24 @@ public class DemoPage extends JPanel implements ActionListener
     //fourth stage of animation, summary
     public void displayAnimationStage4(Graphics g)
     {
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(textFont);
     	
     	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
     	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(subheadFont);
     	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
     	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
     	
     	
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.drawString(plusSign, plusSignX, multiplicationAnswerY);
     	
     	g.drawString(equalSign, equalSignX, multiplicationAnswerY);
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.drawString(fortyFive, finalAnswerX, multiplicationAnswerY);
     	
     }
@@ -230,7 +230,7 @@ public class DemoPage extends JPanel implements ActionListener
     	super.paint(g);
     	
     	//first step of animation, basic numbers and labels displayed
-    	g.drawImage(welcomePage.demoTitleImage, titleImageX, titleImageY, this);
+    	g.drawImage(controller.demoTitleImage, titleImageX, titleImageY, this);
     	
     	displayText(g);
     	displayDecimalNums(g);

@@ -13,7 +13,7 @@ import javax.swing.JPanel;
 public class DecToBinPage4 extends JPanel
 {
 
-	private WelcomePage welcomePage;
+	private Controller controller;
 	private JButton submitButton; 
 	private JButton tutorialButton;
 
@@ -39,8 +39,8 @@ public class DecToBinPage4 extends JPanel
 	class tutorialButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
-			welcomePage.setCompletedDecBin();
-			welcomePage.loadCard("FOURTH");
+			controller.setCompletedDecBin();
+			controller.loadCard("FOURTH");
 
 		} 
 	}
@@ -49,8 +49,8 @@ public class DecToBinPage4 extends JPanel
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
-			welcomePage.loadCard("DEC BIN PAGE 5");
-			welcomePage.setCompletedDecBin();
+			controller.loadCard("DEC BIN PAGE 5");
+			controller.setCompletedDecBin();
 		} 
 	}
 
@@ -89,10 +89,10 @@ public class DecToBinPage4 extends JPanel
 
 
 	//constructor, param is the applet
-	public DecToBinPage4(WelcomePage welcome)
+	public DecToBinPage4(Controller welcome)
 	{
-		setBackground(WelcomePage.backgroundColor);
-		welcomePage = welcome;
+		setBackground(Controller.backgroundColor);
+		controller = welcome;
 		initComponents();
 		addComponentsToPanel();
 		formatComponents();
@@ -103,11 +103,11 @@ public class DecToBinPage4 extends JPanel
 		super.paint(g);
 
 
-		g.drawImage(welcomePage.tutorialCompleteImg, headerX, headerY, this);
+		g.drawImage(controller.tutorialCompleteImg, headerX, headerY, this);
 
 
 		g.setFont(new Font("Geneva", Font.BOLD, 20));
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 
 
 

@@ -15,7 +15,7 @@ import javax.swing.JPanel;
 @SuppressWarnings("serial")
 public class NumRepresentationPage2 extends JPanel
 {
-	private WelcomePage welcomePage;
+	private Controller controller;
 	
 	//text used on screen
 	private final String explanation1 = "Binary numbers are used to count things, just like normal numbers! ";
@@ -63,10 +63,10 @@ public class NumRepresentationPage2 extends JPanel
 			
     
 	//constructor simply sets the background color
-    public NumRepresentationPage2(WelcomePage welcome)
+    public NumRepresentationPage2(Controller welcome)
     {
-    	welcomePage = welcome;
-    	setBackground(WelcomePage.backgroundColor);
+    	controller = welcome;
+    	setBackground(Controller.backgroundColor);
     	
     	setVisible(true);
     }
@@ -76,7 +76,7 @@ public class NumRepresentationPage2 extends JPanel
     { 
     	super.paint(g);
     	
-    	g.drawImage(welcomePage.numRep2TitleImage, titleImageX, titleImageY, this);
+    	g.drawImage(controller.numRep2TitleImage, titleImageX, titleImageY, this);
     	
     	g.setFont(new Font("Geneva", 1, 20));
     	
@@ -84,7 +84,7 @@ public class NumRepresentationPage2 extends JPanel
     	g.drawString(explanation2, ex2X, ex2Y);
     	g.drawString(explanation3, ex3X, ex3Y);
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(new Font("Geneva", 1, 15));
     	
     	g.drawString(bike, bikeX, bikeY);
@@ -92,9 +92,9 @@ public class NumRepresentationPage2 extends JPanel
     	g.drawString(binoculars, binocularsX, binocularsY);
     	g.drawString(binoculars2, binoculars1X, binoculars1Y);
     	
-    	g.drawImage(welcomePage.dogImage, dogImageX, dogImageY, this);
-    	g.drawImage(welcomePage.bikeImage, bikeImageX, bikeImageY, this );
-    	g.drawImage(welcomePage.binocImage, binocImageX, binocImageY, this );
+    	g.drawImage(controller.dogImage, dogImageX, dogImageY, this);
+    	g.drawImage(controller.bikeImage, bikeImageX, bikeImageY, this );
+    	g.drawImage(controller.binocImage, binocImageX, binocImageY, this );
     	
 
 

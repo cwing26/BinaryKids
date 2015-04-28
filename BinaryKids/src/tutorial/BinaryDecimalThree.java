@@ -24,7 +24,7 @@ import java.util.ArrayList;
 @SuppressWarnings("serial")
 public class BinaryDecimalThree extends JPanel implements MouseListener
 {	
-	WelcomePage welcomePage;
+	Controller controller;
 
 	boolean display1 = true;
 	boolean display2 = false;
@@ -88,10 +88,10 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 	final int textYInc = 20;
 	final int indentTextX = 30;
 
-	public BinaryDecimalThree(WelcomePage welcome)
+	public BinaryDecimalThree(Controller welcome)
 	{
-		welcomePage = welcome;
-		setBackground(WelcomePage.backgroundColor);
+		controller = welcome;
+		setBackground(Controller.backgroundColor);
 
 		initComponents();
 		addComponentsToPanel();
@@ -189,7 +189,7 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 
 
 		//draw title text
-		g.drawImage(welcomePage.binDecImg, headerX, headerY, this);
+		g.drawImage(controller.binDecImg, headerX, headerY, this);
 
 		//draw boxes
 		g.setColor(Color.black);
@@ -202,14 +202,14 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 		g.drawRect(box10x,box10y,box10width,box10height);
 
 		//draw the movable squares
-		g.setColor(WelcomePage.buttonPanelColor);
+		g.setColor(Controller.buttonPanelColor);
 		for (int i = 0;i < squareList.size(); i++)
 		{
 			g.fillRect((int)squareList.get(i).getX(),(int)squareList.get(i).getY(), squareUnit, squareUnit );
 		}
 
 		//box labels
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		g.setFont(new Font("Verdana", 1, 20));
 		g.drawString("TENS", box10x+45, box10y-4);
 		g.drawString("ONES", box1x+45, box1y-4);
@@ -278,14 +278,14 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 					&& numOnesInput.equals(numOnesActual) && countTens == 10 && countOnes == 3)
 			{
 				String congratsMessage = "Good job!";
-				JOptionPane.showMessageDialog(welcomePage, congratsMessage, "good job", JOptionPane.YES_NO_OPTION);
-				welcomePage.loadCard("BIN DEC PAGE 4"); 
+				JOptionPane.showMessageDialog(controller, congratsMessage, "good job", JOptionPane.YES_NO_OPTION);
+				controller.loadCard("BIN DEC PAGE 4"); 
 			}
 			else
 			{
 
 				String errorMessage = "Wrong answer, try again!";
-				JOptionPane.showMessageDialog(welcomePage, errorMessage, "Wrong Answer", JOptionPane.YES_NO_OPTION);
+				JOptionPane.showMessageDialog(controller, errorMessage, "Wrong Answer", JOptionPane.YES_NO_OPTION);
 
 				NumberTensField.setText("");
 				NumberOnesField.setText("");

@@ -68,7 +68,7 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	
 	
 	
-	private WelcomePage welcomePage; //to connect welcome page to individual pages 
+	private Controller controller; //to connect welcome page to individual pages 
 	
 	//handles animation on a 3 second delay
 	private Timer timer;
@@ -76,11 +76,11 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	int countAnimation = 0;
 
 	//constructor sets the background color of the panel and starts the animation timer
-    public NumRepresentationPage(WelcomePage welcome)
+    public NumRepresentationPage(Controller welcome)
     {
     	
-    	welcomePage = welcome;
-    	setBackground(WelcomePage.backgroundColor);
+    	controller = welcome;
+    	setBackground(Controller.backgroundColor);
 
     	setVisible(true);
     	
@@ -95,7 +95,7 @@ public class NumRepresentationPage extends JPanel implements ActionListener
     { 
     	super.paint(g);
     	
-    	g.drawImage(welcomePage.numRepTitleImage, titleImageX, titleImageY, this);
+    	g.drawImage(controller.numRepTitleImage, titleImageX, titleImageY, this);
     	
     	//first iteration of animation only displays question
     	if(countAnimation == 1)
@@ -106,7 +106,7 @@ public class NumRepresentationPage extends JPanel implements ActionListener
     		for(int i = 0; i < objectCount; i ++)
     		{
     			//g.drawImage(soccerBall, soccerBallX, soccerBallY, this);	
-    			g.setColor(WelcomePage.buttonPanelColor);
+    			g.setColor(Controller.buttonPanelColor);
     			g.fillOval(soccerBallX, soccerBallY, ovalSize, ovalSize);
     			soccerBallX = soccerBallX + 100;
     		}
@@ -115,7 +115,7 @@ public class NumRepresentationPage extends JPanel implements ActionListener
     	//second iteration displays answer written in several number systems 
     	else if(countAnimation == 2)
     	{
-	    	g.setColor(WelcomePage.textColor);
+	    	g.setColor(Controller.textColor);
 	    	
 	    	rectX = 350;
 	    	for(int i = 0; i < objectCount; i++)
@@ -126,12 +126,12 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	    		
 	    	}
 	
-	    	g.drawImage(welcomePage.decimalTitleImage, decTitleImageX, decTitleImageY, this);
-	    	g.drawImage(welcomePage.romanNumeralTitleImage, romanNumImageX, romanNumImageY, this);
-	    	g.drawImage(welcomePage.shapesTitleImage, shapesImageX, shapesImageY, this);
-    		g.drawImage(welcomePage.binaryImageLight, binaryImageX, binaryImageY, this);
+	    	g.drawImage(controller.decimalTitleImage, decTitleImageX, decTitleImageY, this);
+	    	g.drawImage(controller.romanNumeralTitleImage, romanNumImageX, romanNumImageY, this);
+	    	g.drawImage(controller.shapesTitleImage, shapesImageX, shapesImageY, this);
+    		g.drawImage(controller.binaryImageLight, binaryImageX, binaryImageY, this);
 
-	    	g.setColor(WelcomePage.textColor);
+	    	g.setColor(Controller.textColor);
 	    	g.setFont(new Font("Monospaced", 1, 60));
 	    	g.drawString(six, sixX, sixY);
 	    	g.drawString(VI, vIX, vIY);
@@ -142,13 +142,13 @@ public class NumRepresentationPage extends JPanel implements ActionListener
     	//third iteration highlights binary number answer
   	    else if(countAnimation >= 3)
   	    {
-  	    	g.drawImage(welcomePage.binaryImageDark, binaryImageX, binaryImageY, this);
-  	    	g.setColor(WelcomePage.textColor);
+  	    	g.drawImage(controller.binaryImageDark, binaryImageX, binaryImageY, this);
+  	    	g.setColor(Controller.textColor);
   	    	g.drawRect(30, 435, 650, 80);
   	    	g.setFont(new Font("Monospaced", 1, 60));
   	    	g.drawString("=", 560, 415);
   	    	
-  	    	g.setColor(WelcomePage.textColor);
+  	    	g.setColor(Controller.textColor);
 	    	
 	    	rectX = 350;
 	    	for(int i = 0; i < objectCount; i++)
@@ -159,11 +159,11 @@ public class NumRepresentationPage extends JPanel implements ActionListener
 	    		
 	    	}
 	
-	    	g.drawImage(welcomePage.decimalTitleImage, decTitleImageX, decTitleImageY, this);
-	    	g.drawImage(welcomePage.romanNumeralTitleImage, romanNumImageX, romanNumImageY, this);
-	    	g.drawImage(welcomePage.shapesTitleImage, shapesImageX, shapesImageY, this);
+	    	g.drawImage(controller.decimalTitleImage, decTitleImageX, decTitleImageY, this);
+	    	g.drawImage(controller.romanNumeralTitleImage, romanNumImageX, romanNumImageY, this);
+	    	g.drawImage(controller.shapesTitleImage, shapesImageX, shapesImageY, this);
 
-	    	g.setColor(WelcomePage.textColor);
+	    	g.setColor(Controller.textColor);
 	    	g.setFont(new Font("Monospaced", 1, 60));
 	    	g.drawString(six, sixX, sixY);
 	    	g.drawString(VI, vIX, vIY);

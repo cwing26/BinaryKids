@@ -20,7 +20,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	private boolean display2 = false;
 	private boolean display3 = false;
 
-	private WelcomePage welcomePage;
+	private Controller controller;
 	private JButton submitButton; 
 
 	//TextFields
@@ -202,7 +202,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 			}
 			else{
 				String errorMessage = "The squares are not in the correct boxes, try again!";
-				JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+				JOptionPane.showMessageDialog(controller, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 				NumberEightsField.setText("");
 				NumberTwosField.setText("");
 				NumberFoursField.setText("");
@@ -215,11 +215,11 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 					&& numFoursInput.equals(numFoursActual)
 					&& numTwosInput.equals(numTwosActual)
 					&& numOnesInput.equals(numOnesActual)   ){
-				welcomePage.loadCard("DEC BIN PAGE 4"); 
+				controller.loadCard("DEC BIN PAGE 4"); 
 			}
 			else{
 				String errorMessage = "Wrong answer, try again!";
-				JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+				JOptionPane.showMessageDialog(controller, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 
 				NumberEightsField.setText("");
 				NumberTwosField.setText("");
@@ -273,10 +273,10 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	}
 
 	//constructor, param is the applet
-	public DecToBinPage3(WelcomePage welcome)
+	public DecToBinPage3(Controller welcome)
 	{
-		welcomePage = welcome;
-		setBackground(WelcomePage.backgroundColor);
+		controller = welcome;
+		setBackground(Controller.backgroundColor);
 		initComponents();
 		addComponentsToPanel();
 		formatComponents();
@@ -288,34 +288,34 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		super.paint(g);
 
 		//change the color of the box if it is selected
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		if (boxSelected1)
 			g.setColor(Color.RED);
 		g.drawRect(box1x,box1y,box1width,box1height);
 
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		if (boxSelected2)
 			g.setColor(Color.RED);
 		g.drawRect(box2x,box2y,box2width,box2height);
 
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		if (boxSelected4)
 			g.setColor(Color.RED);
 		g.drawRect(box4x,box4y,box4width,box4height);
 
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		if (boxSelected8)
 			g.setColor(Color.RED);
 		g.drawRect(box8x,box8y,box8width,box8height);
 
 		//draw the squares
-		g.setColor(WelcomePage.buttonPanelColor);
+		g.setColor(Controller.buttonPanelColor);
 		for (int i = 0;i < squareList.size(); i++){
 			g.fillRect((int)squareList.get(i).getX(),(int)squareList.get(i).getY(), squareUnit, squareUnit );
 		}
 
 		//box labels
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		g.setFont(new Font("Verdana", 1, 20));
 		g.drawString("EIGHTS", eightsX, eightsY);
 		g.drawString("FOURS", foursX, foursY);
@@ -323,7 +323,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 		g.drawString("ONES", onesX, onesY);
 
 		//title
-		g.drawImage(welcomePage.decBinHeadlineImg, headerX, headerY, this);
+		g.drawImage(controller.decBinHeadlineImg, headerX, headerY, this);
 
 
 		//instructions

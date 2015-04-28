@@ -43,7 +43,7 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 	private Timer timer;
 	private int DELAY = 1000;
 
-	WelcomePage welcomePage;
+	Controller controller;
 
 	//TextFields
 	JTextField NumberEightsField;
@@ -179,10 +179,10 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 	}
 	
 	//constructor, param is applet
-	public BinaryDecimalTwo(WelcomePage welcome)
+	public BinaryDecimalTwo(Controller welcome)
 	{
-		welcomePage = welcome;
-		setBackground(WelcomePage.backgroundColor);
+		controller = welcome;
+		setBackground(Controller.backgroundColor);
 		initComponents();
 		addComponentsToPanel();
 		setVisible(true);
@@ -439,7 +439,7 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 		super.paint(g);
 
 		//draw title text
-		g.drawImage(welcomePage.binDecImg, headerX, headerY, this);
+		g.drawImage(controller.binDecImg, headerX, headerY, this);
 
 
 		g.setColor(Color.black);
@@ -465,20 +465,20 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 
 
 		//draw the squares
-		g.setColor(WelcomePage.buttonPanelColor);
+		g.setColor(Controller.buttonPanelColor);
 		for (int i = 0;i < squareList.size(); i++){
 			g.fillRect((int)squareList.get(i).getX(),(int)squareList.get(i).getY(), squareUnit, squareUnit );
 		}
 
 		//box labels
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		g.setFont(new Font("Verdana", 1, 20));
 		g.drawString("EIGHTS", box8x+10, box8y-4);
 		g.drawString("FOURS", box4x+15, box4y-4);
 		g.drawString("TWOS", box2x+20, box2y-4);
 		g.drawString("ONES", box1x+20, box1y-4);
 
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		g.setFont(new Font("Geneva", Font.BOLD, 14));
 
 
@@ -541,11 +541,11 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 					&& numFoursInput.equals(numFoursActual)
 					&& numTwosInput.equals(numTwosActual)
 					&& numOnesInput.equals(numOnesActual)   ){
-				welcomePage.loadCard("BIN DEC PAGE 3");
+				controller.loadCard("BIN DEC PAGE 3");
 			}
 			else{
 				String errorMessage = "Wrong answer, try again!";
-				JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+				JOptionPane.showMessageDialog(controller, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 
 				NumberEightsField.setText("");
 				NumberTwosField.setText("");

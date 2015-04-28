@@ -79,18 +79,18 @@ public class SegundaPage extends JPanel
 	private final int lightX = 460;
 	private final int lightY = 370;
 	
-	WelcomePage welcomePage;
+	Controller controller;
 	
 	//constructor
-    public SegundaPage(WelcomePage welcome)
+    public SegundaPage(Controller welcome)
     {
-    	welcomePage = welcome;
+    	controller = welcome;
     	
     	initComponents();
     	addComponentsToPanel();
     	formatComponents();
     	
-    	setBackground(WelcomePage.backgroundColor);
+    	setBackground(Controller.backgroundColor);
     	
     	setVisible(true);
 
@@ -102,19 +102,19 @@ public class SegundaPage extends JPanel
     {
     	super.paint(g);
     	
-    	g.drawImage(welcomePage.secondPageTitleImage, titleImageX, titleImageY, this);
+    	g.drawImage(controller.secondPageTitleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
     	g.drawString(explanation1, textX, ex1Y);
     	
-    	g.drawImage(welcomePage.instagramImage, instaX, thumbnailY, this);
-    	g.drawImage(welcomePage.fbImage, fbX, thumbnailY, this);
-    	g.drawImage(welcomePage.youtubeImage, youtubeX, thumbnailY, this);
-    	g.drawImage(welcomePage.emailImage, emailX, thumbnailY, this);
-    	g.drawImage(welcomePage.cellImage, cellX, thumbnailY, this);
-    	g.drawImage(welcomePage.gameImage, gameX, thumbnailY, this);
-    	g.drawImage(welcomePage.skypeImage, skypeX, thumbnailY, this);
+    	g.drawImage(controller.instagramImage, instaX, thumbnailY, this);
+    	g.drawImage(controller.fbImage, fbX, thumbnailY, this);
+    	g.drawImage(controller.youtubeImage, youtubeX, thumbnailY, this);
+    	g.drawImage(controller.emailImage, emailX, thumbnailY, this);
+    	g.drawImage(controller.cellImage, cellX, thumbnailY, this);
+    	g.drawImage(controller.gameImage, gameX, thumbnailY, this);
+    	g.drawImage(controller.skypeImage, skypeX, thumbnailY, this);
     	
     	
     	g.setFont(new Font("Geneva", 1, 25));
@@ -132,11 +132,11 @@ public class SegundaPage extends JPanel
     	
     	if(oneClicked)
 		{
-			g.drawImage(welcomePage.lightOn, lightX, lightY, this);
+			g.drawImage(controller.lightOn, lightX, lightY, this);
 		}
 		else
 		{
-			g.drawImage(welcomePage.lightOff, lightX, lightY, this);
+			g.drawImage(controller.lightOff, lightX, lightY, this);
 		}
     		
     }
@@ -170,9 +170,9 @@ public class SegundaPage extends JPanel
     public void initComponents()
     {
 		convertLabel = new JLabel();
-		convertLabel.setBackground(WelcomePage.backgroundColor);
+		convertLabel.setBackground(Controller.backgroundColor);
 		convertLabel.setFont(new Font("Monospaced", 1, 60));
-		convertLabel.setForeground(WelcomePage.buttonPanelColor);
+		convertLabel.setForeground(Controller.buttonPanelColor);
 		convertLabel.setText(binaryNum);
 		
 		//listener indicates to the label when to change the label's

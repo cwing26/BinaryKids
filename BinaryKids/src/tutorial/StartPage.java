@@ -23,7 +23,7 @@ public class StartPage extends JPanel
 	String directions2 = "Then you can play a fun game with the skills you've learned!";
 	
 	
-	private WelcomePage welcomePage; //to connect welcome page to individual pages 
+	private Controller controller; //to connect welcome page to individual pages 
     
 	//initializes all gui components on the page
 	public void initComponents()
@@ -34,11 +34,11 @@ public class StartPage extends JPanel
 	}
 	
 	
-    public StartPage(WelcomePage welcome)
+    public StartPage(Controller welcome)
     {
-    	welcomePage = welcome;
+    	controller = welcome;
 
-    	setBackground(WelcomePage.backgroundColor);
+    	setBackground(Controller.backgroundColor);
     	initComponents();
     	setLayout(null);
     	add(submitButton);
@@ -54,17 +54,17 @@ public class StartPage extends JPanel
     	super.paint(g);
 //    	g.drawImage(welcomePage.titleTextImg, 50 , 50, this);
 //    	g.drawImage(welcomePage.titleImg, 100, 100, this);
-    	g.drawImage(welcomePage.titleHeadline, 100, 50, this);
+    	g.drawImage(controller.titleHeadline, 100, 50, this);
     	
     	//directions 
     	g.setFont(new Font("Geneva", 1 , 20));
     	g.drawString(directions, 170, 150);
     	g.drawString(directions2, 110, 175);
     	
-    	g.drawImage(welcomePage.binaryGraphic, 1, 400, this);
-    	g.drawImage(welcomePage.binaryGraphic, 201, 400, this);
-    	g.drawImage(welcomePage.binaryGraphic, 401, 400, this);
-    	g.drawImage(welcomePage.binaryGraphic, 601, 400, this);
+    	g.drawImage(controller.binaryGraphic, 1, 400, this);
+    	g.drawImage(controller.binaryGraphic, 201, 400, this);
+    	g.drawImage(controller.binaryGraphic, 401, 400, this);
+    	g.drawImage(controller.binaryGraphic, 601, 400, this);
     	
 
 
@@ -77,9 +77,9 @@ public class StartPage extends JPanel
 			
 			//welcomePage.setUserName(nameField.getText());
 			//nameEntered = true;
-			welcomePage.pageFlag++;
-			welcomePage.backButton.setVisible(true);
-			welcomePage.loadCard("NUM REP 1");
+			controller.pageFlag++;
+			controller.backButton.setVisible(true);
+			controller.loadCard("NUM REP 1");
 			repaint();
 			
 		}

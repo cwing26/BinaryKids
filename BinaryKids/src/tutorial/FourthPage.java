@@ -15,7 +15,7 @@ import java.awt.*;
 @SuppressWarnings("serial")
 public class FourthPage extends JPanel
 {	
-	WelcomePage welcomePage;
+	Controller controller;
 
 	JButton backgroundButton;
 	JButton decBinButton;
@@ -25,10 +25,10 @@ public class FourthPage extends JPanel
 	boolean completedBinDec = false;
 
 	//constructor, param is the applet
-	public FourthPage(WelcomePage welcome)
+	public FourthPage(Controller welcome)
 	{
-		welcomePage = welcome;
-		setBackground(WelcomePage.backgroundColor);
+		controller = welcome;
+		setBackground(Controller.backgroundColor);
 		
 		initComponents();		
 		addComponentsToPanel();
@@ -79,12 +79,12 @@ public class FourthPage extends JPanel
 	public void paint(Graphics g) 
 	{ 
 		super.paint(g);
-		g.drawImage(welcomePage.tutorialHeadline, 260, 50, this);
-		g.drawImage(welcomePage.checkmarkImg, 450, 190, this);
+		g.drawImage(controller.tutorialHeadline, 260, 50, this);
+		g.drawImage(controller.checkmarkImg, 450, 190, this);
 		if (completedDecBin)
-			g.drawImage(welcomePage.checkmarkImg, 450, 240, this);
+			g.drawImage(controller.checkmarkImg, 450, 240, this);
 		if (completedBinDec)
-			g.drawImage(welcomePage.checkmarkImg, 450, 290, this);
+			g.drawImage(controller.checkmarkImg, 450, 290, this);
 		if (completedBinDec && completedDecBin){
 			gameButton.setVisible(true);
 		}
@@ -96,7 +96,7 @@ public class FourthPage extends JPanel
 		//method called when the game button is clicked
 		public void actionPerformed(ActionEvent e) 
 		{
-			welcomePage.loadCard("GAME");
+			controller.loadCard("GAME");
 		}
 	}
 	
@@ -108,19 +108,19 @@ public class FourthPage extends JPanel
 		{
 			if(e.getSource() == decBinButton)
 			{
-				welcomePage.loadCard("DEC BIN PAGE 1");
+				controller.loadCard("DEC BIN PAGE 1");
 			}
 			else if(e.getSource() == binDecButton)
 			{
-				welcomePage.loadCard("BIN DEC PAGE 1");
+				controller.loadCard("BIN DEC PAGE 1");
 
 			}
 			else if (e.getSource() == backgroundButton){
-				welcomePage.background();
+				controller.background();
 			}
 			else
 			{
-				welcomePage.gameOver();
+				controller.gameOver();
 			}
 
 

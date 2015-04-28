@@ -131,14 +131,14 @@ public class DemoPage2 extends JPanel implements ActionListener
     
     private final int rectY = 195;
     
-    private WelcomePage welcomePage;
+    private Controller controller;
     
     //constructor
-    public DemoPage2(WelcomePage welcome)
+    public DemoPage2(Controller welcome)
     {
-    	welcomePage = welcome;
+    	controller = welcome;
     	
-    	setBackground(WelcomePage.backgroundColor);
+    	setBackground(Controller.backgroundColor);
     	
 
     	setVisible(true);
@@ -154,7 +154,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     //displays all digits making up binary number through animation
     public void displayBinaryNums(Graphics m)
     {
-    	m.setColor(WelcomePage.textColor);
+    	m.setColor(Controller.textColor);
 		m.setFont(displayFont);
     	m.drawString(binaryOne, binary1X, displayNumY);
     	m.drawString(binaryZero, binary2X, displayNumY);
@@ -167,7 +167,7 @@ public class DemoPage2 extends JPanel implements ActionListener
   //displays all binary places under binary number through animation
     public void displayBinaryPlaces(Graphics m)
     {
-    	m.setColor(WelcomePage.textColor);
+    	m.setColor(Controller.textColor);
     	m.setFont(textFont);
     	m.drawString(thirtyTwosPlace, place32X, placesY);
     	m.drawString(place, place32Xoverflow, placesYoverflow);
@@ -182,7 +182,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     //displays all explanatory text through animation
     public void displayText(Graphics m)
     {
-    	m.setColor(WelcomePage.textColor);
+    	m.setColor(Controller.textColor);
     	m.setFont(textFont);
     	m.drawString(explanation1, explanationX, explanation1Y);
     	m.drawString(explanation1cont, explanationX, explanation1contY);
@@ -194,7 +194,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     //summing of digits
     public void displayPlusSign(Graphics g)
     {
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.drawString(plusSign, plus1X, multiplicationAnswerY);
     	g.drawString(plusSign, plus2X, multiplicationAnswerY);
     	g.drawString(plusSign, plus3X, multiplicationAnswerY);
@@ -207,7 +207,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     //last two stages of animation
     public void displayMultiplication(Graphics g)
     {
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(textFont);
     	
     	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
@@ -223,7 +223,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     //last two stages of animation
     public void displayMultiplicationAnswer(Graphics g)
     {
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(subheadFont);
     	
     	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
@@ -241,11 +241,11 @@ public class DemoPage2 extends JPanel implements ActionListener
     	g.setColor(Color.red);
     	g.drawRect(binary1X, rectY, rectWidth, rectHeight);
 
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(textFont);
     	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(subheadFont);
     	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
 
@@ -258,14 +258,14 @@ public class DemoPage2 extends JPanel implements ActionListener
     	g.drawRect(binary2X, rectY, rectWidth, rectHeight);
 
     	
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(textFont);
     	
     	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
     	g.drawString(sixteenMultiplication, multip16X, multiplicationY);
 
 
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(subheadFont);
     	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
     	g.drawString(sixteenMultiplicationAnswer, multip16answerX, multiplicationAnswerY);
@@ -280,7 +280,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	g.drawRect(binary3X, rectY, rectWidth, rectHeight);
 
     	
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(textFont);
     	
     	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
@@ -288,7 +288,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	g.drawString(eightMultiplication, multip8X, multiplicationY);
     	
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(subheadFont);
     	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
     	g.drawString(sixteenMultiplicationAnswer, multip16answerX, multiplicationAnswerY);
@@ -304,7 +304,7 @@ public class DemoPage2 extends JPanel implements ActionListener
       	g.drawRect(binary4X, rectY, rectWidth, rectHeight);
 
     	
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(textFont);
     	
     	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
@@ -313,7 +313,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	g.drawString(fourMultiplication, multip4X, multiplicationY);
     	
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(subheadFont);
     	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
     	g.drawString(sixteenMultiplicationAnswer, multip16answerX, multiplicationAnswerY);
@@ -329,7 +329,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	g.setColor(Color.red);
     	g.drawRect(binary5X, rectY, rectWidth, rectHeight);
     	
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.setFont(textFont);
     	
     	g.drawString(thirtyTwoMultiplication, multip32X, multiplicationY);
@@ -339,7 +339,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     	g.drawString(twoMultiplication, multip2X, multiplicationY);
 
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.setFont(subheadFont);
     	g.drawString(thirtyTwoMultiplicationAnswer, multip32answerX, multiplicationAnswerY);
     	g.drawString(sixteenMultiplicationAnswer, multip16answerX, multiplicationAnswerY);
@@ -380,7 +380,7 @@ public class DemoPage2 extends JPanel implements ActionListener
 
     	g.drawString(equalSign, 620, 540);
     	
-    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setColor(Controller.buttonPanelColor);
     	g.drawString(fortyFive, 650, 540);
     	
     }
@@ -391,7 +391,7 @@ public class DemoPage2 extends JPanel implements ActionListener
     {
     	super.paint(g);
     	
-    	g.drawImage(welcomePage.demo2TitleImage, titleImageX, titleImageY, this);
+    	g.drawImage(controller.demo2TitleImage, titleImageX, titleImageY, this);
     	
     	//numbers, place labels, and explanatory text
     	//displayed throughout animation

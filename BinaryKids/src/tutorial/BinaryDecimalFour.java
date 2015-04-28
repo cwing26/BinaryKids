@@ -18,7 +18,7 @@ import java.awt.*;
 @SuppressWarnings("serial")
 public class BinaryDecimalFour extends JPanel
 {	
-	WelcomePage welcomePage;
+	Controller controller;
 
 	JButton tutorialButton;
 	JButton submitButton;
@@ -42,10 +42,10 @@ public class BinaryDecimalFour extends JPanel
 	final int headerY = 20;
 	
     //constructor, param is the applet		
-    public BinaryDecimalFour(WelcomePage welcome)
+    public BinaryDecimalFour(Controller welcome)
     {
-    	setBackground(WelcomePage.backgroundColor);
-		welcomePage = welcome;
+    	setBackground(Controller.backgroundColor);
+		controller = welcome;
 		
 		initComponents();
 		addComponentsToPanel();
@@ -84,8 +84,8 @@ public class BinaryDecimalFour extends JPanel
     class tutorialButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {
-			welcomePage.setCompletedBinDec();
-			welcomePage.loadCard("FOURTH");
+			controller.setCompletedBinDec();
+			controller.loadCard("FOURTH");
 		} 
 	}
 
@@ -93,8 +93,8 @@ public class BinaryDecimalFour extends JPanel
 	class submitButtonListener implements ActionListener 
 	{
 		public void actionPerformed(ActionEvent le) {  
-			welcomePage.loadCard("BIN DEC PAGE 5");
-			welcomePage.setCompletedBinDec();
+			controller.loadCard("BIN DEC PAGE 5");
+			controller.setCompletedBinDec();
 		} 
 	}
 	
@@ -112,11 +112,11 @@ public class BinaryDecimalFour extends JPanel
     	super.paint(g);
     	
     	//headline
-    	g.drawImage(welcomePage.tutorialCompleteImg, headerX, headerY, this);
+    	g.drawImage(controller.tutorialCompleteImg, headerX, headerY, this);
 		
 		//text
 		g.setFont(new Font("Geneva", Font.BOLD, 20));
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		g.drawString(text1, startTextX+30, startTextY+textYInc);
 		g.drawString(text2, startTextX, startTextY+2*textYInc);
 		g.drawString(text3, startTextX, startTextY+3*textYInc);

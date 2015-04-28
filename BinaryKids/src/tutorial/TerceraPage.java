@@ -81,15 +81,15 @@ public class TerceraPage extends JPanel implements ActionListener
     private final int finalIXcoord = 200;
     private final int finalTXcoord = 230;
     
-    private WelcomePage welcomePage;
+    private Controller controller;
     
     //constructor
-    public TerceraPage(WelcomePage welcome)
+    public TerceraPage(Controller welcome)
     {
-    	welcomePage = welcome;
+    	controller = welcome;
     	
     	timer = new Timer(DELAY, this);
-    	setBackground(WelcomePage.backgroundColor);
+    	setBackground(Controller.backgroundColor);
     	setVisible(true);
     	
     	timer.start();
@@ -101,7 +101,7 @@ public class TerceraPage extends JPanel implements ActionListener
     {
     	super.paint(g);
     	
-    	g.drawImage(welcomePage.thirdPageTitleImage, titleImageX, titleImageY, this);
+    	g.drawImage(controller.thirdPageTitleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
@@ -109,7 +109,7 @@ public class TerceraPage extends JPanel implements ActionListener
     	g.drawString(explanation1cont, explanationX, explanation1contY);
     	
     	g.drawString(explanation2, explanationX, explanation2Y);
-    	g.drawImage(welcomePage.binaryDigitImage, binaryImageX, binaryImageY, this);
+    	g.drawImage(controller.binaryDigitImage, binaryImageX, binaryImageY, this);
     	
     	g.drawString(explanation3, explanationX, explanation3Y);
     	g.drawString(explanation3cont, explanationX, explanation3contY);
@@ -118,7 +118,7 @@ public class TerceraPage extends JPanel implements ActionListener
     	if(countAnimation ==0)
     	{
     		g.setFont(new Font("Geneva", 1, 60));
-    		g.setColor(WelcomePage.textColor);
+    		g.setColor(Controller.textColor);
     		g.drawString(b, bXcoord, bitTextY);
     		g.drawString(i, iXcoord1, bitTextY);
     		g.drawString(n, nXcoord, bitTextY);
@@ -140,7 +140,7 @@ public class TerceraPage extends JPanel implements ActionListener
     		g.setColor(Color.red);
     		g.drawString(b, bXcoord, bitTextY);
     		
-    		g.setColor(WelcomePage.textColor);
+    		g.setColor(Controller.textColor);
     		g.drawString(i, iXcoord1, bitTextY);
     		g.drawString(n, nXcoord, bitTextY);
     		g.drawString(a, aXcoord, bitTextY);
@@ -171,12 +171,12 @@ public class TerceraPage extends JPanel implements ActionListener
     	if(countAnimation >= 3)
     	{
     		g.setFont(new Font("Geneva", 1, 80));
-    		g.setColor(WelcomePage.buttonPanelColor);
+    		g.setColor(Controller.buttonPanelColor);
     		g.drawString(b, finalBXcoord, bitTextY);
     		g.drawString(i, finalIXcoord, bitTextY);
     		g.drawString(t, finalTXcoord, bitTextY);
     		
-    		g.setColor(WelcomePage.textColor);
+    		g.setColor(Controller.textColor);
     		g.setFont(new Font("Geneva", 1, 20));
     		g.drawString(exampleBit, explanationX, 360);
     		

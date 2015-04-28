@@ -118,13 +118,13 @@ public class FirstPage extends JPanel
 	private final int gameX = 600;
 	private final int gameY = 250;
 	
-	private WelcomePage welcomePage; //to connect welcome page to individual pages 
+	private Controller controller; //to connect welcome page to individual pages 
     
 	//constructor, param is the applet
-    public FirstPage(WelcomePage welcome)
+    public FirstPage(Controller welcome)
     {
-    	welcomePage = welcome;
-    	setBackground(welcomePage.backgroundColor);
+    	controller = welcome;
+    	setBackground(controller.backgroundColor);
     	
     	initComponents();
     	addComponentsToPanel();
@@ -213,7 +213,7 @@ public class FirstPage extends JPanel
         
         //checkboxes are all housed in a subpanel
         checkPanel = new JPanel(new GridLayout(0, 1));
-        checkPanel.setBackground(WelcomePage.backgroundColor);
+        checkPanel.setBackground(Controller.backgroundColor);
         
         checkPanel.add(gameCheck);
         checkPanel.add(skypeCheck);
@@ -234,7 +234,7 @@ public class FirstPage extends JPanel
     { 
     	super.paint(g);
     	
-    	g.drawImage(welcomePage.firstPageTitleImage, titleImageX, titleImageY, this);
+    	g.drawImage(controller.firstPageTitleImage, titleImageX, titleImageY, this);
     	
     	g.setColor(Color.black);
     	g.setFont(new Font("Geneva", 1, 20));
@@ -243,31 +243,31 @@ public class FirstPage extends JPanel
     	
     	if(instagram)
     	{
-    		g.drawImage(welcomePage.instagramImage, instaX, instaY, this);
+    		g.drawImage(controller.instagramImage, instaX, instaY, this);
     	}
     	if(fb)
     	{
-    		g.drawImage(welcomePage.fbImage, fbX, fbY, this);
+    		g.drawImage(controller.fbImage, fbX, fbY, this);
     	}
     	if(youtube)
     	{
-    		g.drawImage(welcomePage.youtubeImage, youtubeX, youtubeY, this);
+    		g.drawImage(controller.youtubeImage, youtubeX, youtubeY, this);
     	}
     	if(email)
     	{
-    		g.drawImage(welcomePage.emailImage, emailX, emailY, this);
+    		g.drawImage(controller.emailImage, emailX, emailY, this);
     	}
     	if(game)
     	{
-    		g.drawImage(welcomePage.gameImage, gameX, gameY, this);
+    		g.drawImage(controller.gameImage, gameX, gameY, this);
     	}
     	if(cellPhone)
     	{
-    		g.drawImage(welcomePage.cellImage, cellX, cellY, this);
+    		g.drawImage(controller.cellImage, cellX, cellY, this);
     	}
     	if(skype)
     	{
-    		g.drawImage(welcomePage.skypeImage, skypeX, skypeY, this);
+    		g.drawImage(controller.skypeImage, skypeX, skypeY, this);
     	}
     	
 
@@ -345,7 +345,7 @@ public class FirstPage extends JPanel
 	{
 		public void actionPerformed(ActionEvent e) 
 		{
-			welcomePage.loadCard("SEGUNDA");
+			controller.loadCard("SEGUNDA");
 			repaint();
 		}
 	}

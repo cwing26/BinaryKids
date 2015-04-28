@@ -95,13 +95,13 @@ public class PreDemoPage extends JPanel implements ActionListener
     private final int crossOutX = 500;
     private final int crossOutY = 150;
     
-    private WelcomePage welcomePage;
+    private Controller controller;
     //constructor
-    public PreDemoPage(WelcomePage welcome)
+    public PreDemoPage(Controller welcome)
     {
-    	welcomePage = welcome;
+    	controller = welcome;
     	
-    	setBackground(WelcomePage.backgroundColor);
+    	setBackground(Controller.backgroundColor);
     	
     	timer = new Timer(DELAY, this);
 		timer.start();
@@ -116,7 +116,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     {
     	super.paint(g);
     	
-    	g.drawImage(welcomePage.preDemoTitleImage, titleImageX, titleImageY, this);
+    	g.drawImage(controller.preDemoTitleImage, titleImageX, titleImageY, this);
     	
     	//strings and explanations
     	g.setColor(Color.black);
@@ -131,7 +131,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	g.drawString(explanation3cont, explanation3contX, explanation3contY);
 	    	
     	g.setFont(labelFont);
-    	g.setColor(WelcomePage.textColor);
+    	g.setColor(Controller.textColor);
     	g.drawString(hundredsPlace, hundredsPlaceX, placesY);
     	g.drawString(tensPlace, tensPlaceX, placesY);
     	g.drawString(onesPlace, onesPlaceX, placesY);
@@ -147,7 +147,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	if(countAnimation == 0)
     	{
         	g.setFont(displayFont);
-        	g.setColor(WelcomePage.buttonPanelColor);
+        	g.setColor(Controller.buttonPanelColor);
         	g.drawString(number4, firstDisplayNumX, displayNumY);
         	g.drawString(number3, secondDisplayNumX, displayNumY);
         	g.drawString(number8, 500, displayNumY);
@@ -156,7 +156,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	else if(countAnimation == 1)
     	{
     		g.setFont(displayFont);
-	    	g.setColor(WelcomePage.buttonPanelColor);
+	    	g.setColor(Controller.buttonPanelColor);
 	    	g.drawString(number4, firstDisplayNumX, displayNumY);
 	    	g.drawString(number3, secondDisplayNumX, displayNumY);
 	    	g.drawString(number9, thirdDisplayNumX, displayNumY);
@@ -166,7 +166,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	else if(countAnimation == 2)
     	{
     		g.setFont(displayFont);
-	    	g.setColor(WelcomePage.buttonPanelColor);
+	    	g.setColor(Controller.buttonPanelColor);
 	    	g.drawString(number4, firstDisplayNumX, displayNumY);
 	    	g.drawString(number3, secondDisplayNumX, displayNumY);
 	    	g.drawString(number10, thirdDisplayNumX, displayNumY);
@@ -175,20 +175,20 @@ public class PreDemoPage extends JPanel implements ActionListener
     	else if(countAnimation == 3)
     	{
     		g.setFont(displayFont);
-	    	g.setColor(WelcomePage.buttonPanelColor);
+	    	g.setColor(Controller.buttonPanelColor);
 	    	g.drawString(number4, firstDisplayNumX, displayNumY);
 	    	g.drawString(number3, secondDisplayNumX, displayNumY);
 	    	g.drawString(number10, thirdDisplayNumX, displayNumY);
 	    	
 	    	//draws an x over the 10 to signify that we can't count to 10
-	    	g.drawImage(welcomePage.crossOutImage, crossOutX, crossOutY, this);
+	    	g.drawImage(controller.crossOutImage, crossOutX, crossOutY, this);
 	    	
     	}
     	//final number count
     	else if(countAnimation >= 4)
     	{
     		g.setFont(displayFont);
-	    	g.setColor(WelcomePage.buttonPanelColor);
+	    	g.setColor(Controller.buttonPanelColor);
 	    	g.drawString(number4, firstDisplayNumX, displayNumY);
 	    	g.drawString(number4, secondDisplayNumX, displayNumY);
 	    	g.drawString(number0, thirdDisplayNumX, displayNumY);

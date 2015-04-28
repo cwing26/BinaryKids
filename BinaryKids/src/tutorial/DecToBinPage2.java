@@ -24,7 +24,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	private int DELAY = 000;
 
 	//applet
-	private WelcomePage welcomePage;
+	private Controller controller;
 	
 	//swing components
 	private JButton submitButton; 
@@ -97,10 +97,10 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	private final int indentTextX = 30;
 	
 	//constructor, param is the applet
-	public DecToBinPage2(WelcomePage welcome)
+	public DecToBinPage2(Controller welcome)
 	{
-		welcomePage = welcome;
-		setBackground(WelcomePage.backgroundColor);
+		controller = welcome;
+		setBackground(Controller.backgroundColor);
 
 		initComponents();
 		addComponentsToPanel();
@@ -176,11 +176,11 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 			numOnesInput = NumberOnesField.getText();
 
 			if (numTensInput.equals(numTensActual) && numOnesInput.equals(numOnesActual)){
-				welcomePage.loadCard("DEC BIN PAGE 3");
+				controller.loadCard("DEC BIN PAGE 3");
 			}
 			else{
 				String errorMessage = "Wrong answer, try again!";
-				JOptionPane.showMessageDialog(welcomePage, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
+				JOptionPane.showMessageDialog(controller, errorMessage, "wrong answer", JOptionPane.YES_NO_OPTION);
 
 				NumberTensField.setText("");
 				NumberOnesField.setText("");
@@ -326,28 +326,28 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 		super.paint(g);
 
 		//draw title text
-		g.drawImage(welcomePage.decBinHeadlineImg, 75, 10, this);
+		g.drawImage(controller.decBinHeadlineImg, 75, 10, this);
 
 		//draw the boxes
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		g.drawRect(box1x,box1y,box1width,box1height);
 		g.drawRect(box10x,box10y,box10width,box10height);
 
 		//draw the movable squares
-		g.setColor(WelcomePage.buttonPanelColor);
+		g.setColor(Controller.buttonPanelColor);
 		for (int i = 0;i < squareList.size(); i++){
 			g.fillRect((int)squareList.get(i).getX(),(int)squareList.get(i).getY(), squareUnit, squareUnit );
 		}
 
 		//box labels
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		g.setFont(new Font("Verdana", 1, 20));
 		g.drawString("TENS", box10x+45, box10y-4);
 		g.drawString("ONES", box1x+45, box1y-4);
 
 
 		//display instructions
-		g.setColor(WelcomePage.textColor);
+		g.setColor(Controller.textColor);
 		g.setFont(new Font("Geneva", Font.BOLD, 14));
 		if (!startClicked){
 			g.drawString(instructions1, startTextX, startTextY);
