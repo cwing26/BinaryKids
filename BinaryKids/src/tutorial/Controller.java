@@ -564,7 +564,7 @@ public class Controller extends JApplet
 
 		rocketshipImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.gameRocketPath)); 
-		rocketshipImage  = rocketshipImage.getScaledInstance(200,132, Image.SCALE_SMOOTH);
+		rocketshipImage  = rocketshipImage.getScaledInstance(50,50, Image.SCALE_SMOOTH);
 
 
 		//try to load the image file
