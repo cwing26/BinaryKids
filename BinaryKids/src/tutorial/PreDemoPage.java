@@ -21,7 +21,12 @@ import java.awt.Toolkit;
 @SuppressWarnings("serial")
 public class PreDemoPage extends JPanel implements ActionListener
 {
-    //timer handles animation and delay
+    //fonts used on page
+	Font displayFont = new Font("Geneva", 1, 150);
+	Font textFont = new Font("Geneva", 1, 20);
+	Font labelFont = new Font("Geneva", 1, 15);
+	
+	//timer handles animation and delay
 	private Timer timer;
 	private int DELAY = 3000;
 	int countAnimation = 0;
@@ -120,7 +125,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	
     	//strings and explanations
     	g.setColor(Color.black);
-    	g.setFont(new Font("Geneva", 1, 20));
+    	g.setFont(textFont);
     	g.drawString(explanation1, explanation1X, explanation1Y);
     	g.drawString(explanation1cont, explanation1X, explanation1contY);
     	
@@ -130,7 +135,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	g.drawString(explanation3, explanation3X, explanation3Y);
     	g.drawString(explanation3cont, explanation3contX, explanation3contY);
 	    	
-    	g.setFont(new Font("Geneva", 1, 15));
+    	g.setFont(labelFont);
     	g.setColor(WelcomePage.textColor);
     	g.drawString(hundredsPlace, hundredsPlaceX, placesY);
     	g.drawString(tensPlace, tensPlaceX, placesY);
@@ -146,7 +151,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	//displays numbers
     	if(countAnimation == 0)
     	{
-        	g.setFont(new Font("Geneva", 1, 150));
+        	g.setFont(displayFont);
         	g.setColor(WelcomePage.buttonPanelColor);
         	g.drawString(number4, firstDisplayNumX, displayNumY);
         	g.drawString(number3, secondDisplayNumX, displayNumY);
@@ -155,7 +160,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	//increase count by 1
     	else if(countAnimation == 1)
     	{
-	    	g.setFont(new Font("Geneva", 1, 150));
+    		g.setFont(displayFont);
 	    	g.setColor(WelcomePage.buttonPanelColor);
 	    	g.drawString(number4, firstDisplayNumX, displayNumY);
 	    	g.drawString(number3, secondDisplayNumX, displayNumY);
@@ -165,8 +170,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	//increase count by 1
     	else if(countAnimation == 2)
     	{
-
-	    	g.setFont(new Font("Geneva", 1, 150));
+    		g.setFont(displayFont);
 	    	g.setColor(WelcomePage.buttonPanelColor);
 	    	g.drawString(number4, firstDisplayNumX, displayNumY);
 	    	g.drawString(number3, secondDisplayNumX, displayNumY);
@@ -175,7 +179,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	}
     	else if(countAnimation == 3)
     	{
-	    	g.setFont(new Font("Geneva", 1, 150));
+    		g.setFont(displayFont);
 	    	g.setColor(WelcomePage.buttonPanelColor);
 	    	g.drawString(number4, firstDisplayNumX, displayNumY);
 	    	g.drawString(number3, secondDisplayNumX, displayNumY);
@@ -188,7 +192,7 @@ public class PreDemoPage extends JPanel implements ActionListener
     	//final number count
     	else if(countAnimation >= 4)
     	{
-	    	g.setFont(new Font("Geneva", 1, 150));
+    		g.setFont(displayFont);
 	    	g.setColor(WelcomePage.buttonPanelColor);
 	    	g.drawString(number4, firstDisplayNumX, displayNumY);
 	    	g.drawString(number4, secondDisplayNumX, displayNumY);
@@ -196,7 +200,7 @@ public class PreDemoPage extends JPanel implements ActionListener
 	    	
     	}
 
-    }
+    } //end paint method
     
     //loads images to display
     public void loadImages()
