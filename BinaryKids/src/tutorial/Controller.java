@@ -67,17 +67,16 @@ public class Controller extends JApplet
 	private gameInstructions gameInstructionsPage;
 	private GamePage2 gamePage;
 
-	JPanel topPanel;
-	
+
+
 	//bottom panel commponents
 	JPanel buttonPanel;
 	JButton nextButton;
 	JButton closeButton;
-	JButton tutorialButton;
-	JButton debugButton;
 	JButton gameButton;
 	JButton backButton;
 	JButton backToHomeButton;
+	JPanel topPanel;
 
 	CardLayout cardLayout;
 	JPanel cards;
@@ -143,7 +142,7 @@ public class Controller extends JApplet
 	public static String binPracticeProblemPath = "images/binPracticeProblemTitle.png";
 	public static String hintGraphicPath = "images/hintGraphic.gif";
 	public static String decPracticeProblemPath = "images/decPracticeProblemsTitle.jpg";
-	
+
 	//game image paths
 	public static String gameTitlePath = "images/welcometext.jpg";
 	public static String game0Path = "images/myZero.png";
@@ -287,13 +286,13 @@ public class Controller extends JApplet
 		setLayout(new BorderLayout()); 
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
-		cardLayout.show(cards, "FOURTH");
-		//cardLayout.show(cards, "START PAGE"); //here
+		//cardLayout.show(cards, "FOURTH");
+		cardLayout.show(cards, "START PAGE"); //here
 
 		//add buttonPanel to game frame
 		add(buttonPanel, BorderLayout.SOUTH); 
 		add(topPanel, BorderLayout.NORTH);
-		
+
 
 		// Setup the applet
 		getContentPane().setBackground(backgroundColor);
@@ -301,6 +300,7 @@ public class Controller extends JApplet
 		setSize(frameWidth, frameHeight);
 	}
 
+	//add the panels to cards
 	public void addComponents(){
 		cards.add(startPage, "START PAGE");
 		cards.add(numRepresentationPage, "NUM REP 1");
@@ -326,6 +326,7 @@ public class Controller extends JApplet
 		cards.add(gameWelcomePage, "GAME WELCOME");
 	}
 
+	//init swing components
 	public void initComponents(){
 		cards = new JPanel(new CardLayout());
 		contentPane = getContentPane();
@@ -355,6 +356,7 @@ public class Controller extends JApplet
 		gamePage = new GamePage2(this);
 	}
 
+	//load all the images when start applet
 	public void loadImages()
 	{
 		//chris images
@@ -589,17 +591,19 @@ public class Controller extends JApplet
 	}
 
 
-
+	//update that completed dec to bin tutorial
 	public void setCompletedDecBin(){
 		fourthPage.completedDecBin = true;
 		repaint();
 	}
 
+	//update that commpleted bin to dec tutorial
 	public void setCompletedBinDec(){
 		fourthPage.completedBinDec = true;
 		repaint();
 	}
 
+	//create the buttons and add to button panel
 	public void createButtonPanel()
 	{
 		//creates a close button to allow user to exit whenever
@@ -608,9 +612,6 @@ public class Controller extends JApplet
 
 		nextButton = new JButton("NEXT");
 		nextButton.addActionListener(new nextButtonListener());
-
-		tutorialButton = new JButton("Tutorials");
-		tutorialButton.addActionListener(new tutorialButtonListener());
 
 		backButton = new JButton("BACK");
 		backButton.addActionListener(new backButtonListener());
@@ -636,7 +637,7 @@ public class Controller extends JApplet
 
 	}
 
-
+//override paint method
 	public void paint(Graphics g) 
 	{     	
 		super.paint(g);
@@ -670,6 +671,7 @@ public class Controller extends JApplet
 		}
 	}
 
+	//load new card based on key
 	public void loadCard(String key){
 		if (key.equals("DEC BIN PAGE 1")){
 			decToBinPage = new DecToBinPage(welcome);
@@ -720,30 +722,7 @@ public class Controller extends JApplet
 		setVisible(true);
 		repaint();
 	}
-
-
-
-
-	public void setUserAnswer(String answer)
-	{
-		userAnswer = answer;
-	}
-
-	public String getUserAnswer()
-	{
-		return userAnswer;
-	}
-
-	class tutorialButtonListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e) 
-		{
-			cardLayout.show(fourthPage, "FOURTH");
-			validate();
-			setVisible(true);
-			repaint();	
-		}
-	}
+	
 
 	public void background(){
 		startPage = new StartPage(welcome);
@@ -758,6 +737,8 @@ public class Controller extends JApplet
 		repaint();
 	}
 
+	
+	//action listener for back home button
 	class backHomeButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
@@ -775,22 +756,12 @@ public class Controller extends JApplet
 		}
 	}
 
-	
-	public void returnGameWelcome(){
-		
-	}
 
-	class gameButtonListener implements ActionListener
-	{
-		public void actionPerformed(ActionEvent e) 
-		{
-			cardLayout.show(cards, "GAME");
-			validate();
-			setVisible(true);
-			repaint();	
-		}
-	}
+//	public void returnGameWelcome(){
+//
+//	}
 
+	//action listener for back button
 	class backButtonListener implements ActionListener
 	{
 		public void actionPerformed(ActionEvent e) 
@@ -809,6 +780,7 @@ public class Controller extends JApplet
 		}
 	}
 
+	//action listener for next button
 	class nextButtonListener implements ActionListener 
 	{
 
@@ -857,6 +829,7 @@ public class Controller extends JApplet
 			if(pageFlag > 10)
 			{
 				backButton.setVisible(false);
+				nextButton.setVisible(false);
 			}
 
 			//handling next button visibility

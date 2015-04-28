@@ -511,7 +511,7 @@ public class GamePage2 extends JPanel {
 		JOptionPane.showMessageDialog(this, message, "Game Over!", JOptionPane.YES_NO_OPTION);	
 		
 		//return to gameWelcomePage screen
-		controller.returnGameWelcome();
+//		controller.returnGameWelcome();
 	}
 	
 	//check submitted answer
