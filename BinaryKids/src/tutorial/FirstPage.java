@@ -346,6 +346,8 @@ public class FirstPage extends JPanel
 		public void actionPerformed(ActionEvent e) 
 		{
 			controller.loadCard("SEGUNDA");
+			welcomePage.pageFlag++;
+			welcomePage.nextButton.setVisible(true);
 			repaint();
 		}
 	}
