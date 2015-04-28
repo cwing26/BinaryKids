@@ -19,12 +19,15 @@ import javax.swing.JButton;
 import javax.swing.JPanel;
 
 
-import tutorial.WelcomePage;
 
+
+import tutorial.Controller;
+
+@SuppressWarnings("serial")
 public class GameWelcomePage extends JPanel {
 
 	//pages
-	private WelcomePage welcomePage;
+	private Controller controller;
 	private GamePage2 gamePage;
 	
 	//image icons for top banner
@@ -53,9 +56,9 @@ public class GameWelcomePage extends JPanel {
 	
 	boolean gameInProgress;
 	
-	GameWelcomePage(WelcomePage welcome) {
+	GameWelcomePage(Controller _controller) {
 	
-		welcomePage = welcome;
+		controller = _controller;
 		setLayout(null);
 
 		setBackground(backgroundColor);
@@ -174,7 +177,7 @@ public class GameWelcomePage extends JPanel {
 		public void actionPerformed(ActionEvent e) 
 		{
 			//if start button is clicked, start the game
-			welcomePage.loadGame();
+			controller.loadCard("GAME");
 		}
 	}
 
