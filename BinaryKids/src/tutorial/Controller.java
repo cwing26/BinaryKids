@@ -824,6 +824,14 @@ public class Controller extends JApplet
 				demoPage2.timer.start();
 			}
 
+			//back button
+			//if flag greater than 10, means user is in tutorial
+			//or game pages with no need for back button
+			if(pageFlag > 10)
+			{
+				backButton.setVisible(false);
+			}
+			repaint();
 
 		} //end action performed
 
