@@ -69,11 +69,6 @@ public class GamePage2 extends JPanel {
 	JButton thirtytwo;
 	JButton sixtyfour;
 	
-//	//images to set as background for buttons
-//	ImageIcon zeroCard;
-//	ImageIcon oneCard;
-//	ImageIcon submitPic;
-	
 	//button to submit answer for review
 	JButton submitButton;
 	//button to quit game prematurely 
@@ -178,14 +173,6 @@ public class GamePage2 extends JPanel {
 		resumeButton.setVisible(false);
 		
 	}
-	
-//
-//	public void loadImages() 
-//	{
-//		zeroCard = new ImageIcon(controller.game0ButtonImage);
-//		oneCard = new ImageIcon(controller.game1ButtonImage);
-//		submitPic = new ImageIcon(controller.submitButtonImage);
-//	}
 
 	
 	//initialize variables to starting values
