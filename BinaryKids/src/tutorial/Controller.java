@@ -60,6 +60,8 @@ public class Controller extends JApplet
 	private BinaryDecimalThree bdThree;
 	private BinaryDecimalFour bdFour;
 	private BinaryToDecimalPractice bdPractice;
+	private GameWelcomePage gameWelcomePage;
+	private gameInstructions gameInstructionsPage;
 	private GamePage2 gamePage;
 
 	//top panel commponents
@@ -136,7 +138,16 @@ public class Controller extends JApplet
 	public static String binPracticeProblemPath = "images/binPracticeProblemTitle.png";
 	public static String hintGraphicPath = "images/hintGraphic.gif";
 	public static String decPracticeProblemPath = "images/decPracticeProblemsTitle.jpg";
-
+	
+	//game image paths
+	public static String gameTitlePath = "images/welcometext.jpg";
+	public static String game0Path = "images/myZero.png";
+	public static String game1Path = "images/myOne.png";
+	public static String gameSubmitPath = "images/submitalso.png";
+	public static String gameInstructionsPath = "images/instructButton.png";
+	public static String gamePlayPath = "images/playButton.png";
+	public static String gameRocketPath = "images/rocketship.jpg";
+	
 
 	//chris images
 	public Image titleImg;  //http://www.cs.colostate.edu/~boese/Geek/binaryCalculator.gif
@@ -210,7 +221,15 @@ public class Controller extends JApplet
 	public Image practiceProblemTitleImage;
 	public Image hintImage;
 
-
+	//game images
+	public Image game0ButtonImage;
+	public Image game1ButtonImage;
+	public Image gameTitleImage;
+	public Image gameInstructionsButtonImage;
+	public Image playButtonImage;
+	public Image submitButtonImage;
+	public Image rocketshipImage;
+	
 
 
 	//Called when this applet is loaded into the browser.
@@ -298,7 +317,7 @@ public class Controller extends JApplet
 		cards.add(bdThree, "BIN DEC PAGE 3");
 		cards.add(bdFour, "BIN DEC PAGE 4");
 		cards.add(bdPractice, "BIN DEC PAGE 5");
-		//cards.add(gamePage, "GAME");
+		cards.add(gameWelcomePage, "GAME WELCOME”);
 	}
 
 	public void initComponents(){
@@ -325,7 +344,9 @@ public class Controller extends JApplet
 		bdThree = new BinaryDecimalThree(this);
 		bdFour = new BinaryDecimalFour(this);
 		bdPractice = new BinaryToDecimalPractice(this);
-		//gamePage = new GamePage2(this);
+		gameWelcomePage = new GameWelcomePage(this);
+		gameInstructionsPage = new gameInstructions(this);
+		gamePage = new GamePage2(this);
 	}
 
 	public void loadImages()
@@ -510,6 +531,36 @@ public class Controller extends JApplet
 		hintImage = Toolkit.getDefaultToolkit().getImage(
 				getClass().getClassLoader().getResource(Controller.hintGraphicPath)); 
 		hintImage = hintImage.getScaledInstance(331,147, Image.SCALE_SMOOTH);
+
+
+		//game images
+		game0ButtonImage = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(Controller.game0Path)); 
+		game0ButtonImage = game0ButtonImage.getScaledInstance(100, 93, Image.SCALE_SMOOTH);
+
+		game1ButtonImage = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(Controller.game1Path)); 
+		game1ButtonImage = game1ButtonImage.getScaledInstance(100, 81, Image.SCALE_SMOOTH);
+
+		gameTitleImage = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(Controller.gameTitlePath)); 
+		gameTitleImage = game1ButtonImage.getScaledInstance(600, 49, Image.SCALE_SMOOTH);
+
+		gameInstructionsButtonImage = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(Controller.gameInstructionsPath)); 
+		gameInstructionsButtonImage = gameInstructionsButtonImage.getScaledInstance(363, 87, Image.SCALE_SMOOTH);
+
+		playButtonImage = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(Controller.gamePlayPath)); 
+		playButtonImage  = playButtonImage.getScaledInstance(380, 155, Image.SCALE_SMOOTH);
+
+		submitButtonImage = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(Controller.gameSubmitPath)); 
+		submitButtonImage  = submitButtonImage.getScaledInstance(100, 40, Image.SCALE_SMOOTH);
+
+		rocketshipImage = Toolkit.getDefaultToolkit().getImage(
+				getClass().getClassLoader().getResource(Controller.gameRocketPath)); 
+		rocketshipImage  = rocketshipImage.getScaledInstance(200,132, Image.SCALE_SMOOTH);
 
 
 		//try to load the image file
