@@ -1,5 +1,7 @@
 package tutorial;
 
+//imports
+import java.awt.Font;
 import java.awt.Graphics;
 import java.awt.event.ActionEvent;
 import java.awt.event.ActionListener;
@@ -9,18 +11,24 @@ import javax.swing.Timer;
 
 import java.awt.*; 
 
-//explains the places/digits with an animation
-//decimal numbers can have many digits
-//show: 132 (3 different strings)
-//1. hundreds place: light up, rectangle around it, label with hundreds place
-//2. 100x1 = 100 under hundreds place, 100x1 on side of page
 
 
+
+/* This class serves as the ninth view in the introductory learning module, 
+ * introducing the student to the conversion of binary and decimal numbers by
+ * looking at the sum of their digits/places with an animation
+ */
 @SuppressWarnings("serial")
 public class DemoPage extends JPanel implements ActionListener
 {
-
-    //images
+	
+	//fonts used
+	Font displayFont = new Font("Geneva", 1, 150);
+	Font textFont = new Font("Geneva", 1, 20);
+	Font labelFont = new Font("Geneva", 1, 15);
+	Font subheadFont = new Font("Geneva", 1, 30);
+   
+	//images
 	private Image titleImage;
 	
 	String explanation1 = "Counting with decimal numbers and binary numbers is the same!";
@@ -29,9 +37,10 @@ public class DemoPage extends JPanel implements ActionListener
 	String explanation2 = "Let's do an example where we count to 45 in decimal and binary:";
 	
 	
-	//components of first decimal animation
+	//text used on page
 	String four = "4";
     String five = "5";
+    String fortyFive = "45";
     
     String tensPlace = "Tens Place";
     String onesPlace = "Ones Place";
@@ -45,25 +54,65 @@ public class DemoPage extends JPanel implements ActionListener
     String plusSign = "+";
     String equalSign = "=";
     
+    
+    //timer handles animation and delay
 	private Timer timer;
 	private int DELAY = 3000;
 	int countAnimation = 0;
-
+	
+	
+	//coordinates of screen components
+	private final int titleImageX = 50;
+	private final int titleImageY = 5;
+	
+	private final int explanationX = 20;
+    private final int explanation1Y = 100;
+    private final int explanation1contY = 125;
+    private final int explanation2Y = 160;
     
+    private final int displayNumY = 330;
+    private final int firstDisplayNumX = 240;
+    private final int secondDisplayNumX = 350;
+    
+    private final int rectWidth = 110;
+    private final int rectHeight = 150;
+    
+    private final int rect1X = 230;
+    private final int rect2X = 345;
+    private final int rectY = 195;
+    
+    private final int placesY = 370;
+    private final int placeTenX = 230;
+    private final int placeOneX = 355;
+    
+    private final int multiplicationY = 400;
+    private final int tensMultiplicationX = 240;
+    private final int onesMultiplicationX = 365;
+    
+    private final int multiplicationAnswerY = 440;
+    private final int tensMultiplicationAnswerX = 250;
+    private final int onesMultiplicationAnswerX = 375;
+    private final int plusSignX = 320;
+    private final int equalSignX = 480;
+    private final int finalAnswerX = 510;
+    
+    
+	//constructor
     public DemoPage()
     {
-    	timer = new Timer(DELAY, this);
+    	
     	setBackground(WelcomePage.backgroundColor);
     	
     	loadImages();
 
     	setVisible(true);
     	
+    	timer = new Timer(DELAY, this);
     	timer.start();
-    	
 
     }
     
+    //loads images necessary for page
     public void loadImages()
     {
     	titleImage = Toolkit.getDefaultToolkit().getImage(
@@ -77,140 +126,145 @@ public class DemoPage extends JPanel implements ActionListener
     {
     	super.paint(g);
     	
-    	g.drawImage(titleImage, 50, 5, this);
+    	g.drawImage(titleImage, titleImageX, titleImageY, this);
     	
-    	g.setFont(new Font("Geneva", 1, 20));
-    	g.drawString(explanation1, 20, 100);
-    	g.drawString(explanation1cont, 20, 125);
+    	g.setFont(textFont);
+    	g.drawString(explanation1, explanationX, explanation1Y);
+    	g.drawString(explanation1cont, explanationX, explanation1contY);
     	
-    	g.drawString(explanation2, 20, 160);
+    	g.drawString(explanation2, explanationX, explanation2Y);
     	
+    	//initial display of just the numbers
     	if(countAnimation == 0)
     	{	
     		g.setColor(Color.black);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(four, 240, 330);
-        	g.drawString(five, 350, 330);
+    		g.setFont(displayFont);
+        	g.drawString(four, firstDisplayNumX, displayNumY);
+        	g.drawString(five, secondDisplayNumX, displayNumY);
         	
         	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(tensPlace, 230, 370);
-        	g.drawString(onesPlace, 355, 370);
+        	g.setFont(textFont);
+        	g.drawString(tensPlace, placeTenX, placesY);
+        	g.drawString(onesPlace, placeOneX, placesY);
         	
     	}
+    	//focus on tens place
     	else if(countAnimation == 1)
     	{	
     		g.setColor(Color.black);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(four, 240, 330);
-        	g.drawString(five, 350, 330);
+    		g.setFont(displayFont);
+        	g.drawString(four, firstDisplayNumX, displayNumY);
+        	g.drawString(five, secondDisplayNumX, displayNumY);
         	
         	g.setColor(Color.red);
-        	g.drawRect(230, 195, 110, 150);
+        	g.drawRect(rect1X, rectY, rectWidth, rectHeight);
         	
         	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(tensPlace, 230, 370);
-        	g.drawString(onesPlace, 355, 370);
+        	g.setFont(textFont);
+        	g.drawString(tensPlace, placeTenX, placesY);
+        	g.drawString(onesPlace, placeOneX, placesY);
         	
-        	
-        	g.drawString(tensMultiplication, 240, 400);
+        	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
         	
         	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(tensMultiplicationAnswer, 250, 440);
+        	g.setFont(subheadFont);
+        	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
         	
     	}
+    	//focus on ones place
     	else if(countAnimation == 2)
     	{	
     		g.setColor(Color.black);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(four, 240, 330);
-        	g.drawString(five, 350, 330);
+    		g.setFont(displayFont);
+        	g.drawString(four, firstDisplayNumX, displayNumY);
+        	g.drawString(five, secondDisplayNumX, displayNumY);
         	
         	g.setColor(Color.red);
-        	g.drawRect(345, 195, 110, 150);
+        	g.drawRect(rect2X, rectY, rectWidth, rectHeight);
         	
         	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(tensPlace, 230, 370);
-        	g.drawString(onesPlace, 355, 370);
+        	g.setFont(textFont);
+        	g.drawString(tensPlace, placeTenX, placesY);
+        	g.drawString(onesPlace, placeOneX, placesY);
         	
-        	
-        	g.drawString(onesMultiplication, 365, 400);
-        	g.drawString(tensMultiplication, 240, 400);
+        	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
+        	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
         	
         	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(tensMultiplicationAnswer, 250, 440);
-        	g.drawString(onesMultiplicationAnswer, 375, 440);
+        	g.setFont(subheadFont);
+        	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
+        	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
         
         	
     	}
+    	//show that one must add the sum of each place together 
     	else if(countAnimation == 3)
     	{	
     		g.setColor(Color.black);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(four, 240, 330);
-        	g.drawString(five, 350, 330);
+    		g.setFont(displayFont);
+        	g.drawString(four, firstDisplayNumX, displayNumY);
+        	g.drawString(five, secondDisplayNumX, displayNumY);
         	
         	
         	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(tensPlace, 230, 370);
-        	g.drawString(onesPlace, 355, 370);
+        	g.setFont(textFont);
+        	g.drawString(tensPlace, placeTenX, placesY);
+        	g.drawString(onesPlace, placeOneX, placesY);
         	
         	
-        	g.drawString(tensMultiplication, 240, 400);
-        	g.drawString(onesMultiplication, 365, 400);
+        	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
+        	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
         	
         	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(tensMultiplicationAnswer, 250, 440);
-        	g.drawString(onesMultiplicationAnswer, 375, 440);
+        	g.setFont(subheadFont);
+        	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
+        	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
         	
         	
         	g.setColor(WelcomePage.textColor);
-        	g.drawString(plusSign, 320, 440);
+        	g.drawString(plusSign, plusSignX, multiplicationAnswerY);
 
         	
     	}
+    	//final animation stage: show that the sum of all places equals original number
     	else if(countAnimation >= 4)
     	{	
     		g.setColor(Color.black);
-    		g.setFont(new Font("Geneva", 1, 150));
-        	g.drawString(four, 240, 330);
-        	g.drawString(five, 350, 330);
+    		g.setFont(displayFont);
+        	g.drawString(four, firstDisplayNumX, displayNumY);
+        	g.drawString(five, secondDisplayNumX, displayNumY);
         	
         	
         	g.setColor(WelcomePage.textColor);
-        	g.setFont(new Font("Geneva", 1, 20));
-        	g.drawString(tensPlace, 230, 370);
-        	g.drawString(onesPlace, 355, 370);
+        	g.setFont(textFont);
+        	g.drawString(tensPlace, placeTenX, placesY);
+        	g.drawString(onesPlace, placeOneX, placesY);
         	
         	
-        	g.drawString(tensMultiplication, 240, 400);
-        	g.drawString(onesMultiplication, 365, 400);
+        	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
+        	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
         	
         	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(new Font("Geneva", 1, 30));
-        	g.drawString(tensMultiplicationAnswer, 250, 440);
-        	g.drawString(onesMultiplicationAnswer, 375, 440);
+        	g.setFont(subheadFont);
+        	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
+        	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
         	
         	
         	g.setColor(WelcomePage.textColor);
-        	g.drawString(plusSign, 320, 440);
+        	g.drawString(plusSign, plusSignX, multiplicationAnswerY);
         	
-        	g.drawString(equalSign, 480, 440);
+        	g.drawString(equalSign, equalSignX, multiplicationAnswerY);
         	
         	g.setColor(WelcomePage.buttonPanelColor);
-        	g.drawString("45", 510, 440);
+        	g.drawString(fortyFive, finalAnswerX, multiplicationAnswerY);
         	
     	}
     	
     } //end paint
     	
     
+    //increments as the timer progresses to determine what stage
+    //of animation the page is in
 	@Override
     public void actionPerformed(ActionEvent e) 
 	{
@@ -227,4 +281,4 @@ public class DemoPage extends JPanel implements ActionListener
 	
 
 
-}
+} //end class
