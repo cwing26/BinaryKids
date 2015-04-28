@@ -122,142 +122,169 @@ public class DemoPage extends JPanel implements ActionListener
 		
     }
     
+    public void displayDecimalNums(Graphics m)
+    {
+		m.setColor(WelcomePage.textColor);
+		m.setFont(displayFont);
+    	m.drawString(four, firstDisplayNumX, displayNumY);
+    	m.drawString(five, secondDisplayNumX, displayNumY);
+    }
+    
+    public void displayDecimalPlaces(Graphics m)
+    {
+    	m.setColor(WelcomePage.textColor);
+    	m.setFont(textFont);
+    	m.drawString(tensPlace, placeTenX, placesY);
+    	m.drawString(onesPlace, placeOneX, placesY);
+    }
+    
+    public void displayText(Graphics m)
+    {
+    	m.setColor(WelcomePage.textColor);
+    	m.setFont(textFont);
+    	m.drawString(explanation1, explanationX, explanation1Y);
+    	m.drawString(explanation1cont, explanationX, explanation1contY);
+    	
+    	m.drawString(explanation2, explanationX, explanation2Y);
+    	
+    }
+    
+    public void displayAnimationStage1(Graphics g)
+    {
+    	g.setColor(Color.red);
+    	g.drawRect(rect1X, rectY, rectWidth, rectHeight);
+    	
+    	g.setColor(WelcomePage.textColor);
+    	g.setFont(textFont);
+    	g.drawString(tensPlace, placeTenX, placesY);
+    	g.drawString(onesPlace, placeOneX, placesY);
+    	
+    	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
+    	
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setFont(subheadFont);
+    	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
+    		
+    }
+    
+    public void displayAnimationStage2(Graphics g)
+    {
+		g.setColor(Color.black);
+		g.setFont(displayFont);
+    	g.drawString(four, firstDisplayNumX, displayNumY);
+    	g.drawString(five, secondDisplayNumX, displayNumY);
+    	
+    	g.setColor(Color.red);
+    	g.drawRect(rect2X, rectY, rectWidth, rectHeight);
+    	
+    	g.setColor(WelcomePage.textColor);
+    	g.setFont(textFont);
+    	g.drawString(tensPlace, placeTenX, placesY);
+    	g.drawString(onesPlace, placeOneX, placesY);
+    	
+    	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
+    	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
+    	
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setFont(subheadFont);
+    	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
+    	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
+    
+    }
+    
+    public void displayAnimationStage3(Graphics g)
+    {
+		g.setColor(Color.black);
+		g.setFont(displayFont);
+    	g.drawString(four, firstDisplayNumX, displayNumY);
+    	g.drawString(five, secondDisplayNumX, displayNumY);
+    	
+    	
+    	g.setColor(WelcomePage.textColor);
+    	g.setFont(textFont);
+    	g.drawString(tensPlace, placeTenX, placesY);
+    	g.drawString(onesPlace, placeOneX, placesY);
+    	
+    	
+    	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
+    	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
+    	
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setFont(subheadFont);
+    	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
+    	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
+    	
+    	
+    	g.setColor(WelcomePage.textColor);
+    	g.drawString(plusSign, plusSignX, multiplicationAnswerY);
+
+    	
+    }
+    
+    public void displayAnimationStage4(Graphics g)
+    {
+		g.setColor(Color.black);
+		g.setFont(displayFont);
+    	g.drawString(four, firstDisplayNumX, displayNumY);
+    	g.drawString(five, secondDisplayNumX, displayNumY);
+    	
+    	
+    	g.setColor(WelcomePage.textColor);
+    	g.setFont(textFont);
+    	g.drawString(tensPlace, placeTenX, placesY);
+    	g.drawString(onesPlace, placeOneX, placesY);
+    	
+    	
+    	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
+    	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
+    	
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.setFont(subheadFont);
+    	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
+    	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
+    	
+    	
+    	g.setColor(WelcomePage.textColor);
+    	g.drawString(plusSign, plusSignX, multiplicationAnswerY);
+    	
+    	g.drawString(equalSign, equalSignX, multiplicationAnswerY);
+    	
+    	g.setColor(WelcomePage.buttonPanelColor);
+    	g.drawString(fortyFive, finalAnswerX, multiplicationAnswerY);
+    	
+    }
+    
+  //displays the various components of the page and animation on screen,
+    //changing the display based on the state of animation
     public void paint(Graphics g)
     {
     	super.paint(g);
     	
     	g.drawImage(titleImage, titleImageX, titleImageY, this);
     	
-    	g.setFont(textFont);
-    	g.drawString(explanation1, explanationX, explanation1Y);
-    	g.drawString(explanation1cont, explanationX, explanation1contY);
+    	displayText(g);
+    	displayDecimalNums(g);
+    	displayDecimalPlaces(g);
     	
-    	g.drawString(explanation2, explanationX, explanation2Y);
-    	
-    	//initial display of just the numbers
-    	if(countAnimation == 0)
-    	{	
-    		g.setColor(Color.black);
-    		g.setFont(displayFont);
-        	g.drawString(four, firstDisplayNumX, displayNumY);
-        	g.drawString(five, secondDisplayNumX, displayNumY);
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(textFont);
-        	g.drawString(tensPlace, placeTenX, placesY);
-        	g.drawString(onesPlace, placeOneX, placesY);
-        	
-    	}
     	//focus on tens place
-    	else if(countAnimation == 1)
+    	if(countAnimation == 1)
     	{	
-    		g.setColor(Color.black);
-    		g.setFont(displayFont);
-        	g.drawString(four, firstDisplayNumX, displayNumY);
-        	g.drawString(five, secondDisplayNumX, displayNumY);
-        	
-        	g.setColor(Color.red);
-        	g.drawRect(rect1X, rectY, rectWidth, rectHeight);
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(textFont);
-        	g.drawString(tensPlace, placeTenX, placesY);
-        	g.drawString(onesPlace, placeOneX, placesY);
-        	
-        	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(subheadFont);
-        	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
-        	
+    		displayAnimationStage1(g);
     	}
     	//focus on ones place
     	else if(countAnimation == 2)
     	{	
-    		g.setColor(Color.black);
-    		g.setFont(displayFont);
-        	g.drawString(four, firstDisplayNumX, displayNumY);
-        	g.drawString(five, secondDisplayNumX, displayNumY);
-        	
-        	g.setColor(Color.red);
-        	g.drawRect(rect2X, rectY, rectWidth, rectHeight);
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(textFont);
-        	g.drawString(tensPlace, placeTenX, placesY);
-        	g.drawString(onesPlace, placeOneX, placesY);
-        	
-        	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
-        	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(subheadFont);
-        	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
-        	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
-        
-        	
+    		displayAnimationStage2(g);
     	}
     	//show that one must add the sum of each place together 
     	else if(countAnimation == 3)
     	{	
-    		g.setColor(Color.black);
-    		g.setFont(displayFont);
-        	g.drawString(four, firstDisplayNumX, displayNumY);
-        	g.drawString(five, secondDisplayNumX, displayNumY);
-        	
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(textFont);
-        	g.drawString(tensPlace, placeTenX, placesY);
-        	g.drawString(onesPlace, placeOneX, placesY);
-        	
-        	
-        	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
-        	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(subheadFont);
-        	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
-        	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
-        	
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.drawString(plusSign, plusSignX, multiplicationAnswerY);
-
-        	
+    		displayAnimationStage3(g);
     	}
     	//final animation stage: show that the sum of all places equals original number
     	else if(countAnimation >= 4)
     	{	
-    		g.setColor(Color.black);
-    		g.setFont(displayFont);
-        	g.drawString(four, firstDisplayNumX, displayNumY);
-        	g.drawString(five, secondDisplayNumX, displayNumY);
-        	
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.setFont(textFont);
-        	g.drawString(tensPlace, placeTenX, placesY);
-        	g.drawString(onesPlace, placeOneX, placesY);
-        	
-        	
-        	g.drawString(tensMultiplication, tensMultiplicationX, multiplicationY);
-        	g.drawString(onesMultiplication, onesMultiplicationX, multiplicationY);
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.setFont(subheadFont);
-        	g.drawString(tensMultiplicationAnswer, tensMultiplicationAnswerX, multiplicationAnswerY);
-        	g.drawString(onesMultiplicationAnswer, onesMultiplicationAnswerX, multiplicationAnswerY);
-        	
-        	
-        	g.setColor(WelcomePage.textColor);
-        	g.drawString(plusSign, plusSignX, multiplicationAnswerY);
-        	
-        	g.drawString(equalSign, equalSignX, multiplicationAnswerY);
-        	
-        	g.setColor(WelcomePage.buttonPanelColor);
-        	g.drawString(fortyFive, finalAnswerX, multiplicationAnswerY);
-        	
+    		displayAnimationStage4(g);
     	}
     	
     } //end paint
