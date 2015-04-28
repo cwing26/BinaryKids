@@ -17,13 +17,33 @@ public class FourthPage extends JPanel
 {	
 	Controller controller;
 
-	JButton backgroundButton;
-	JButton decBinButton;
-	JButton binDecButton;
-	JButton gameButton;
+	private JButton backgroundButton;
+	private JButton decBinButton;
+	private JButton binDecButton;
+	private JButton gameButton;
 	boolean completedDecBin = false;
 	boolean completedBinDec = false;
+	
+	private final int decBinButtonX = 300;
+	private final int decBinButtonY = 250;
+	
+	private final int binDecButtonX = 300;
+	private final int binDecButtonY = 300;
+	
+	private final int backgroundButtonX = 300;
+	private final int backgroundButtonY = 200;
 
+	private final int gameButtonX = 330;
+	private final int gameButtonY = 350;
+
+	private final int checkmarkX = 450;
+	private final int checkmarkY1 = 190;
+	private final int checkmarkY2 = 240;
+	private final int checkmarkY3 = 290;
+	
+	private final int headlineX = 260;
+	private final int headlineY = 50;
+	
 	//constructor, param is the applet
 	public FourthPage(Controller welcome)
 	{
@@ -63,28 +83,33 @@ public class FourthPage extends JPanel
 	//this method defines the formatting of the components on the panel
 	public void formatComponents(){
 		Insets insets = getInsets();
+		
 		Dimension buttonSize = decBinButton.getPreferredSize();
-		decBinButton.setBounds(300 + insets.left, 250 + insets.top,
+		decBinButton.setBounds(decBinButtonX + insets.left, decBinButtonY + insets.top,
 				buttonSize.width, buttonSize.height);
-		binDecButton.setBounds(300 + insets.left, 300 + insets.top,
+		binDecButton.setBounds(binDecButtonX + insets.left, binDecButtonY + insets.top,
 				buttonSize.width, buttonSize.height);
-		backgroundButton.setBounds(300 + insets.left, 200 + insets.top,
+		backgroundButton.setBounds(backgroundButtonX + insets.left, backgroundButtonY + insets.top,
 				buttonSize.width, buttonSize.height);
-		gameButton.setBounds(330 + insets.left, 350 + insets.top,
+		gameButton.setBounds(gameButtonX + insets.left, gameButtonY + insets.top,
 				buttonSize.width, buttonSize.height);
-		gameButton.setVisible(false);
+		gameButton.setVisible(true); //here
 	}
 	
 	//this method overrides the paint method
 	public void paint(Graphics g) 
 	{ 
+
+		
 		super.paint(g);
-		g.drawImage(controller.tutorialHeadline, 260, 50, this);
-		g.drawImage(controller.checkmarkImg, 450, 190, this);
+		
+		g.drawImage(controller.tutorialHeadline, headlineX, headlineY, this);
+		
+		g.drawImage(controller.checkmarkImg, checkmarkX, checkmarkY1, this);
 		if (completedDecBin)
-			g.drawImage(controller.checkmarkImg, 450, 240, this);
+			g.drawImage(controller.checkmarkImg, checkmarkX, checkmarkY2, this);
 		if (completedBinDec)
-			g.drawImage(controller.checkmarkImg, 450, 290, this);
+			g.drawImage(controller.checkmarkImg, checkmarkX, checkmarkY3, this);
 		if (completedBinDec && completedDecBin){
 			gameButton.setVisible(true);
 		}
