@@ -72,13 +72,13 @@ public class FirstPage extends JPanel
 	private JCheckBox cellPhoneCheck;
 
 	//booleans to indicate whether checks have been filled
-	private boolean skype = false;
-	private boolean game = false;
-	private boolean email = false;
-	private boolean youtube = false;
-	private boolean fb = false;
-	private boolean instagram = false;
-	private boolean cellPhone = false;
+	boolean skype = false;
+	boolean game = false;
+	boolean email = false;
+	boolean youtube = false;
+	boolean fb = false;
+	boolean instagram = false;
+	boolean cellPhone = false;
 	
 	
 	//locations of components on screen
