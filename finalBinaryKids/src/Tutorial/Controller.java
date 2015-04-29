@@ -286,7 +286,7 @@ public class Controller extends JApplet
 		add(cards, BorderLayout.CENTER);
 		cardLayout = (CardLayout)(cards.getLayout());
 
-		cardLayout.show(cards, "START PAGE"); //here
+		cardLayout.show(cards, "FOURTH"); //here
 
 		//add buttonPanel to game frame
 		add(buttonPanel, BorderLayout.SOUTH); 

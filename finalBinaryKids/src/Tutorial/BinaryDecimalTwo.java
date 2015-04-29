@@ -65,10 +65,10 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 	private final String numOnesActual = "1";
 
 	//user input
-	String numEightsInput;
-	String numFoursInput;
-	String numTwosInput;
-	String numOnesInput;
+	public String numEightsInput;
+	public String numFoursInput;
+	public String numTwosInput;
+	public String numOnesInput;
 
 	// The coordinates of the boxes
 	final int box8x = 150, box8y = 280, box8width = 100, box8height = 250;
@@ -136,6 +136,19 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 	final int startTextY = 85;
 	final int textYInc = 20;
 
+    //checks whether user input is correct
+    public boolean checkAnswer()
+    {
+    	
+    	if (numEightsInput.equals(numEightsActual)
+		&& numFoursInput.equals(numFoursActual)
+		&& numTwosInput.equals(numTwosActual)
+		&& numOnesInput.equals(numOnesActual))
+    		return true;
+    	return false;
+    }
+	
+	
 	//this method defines the formatting of the components on the panel
 	public void formatComponents(){
 		Insets insets = getInsets();
@@ -538,10 +551,7 @@ public class BinaryDecimalTwo extends JPanel implements ActionListener
 			numOnesInput = NumberOnesField.getText();
 
 
-			if (numEightsInput.equals(numEightsActual)
-					&& numFoursInput.equals(numFoursActual)
-					&& numTwosInput.equals(numTwosActual)
-					&& numOnesInput.equals(numOnesActual)   ){
+			if (checkAnswer()  ){
 				controller.loadCard("BIN DEC PAGE 3");
 			}
 			else{

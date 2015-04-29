@@ -35,12 +35,12 @@ public class SegundaPage extends JPanel
 	private final String binaryNum = "110110";
 	private final String decimalNum = " 54 ";
 	private boolean decimal = false;
-	private JLabel convertLabel;
+	JLabel convertLabel;
 	
 	//components for on off switch
 	private JButton oneButton;
 	private JButton zeroButton;
-	private boolean oneClicked = false;
+	boolean oneClicked = false;
 	
 	//positions of components on screen
 	private final int titleImageX = 5;

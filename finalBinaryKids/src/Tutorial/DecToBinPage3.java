@@ -29,10 +29,10 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	private JTextField NumberOnesField;
 
 	//user input
-	private String numEightsInput;
-	private String numFoursInput;
-	private String numTwosInput;
-	private String numOnesInput;
+	public String numEightsInput;
+	public String numFoursInput;
+	public String numTwosInput;
+	public String numOnesInput;
 
 	//actual values
 	private final String numEightsActual = "1";
@@ -101,6 +101,19 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 	private final int headerX = 75;
 	private final int headerY = 10;
 
+	
+    //checks whether user input is correct
+    public boolean checkAnswer()
+    {
+    	
+    	if (numEightsInput.equals(numEightsActual)
+		&& numFoursInput.equals(numFoursActual)
+		&& numTwosInput.equals(numTwosActual)
+		&& numOnesInput.equals(numOnesActual))
+    		return true;
+    	return false;
+    }
+	
 	//inits format of text field
 	public void initTextFields(){
 		NumberEightsField = new JTextField();
@@ -210,10 +223,7 @@ public class DecToBinPage3 extends JPanel implements MouseListener
 			}
 
 
-			if (numEightsInput.equals(numEightsActual)
-					&& numFoursInput.equals(numFoursActual)
-					&& numTwosInput.equals(numTwosActual)
-					&& numOnesInput.equals(numOnesActual)   ){
+			if (checkAnswer()  ){
 				controller.loadCard("DEC BIN PAGE 4"); 
 			}
 			else{

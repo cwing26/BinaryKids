@@ -11,7 +11,7 @@ import org.junit.Test;
 //tests key GUI elements of the pre tutorial pages
 public class PreTutorialTest {
 
-	WelcomePage controller;
+	Controller controller;
 	//Controller controller;
 	
 	SegundaPage segundaPage;

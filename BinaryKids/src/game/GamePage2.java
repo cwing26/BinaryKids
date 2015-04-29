@@ -521,7 +521,7 @@ public class GamePage2 extends JPanel {
 		}
 		else if (reason == 2 && countCorrect >=1 ) { 
 			timer.stop();
-			message = “You’re awesome! Congrats on learning binary!!”;
+			message = "You're awesome! Congrats on learning binary!!";
 					
 			//display goodbye message
 			JOptionPane.showMessageDialog(this, message, "Game Over!", JOptionPane.YES_NO_OPTION);	

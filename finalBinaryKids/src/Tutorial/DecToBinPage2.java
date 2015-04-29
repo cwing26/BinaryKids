@@ -51,8 +51,8 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 
 	private final int DecToBinNumSquaresActual = 11;
 
-	private String numTensInput;
-	private String numOnesInput;
+	public String numTensInput;
+	public String numOnesInput;
 	private final String numTensActual = "1";
 	private final String numOnesActual = "1";
 
@@ -110,7 +110,15 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 	}
 	
 
-
+    //checks whether user input is correct
+    public boolean checkAnswer()
+    {
+    	
+    	if (numTensInput.equals(numTensActual)
+				&& numOnesInput.equals(numOnesActual))
+    		return true;
+    	return false;
+    }
 
 
 
@@ -175,7 +183,7 @@ public class DecToBinPage2 extends JPanel implements ActionListener
 			numTensInput = NumberTensField.getText();
 			numOnesInput = NumberOnesField.getText();
 
-			if (numTensInput.equals(numTensActual) && numOnesInput.equals(numOnesActual)){
+			if (checkAnswer()){
 				controller.loadCard("DEC BIN PAGE 3");
 			}
 			else{

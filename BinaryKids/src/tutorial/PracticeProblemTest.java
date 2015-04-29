@@ -84,6 +84,7 @@ public class PracticeProblemTest {
 	@Test
 	public void checkRandNum()
 	{
+		int practiceValues = 200;
 		decToBinPractice.populateQuestionArrays(practiceValues);
 		
 		assertTrue(decToBinPractice.values.get(15) < 64);

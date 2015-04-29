@@ -8,6 +8,8 @@ import javax.swing.JButton;
 import org.junit.Before;
 import org.junit.Test;
 
+import tutorial.Controller;
+
 
 public class GamePage2Test {
 	

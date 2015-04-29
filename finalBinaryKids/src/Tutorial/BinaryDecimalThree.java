@@ -34,8 +34,8 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 	final int BinToDecNumSquaresActual = 13;
 	final String numTensActual = "1";
 	final String numOnesActual = "3";
-	String numTensInput;
-	String numOnesInput;
+	public String numTensInput;
+	public String numOnesInput;
 
 	// The X-coordinate and Y-coordinate of the last click. 
 	int mouseX; 
@@ -99,6 +99,15 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 		setVisible(true);
 	}
 
+    //checks whether user input is correct
+    public boolean checkAnswer()
+    {
+    	
+    	if (numTensInput.equals(numTensActual)
+				&& numOnesInput.equals(numOnesActual))
+    		return true;
+    	return false;
+    }
 
 	//this method defines the formatting of the components on the panel
 	public void formatComponents(){
@@ -274,8 +283,7 @@ public class BinaryDecimalThree extends JPanel implements MouseListener
 
 
 
-			if(numTensInput.equals(numTensActual)
-					&& numOnesInput.equals(numOnesActual) && countTens == 10 && countOnes == 3)
+			if(checkAnswer() && countTens == 10 && countOnes == 3)
 			{
 				String congratsMessage = "Good job!";
 				JOptionPane.showMessageDialog(controller, congratsMessage, "good job", JOptionPane.YES_NO_OPTION);

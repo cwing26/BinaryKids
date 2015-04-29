@@ -139,7 +139,7 @@ public class BinaryDecimalOne extends JPanel
 			inputAnswer = Integer.parseInt(input);
 			
 			//if correct answer load the next page
-			if(inputAnswer == correctAnswer)
+			if(checkAnswer(input))
 			{
 				controller.loadCard("BIN DEC PAGE 2");
 			}
