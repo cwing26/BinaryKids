@@ -1,0 +1,15 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<jnlp spec="1.0+" codebase="" href="">   
+     <information>   
+        <title>BinaryKids</title>
+        <vendor>CS 150</vendor>
+    </information>
+    <resources>
+ <!-- Application Resources -->
+ <j2se version="1.7+"             href="http://java.sun.com/products/autodl/j2se" />
+ <jar href=“binary_kids.jar" main="true" />
+ </resources>
+<applet-desc          name=“finalBinaryKids"          main-class=“Controller"          width="800"          height="700">
+</applet-desc>
+ <update check="background"/>
+</jnlp> 
