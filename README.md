@@ -1,25 +1,17 @@
-# BinaryKids
-Helping kids learn to convert between binary and base 10
 
-TODO:
-fix names of all classes;
-reorganize packages;
-unit tests;
-clean up and comment controller (welcome page)
-exception handling??? - not sure, we will have to thoroughly check all code;
--fix inconsistent back/next buttons 
--conclusion page: quote about binary (10 kinds of people) and comic strip??
 
-Ambitious:
-drag drop for rectangles
+Applet Name: Binary Kids
 
-Game:
-NEEDS binary to decimal questions also.
-game needs a theme 
-game instructions page???? losing should take you back to the game homepage or the instructions page
-1. game stats, pause button, stop button, need to be in dedicated different color panel on the bottom or left of the screen
-2. make score progress and time progress bar longer
-5. fix location of labels and places under buttons
-7. congrats you’re awesome page
-8. numerical representation of score and time left under progress bars
+Team: Meghan Anand, Chris Wing, Julia Kieserman, De’Ahna Johnson
 
+Concept: This application, named BinaryKids, is an interactive learning applet designed to give middle school-aged students an introduction to the binary number system and its importance to computing. It is divided into four main parts, the pre-tutorial leaning module, the binary to decimal conversion learning module, the decimal to binary conversion learning module, and a game called binary blast. The applet also contains unit testing for key units of work in each module and the game. The applet is accompanied by a basic html page outlining the utility of the application, its social good application, and the learning situations in which it should be primarily used. External resources and guides used are also listed on this webpage. 
+
+Deployment: We have a working jar file and also semi-successful deployment in a
+webpage. While the html/jnlp deployment method doesn’t seem to be working on any browser, an html deployment method works on some browsers (Firefox)—this is carried out in deployBinaryKids.html. You might have to lower your security settings, and add the codebase url as well as the html url to your list of exception sites on java control panel, but it should work after that. 
+
+The only thing that a grader might have difficulty with is the formatting and coloring. For no apparent reason, colors tend to not show up or show up as different colors on different machines. This is the only minor issue we know of. Slower computers also might take longer to load the applet. 
+
+Extra functionality: We have a pretty large code base with three separate learning modules in addition to a game that seek to teach a pretty complex mathematical concept. Rather than just having a game or a tutorial/informative applet, we combine both with significant graphics and some animation. Our MVC infrastructure has more than 25 different views with unique content, not including the game.
+
+
+GIT Repository: https://github.com/wingchristopher/BinaryKids
