@@ -118,70 +118,70 @@ public class Controller extends JApplet
 	Container contentPane;
 
 	//image paths
-	public static String titlePath = "titleTextImage.jpg";
-	public static String titleImagePath = "titleImage.jpg";
-	public static String lightOnImagePath = "lightOn.jpg";
-	public static String lightOffImagePath = "lightOff.jpg";
-	public static String binDecPg3TitleImagePath = "BinDecPg3Title.jpg";
-	public static String tutorialImgPath = "tutorials.jpg";
+	public static String titlePath = "images/titleTextImage.jpg";
+	public static String titleImagePath = "images/titleImage.jpg";
+	public static String lightOnImagePath = "images/lightOn.jpg";
+	public static String lightOffImagePath = "images/lightOff.jpg";
+	public static String binDecPg3TitleImagePath = "images/BinDecPg3Title.jpg";
+	public static String tutorialImgPath = "images/tutorials.jpg";
 
-	public static String tutorialCompleteImgPath = "tutorialComplete.jpg";
-	public static String checkmarkImgPath = "checkmark.png";
+	public static String tutorialCompleteImgPath = "images/tutorialComplete.jpg";
+	public static String checkmarkImgPath = "images/checkmark.png";
 
 	//meghan's added images
-	public static String welcomeToBKPath = "welcomeToBKTitle.jpg";
-	public static String binDecImgPath = "BinToDec.jpg";
+	public static String welcomeToBKPath = "images/welcomeToBKTitle.jpg";
+	public static String binDecImgPath = "images/BinToDec.jpg";
 
 	//num representation page images
-	public static String binaryImageLightPath = "binaryLight.jpg";
-	public static String binaryImageDarkPath = "binaryDark.jpg";
-	public static String decimalImagePath = "decimal.jpg";
-	public static String romanNumeralImagePath = "romanNumeral.jpg";
-	public static String shapesImagePath = "shapes.jpg";
-	public static String numRepTitlePath = "numRepPageTitle.jpg";
-	public static String soccerBallPath = "soccerBall.jpg";
+	public static String binaryImageLightPath = "images/binaryLight.jpg";
+	public static String binaryImageDarkPath = "images/binaryDark.jpg";
+	public static String decimalImagePath = "images/decimal.jpg";
+	public static String romanNumeralImagePath = "images/romanNumeral.jpg";
+	public static String shapesImagePath = "images/shapes.jpg";
+	public static String numRepTitlePath = "images/numRepPageTitle.jpg";
+	public static String soccerBallPath = "images/soccerBall.jpg";
 
 	//what are binary numbers page
-	public static String whatBinaryTitlePath = "whatBinaryTitle.jpg";
-	public static String dogBinaryImagePath = "dogBinary.jpg";
-	public static String bikeImagePath = "bicycle.png";
-	public static String binocularsPath = "binoculars.png";
+	public static String whatBinaryTitlePath = "images/whatBinaryTitle.jpg";
+	public static String dogBinaryImagePath = "images/dogBinary.jpg";
+	public static String bikeImagePath = "images/bicycle.png";
+	public static String binocularsPath = "images/binoculars.png";
 
 	//why binary numbers important page
-	public static String whyBinaryImportantTitlePath = "thirdPageTitle.jpg";
-	public static String instagramPath = "instagram.png";
-	public static String fbPath = "fb.png";
-	public static String youtubePath = "youtube.png";
-	public static String emailPath = "gmail.png";
-	public static String skypePath = "skype.png";
-	public static String gamePath = "game.png";
-	public static String cellPath = "cellPhone.png";
-	public static String lightOffPath = "realLightOff.png";
-	public static String lightOnPath = "realLightOn.png";
-	public static String binaryDigitPath = "binaryDigit.gif";
+	public static String whyBinaryImportantTitlePath = "images/thirdPageTitle.jpg";
+	public static String instagramPath = "images/instagram.png";
+	public static String fbPath = "images/fb.png";
+	public static String youtubePath = "images/youtube.png";
+	public static String emailPath = "images/gmail.png";
+	public static String skypePath = "images/skype.png";
+	public static String gamePath = "images/game.png";
+	public static String cellPath = "images/cellPhone.png";
+	public static String lightOffPath = "images/realLightOff.png";
+	public static String lightOnPath = "images/realLightOn.png";
+	public static String binaryDigitPath = "images/binaryDigit.gif";
 
 	//dec number basics/bin num basics images
-	public static String decBasicsPath = "decNumBasics.jpg";
-	public static String crossOutPath = "crossOut.png";
-	public static String binBasicsPath = "binNumBasics.jpg";
+	public static String decBasicsPath = "images/decNumBasics.jpg";
+	public static String crossOutPath = "images/crossOut.png";
+	public static String binBasicsPath = "images/binNumBasics.jpg";
 
 	//demo page images
-	public static String puttingTogetherPath = "puttingAllTogether.jpg";
+	public static String puttingTogetherPath = "images/puttingAllTogether.jpg";
 
 	//practice problem images
-	public static String binPracticeProblemPath = "binPracticeProblemTitle.png";
-	public static String hintGraphicPath = "hintGraphic.gif";
-	public static String decPracticeProblemPath = "decPracticeProblemsTitle.jpg";
+	public static String binPracticeProblemPath = "images/binPracticeProblemTitle.png";
+	public static String hintGraphicPath = "images/hintGraphic.gif";
+	public static String decPracticeProblemPath = "images/decPracticeProblemsTitle.jpg";
 
 	//game image paths
-	public static String gameTitlePath = "welcometext.jpg";
-	public static String game0Path = "myZero.png";
-	public static String game1Path = "myOne.png";
-	public static String gameSubmitPath = "submitalso.png";
-	public static String gameInstructionsPath = "instructButton.png";
-	public static String gamePlayPath = "playButton.png";
-	public static String gameRocketPath = "rocketship.jpg";
-	public static String binaryBlastPath = "binaryblast.jpg";
+	public static String gameTitlePath = "images/welcometext.jpg";
+	public static String game0Path = "images/myZero.png";
+	public static String game1Path = "images/myOne.png";
+	public static String gameSubmitPath = "images/submitalso.png";
+	public static String gameInstructionsPath = "images/instructButton.png";
+	public static String gamePlayPath = "images/playButton.png";
+	public static String gameRocketPath = "images/rocketship.jpg";
+	public static String binaryBlastPath = "images/binaryblast.jpg";
 
 	//chris images
 	public Image titleImg;  //http://www.cs.colostate.edu/~boese/Geek/binaryCalculator.gif
